@@ -1,0 +1,31 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors';
+
+.curiosities {
+    margin: 80px 0;
+    .skew-block-container {
+        .single-curiosity {
+            width: 80vw;
+            margin: 20px 10vw;
+            flex-shrink: 0;
+            padding: 0;
+            .curiosity-header {
+                background-color: $light-gray;
+                text-align: center;
+                font-size: $font-large;
+                color: $ala-blue;
+                padding: 10px 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+            }
+            .curiosity-body {
+                padding: 10px;
+            }
+        }
+    }
+}

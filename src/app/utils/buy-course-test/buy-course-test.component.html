@@ -1,0 +1,122 @@
+<!-- MODAL -->
+<div class = "hiddenElement" id = "hiddenModal">
+    <div class="modal-background"  (click)="closeBuyCourseModal()"></div>
+    <div class="modal-buy-course modal">
+        <div class="modal-header">
+            <h2 style = "text-align: center;" class="modal-title">Inscripción en el curso: {{currentCourse.Title}}</h2>
+            <div class="modal-close btn red" (click)="closeBuyCourseModal()"><i class="fas fa-times"></i></div>
+        </div>
+
+        <div class="modal-content">
+            <form #EventsPopUp="ngForm">
+                <div class = "form-div scrollable" id = "form-div">
+                    <div class = "scrollable-option" style = "margin-right: 35px;">
+                        <div class = "flex">
+                            <input [(ngModel)]="user.name" ngModel required type="text" name='name' placeholder="Nombre">
+                            <input class = "f-right" [(ngModel)]="user.lastname" ngModel required type="text" name='lastname' placeholder="Apellidos">
+                        </div>
+                        
+                        <div><input [(ngModel)]="user.email" ngModel required type="email" name='email' placeholder="Email"></div>
+                        <div><input [(ngModel)]="user.address" ngModel required type="text" name='address' placeholder="Dirección"></div>
+                        <div><input [(ngModel)]="user.house" ngModel type="text" name='house' placeholder="Casa, apartamento, etc. (opcional)"></div>
+                        <div><input [(ngModel)]="user.city" ngModel required type="text" name='city' placeholder="Ciudad"></div>
+                        
+                        <div class = "flex">
+                            <!-- <select [(ngModel)]="user.country" name="country" onmousedown="if(this.options.length>8){this.size=8;}"  onchange='this.size=0;' onblur="this.size=0;">
+                                <option value="" selected disabled>País/Región</option>
+                                <option *ngFor = "let country of countries" [value] = "country.id">{{country.name}}</option>
+                            </select>
+    
+                            <select [(ngModel)]="user.state" required name="state" onmousedown="if(this.options.length>8){this.size=8;}"  onchange='this.size=0;' onblur="this.size=0;">
+                                <option value="" selected disabled>Provincia/Estado</option>
+                                <option *ngFor = "let country of countries" [value] = "country.id">{{country.name}}</option>
+                            </select> -->
+
+                            <input [(ngModel)]="user.state" ngModel required type="text" name='state' placeholder="Provincia">
+                            <input class = "f-right" [(ngModel)]="user.country" ngModel required type="text" name='country' placeholder="País">
+                        </div>
+
+                        <div class = "flex">
+                            <input [(ngModel)]="user.CP" ngModel required type="text" name='pd' placeholder="Código postal">
+                            <input class = "f-right" [(ngModel)]="user.phoneNumber" ngModel required type="text" name='phoneNumber' placeholder="Teléfono">
+                        </div>
+
+                        <div><input [(ngModel)]="user.dni" ngModel required type="text" name='DNI' placeholder="DNI/NIE" title = "Debe poner 8 números y una letra (sin espacios)"></div>
+        
+                        <div class = "level-test">
+                            <p>¿Ya ha realizado una prueba de nivel con American Language Academy?</p> 
+                            <p class = "lt-options">YES <input [(ngModel)]="user.levelTest" type="radio" name="levelTest" value = "Yes"> NO <input [(ngModel)]="user.levelTest" type="radio" name="levelTest" value = "No"></p>
+                        </div>
+
+                        <div class="buttons">
+                            <button (click)="closeBuyCourseModal()" class="btn light blue">
+                                Volver al curso
+                            </button>
+    
+                            <button (click)="moveSlider('next')" class="bn light green">
+                                Continuar
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class = "scrollable-option">
+                        <div class = "flex">
+                            <select class="course-select" [(ngModel)]="userCourseInfo.schedule" name="schedule" onmousedown="if(this.options.length>8){this.size=8;}"  onchange='this.size=0;' onblur="this.size=0;">
+                                <option value="" selected disabled>Días de clase</option>
+                                <option *ngFor = "let schedule of currentCourse['schedules']" [value] = "schedule">{{schedule}}</option>
+                            </select>
+
+                            <select class="course-select" [(ngModel)]="userCourseInfo.timetable" name="timetable" onmousedown="if(this.options.length>8){this.size=8;}"  onchange='this.size=0;' onblur="this.size=0;">
+                                <option value="" selected disabled>Horario del curso</option>
+                                <option *ngFor = "let timetable of currentCourse['timetables']" [value] = "timetable">{{timetable}} GMT+1 (Madrid)</option>
+                            </select>
+                        </div>
+
+                        <div class = "flex">
+                            <input class = "fit-content" style = "width: -webkit-fill-available;" [(ngModel)]="userCourseInfo.num_weeks" name="num_weeks" type="number" placeholder="Nº semanas">
+
+                            <select class="course-select fit-content" [(ngModel)]="userCourseInfo.start_week" name="start_week" onmousedown="if(this.options.length>8){this.size=8;}"  onchange='this.size=0;' onblur="this.size=0;">
+                                <option value="" selected disabled>Semana de inicio</option>
+                                <option *ngFor = "let date of weekDates" [value] = "date">{{date}}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <div id="card-element"></div>
+                            <div id="card-errors" role="alert"></div>
+                        </div>
+
+                        <div class = "terms">
+                            <button class = "btn blue" (click) = "showTermsAndConditions()">Ver términos y condiciones</button>
+    
+                            <div *ngIf = "termsAndConditions">
+                                <p>Esto son los términos y condiciones</p>
+                                <!-- <p>Estoy de acuerdo con los términos y condiciones<input class = "checkbox" [(ngModel)]="user.acceptedTermsAndCond" type="checkbox" name="termsAndCond"></p> -->
+                            </div>
+                        </div>
+    
+                        <div class = "course-price">
+                            <h1>Precio total</h1>
+                            <h1>{{currentCourse['Precio Modulo']}} €</h1>
+                        </div>
+    
+                        <div class="confirm-payment-buttons">
+                            <button (click)="moveSlider('prev')" class="btn light red">
+                                Volver
+                            </button>
+    
+                            <!-- <input (click)="modalAction()" style = "height: auto; width: auto;" type="submit" value="Validar datos" class="btn light-green" [disabled] = "!user.acceptedTermsAndCond"> -->
+                            <input (click)="modalAction()" style = "height: auto; width: auto;" type="submit" value="Validar datos" class="btn light-green">
+                            <button (click) = "pay()" class = "btn blue light hiddenButton" id = "payButton"><i class="fas fa-shopping-cart"></i> Confirmar compra</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<button (click) = "openBuyCourseModal();" style = "padding: 15px; margin: 10px auto; font-weight: bold;" class = "btn green btn-centered">
+    <i class="fas fa-shopping-cart" style="margin-right: 15px;"></i>
+    Comprar Curso
+</button>

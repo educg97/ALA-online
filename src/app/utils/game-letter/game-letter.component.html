@@ -1,0 +1,302 @@
+<div class="game-container page-width">
+  <h1>ALA Game!</h1>
+
+  <div class="game-explanation">
+    <p class="space-text">Este es un <strong>juego de palabras homófonas</strong> que consiste en identificar las palabras
+      que son erróneas. La dificultad está
+      en
+      que las palabras correctas <strong>se pronuncian igual</strong> que las que están mal puestas. 😈</p>
+    <p class="space-text">¡Demuestra tu habilidad con el inglés!</p>
+
+    <p class="space-text">Y recuerda, si consigues encontrar y corregir 10 palabras, ¡<strong>ganas una
+        camiseta</strong> de American Language Academy!</p>
+  </div>
+
+  <div class="score text-center" [ngClass]="{
+    low: 5 > counter,
+    medium: 9 >= counter,
+    excellent: counter >= prizeAmount 
+  }">
+    {{counter}} de {{prizeAmount}}
+  </div>
+
+  <div class="game letter">
+    <p>
+      <span (click)="checkWord('Deer', 'Dear')">Deer</span>&nbsp;<span
+        (click)="checkWord('suite', 'sweet')">suite</span>&nbsp;<span
+        (click)="checkWord('students', 'students')">students,</span>
+    </p>
+
+    <p>
+      <span (click)="checkWord('I', 'I')">I</span>&nbsp;<span
+        (click)="checkWord('don\'t', 'don\'t')">don't</span>&nbsp;<span
+        (click)="checkWord('want', 'want')">want</span>&nbsp;<span (click)="checkWord('to', 'to')">to</span>&nbsp;<span
+        (click)="checkWord('steel', 'steal')">steel</span>&nbsp;<span (click)="checkWord('to', 'too')">to</span>&nbsp;
+      <span (click)="checkWord('much', 'much')">much</span>&nbsp;<span
+        (click)="checkWord('of', 'of')">of</span>&nbsp;<span (click)="checkWord('your', 'your')">your</span>&nbsp;<span
+        (click)="checkWord('time', 'time')">time</span>,&nbsp;<span
+        (click)="checkWord('but', 'but')">but</span>&nbsp;<span (click)="checkWord('when', 'when')">when</span>&nbsp;
+      <span (click)="checkWord('you', 'you')">you</span>&nbsp;<span
+        (click)="checkWord('are', 'are')">are</span>&nbsp;<span
+        (click)="checkWord('righting', 'writing')">righting</span>&nbsp;<span
+        (click)="checkWord('something', 'something')">something</span>&nbsp;<span
+        (click)="checkWord('four', 'for')">four</span>&nbsp;<span (click)="checkWord('my', 'my')">my</span>&nbsp;
+      <span (click)="checkWord('class', 'class')">class</span>,&nbsp;<span
+        (click)="checkWord('bee', 'be')">bee</span>&nbsp;<span
+        (click)="checkWord('shore', 'sure')">shore</span>&nbsp;<span
+        (click)="checkWord('that', 'that')">that</span>&nbsp;<span
+        (click)="checkWord('you', 'you')">you</span>&nbsp;<span (click)="checkWord('are', 'are')">are</span>&nbsp;
+      <span (click)="checkWord('using', 'using')">using</span>&nbsp;<span
+        (click)="checkWord('the', 'the')">the</span>&nbsp;<span
+        (click)="checkWord('write', 'right')">write</span>&nbsp;<span
+        (click)="checkWord('homophones', 'homophones')">homophones</span>.&nbsp;<span
+        (click)="checkWord('Eye', 'I')">Eye</span>&nbsp;<span
+        (click)="checkWord('cannot', 'cannot')">cannot</span>&nbsp;
+      <span (click)="checkWord('tell', 'tell')">tell</span>&nbsp;<span
+        (click)="checkWord('you', 'you')">you</span>&nbsp;<span (click)="checkWord('how', 'how')">how</span>&nbsp;<span
+        (click)="checkWord('unintelligent', 'unintelligent')">unintelligent</span>&nbsp;<span
+        (click)="checkWord('you', 'you')">you</span>&nbsp;<span (click)="checkWord('look', 'look')">look</span>&nbsp;
+      <span (click)="checkWord('win', 'when')">win</span>&nbsp;<span
+        (click)="checkWord('you', 'you')">you</span>&nbsp;<span (click)="checkWord('use', 'use')">use</span>&nbsp;<span
+        (click)="checkWord('the', 'the')">the</span>&nbsp;<span
+        (click)="checkWord('wrong', 'wrong')">wrong</span>&nbsp;<span
+        (click)="checkWord('word', 'word')">word</span>,&nbsp;<span (click)="checkWord('and', 'and')">and</span>&nbsp;
+      <span (click)="checkWord('my', 'my')">my</span>&nbsp;<span
+        (click)="checkWord('I\'s', 'eyes')">I's</span>&nbsp;<span
+        (click)="checkWord('cannot', 'cannot')">cannot</span>&nbsp;<span
+        (click)="checkWord('bear', 'bear')">bear</span>&nbsp;<span (click)="checkWord('to', 'to')">to</span>&nbsp;<span
+        (click)="checkWord('sea', 'see')">sea</span>&nbsp;
+      <span (click)="checkWord('these', 'these')">these</span>&nbsp;<span
+        (click)="checkWord('mistakes', 'mistakes')">mistakes</span>&nbsp;<span
+        (click)="checkWord('anymore', 'anymore')">anymore</span>.&nbsp;<span
+        (click)="checkWord('They\'re', 'They\'re')">They're</span>&nbsp;<span
+        (click)="checkWord('a', 'a')">a</span>&nbsp;<span
+        (click)="checkWord('terrible', 'terrible')">terrible</span>&nbsp;
+      <span (click)="checkWord('site', 'sight')">site</span>&nbsp;<span
+        (click)="checkWord('to', 'to')">to</span>&nbsp;<span (click)="checkWord('see', 'see')">see</span>.&nbsp;<span
+        (click)="checkWord('I', 'I')">I</span>&nbsp;<span
+        (click)="checkWord('don\'t', 'don\'t')">don't</span>&nbsp;<span
+        (click)="checkWord('want', 'want')">want</span>&nbsp;<span (click)="checkWord('to', 'to')">to</span>&nbsp;
+      <span (click)="checkWord('brake', 'break')">brake</span>&nbsp;<span
+        (click)="checkWord('your', 'your')">your</span>&nbsp;<span
+        (click)="checkWord('spirit', 'spirit')">spirit</span>,&nbsp;<span
+        (click)="checkWord('but', 'but')">but</span>&nbsp;<span (click)="checkWord('I', 'I')">I</span>&nbsp;<span
+        (click)="checkWord('know', 'know')">know</span>&nbsp;<span
+        (click)="checkWord('that', 'that')">that</span>&nbsp;<span
+        (click)="checkWord('you', 'you')">you</span>&nbsp;<span
+        (click)="checkWord('won\'t', 'won\'t')">won't</span>&nbsp;
+        <span (click)="checkWord('improve', 'improve')">improve</span>&nbsp;<span
+        (click)="checkWord('buy', 'by')">buy</span>&nbsp;<span
+        (click)="checkWord('yourself', 'yourself')">yourself</span>.&nbsp;
+      <span (click)="checkWord('Also', 'Also')">Also</span>,&nbsp;<span
+        (click)="checkWord('their', 'there')">their</span>&nbsp;<span
+        (click)="checkWord('are', 'are')">are</span>&nbsp;<span (click)="checkWord('know', 'no')">know</span>&nbsp;<span
+        (click)="checkWord('excuses', 'excuses')">excuses</span>&nbsp;<span
+        (click)="checkWord('for', 'for')">for</span>&nbsp;
+      <span (click)="checkWord('using', 'using')">using</span>&nbsp;<span
+        (click)="checkWord('the', 'the')">the</span>&nbsp;<span
+        (click)="checkWord('wrong', 'wrong')">wrong</span>&nbsp;<span
+        (click)="checkWord('words', 'words')">words</span>&nbsp;<span
+        (click)="checkWord('cause', 'cause')">cause</span>&nbsp;<span
+        (click)="checkWord('you', 'you')">you</span>&nbsp;<span (click)="checkWord('have', 'have')">have</span>&nbsp;
+      <span (click)="checkWord('the', 'the')">the</span>&nbsp;<span
+        (click)="checkWord('education', 'education')">education</span>&nbsp;<span
+        (click)="checkWord('too', 'to')">too</span>&nbsp;<span
+        (click)="checkWord('know', 'know')">know</span>&nbsp;<span
+        (click)="checkWord('better', 'better')">better</span>.&nbsp;<span
+        (click)="checkWord('You\'re', 'You\'re')">You're</span>&nbsp;
+      <span (click)="checkWord('smart', 'smart')">smart</span>&nbsp;<span
+        (click)="checkWord('enough', 'enough')">enough</span>&nbsp;<span
+        (click)="checkWord('to', 'to')">to</span>&nbsp;<span (click)="checkWord('no', 'know')">no</span>&nbsp;<span
+        (click)="checkWord('the', 'the')">the</span>&nbsp;<span
+        (click)="checkWord('differences', 'differences')">differences</span>,&nbsp;
+      <span (click)="checkWord('butt', 'but')">butt</span>&nbsp;<span
+        (click)="checkWord('you', 'you')">you</span>&nbsp;<span
+        (click)="checkWord('rush', 'rush')">rush</span>&nbsp;<span
+        (click)="checkWord('threw', 'through')">threw</span>&nbsp;<span
+        (click)="checkWord('you\'re', 'your')">you're</span>&nbsp;<span
+        (click)="checkWord('work', 'work')">work</span>&nbsp;
+      <span (click)="checkWord('and', 'and')">and</span>&nbsp;<span
+        (click)="checkWord('mess', 'mess')">mess</span>&nbsp;<span (click)="checkWord('up', 'up')">up</span>.&nbsp;<span
+        (click)="checkWord('Then', 'Then')">Then</span>,&nbsp;<span (click)="checkWord('it', 'it')">it</span>&nbsp;<span
+        (click)="checkWord('seems', 'seems')">seems</span>&nbsp;<span
+        (click)="checkWord('like', 'like')">like</span>&nbsp;
+      <span (click)="checkWord('the', 'the')">the</span>&nbsp;<span
+        (click)="checkWord('son', 'sun')">son</span>&nbsp;<span
+        (click)="checkWord('isn\'t', 'isn\'t')">isn't</span>&nbsp;<span
+        (click)="checkWord('shining', 'shining')">shining</span>.
+    </p>
+
+    <p>
+      <span (click)="checkWord('I', '')">I</span>&nbsp;<span (click)="checkWord('hope', 'hope')">hope</span>&nbsp;<span
+        (click)="checkWord('that', 'that')">that</span>&nbsp;<span
+        (click)="checkWord('hear', 'here')">hear</span>,&nbsp;<span
+        (click)="checkWord('inn', 'in')">inn</span>&nbsp;<span
+        (click)="checkWord('class', 'class')">class</span>,&nbsp;<span
+        (click)="checkWord('you', 'you')">you</span>&nbsp;
+      <span (click)="checkWord('are', 'are')">are</span>&nbsp;<span
+        (click)="checkWord('knot', 'not')">knot</span>&nbsp;<span
+        (click)="checkWord('afraid', 'afraid')">afraid</span>&nbsp;<span
+        (click)="checkWord('to', 'to')">to</span>&nbsp;<span (click)="checkWord('make', 'make')">make</span>&nbsp;<span
+        (click)="checkWord('mistakes', 'mistakes')">mistakes</span>&nbsp;
+      <span (click)="checkWord('because', 'because')">because</span>&nbsp;<span
+        (click)="checkWord('hour', 'our')">hour</span>&nbsp;<span
+        (click)="checkWord('class', 'class')">class</span>&nbsp;<span
+        (click)="checkWord('is', 'is')">is</span>&nbsp;<span (click)="checkWord('a', 'a')">a</span>&nbsp;<span
+        (click)="checkWord('safe', 'safe')">safe</span>&nbsp;
+      <span (click)="checkWord('place', 'place')">place</span>.&nbsp;<span
+        (click)="checkWord('From', 'From')">From</span>&nbsp;<span
+        (click)="checkWord('mourning', 'morning')">mourning</span>&nbsp;<span
+        (click)="checkWord('til', 'til')">til</span>&nbsp;<span
+        (click)="checkWord('knight', 'night')">knight</span>&nbsp;<span
+        (click)="checkWord('you', 'you')">you</span>&nbsp;
+      <span (click)="checkWord('should', 'should')">should</span>&nbsp;<span
+        (click)="checkWord('remember', 'remember')">remember</span>&nbsp;<span
+        (click)="checkWord('that', 'that')">that</span>&nbsp;<span
+        (click)="checkWord('your', 'your')">your</span>&nbsp;<span
+        (click)="checkWord('principal', 'principal')">principal</span>&nbsp;<span
+        (click)="checkWord('goal', 'goal')">goal</span>&nbsp;
+      <span (click)="checkWord('is', 'is')">is</span>&nbsp;<span (click)="checkWord('to', 'to')">to</span>&nbsp;<span
+        (click)="checkWord('learn', 'learn')">learn</span>.&nbsp;<span
+        (click)="checkWord('Sew', 'So')">Sew</span>,&nbsp;<span
+        (click)="checkWord('take', 'take')">take</span>&nbsp;<span
+        (click)="checkWord('won', 'one')">won</span>&nbsp;<span (click)="checkWord('or', 'or')">or</span>&nbsp;
+      <span (click)="checkWord('two', 'two')">two</span>&nbsp;<span
+        (click)="checkWord('risks', 'risks')">risks</span>&nbsp;<span
+        (click)="checkWord('everyday', 'everyday')">everyday</span>.&nbsp;<span
+        (click)="checkWord('The', 'The')">The</span>&nbsp;<span
+        (click)="checkWord('hole', 'whole')">hole</span>&nbsp;<span
+        (click)="checkWord('point', 'point')">point</span>&nbsp;<span (click)="checkWord('of', 'of')">of</span>&nbsp;
+      <span (click)="checkWord('education', 'education')">education</span>&nbsp;<span
+        (click)="checkWord('is', 'is')">is</span>&nbsp;<span (click)="checkWord('to', 'to')">to</span>&nbsp;<span
+        (click)="checkWord('be', 'be')">be</span>&nbsp;<span (click)="checkWord('and', 'and')">and</span>&nbsp;<span
+        (click)="checkWord('do', 'do')">do</span>&nbsp;<span
+        (click)="checkWord('better', 'better')">better</span>,&nbsp;
+      <span (click)="checkWord('oar', 'or')">oar</span>&nbsp;<span (click)="checkWord('in', 'in')">in</span>&nbsp;<span
+        (click)="checkWord('other', 'other')">other</span>&nbsp;<span
+        (click)="checkWord('words', 'words')">words</span>,&nbsp;<span
+        (click)="checkWord('sum', 'some')">sum</span>&nbsp;<span
+        (click)="checkWord('mistakes', 'mistakes')">mistakes</span>&nbsp;<span
+        (click)="checkWord('are', 'are')">are</span>&nbsp;
+      <span (click)="checkWord('the', 'the')">the</span>&nbsp;<span
+        (click)="checkWord('route', 'root')">route</span>&nbsp;<span
+        (click)="checkWord('of', 'of')">of</span>&nbsp;<span
+        (click)="checkWord('learning', 'learning')">learning</span>!&nbsp;<span
+        (click)="checkWord('This', 'This')">This</span>&nbsp;<span
+        (click)="checkWord('may', 'may')">may</span>&nbsp;<span (click)="checkWord('seam', 'seem')">seam</span>&nbsp;
+      <span (click)="checkWord('like', 'like')">like</span>&nbsp;<span (click)="checkWord('a', 'a')">a</span>&nbsp;<span
+        (click)="checkWord('typical', 'typical')">typical</span>&nbsp;<span
+        (click)="checkWord('peace', 'piece')">peace</span>&nbsp;<span
+        (click)="checkWord('of', 'of')">of</span>&nbsp;<span
+        (click)="checkWord('advice', 'advice')">advice</span>,&nbsp;<span
+        (click)="checkWord('but', 'but')">but</span>&nbsp;
+      <span (click)="checkWord('that', 'that')">that</span>&nbsp;<span
+        (click)="checkWord('is', 'is')">is</span>&nbsp;<span
+        (click)="checkWord('alright', 'alright')">alright</span>,&nbsp;<span
+        (click)="checkWord('because', 'because')">because</span>&nbsp;<span
+        (click)="checkWord('I', 'I')">I</span>&nbsp;<span (click)="checkWord('want', 'want')">want</span>&nbsp;<span
+        (click)="checkWord('my', 'my')">my</span>&nbsp;
+      <span (click)="checkWord('message', 'message')">message</span>&nbsp;<span
+        (click)="checkWord('to', 'to')">to</span>&nbsp;<span (click)="checkWord('be', 'be')">be</span>&nbsp;<span
+        (click)="checkWord('plane', 'plain')">plane</span>&nbsp;<span
+        (click)="checkWord('and', 'and')">and</span>&nbsp;<span
+        (click)="checkWord('simple', 'simple')">simple</span>.&nbsp;<span
+        (click)="checkWord('Don\'t', 'Don\'t')">Don't</span>&nbsp;
+      <span (click)="checkWord('waist', 'waste')">waist</span>&nbsp;<span
+        (click)="checkWord('your', 'your')">your</span>&nbsp;<span
+        (click)="checkWord('time', 'time')">time</span>!&nbsp;<span
+        (click)="checkWord('They\'re', 'There')">They're</span>&nbsp;<span
+        (click)="checkWord('is', 'is')">is</span>&nbsp;<span
+        (click)="checkWord('always', 'always')">always</span>&nbsp;<span (click)="checkWord('a', 'a')">a</span>&nbsp;
+      <span (click)="checkWord('weigh', 'way')">weigh</span>&nbsp;<span
+        (click)="checkWord('to', 'to')">to</span>&nbsp;<span
+        (click)="checkWord('improve', 'improve')">improve</span>!&nbsp;<span
+        (click)="checkWord('Don\'t', 'Don\'t')">Don't</span>&nbsp;<span
+        (click)="checkWord('weight', 'wait')">weight</span>,&nbsp;<span
+        (click)="checkWord('start', 'start')">start</span>&nbsp;<span
+        (click)="checkWord('now', 'now')">now</span>!&nbsp;
+      <span (click)="checkWord('This', 'This')">This</span>&nbsp;<span
+        (click)="checkWord('is', 'is')">is</span>&nbsp;<span (click)="checkWord('your', 'your')">your</span>&nbsp;<span
+        (click)="checkWord('weak', 'week')">weak</span>!&nbsp;<span
+        (click)="checkWord('From', 'From')">From</span>&nbsp;<span
+        (click)="checkWord('head', 'head')">head</span>&nbsp;<span (click)="checkWord('to', 'to')">to</span>&nbsp;
+      <span (click)="checkWord('tow', 'toe')">tow</span>,&nbsp;<span
+        (click)="checkWord('you', 'you')">you</span>&nbsp;<span
+        (click)="checkWord('have', 'have')">have</span>&nbsp;<span
+        (click)="checkWord('the', 'the')">the</span>&nbsp;<span
+        (click)="checkWord('abilities', 'abilities')">abilities</span>!&nbsp;<span
+        (click)="checkWord('If', 'If')">If</span>&nbsp;<span (click)="checkWord('your', 'your')">your</span>&nbsp;
+      <span (click)="checkWord('effort', 'effort')">effort</span>&nbsp;<span
+        (click)="checkWord('is', 'is')">is</span>&nbsp;<span (click)="checkWord('pour', 'pure')">pour</span>&nbsp;<span
+        (click)="checkWord('and', 'and')">and</span>&nbsp;<span (click)="checkWord('you', 'you')">you</span>&nbsp;<span
+        (click)="checkWord('have', 'have')">have</span>&nbsp;<span (click)="checkWord('maid', 'made')">maid</span>&nbsp;
+      <span (click)="checkWord('lots', 'lots')">lots</span>&nbsp;<span
+        (click)="checkWord('of', 'of')">of</span>&nbsp;<span
+        (click)="checkWord('mistakes', 'mistakes')">mistakes</span>,&nbsp;<span
+        (click)="checkWord('I', 'I')">I</span>&nbsp;<span (click)="checkWord('prey', 'pray')">prey</span>&nbsp;<span
+        (click)="checkWord('that', 'that')">that</span>&nbsp;<span (click)="checkWord('you', 'you')">you</span>&nbsp;
+      <span (click)="checkWord('make', 'make')">make</span>&nbsp;<span (click)="checkWord('a', 'a')">a</span>&nbsp;<span
+        (click)="checkWord('change', 'change')">change</span>!&nbsp;<span
+        (click)="checkWord('Send', 'Send')">Send</span>&nbsp;<span (click)="checkWord('me', 'me')">me</span>&nbsp;<span
+        (click)="checkWord('an', 'an')">an</span>&nbsp;
+      <span (click)="checkWord('e-mail', 'e-mail')">e-mail</span>&nbsp;<span
+        (click)="checkWord('if', 'if')">if</span>&nbsp;<span (click)="checkWord('you', 'you')">you</span>&nbsp;<span
+        (click)="checkWord('need', 'need')">need</span>&nbsp;<span
+        (click)="checkWord('help', 'help')">help</span>.&nbsp;
+    </p>
+
+    <p><span (click)="checkWord('Regards', 'Regards')">Regards</span>,</p>
+    <p>
+      <span (click)="checkWord('You\'re', 'Your')">You're</span>&nbsp;<span
+        (click)="checkWord('concerned', 'concerned')">concerned</span>&nbsp;<span
+        (click)="checkWord('teacher', 'teacher')">teacher</span>.
+    </p>
+
+    <!-- <p [innerHTML]="letterHTML"></p> -->
+
+  </div>
+</div>
+
+
+<!-- <div class="toast-container">
+  <div [@toastOnOff] class="newToast" *ngFor="let toast of modal.toasts; let i = index" [ngClass]="{
+          success: toast['type'] === 'success',
+          error: toast['type'] === 'error'
+      }">
+    {{toast['message']}}
+  </div>
+</div> -->
+
+<!-- <div class="modal-background" *ngIf='modal.modals === "game-letter-winner"'
+  (click)="closeModal()"></div>
+<div class="modal-game-letter modal" *ngIf='modal.modals === "game-letter-winner"'>
+  <div class="modal-header">
+    <h2 class="modal-title">{{(winnerModal) ? '¡Enhorabuena!' : '¿Cuál es la correcta?'}}</h2>
+    <div class="modal-close btn red" (click)="closeModal()"><i class="fas fa-times"></i></div>
+  </div>
+
+  <div class="modal-content">
+    <div class="first-try" *ngIf="firstTryStep">
+      <p>¡{{wordToCheck}} es incorrecta! ¿Cuál sería la correcta?</p>
+      <form #firstTryForm="ngForm">
+        <input type="text" [(ngModel)]="firstTry" ngModel name='firstTry' placeholder="Introduce la palabra correcta">
+        <input class="btn light-green" type="submit" (click)="sendFristTry(firstTryForm)" value='Comprobar'> 
+      </form>
+    </div>
+
+    <div class="preMail" *ngIf="winnerModal">
+        <p class="space-text">¡Has ganado una <strong>camiseta gratis</strong>!</p>
+        <p class="space-text">Introduce aquí tu dirección de correo electrónico, en el que recibirás el <strong>cupón canjeable</strong> por la camiseta.</p>
+        <form #sendWinnerMail="ngForm">
+          <input type="email" [(ngModel)]="email" ngModel name='email' placeholder="Email">
+          <input class="btn light-green" type="submit" (click)="sendWinner(sendWinnerMail)" value='Ganar camiseta'> 
+        </form>
+        <p class="space-text">Recuerda que solo se podrá canjear <strong>una camiseta por persona</strong>.</p>
+        <p class="space-text">¡Muchas gracias por participar! ¡Nos vemos!</p>
+    </div>
+
+    <div class="afterMail" *ngIf="afterMailMsg">
+      <p>Si quieres, puedes seguir con la carta para encontrar más fallos.</p>
+    </div>
+  </div>
+</div> -->

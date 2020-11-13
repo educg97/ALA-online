@@ -1,0 +1,20 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors';
+
+.form-tutoria {
+    .tutoria-form-container {
+        width: 40%;
+        margin: auto;
+        @media screen and (max-width: $break-tablet){
+            width: 85%;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            .errorTerms {
+                color: $red;
+            }
+        }
+    }
+}

@@ -1,0 +1,106 @@
+/* LESSON */
+.lesson-container-col{
+    position: relative;
+    max-width: 0;
+    min-width: 200px;
+    width: 100%;
+    &:before{
+        content:"";
+        pointer-events: none;
+        position:absolute;
+        top:0;
+        left:0;
+        height:100%;
+        width:100%;
+        background-image: linear-gradient(90deg, white 0%, rgba(white, 0) 10%, rgba(white, 0) 90%, white 100%);
+        // background-image: linear-gradient(90deg, white , black);
+    }
+    .lesson-container {
+        display: flex;
+        flex-direction: row;
+        overflow: hidden;
+        scroll-behavior: smooth;
+    }
+}
+.lesson-spacer {
+    min-width: 15%;
+}
+.lesson {
+    padding: 15px 5px;
+    min-width: 160px;
+    max-width: 160px;
+    @include browser(transition-duration, 0.3s);
+    cursor: pointer;
+    .medal {
+        margin-bottom: -108px;
+        img {
+            width: 100%;
+        }
+    }
+    .lesson-image {
+        border-radius: 100px;
+        width: 90px;
+        height:  90px;
+        margin: auto;
+        overflow: hidden;
+        display: table;
+        text-align: center;
+        .lesson-icon {
+            display: table-cell;
+            color: white;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 35px;
+            @include text-shadow(0px, 3px, 3px, rgba(black, 0.30));
+        }
+    }
+    .lesson-title {
+        text-align: center;
+        margin: 5px 0 15px 0;
+    }
+    .lesson-type {
+        text-align: center;
+        font-size: $font-small;
+        color: $gray;
+        margin: 20px 0 0 0;
+    }
+}
+.lesson-progress{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+.lesson-progress-indicator{
+    min-height: 5px;
+    padding: 2px;
+    flex-grow: 1;
+    border-radius: 15px;
+    margin: 2px;
+    text-align: center;
+    color: white;
+    font-size: 8px;
+    cursor: pointer;
+    &.lesson-done{
+        background-color: $green;
+    }
+    &.lesson-undone{
+        background-color: $gray;
+    }
+}
+.lesson-arrow-container-col{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+.lesson-arrow{
+    padding: 10px;
+    cursor: pointer;
+    font-size: $font-large;
+}
+.lesson-progress-title{
+    text-align: center;
+    margin-top: 10px;
+}

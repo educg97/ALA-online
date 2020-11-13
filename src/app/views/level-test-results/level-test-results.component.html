@@ -1,0 +1,126 @@
+<div class="modal-background">
+    <div class = "white-banner" *ngIf = "logged && (user['company'] != '')">
+        <img src="/assets/images/level-test/tarjeta-empresas.png" alt="white-banner">
+    </div>
+
+    <div class = "sacyr-logo" *ngIf = "logged && (user['company'] == 'Sacyr')">
+        <img src="/assets/images/level-test/sacyr.png" alt="sacyr">
+    </div>
+
+    <div class = "tr-logo" *ngIf = "logged && (user['company'] == 'Tecnicas Reunidas')">
+        <img src="/assets/images/level-test/logo-tr.png" alt="logo técnicas reunidas">
+    </div>
+
+    <div class = "agencia-efe-logo" *ngIf = "logged && (user['company'] == 'Agencia Efe')">
+        <img src="/assets/images/level-test/agencia-efe-logo.png" alt="logo técnicas reunidas">
+    </div>
+
+    <div class = "ALA-logo">
+        <p>Powered By</p>
+        <img src="/assets/images/ALA/American_language_panoramico.png" alt="Logo American Language">
+    </div>
+
+    <div *ngIf = "logged" class = "logout" (click) = "logout();">
+        <p>Hola, {{user.username}} <i class="fas fa-sign-out-alt"></i></p>
+    </div>
+
+    <div *ngIf = "!logged">
+        <div class="modal-login modal">
+            <div class="lt-modal-header">
+                <h3>ADMIN ENGLISH</h3>
+                <h2>LEVEL TEST</h2>
+            </div>
+        
+            <div class="modal-content">
+                <form #EventsPopUp="ngForm">
+                    <div class = "login-input">
+                        <p>Admin User</p>
+                        <input class = "{{email_status}}" [(ngModel)]="user.email" ngModel required type="text" name='email' placeholder="Correo electrónico">
+                    </div>
+    
+                    <div class = "login-input">
+                        <p>Contraseña</p>
+                        <input class = "{{password_status}}" [(ngModel)]="user.password" ngModel required type="password" name='password' placeholder="Contraseña">
+                    </div>
+        
+                    <div class="login-buttons">
+                        <input (click)="login()" type="submit" value="Acceder" class="btn light-green" style = "width: 78%; padding: 10px; margin-top: 10px;">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="results-content scrollable" *ngIf = "logged">
+        <div class = "modal-content scrollable-option">
+            <h3 style="text-align: center; margin: 15px auto; color: white;">TABLA DE RESULTADOS</h3>
+            <div class = "table-container">
+                <table>
+                    <thead>
+                        <th>Username <i *ngIf = "!valueSorted['username']" (click) = "sortList('username')" class="fas fa-caret-down"></i> <i *ngIf = "valueSorted['username']" (click) = "invertList('username')" class="fas fa-caret-up"></i></th>
+                        <th>Email <i *ngIf = "!valueSorted['email']" (click) = "sortList('email')" class="fas fa-caret-down"></i> <i *ngIf = "valueSorted['email']" (click) = "invertList('email')" class="fas fa-caret-up"></i></th>
+                        <th>Level Test Date <i *ngIf = "!valueSorted['date']" (click) = "sortList('date')" class="fas fa-caret-down"></i> <i *ngIf = "valueSorted['date']" (click) = "invertList('date')" class="fas fa-caret-up"></i></th>
+                        <th>Level Test Difficulty</th>
+                        <th>Score <i *ngIf = "!valueSorted['score']" (click) = "sortList('score')" class="fas fa-caret-down"></i> <i *ngIf = "valueSorted['score']" (click) = "invertList('score')" class="fas fa-caret-up"></i></th>
+                        <th>Level <i *ngIf = "!valueSorted['level']" (click) = "sortList('level')" class="fas fa-caret-down"></i> <i *ngIf = "valueSorted['level']" (click) = "invertList('level')" class="fas fa-caret-up"></i></th>
+                    </thead>
+    
+                    <tbody class = "table_body">
+                        <tr *ngFor = "let user of usersToShow; let i = index">
+                            <td>{{user.username}}</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user['lt-date'] | date:'yyyy-MM-dd'}}</td>
+                            <td>{{user['difficulty_level']}}</td>
+                            <td>{{user.score}}</td>
+                            <td>
+                                <span *ngIf = "user['level'] != ''">
+                                    {{user.level}}
+
+                                    <i (click) = "showReportFunction(i)" style = "cursor: pointer;" class="fas fa-info-circle"></i>
+                                    
+                                    <div class = "report-modal" *ngIf = "showReport && reportPos == i">
+                                        <div (click) = "closeReportModal()" class = "closeModalButton">X</div>
+                                        <div [innerHTML]="user['levelDescription']"></div>
+                                    </div>
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    
+            <div class = "num-page">
+                <p><i *ngIf = "currentUsersPage != 0" (click) = "changePage('left');" class="fas fa-caret-left"></i> <span> {{currentUsersPage + 1}} / {{totalPages}} </span> <i *ngIf = "currentUsersPage != (totalPages - 1)" (click) = "changePage('right');" class="fas fa-caret-right"></i></p>
+            </div>
+
+            <div class = "move-slider">
+                <button (click) = "moveSlider('right');" class = "btn red"><strong>Ver imágenes</strong></button>
+            </div>
+        </div>
+    
+        <div class="scrollable-option" *ngIf = "logged">
+            <h3 style="text-align: center; margin: 15px auto; color: white;">COMPARACIÓN DE NIVELES</h3>
+            <div class = "lt-images scrollable">
+                <div class="image-container">
+                    <img src="/assets/images/level-test/level-comparation-table.png" alt="Level Comparation">
+                </div>
+
+                <div class="image-container">
+                    <img src="/assets/images/level-test/level-table.png" alt="Level Table">
+                </div>
+            </div>
+
+            <div *ngIf = "sliderImgPosition == 0" class = "image-buttons right">
+                <button (click) = "moveImgSlider('right');" class = "btn green left"><i class="fas fa-arrow-right"></i></button>
+            </div>
+
+            <div *ngIf = "sliderImgPosition == 1" class = "image-buttons left">
+                <button (click) = "moveImgSlider('left');" class = "btn green right"><i class="fas fa-arrow-left"></i></button>
+            </div>
+
+            <div class = "move-slider">
+                <button (click) = "moveSlider('left');" class = "btn red"><strong>Ver resultados</strong></button>
+            </div>
+        </div>
+    </div>
+</div>

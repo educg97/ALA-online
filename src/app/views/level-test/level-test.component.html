@@ -1,0 +1,78 @@
+<!-- <app-countdown></app-countdown> -->
+
+<div class="modal-background">
+    <div class = "white-banner" *ngIf = "isLogged">
+        <img src="/assets/images/level-test/tarjeta-empresas.png" alt="white-banner">
+    </div>
+
+    <div class = "sacyr-logo" *ngIf = "isLogged && userLevelTest['company'] == 'Sacyr'">
+        <img src="/assets/images/level-test/sacyr.png" alt="sacyr">
+    </div>
+
+    <div class = "tr-logo" *ngIf = "isLogged && userLevelTest['company'] == 'Tecnicas Reunidas'">
+        <img src="/assets/images/level-test/logo-tr.png" alt="logo técnicas reunidas">
+    </div>
+
+    <div class = "agencia-efe-logo" *ngIf = "isLogged && userLevelTest['company'] == 'Agencia Efe'">
+        <img src="/assets/images/level-test/agencia-efe-logo.png" alt="logo técnicas reunidas">
+    </div>
+
+    <div class = "ALA-logo">
+        <p>Powered By</p>
+        <img src="/assets/images/ALA/American_language_panoramico.png" alt="Logo American Language">
+    </div>
+
+    <div *ngIf = "isLogged" class = "logout" (click) = "logout();">
+        <p>Hola, {{userLevelTest.username}} <i class="fas fa-sign-out-alt"></i></p>
+    </div>
+
+    <div class="modal-login modal" *ngIf = "!isLogged">
+        <div class="lt-modal-header">
+            <h3>ENGLISH</h3>
+            <h2>LEVEL TEST</h2>
+        </div>
+    
+        <div class="modal-content">
+            <form #EventsPopUp="ngForm">
+                <div class = "login-input">
+                    <p>Correo electrónico</p>
+                    <input class = "{{email_status}}" [(ngModel)]="userLevelTest.email" ngModel required type="text" name='email' placeholder="Correo electrónico">
+                </div>
+
+                <div class = "login-input">
+                    <p>Contraseña</p>
+                    <input class = "{{password_status}}" [(ngModel)]="userLevelTest.password" ngModel required type="password" name='password' placeholder="Contraseña">
+                </div>
+    
+                <div class="login-buttons">
+                    <input (click)="login()" type="submit" value="Acceder" class="btn light-green" style = "width: 78%; padding: 10px; margin-top: 10px;">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class = "modal welcome-modal" *ngIf = "openInstructions">
+        <div class="header">
+            <h2>¡BIENVENIDO, {{userLevelTest.username | uppercase}}!</h2>
+        </div>
+
+        <div class="instructions" *ngIf = "!levelTestAlreadyDone">
+            <p class = "other-blue">Lea atentamente las siguientes instrucciones antes de comenzar con tu prueba de nivel.</p>
+            <p>1. Tiene un máximo de 30 minutos para finalizar la prueba. Recuerde que una vez iniciada, no podrá pausarla o retorceder.</p>
+            <p>2. Para realizar la prueba es necesario que cuente con un altavoz, ya que algunas preguntas contienen audio.</p>
+            
+            <div class="start-button">
+                <input (click)="openLevelTestModal();" type="submit" value="Comenzar" class="btn blue">
+            </div>
+        </div>
+
+        <div class="instructions" style = "text-align: center;" *ngIf = "levelTestAlreadyDone">
+            <p>¡Ya has realizado la prueba de nivel!</p>
+            <P>Puedes salir de esta ventana si lo desea</P>
+        </div>
+    </div>
+    
+    <div class = "lt-modal" *ngIf = "openLevelTest">
+        <app-level-test-modal></app-level-test-modal>
+    </div>
+</div>

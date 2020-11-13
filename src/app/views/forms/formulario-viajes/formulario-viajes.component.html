@@ -1,0 +1,80 @@
+<!-- <h1>Formulario de inscripción</h1>
+<form #form="ngForm" (ngSubmit)="sendForm(form)" *ngIf="!sentForm">
+	<input [(ngModel)]="name" name="name" id="contact-name" placeholder="Nombre/s" type="text" autocomplete="name"
+		ngModel required>
+	<input [(ngModel)]="surname" name="surname" id="contact-surname" placeholder="Apellido/s" type="text"
+		autocomplete="surname" ngModel>
+
+	# <input [(ngModel)]="birth" name="birth" id="contact-birth" placeholder="Apellido/s"	   type="text" 	autocomplete="birth" 	ngModel
+
+	<input [(ngModel)]="dni" name="dni" id="contact-dni" placeholder="DNI/NIE" type="text" autocomplete="id" ngModel>
+	# <input [(ngModel)]="dni-exp" name="dni-exp" id="contact-dni-exp" placeholder="Apellido/s"	   type="text" 	autocomplete="dni-exp" 	ngModel
+
+	<select [(ngModel)]="nationality" name="nationality" id="contact-nationality" placeholder="Nacionalidad" type="text"
+		autocomplete="nationality" ngModel>
+		<select>
+			<option value="Española">Española</option>
+			<option value="Rumana">Rumana</option>
+			<option value="Búlgara">Búlgara</option>
+			<option value="China">China</option>
+			<option value="Marroquí">Marroquí</option>
+			<option value="Ecuatoriana">Ecuatoriana</option>
+			<option value="Colombiana">Colombiana</option>
+			<option value="Venezolana">Venezolana</option>
+			<option value="Brasileña">Brasileña</option>
+			<option value="Ucraniana">Ucraniana</option>
+			<option value="Italiana">Italiana</option>
+			<option value="Serbia">Serbia</option>
+			<option value="Francesa">Francesa</option>
+			<option value="Alemana">Alemana</option>
+			<option value="Holandesa">Holandesa</option>
+			<option value="Rusa">Rusa</option>
+			<option value="Polaca">Polaca</option>
+			<option value="Peruana">Peruana</option>
+			<option value="Otra">Otra</option>
+		</select>
+	</select>
+
+	<input [(ngModel)]="nationality-other" name="nationality-other" id="contact-nationality-other"
+		placeholder="Indicanos tu nacionalidad" type="text" autocomplete="nationality" ngModel
+		*ngIf="nationality='Otra'">
+
+	<select [(ngModel)]="sex" name="sex" id="contact-sex" placeholder="Sexo" autocomplete="sex" ngModel>
+		<select>
+			<option value="Mujer">Mujer</option>
+			<option value="Hombre">Hombre</option>
+			<option value="N/E">N/E</option>
+		</select>
+	</select>
+
+	<input [(ngModel)]="passport" name="passport" id="contact-passport" placeholder="DNI/NIE" type="text"
+		autocomplete="passport" ngModel>
+	# <input [(ngModel)]="passport-exp" name="passport-exp" id="contact-passport-exp" placeholder="Apellido/s"	   type="text" 	autocomplete="passport-exp" 	ngModel
+
+	<input [ngClass]="{error: checked && !mailCorrect}" [(ngModel)]="email" name="email" id="contact-email"
+		placeholder="E-Mail" type="email" autocomplete="email" ngModel email required>
+	<p class="errorMessage" *ngIf="checked && !mailCorrect">Formato de email no válido</p>
+
+	<input [ngClass]="{error: checked && !phoneCorrect}" [(ngModel)]="phone" name="phone" id="contact-phone"
+		placeholder="Tel&eacute;fono" type="tel" autocomplete="tel" ngModel>
+	<p class="errorMessage" *ngIf="checked && !phoneCorrect">Formato de teléfono no válido</p>
+
+	<input [(ngModel)]="address" name="address" id="contact-address" placeholder="Dirección" type="text" autocomplete="address" ngModel>
+	<input [(ngModel)]="address2" name="address2" id="contact-address" placeholder="Dirección 2" type="text" autocomplete="address" ngModel>
+	<input [(ngModel)]="city" name="city" id="contact-city" placeholder="Dirección 2" type="text" autocomplete="city" ngModel>
+	<input [(ngModel)]="city" name="city" id="contact-city" placeholder="Dirección 2" type="text" autocomplete="city" ngModel>
+
+	<textarea [(ngModel)]="message" name="message" id="contact-message" placeholder="Escribenos tu consulta"
+		ngModel></textarea>
+
+	<input id="contact-terms" [(ngModel)]="terms" type="checkbox" name="terms">
+	<label for="contact-terms" class="label-checkbox text-small">He leído y acepto los <a
+			routerLink="/terminos-y-condiciones" target="_blank">términos y condiciones</a></label>
+	<button class="btn green" id="contact-form-btn">Enviar</button>
+	# [disabled]="!terms" [ngClass]="{'disabled': !terms}"
+	<div class="text-small">
+		This site is protected by reCAPTCHA and the Google
+		<a href="https://policies.google.com/privacy">Privacy Policy</a> and
+		<a href="https://policies.google.com/terms">Terms of Service</a> apply.
+	</div>
+</form> -->

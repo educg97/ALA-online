@@ -1,0 +1,116 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors';
+
+@import 'src/app/utils/slider-universities/slider-universities.component.scss';
+
+.asociations {
+    padding: 50px 0;
+    margin: 80px 0;
+    @media screen and (min-width: $break-tablet + 1){
+        margin: 120px 0;
+    }
+    .asociations-range {
+        @include transform(skewY(10deg));
+        margin: auto;
+        text-align: center;
+    }
+    .asociations-container {
+        overflow: auto;
+        display: flex;
+        margin-bottom: 15px;
+        .asociation-card {
+            width: 85vw;
+            margin: 20px 5vw;
+            flex-shrink: 0;
+            padding: 0;
+            @media screen and (min-width: $break-mobile + 1){
+                width: 400px;
+            }
+            .asociation-header {
+                height: 100px;
+                background-color: $very-light-gray;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                padding: 10px;
+                box-sizing: border-box;
+                .asociation-logo {
+                    height: 100px;
+                    margin: auto;
+                    display: flex;
+                    justify-content: center;
+                    &.andema {
+                        height: 100%;
+                    }
+                    &.acade {
+                        height: 95%;
+                    }
+                    &.acedim {
+                        height: 95%;
+                    }
+                    &.fecei {
+                        height: 95%;
+                    }
+                    &.capman {
+                        height: 170%;
+                        margin-top: -7%;
+                    }
+                    &.arbitraje {
+                        height: 90%;
+                    }
+                    img {
+                        height: 100%;
+                        width: auto;
+                    }
+                }
+            }
+            .asociation-content {
+                padding: 10px;
+            }
+        }
+        .spacer {
+            width: 5vw;
+            min-width: 5vw;
+            flex-grow: 0;
+            flex-shrink: 0;
+        }
+    }
+    // New Slider
+    .asociations-container {
+        .window-companies {
+            .companies-opinions {
+                .arrow {
+                    i {
+                        color: white;
+                    }
+                }
+                .slider-companies-opinions {
+                    .column {
+                        .company-pill {
+                            .company-header {
+                                .logo-full {
+                                    width: 47%;
+                                    @media screen and (max-width: $break-mobile) {
+                                        width: 63%;
+                                    }
+                                    &.acade {
+                                        width: 30%;
+                                        @media screen and (max-width: $break-mobile) {
+                                            width: 49%;
+                                        }
+                                    }
+                                    &.andema {
+                                        width: 13%;
+                                        @media screen and (max-width: $break-mobile) {
+                                            width: 19%;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

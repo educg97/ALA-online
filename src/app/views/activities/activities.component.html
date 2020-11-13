@@ -1,0 +1,804 @@
+<h1 style = "margin-bottom: 0px;">Actividades en Inglés</h1>
+<app-dynamic-banner></app-dynamic-banner>
+
+<div class="full-calendar page-width">
+    <div class="left-side">
+        <app-calendar (today)=emitCalendarData($event) (reloadEvents)=reloadCalendarEvents($event)
+            (updateCalendarData)=updateCalendarData($event)></app-calendar>
+
+        <div class="event_types">
+            <div class="single_type">
+                <div class="circle red"></div>
+                <p class="text-small text-gray">Inglés general</p>
+            </div>
+
+            <div class="single_type">
+                <div class="circle light-green"></div>
+                <p class="text-small text-gray">Business</p>
+            </div>
+
+            <div class="single_type">
+                <div class="circle cyan"></div>
+                <p class="text-small text-gray">Eventos</p>
+            </div>
+
+            <div class="single_type">
+                <div class="circle purple"></div>
+                <p class="text-small text-gray">Tapas night</p>
+            </div>
+        </div>
+
+        <div class="events_filter">
+            <div class="btn negative amber"
+                [ngClass]="{active: a1Filter || isAdmin || isKeeplearning, disabled: auth.isLogged && auth.user['realLevel'] && !isAdmin && !isKeeplearning}"
+                (click)="filterLevels('a1Filter')">A1</div>
+            <div class="btn negative orange"
+                [ngClass]="{active: a2Filter || isAdmin || isKeeplearning, disabled: auth.isLogged && auth.user['realLevel'] && !isAdmin && !isKeeplearning}"
+                (click)="filterLevels('a2Filter')">A2</div>
+            <div class="btn negative deep-orange"
+                [ngClass]="{active: b1Filter || isAdmin || isKeeplearning, disabled: auth.isLogged && auth.user['realLevel'] && !isAdmin && !isKeeplearning}"
+                (click)="filterLevels('b1Filter')">B1</div>
+            <div class="btn negative red"
+                [ngClass]="{active: b2Filter || isAdmin || isKeeplearning, disabled: auth.isLogged && auth.user['realLevel'] && !isAdmin && !isKeeplearning}"
+                (click)="filterLevels('b2Filter')">B2</div>
+            <div class="btn negative pink"
+                [ngClass]="{active: c1Filter || isAdmin || isKeeplearning, disabled: auth.isLogged && auth.user['realLevel'] && !isAdmin && !isKeeplearning}"
+                (click)="filterLevels('c1Filter')">C1+</div>
+        </div>
+    </div>
+
+    <div class="right-side">
+        <section class="events_block" *ngIf="events">
+            <h2>{{calendarData['currentDay']}} {{calendarData['currentMonthName']}}</h2>
+
+            <div class="new-event-wrapper" [ngClass]="{
+                                red: event['Tipo de evento'] === 'Inglés general',
+                                purple: event['Tipo de evento'] === 'Tapas Night',
+                                green: event['Tipo de evento'] === 'Business',
+                                cyan: event['Tipo de evento'] === 'Eventos'
+                            }"
+                *ngFor="let event of calendarData['arrOfDays'][calendarData['currentDay'] - 1]; let i = index"
+                (click)="selectEvent(event['_id'], 'events')">
+                <div class='new-event modal-btn' data-modal="modal-inscripcion" [ngClass]="{
+                                    red: event['Tipo de evento'] === 'Inglés general',
+                                    purple: event['Tipo de evento'] === 'Tapas Night',
+                                    green: event['Tipo de evento'] === 'Business',
+                                    cyan: event['Tipo de evento'] === 'Eventos'
+                                }">
+
+                    <div class="event-time" [ngClass]="{
+                                    red: event['Tipo de evento'] === 'Inglés general',
+                                    purple: event['Tipo de evento'] === 'Tapas Night',
+                                    green: event['Tipo de evento'] === 'Business',
+                                    cyan: event['Tipo de evento'] === 'Eventos'
+                                }">
+                        <p class="text-small">
+                            {{event['Hora de inicio']}}:{{event['Minutos de inicio']}}{{(event['Minutos de inicio'] === 0) ? '0' : null}}
+                            -
+                            {{event['Hora de fin']}}:{{event['Minutos de fin']}}{{(event['Minutos de fin'] === 0) ? '0' : null}}
+                        </p>
+                    </div>
+
+                    <div class="event-title">
+                        <h3>{{event['Evento']}}</h3>
+                    </div>
+
+                    <div class="event_text">
+                        <p [ngClass]="{past: today > event['Fecha limite de inscripcion']}">Fecha límite de inscripción:
+                            {{event["Fecha limite de inscripcion legible"]}}</p>
+                    </div>
+
+                    <div class="levels_container">
+                        <div class="level_pair" *ngIf="event['A1/A2']" [ngClass]="{
+                                            disabled: (!a1Filter && !a2Filter) && !(!a1Filter && !a2Filter && !b1Filter && !b2Filter && !c1Filter) && !isAdmin && !isKeeplearning
+                                            }">A1/A2</div>
+                        <div class="level_pair" *ngIf="event['A2/B1']" [ngClass]="{
+                                            disabled: (!b1Filter && !a2Filter) && !(!a1Filter && !a2Filter && !b1Filter && !b2Filter && !c1Filter) && !isAdmin && !isKeeplearning
+                                            }">A2/B1</div>
+                        <div class="level_pair" *ngIf="event['B1/B2']" [ngClass]="{
+                                            disabled: (!b1Filter && !b2Filter) && !(!a1Filter && !a2Filter && !b1Filter && !b2Filter && !c1Filter) && !isAdmin && !isKeeplearning
+                                            }">B1/B2</div>
+                        <div class="level_pair" *ngIf="event['B2/C1']" [ngClass]="{
+                                            disabled: (!b2Filter && !c1Filter) && !(!a1Filter && !a2Filter && !b1Filter && !b2Filter && !c1Filter) && !isAdmin && !isKeeplearning
+                                            }">B2/C1</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class='event modal-btn' data-modal="modal-inscripcion" [ngClass]="{
+                                red: event['Tipo de evento'] === 'Inglés general',
+                                purple: event['Tipo de evento'] === 'Tapas Night',
+                                green: event['Tipo de evento'] === 'Business',
+                                cyan: event['Tipo de evento'] === 'Eventos'
+                            }" *ngFor="let event of calendarData['arrOfDays'][currentDay - 1]; let i = index"
+                (click)="selectEvent(event['_id'], 'events')">
+                <p *ngIf="!event['Evento']">No hay eventos este día</p>
+                <div class="event_time">
+                    <div class="time_container">
+                        <p class="start_time">{{event["Hora de inicio"]}}h</p>
+                        <hr>
+                        <p class="ending_time">{{event["Hora de fin"]}}h</p>
+                    </div>
+
+                </div>
+                <div class="event_content">
+                    <h3>{{event["Evento"]}}</h3>
+
+                    <div class="event_text">
+                        <p [ngClass]="{past: today > event['Fecha limite de inscripcion']}">Fecha límite de inscripción:
+                            {{event["Fecha limite de inscripcion legible"]}}</p>
+                    </div>
+
+                    <div class="levels_container">
+                        <div class="level_pair" *ngIf="event['A1/A2']" [ngClass]="{
+                                            disabled: (!a1Filter && !a2Filter) && !(!a1Filter && !a2Filter && !b1Filter && !b2Filter && !c1Filter)
+                                            }">A1/A2</div>
+                        <div class="level_pair" *ngIf="event['A2/B1']" [ngClass]="{
+                                            disabled: (!b1Filter && !a2Filter) && !(!a1Filter && !a2Filter && !b1Filter && !b2Filter && !c1Filter)
+                                            }">A2/B1</div>
+                        <div class="level_pair" *ngIf="event['B1/B2']" [ngClass]="{
+                                            disabled: (!b1Filter && !b2Filter) && !(!a1Filter && !a2Filter && !b1Filter && !b2Filter && !c1Filter)
+                                            }">B1/B2</div>
+                        <div class="level_pair" *ngIf="event['B2/C1']" [ngClass]="{
+                                            disabled: (!b2Filter && !c1Filter) && !(!a1Filter && !a2Filter && !b1Filter && !b2Filter && !c1Filter)
+                                            }">B2/C1</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="adminBtn" *ngIf="auth.isLogged && isAdmin">
+                <button class="btn blue" (click)="togglePrintableDoc()">
+                    Obra tu magia
+                </button>
+                <a class="btn purple" routerLink="/edit-schedule">
+                    Editar horarios de pruebas de nivel
+                </a>
+            </div>
+
+            <div class="students-btn" *ngIf="auth.isLogged && !isAdmin">
+                <button class="btn deep-purple" (click)="seeMyEvents()">
+                    Mis actividades
+                </button>
+
+                <div class="my-activities" *ngIf="showMyActivities">
+                    <div class="future-activity {{activity['Color']}}"
+                        *ngFor="let activity of myFutureEvents; let i = index">
+                        <div>
+                            <div class="bold">{{activity['Evento']}}</div>
+                            <p>{{activity['Fecha de inicio legible']}}</p>
+                        </div>
+
+                        <div class="exit-activity"><button class="btn red" (click)="deleteStudentFromActivity(auth.user['username'], activity)">Desapuntarme</button></div>
+                    </div>
+                    <div class="no-events-msg" *ngIf="myFutureEvents.length == 0">No estás inscrito/a en ninguna
+                        actividad</div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+</div>
+
+<div class="printable-container" *ngIf="showPrintable">
+        <div class="adminBtn">
+                <button class="btn blue" id="btn-to-print" (click)="printActivities()">¡Imprime!</button>
+            </div>
+    <div id="printDoc" class="printDoc">
+        <div class="header-workshops">
+            <!-- <img src="assets/images/header-workshops.jpg" alt="Free Workshops"> -->
+            <!-- <img src="assets/images/banners/cabecera-calendario.png" alt="Free Workshops"> -->
+            <div class="logo-ala-activities">
+                <img src="assets/images/logos/logo-negativo.svg" alt="aprende inglés gratis con nuestras actividades">
+            </div>
+            <img class='banner-img' src="assets/images/academies/ginko-biloba.jpg" alt="actividades gratuitas">
+        </div>
+        <div class="header-calendar">
+            <div class="learning-experience">
+                <img src="assets/images/logos/Your-best-learning-experience.png" alt="actividades en inglés en madrid">
+            </div>
+            <h1>Actividades gratis</h1>
+            <h2 class="text-center month-calendar">{{calendarData['currentMonthName']}} {{calendarData['currentYear']}}</h2>
+        </div>
+
+        <div class="printCalendar">
+            <ul class="weekdays-header-print">
+                <li>L</li>
+                <li>M</li>
+                <li>X</li>
+                <li>J</li>
+                <li>V</li>
+            </ul>
+            <!-- [ngClass]="{
+                'indigo': i == 0 || i == 5 || i == 10 || i == 15 || i == 20 || i == 25 || i == 30,
+                'blue': i == 1 || i == 6 || i == 11 || i == 16 || i == 21 || i == 26 || i == 31,
+                'light-blue': i == 2 || i == 7 || i == 12 || i == 17 || i == 22 || i == 27,
+                'cyan': i == 3 || i == 8 || i == 13 || i == 18 || i == 23 || i == 28,
+                'teal': i == 4 || i == 9 || i == 14 || i == 19 || i == 24 || i == 29
+            }" -->
+            <div class="actual-print-calendar">
+                <ul class="days-print">
+                    <!-- <li class="blank-box" *ngFor="let blank of calendarData['whiteBoxes']"></li> -->
+                    <li class="blank-box" *ngFor="let blank of pastMonthDaysWeek"></li>
+                    
+                    <li class="print-day" [ngClass]="{weekend: weekendsArray[i] == 'weekend',
+                    'indigo':     i == 0 || i == 7  || i == 14 || i == 21 || i == 28,
+                    'blue':       i == 1 || i == 8  || i == 15 || i == 22 || i == 29,
+                    'light-blue': i == 2 || i == 9  || i == 16 || i == 23 || i == 30,
+                    'cyan':       i == 3 || i == 10 || i == 17 || i == 24 || i == 31,
+                    'teal':       i == 4 || i == 11 || i == 18 || i == 25 || i == 32,
+                    'dark-green': i == 5 || i == 12 || i == 19 || i == 26 || i == 33,
+                    'green':      i == 6 || i == 13 || i == 20 || i == 27 || i == 34
+                }" *ngFor="let day of printArrOfDays; let i = index">
+                        <span class="day-number">{{i + 1}}</span>
+                        <div *ngFor="let ev of day; let i = index" class="event-day-print">
+                            <p class="event-name-print text-center hide-text-medium">{{ev['Evento']}}</p>
+                            <div class="details-block">
+                                <div class="time">
+                                    <div class="exact-time text-normal">
+                                        {{ev['Hora de inicio']}}:{{ev['Minutos de inicio']}}{{(ev['Minutos de inicio'] === 0) ? '0' : null}}
+                                    </div>
+                                    <span class="exact-time dash">-</span>
+                                    <div class="exact-time text-normal">
+                                        {{ev['Hora de fin']}}:{{ev['Minutos de fin']}}{{(ev['Minutos de fin'] === 0) ? '0' : null}}
+                                    </div>
+                                </div>
+                                <div class="levels">
+                                    <div [ngClass]="{colored: ev['A1/A2']}" class="text-normal level a1">A1</div>
+                                    <div [ngClass]="{colored: ev['A1/A2'] || ev['A2/B1']}" class="text-normal level a2">A2</div>
+                                    <div [ngClass]="{colored: ev['A2/B1'] || ev['B1/B2']}" class="text-normal level b1">B1</div>
+                                    <div [ngClass]="{colored: ev['B1/B2'] || ev['B2/C1']}" class="text-normal level b2">B2</div>
+                                    <div [ngClass]="{colored: ev['B2/C1']}" class="text-normal level c1">C1</div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="link-to-web">
+            <h2 class="text-center">Inscríbete en:</h2>
+            <div class="links">
+                <!-- <div class="qr-code">
+                    <a rel='nofollow' href='https://es.qr-code-generator.com/a1/?ut_source=google_c&ut_medium=cpc&ut_campaign=spanish_top_kw&ut_content=c%C3%B3digo_qr_exact&ut_term=crear%20codigo%20qr_e&gclid=Cj0KCQjwuNbsBRC-ARIsAAzITud7gMnX7bfk9B5bRlAcGHFNtQ53ZlyM4-QlvxM8HczFxW9yCOjkCGMaAsgTEALw_wcB' border='0' style='cursor:default'></a><img src='https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fwww.americanlanguage.es%2Factividades-en-ingles-madrid&chs=180x180&choe=UTF-8&chld=L|2' alt=''>
+                    
+                </div> -->
+                <a class="colorful text-center space-text">https://www.americanlanguage.es/actividades-en-ingles-madrid</a>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<section class="info-actividades page-width">
+    <p>
+        Todas las <strong>actividades son totalmente gratuitas</strong>
+        para todos los alumnos de la academia.
+        Inscríbete en actividades para tu nivel
+        introduciendo tu usuario y contraseña.
+        <br>
+        Si tienes dudas sobre cómo inscribirte a una
+        actividad, ponte en contacto con nosotros en
+        secretaría en nuestra academia o llámanos al
+        914445511 – 914455511.
+    </p>
+</section>
+
+
+<section class="games-activities" id="games-activities">
+    <div class="skew-block light-gray games-skew">
+        <div class="skew-block-container">
+                <h2 class="text-center space-title1 games-title">Juegos y actividades en inglés</h2>
+                <p class="intro text-center">En esta sección podrás encontrar actividades en inglés interactivas y juegos con los que practicar el idioma desde aquí mismo.</p>
+                <div id="gameLetter" class="card gameLetter">
+                    <app-game-letter 
+                        (gameLetter)="getGameInfo($event)" ></app-game-letter>
+                </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="final-article-activities page-width">
+    <p>
+        Para progresar con tu nivel de inglés debes poner en práctica lo que ya sabes, ejercitarte e introducir nuevos
+        conceptos y ponerlos en práctica de nuevo. ¿Te has fijado que este tipo de aprendizaje es una espiral que va en
+        aumento? Lo nuevo se une a lo anterior y la clave siempre es mantener activo el conocimiento, es decir:
+        <strong>haz
+            actividades de inglés para mejorar tus habilidades con el idioma</strong>. Realizar una actividad implica
+        una acción,
+        <strong>realizar actividades en inglés pondrá en acción tu nivel</strong> y como consecuencia mejorarás en todos
+        los aspectos del
+        idioma.
+    </p>
+
+
+
+    <h3>¿Qué actividades de inglés puedo realizar?</h3>
+    <p>
+        Te estarás preguntando por dónde empezar, primero debes saber que hay <strong>muchos tipos de actividades de
+            inglés que
+            puedes realizar:</strong>
+    </p>
+    <ul>
+        <li class="space-text">
+            - <strong>Actividades de inglés con material didáctico</strong> como libros, páginas web para aprender
+            inglés, nuestro curso
+            Open English, nuestra app de vocabulario, actividades de inglés para exámenes oficiales etc. En este tipo de
+            actividades de inglés te recomendamos que busques ejercicios de vocabulario, actividades de gramática,
+            repasos de expresiones, etc. porque mejorarás la parte lingüística y te permitirá avanzar en el conocimiento
+            del idioma.
+        </li>
+        <li class="space-text">
+            - <strong>Actividades de inglés con recursos reales en inglés</strong>: películas, vídeos, lecturas,
+            noticias en inglés, etc.
+            Con los recursos auténticos podrás practicar de varias maneras: escuchando música, leyendo un libro,
+            escribiendo en foros, etc. Y además podrás añadir dificultad a las actividades que realices integrando la
+            práctica de más de una habilidad. Por ejemplo, puedes leer en voz alta los subtítulos de una serie, tratar
+            de tomar notas mientras escuchas un podcast, resumir las ideas principales de un artículo que hayas leído,
+            etc. Así estarás mucho más activo en la práctica de tus actividades de inglés.
+        </li>
+        <li class="space-text">
+            - <strong>Actividades de inglés grupales</strong>: ir a clase, intercambios de idiomas y nuestras
+            actividades de inglés y
+            talleres gratuitos en American Language Online. En esta misma página encontrarás el calendario para
+            inscribirte a nuestras actividades de inglés gratuitas. Más adelante te ofrecemos un repaso de todo lo que
+            te aportarán nuestros workshops y actividades del calendario.
+        </li>
+        <li class="space-text">
+            - <strong>Actividades de inglés recomendadas para ejercitar las distintas habilidades del idioma</strong>,
+            es decir, las
+            actividades de inglés para mejorar tu comprensión oral y escrita, tu expresión escrita y tu fluidez oral.
+            Estas actividades las puedes realizar de forma autodidacta teniendo en cuenta el nivel de dificultad,
+            observando qué estás aprendiendo y utilizando el tiempo de forma eficaz. Estas actividades de inglés pueden
+            ser:
+            <p>
+                <strong>Escuchar audios</strong> (música, vídeos, series, etc.) y comprobar tu comprensión con las
+                transcripciones y/o
+                los subtítulos.
+            </p>
+            <p>
+                <strong>Leer</strong> artículos, textos de tu libro de inglés y comprobar tu comprensión buscando las
+                palabras que no
+                entiendes o haciendo ejercicios de comprensión relacionados con la lectura que has elegido.
+            </p>
+            <p>
+                <strong>Escribir</strong> pequeñas frases, un email a un amigo que te ayude con la corrección o por
+                supuesto realizando
+                un “writing” que tu ALA profesor-coach estará encantado de corregirte.
+            </p>
+            <p>
+                También puedes hacer <strong>actividades de conversación en inglés</strong> grabándote con tu móvil,
+                hablando con tus
+                amigos, o acudiendo a nuestras clases y eventos de intercambio.
+            </p>
+        </li>
+    </ul>
+
+    <h3>3 Beneficios de hacer actividades de inglés para mejorar tu nivel</h3>
+    <p>
+        Vamos a empezar repasando los beneficios que nos aportan las diferentes actividades para aprender inglés ya que
+        tenemos que tenerlos en cuenta para <strong>elegir las actividades en inglés que mejor se adapten a nuestras
+            necesidades</strong>. De este modo podremos sacar el máximo partido a las actividades en inglés que hemos
+        elegido. Ready?
+        Let´s go!
+    </p>
+    <p>
+        La lista de <strong>beneficios que vas a obtener al realizar actividades de inglés es inmensa</strong>, los
+        resumimos en tres
+        grandes grupos para que estés plenamente convencido de todo lo que te va a aportar hacer actividades de inglés.
+    </p>
+    <ul>
+        <li>
+            <h4>1. Actividades de inglés: mejoran tu atención</h4>
+            <p>
+                La atención es un proceso cognitivo fundamental para nuestra vida y para aprender. <strong>Hacer
+                    actividades en
+                    inglés te va a ayudar a concentrarte</strong>, a darte cuenta de los aspectos que debes reforzar y
+                hará
+                relevantes los puntos que ya dominas para avanzar. La atención es fundamental para que mejores. Y
+                también para que no te “estanques”, esa sensación tan habitual cuando no conseguimos avanzar con el
+                inglés.
+            </p>
+            <p>
+                Cuando realizas actividades en inglés tu atención está enfocada en cómo practicas. Poder observar cómo
+                aprendes es fundamental para mejorar tu nivel de inglés. Además ejercitar tu atención realizando
+                actividades de inglés repercutirá en la concentración en otras áreas de tu vida ¿cuántas oportunidades
+                de concentrarte tienes al día? Si pensamos en nuestro ritmo diario y todo el contacto con las
+                tecnologías no nos sale demasiado tiempo… <strong>Realizar actividades de inglés es un gran ejercicio de
+                    atención para una mente saludable</strong>.
+            </p>
+        </li>
+        <li>
+            <h4>2. Realizar actividades de inglés mejora tu memoria, tus habilidades al pensar y la apertura de tu
+                pensamiento</h4>
+            <p>
+                Mantener tu nivel no es lo mismo que mejorarlo y progresar. Progresar implica que aprendes cosas nuevas,
+                por eso cuando realizas actividades en inglés la huella mnémica de los nuevos conceptos se hace más
+                profunda ¡porque estás ejercitando tu memoria! Repasar, practicar y realizar actividades en inglés es
+                fundamental para mejorar. Tus habilidades del pensamiento mejoran porque practicar otro idioma implica
+                una nueva forma de comprensión: de ahí que tus profesores insistan en que no traduzcas. Abre tu
+                pensamiento y el inglés encajará en tu mente por sí solo sin necesidad de grandes esfuerzos. Que el
+                aprendizaje del inglés mejore tu memoria no quiere decir que debes aprender el inglés de memoria,
+                ¡olvida las traducciones y el aprendizaje memorístico! Utilizar el inglés es un proceso creativo, ¡no
+                hay dos conversaciones iguales! Por eso, realizar actividades en inglés significa la propia acción de
+                utilizar el idioma e inevitablemente tu memoria, tus habilidades cognitivas y tu forma de pensar se
+                abrirán y crecerán.
+            </p>
+        </li>
+        <li>
+            <h4>3. Actividades de inglés: una oportunidad para relacionarte y abrirte al exterior</h4>
+            <p>
+                Aprender un idioma nos lleva a tener la oportunidad de relacionarnos con otras personas. <strong>El
+                    objetivo
+                    fundamental de aprender y hacer actividades en inglés es poder expresarte y también conocer lo que
+                    expresan otros</strong>. De diversas maneras: en viajes de ocio, al acudir a reuniones con personas
+                de otros
+                países, al poder ver una película en versión original, leer artículos y prensa de otros países. La
+                comunicación en inglés es una puerta abierta a conocer lo que ocurre fuera y a que puedas relacionarte
+                con personas de muchos países diferentes. Realizando a menudo actividades en inglés estarás preparado
+                para abrirte al mundo y a un gran número de oportunidades.
+            </p>
+            <p>
+                Los profesionales que dominan varios idiomas tienen un mayor número de oportunidades de éxito no sólo
+                por el hecho de desenvolverse en esos idiomas sino porque han roto las barreras culturales que podemos
+                encontrarnos cuando no conocemos las costumbres de otros países. Hablar otro idioma también conlleva
+                pensar de una forma más amplia: te acerca a la cultura y forma de pensar de la persona a la que te
+                diriges. Conocer otras formas de pensar ofrece poder elegir más alternativas de actuar profesionalmente
+                y en todos los ámbitos de la vida.
+            </p>
+            <p>
+                Anímate a realizar actividades de inglés y estarás más cerca de saltar la barrera lingüística y cultural
+                que te ofrecerá nuevas oportunidades en tu vida.
+            </p>
+            <p>
+                Y por si conocer los beneficios de realizar actividades en inglés no fuese suficiente, aquí te damos
+                tres grandes motivos para que te actives con el inglés.
+            </p>
+        </li>
+    </ul>
+    <h3>3 motivos de peso para que realices actividades de inglés</h3>
+    <ul>
+        <li>
+            <h4>1. Hacer actividades de inglés para poner en uso lo que ya sabes</h4>
+            <p>
+                Es fundamental que <strong>todo lo que aprendas lo pongas en práctica con actividades en
+                    inglés</strong>. Si no lo haces
+                los conceptos se “oxidan” y al no utilizarlos tu mente hace una “selección” de descartar lo que no es
+                práctico. Utiliza y dale sentido a lo que aprendes practicando y haciendo actividades de inglés que
+                pueden ser muy útiles en tu vida diaria como leer o ver noticias en inglés.
+            </p>
+        </li>
+        <li>
+            <h4>2. Repasar y afianzar lo que has aprendido</h4>
+            <p>
+                Cuando realizas actividades en inglés estás reforzando lo que has aprendido, será un conocimiento útil
+                para ti y mucho más fácil de recordar en otros momentos que lo necesites. <strong> La práctica y las
+                    actividades
+                    en inglés son muy importantes para afianzar todos los conceptos que aprendes en clase o con tus
+                    ejercicios.</strong>
+            </p>
+        </li>
+        <li>
+            <h4>3. Darte la oportunidad de corregir y comprender el uso correcto</h4>
+            <p>
+                Cuando realizas actividades de inglés puedes encontrar la forma de corregir los errores frecuentes o
+                “fosilizados” que puedas tener y, por supuesto, de resolver tus dudas y de ver en contexto algunos
+                conceptos que no tenías claros. <strong>Corregir tus errores es la forma directa de avanzar con tu nivel
+                    cuando
+                    realizas actividades de inglés</strong>.
+            </p>
+        </li>
+    </ul>
+
+    <h3>Actividades de inglés durante mi curso, ¿qué debo tener en cuenta?</h3>
+    <p>
+        Muchos de nuestros alumnos tienen claro que para obtener <strong>el mayor rendimiento de una clase es necesario
+            hacer
+            actividades relacionadas con la sesión</strong>. ¿Conoces las actividades de inglés pre- class y post-class?
+        Son las
+        actividades de inglés recomendadas por nuestros profesores para obtener el mayor rendimiento de tus clases de
+        inglés en American Language Online.
+    </p>
+    <p>
+        <strong>El método de aprendizaje de American Language Online recomienda hacer actividades en inglés pre- class
+            y
+            actividades post-class para reforzar lo aprendido</strong>. En las actividades de inglés pre- class el
+        alumno se prepara
+        para la siguiente sesión, se introducen de forma paulatina los nuevos conceptos y antes de la clase el alumno ya
+        es consciente de que las actividades de inglés pre-class que ha realizado sirven para optimizar el tiempo de la
+        clase y estar completamente preparado para la sesión. Las actividades de inglés post-class sirven para reforzar
+        lo practicado en clase y dar la oportunidad al alumno de experimentar con los nuevos conceptos. <strong>Tu
+            profesor-coach en ALA te recomendará estas actividades de inglés para que te ejercites lo máximo
+            posible</strong>. En
+        tres fases diferentes, los alumnos practican con actividades de inglés para obtener el mayor rendimiento de su
+        aprendizaje: actividades pre-class, actividades en clase y actividades de inglés post-class.
+    </p>
+
+    <h3>Workshops, eventos y actividades de inglés gratuitas y en grupo en American Language Online</h3>
+    <p>
+        ¿Aún no conoces la <strong>agenda mensual de actividades gratuitas</strong> que ofrece ALA a todos sus alumnos?
+        ¿Te gustaría
+        asistir a uno de nuestros workshops y probar la mejor experiencia de aprendizaje?
+    </p>
+    <p>
+        Si aún no eres alumno de ALA llámanos y te invitaremos a una de nuestras actividades, podrás disfrutar de la
+        dinámica de nuestro método ”Learning by doing by ALA” y aprender estrategias muy útiles según la temática de
+        nuestros talleres.
+    </p>
+    <p>
+        Y si ya eres alumno de ALA ven a todas las actividades de inglés que quieras, conoce a otros profesores y
+        compañeros de tu nivel y enriquece tu formación en diferentes contextos que beneficiarán a tu progreso.
+    </p>
+    <p>
+        Aquí te ofrecemos un repaso de nuestros workshops estrella, clasificados por temática:
+    </p>
+
+    <h4>Actividades de inglés general para todos los niveles</h4>
+
+    <ul>
+        <li>
+            <strong>Fun class</strong>: Cada semana ofrecemos <strong>varios talleres y actividades grupales de inglés
+                para todos los niveles</strong>.
+            Todos los viernes podrás inscribirte a nuestras clases extra de conversación Fun Class. La Fun Class no es
+            una clase de conversación más, es un encuentro entre alumnos del mismo nivel para desarrollar la fluidez con
+            diferentes dinámicas, juegos participativos que hacen de la fun class del viernes un momento divertido,
+            relajado y muy animado.
+        </li>
+        <li>
+            <strong>Listening skills</strong>: cada mes reservamos en nuestra agenda actividades de listening skills
+            practice que te
+            ayudarán a desarrollar tu comprensión auditiva. Estas actividades incluyen consejos de nuestros
+            profesores-coach para que el listening no sea un obstáculo para avanzar.
+        </li>
+        <li>
+            <strong>Pronunciation listening practice</strong>: en nuestra agenda tenemos en cuenta todas las habilidades
+            a desarrollar.
+            Uno de nuestros talleres más exitosos es el de pronunciación. Con esta actividad de inglés nuestros alumnos
+            practican, corrigen errores comunes y perfeccionan la pronunciación adquiriendo seguridad en el desarrollo
+            de las habilidades comunicativas.
+        </li>
+        <li>
+            <strong>Actividades de gramática</strong>: También encontrarás sesiones de revisión de gramática y su puesta
+            en práctica para
+            todos los niveles en nuestra agenda de actividades de inglés.
+        </li>
+    </ul>
+
+    <h4>Workshops y actividades de inglés por temáticas para todos los niveles.</h4>
+
+    <p>
+        Conocemos las necesidades de nuestros alumnos, por eso organizamos talleres y <strong>actividades con diferentes
+            temáticas para que podáis practicar en situaciones de la vida diaria</strong>: “Survival English: first aid
+        and medical
+        English”, “Mini role-plays”, “Tell me about”, “Ordering food”, “A day out”, “Social English” o “Films and TV”
+        son algunos de los talleres que ofrecemos.
+    </p>
+    <p>
+        Nos encanta escuchar a nuestros alumnos y a medida que nos hacen propuestas organizamos y recopilamos las
+        estrategias más útiles para trabajarlas en nuestros talleres y <strong>actividades grupales de inglés</strong>.
+    </p>
+    <h4>Workshops y actividades especiales de preparación de exámenes</h4>
+
+    <p>
+        Muchos de nuestros alumnos tienen como objetivo realizar un examen oficial, y aunque algunos aún lo están
+        valorando les gustaría saber cómo se estructuran los diferentes exámenes. Por eso cada mes dedicamos un espacio
+        en nuestra agenda de actividades para celebrar sesiones de introducción y orientación a los exámenes y talleres
+        específicos para preparar diferentes secciones de los exámenes: “Preparación de exámenes”, “Introducción al
+        TOEFL®”, “TOEFL® Speaking”, “TOEFL® taking notes”, “Introducción al TOEIC®” etc.
+    </p>
+
+    <h4>Actividades de Inglés profesional</h4>
+    <p>
+        Uno de los usos prácticos y más comunes de inglés entre nuestros alumnos es el inglés profesional. En nuestra
+        agenda encontrarás actividades y talleres prácticos para una gran variedad de situaciones profesionales. Te
+        sorprenderá todo lo que puedes desarrollar en nuestros workshops específicos: “Preparación de entrevistas”,
+        “Error correction: CV mistakes”, “Business trips”, “Organizando tu discurso”, “Telephone English”, “Email
+        English”, “Business Role plays”, “Productive Meetings”, “Meeting Skills”, “Presentation Skills”, “Time
+        Management”, “Networking: building positive relationships”, “Cross cultural communication”, entre otros. ¿A qué
+        te gustaría hacerlos todos? Descubre todo el potencial que puedes desarrollar tanto utilizando las técnicas del
+        idioma más apropiadas a cada situación como el propio valor del contenido de <strong>nuestras actividades de
+            Business
+            English</strong>.
+    </p>
+
+    <h4>Eventos y actividades de inglés social</h4>
+    <p>
+        En nuestro calendario de actividades no puede faltar nuestra famosa “Tapas Night”, cafés con profesores, Lunch
+        profesional y nuestros esperados desayunos de verano…
+    </p>
+    <p>
+        <strong>Tú también puedes activar tu inglés con nuestras actividades, ¡Únete!</strong> Tienes una gran variedad
+        de actividades de
+        inglés a tu disposición, puedes elegir cómo ponerte en acción con el inglés hoy mismo y empezar a practicar para
+        avanzar con tu nivel.
+    </p>
+    <p><strong>¡Pasa a la acción con nuestras actividades de inglés y disfruta de todos los beneficios de realizar
+            actividades de inglés!</strong></p>
+
+</section>
+
+<div class="modal-background" *ngIf='modal.modals === "events" && selectedEvent' (click)="closeModal(singleEvent)">
+</div>
+<div class="modal events-general-modal" id="modal" data-modal="events-modal"
+    *ngIf='modal.modals === "events" && selectedEvent'>
+
+    <div class="modal-header">
+        <h2 class="modal-title">{{selectedEvent['Evento']}}</h2>
+        <div class="modal-close btn red" (click)="closeModal(singleEvent)"><i class="fas fa-times"></i></div>
+    </div>
+
+    <div class="modal-content">
+        <form #singleEvent="ngForm" *ngIf="!selectedEvent['Pasado'] || isAdmin">
+
+            <div class="event-description">
+                {{selectedEvent['Descripcion']}}
+            </div>
+
+            <div class="filters">
+                <button *ngIf="selectedEvent['A1/A2']" class="btn deep-orange" [ngClass]="{
+                                active: a1a2FilterModal,
+                                negative: !this.auth.isLogged || (auth.isLogged && (auth.user['realLevel'] === 'A1' || auth.user['realLevel'] === 'A2')), 
+                                disabled: auth.isLogged && (auth.user['realLevel'] !== 'A1' && auth.user['realLevel'] !== 'A2') && !isAdmin && !isKeeplearning
+                            }" (click)="filterModalLevels('a1a2FilterModal')"
+                    [disabled]="auth.isLogged && (auth.user['realLevel'] !== 'A1' && auth.user['realLevel'] !== 'A2') && !isAdmin && !isKeeplearning">A1/A2</button>
+                <button *ngIf="selectedEvent['A2/B1']" class="btn light-green" [ngClass]="{
+                                active: a2b1FilterModal, 
+                                negative: !this.auth.isLogged || (auth.isLogged && (auth.user['realLevel'] === 'A2' || auth.user['realLevel'] === 'B1')),
+                                disabled: auth.isLogged && (auth.user['realLevel'] !== 'A2' && auth.user['realLevel'] !== 'B1') && !isAdmin && !isKeeplearning
+                            }" (click)="filterModalLevels('a2b1FilterModal')"
+                    [disabled]="auth.isLogged && (auth.user['realLevel'] !== 'A2' && auth.user['realLevel'] !== 'B1') && !isAdmin && !isKeeplearning">A2/B1</button>
+                <button *ngIf="selectedEvent['B1/B2']" class="btn purple" [ngClass]="{
+                            active: b1b2FilterModal, 
+                            negative: !this.auth.isLogged || (auth.isLogged && (auth.user['realLevel'] === 'B1' || auth.user['realLevel'] === 'B2')),
+                            disabled: auth.isLogged && (auth.user['realLevel'] !== 'B1' && auth.user['realLevel'] !== 'B2') && !isAdmin && !isKeeplearning
+                        }" (click)="filterModalLevels('b1b2FilterModal')"
+                    [disabled]="auth.isLogged && (auth.user['realLevel'] !== 'B1' && auth.user['realLevel'] !== 'B2' && !isAdmin && !isKeeplearning)">B1/B2</button>
+                <button *ngIf="selectedEvent['B2/C1']" class="btn cyan" [ngClass]="{
+                            active: b2c1FilterModal, 
+                            negative: !this.auth.isLogged || (auth.isLogged && (auth.user['realLevel'] === 'B2' || auth.user['realLevel'] === 'C1')),
+                            disabled: auth.isLogged && (auth.user['realLevel'] !== 'B2' && auth.user['realLevel'] !== 'C1' && auth.user['realLevel'] !== 'C2') && !isAdmin && !isKeeplearning
+                        }" (click)="filterModalLevels('b2c1FilterModal')"
+                    [disabled]="auth.isLogged && (auth.user['realLevel'] !== 'B2' && auth.user['realLevel'] !== 'C1' && auth.user['realLevel'] !== 'C2' && !isAdmin && !isKeeplearning)">B2/C1</button>
+            </div>
+
+            <div class="plazas_disponibles" [ngClass]="{
+                                    free: selectedEvent['Plazas ocupadas'][(this.a1a2FilterModal) ? 'A1/A2' : (this.a2b1FilterModal) ? 'A2/B1' : (this.b1b2FilterModal) ? 'B1/B2' : (this.b2c1FilterModal) ? 'B2/C1' : 'Apátrida']['ocupacion'] === 'libre',
+                                    medio: selectedEvent['Plazas ocupadas'][(this.a1a2FilterModal) ? 'A1/A2' : (this.a2b1FilterModal) ? 'A2/B1' : (this.b1b2FilterModal) ? 'B1/B2' : (this.b2c1FilterModal) ? 'B2/C1' : 'Apátrida']['ocupacion'] === 'medio',
+                                    busy: selectedEvent['Plazas ocupadas'][(this.a1a2FilterModal) ? 'A1/A2' : (this.a2b1FilterModal) ? 'A2/B1' : (this.b1b2FilterModal) ? 'B1/B2' : (this.b2c1FilterModal) ? 'B2/C1' : 'Apátrida']['ocupacion'] === 'ocupao'
+                                }"
+                *ngIf="(a1a2FilterModal || a2b1FilterModal || b1b2FilterModal || b2c1FilterModal) && (selectedEvent['Plazas ocupadas'][(this.a1a2FilterModal) ? 'A1/A2' : (this.a2b1FilterModal) ? 'A2/B1' : (this.b1b2FilterModal) ? 'B1/B2' : (this.b2c1FilterModal) ? 'B2/C1' : 'Apátrida'])">
+                Plazas disponibles:
+                {{((selectedEvent['Plazas ocupadas'][(this.a1a2FilterModal) ? 'A1/A2' : (this.a2b1FilterModal) ? 'A2/B1' : (this.b1b2FilterModal) ? 'B1/B2' : (this.b2c1FilterModal) ? 'B2/C1' : 'Apátrida']['cantidad']) > 0) ? (selectedEvent['Numero de plazas'] - (selectedEvent['Plazas ocupadas'][(this.a1a2FilterModal) ? 'A1/A2' : (this.a2b1FilterModal) ? 'A2/B1' : (this.b1b2FilterModal) ? 'B1/B2' : (this.b2c1FilterModal) ? 'B2/C1' : 'Apátrida']['cantidad'])) : selectedEvent['Numero de plazas']}}
+                de {{selectedEvent['Numero de plazas']}}
+            </div>
+
+            <div class="plazas_disponibles free"
+                *ngIf="(a1a2FilterModal || a2b1FilterModal || b1b2FilterModal || b2c1FilterModal) && !(selectedEvent['Plazas ocupadas'][(this.a1a2FilterModal) ? 'A1/A2' : (this.a2b1FilterModal) ? 'A2/B1' : (this.b1b2FilterModal) ? 'B1/B2' : (this.b2c1FilterModal) ? 'B2/C1' : 'Apátrida'])">
+                Plazas disponibles: {{selectedEvent['Numero de plazas']}} de {{selectedEvent['Numero de plazas']}}
+            </div>
+
+            <div class="students-in" *ngIf="isAdmin">
+                <ul>
+                    <li *ngFor="let student of inscribedStudents; let i = index">{{student['nombre']}} - <button
+                            class="btn red" (click)="deleteStudentFromActivity(student['username'])">Desapuntar</button>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="inputs"
+                *ngIf="(a1a2FilterModal || a2b1FilterModal || b1b2FilterModal || b2c1FilterModal) && !auth.isLogged && !isTecnicas">
+                <input [(ngModel)]="fullName" name="username" type="text" placeholder='Usuario' ngModel required>
+                <input [(ngModel)]="password" name="password" type="password" placeholder='Contraseña' ngModel required>
+                <a href="http://curso-ingles.americanlanguage.es/aula/main/auth/lostPassword.php" target="_blank"
+                    class="forgotPsw">Recupera tu contraseña</a>
+            </div>
+
+            <div class="inputs"
+                *ngIf="(a1a2FilterModal || a2b1FilterModal || b1b2FilterModal || b2c1FilterModal) && isTecnicas">
+                <input [(ngModel)]="fullNameTR" name="fullNameTR" type="text" placeholder='Nombre y apellidos' ngModel
+                    required>
+                <input [(ngModel)]="emailTR" name="emailTR" type="emailTR" placeholder='Correo electrónico' ngModel
+                    required>
+            </div>
+
+
+            <div class="buttonsSubmit" *ngIf="a1a2FilterModal || a2b1FilterModal || b1b2FilterModal || b2c1FilterModal">
+                <input *ngIf="!isAdmin && ((selectedEvent['Plazas ocupadas'][(this.a1a2FilterModal) ? 'A1/A2' : (this.a2b1FilterModal) ? 'A2/B1' : (this.b1b2FilterModal) ? 'B1/B2' : (this.b2c1FilterModal) ? 'B2/C1' : 'Apátrida']) ? ((selectedEvent['Plazas ocupadas'][(this.a1a2FilterModal) ? 'A1/A2' : (this.a2b1FilterModal) ? 'A2/B1' : (this.b1b2FilterModal) ? 'B1/B2' : (this.b2c1FilterModal) ? 'B2/C1' : 'Apátrida']['ocupacion'] != 'ocupao')) : true)"
+                    (click)="inscribirAlumno(singleEvent)" class='btn light-green' type="submit" value='Inscribirme'>
+
+                <input *ngIf="isAdmin"
+                [disabled]="(((selectedEvent['Plazas ocupadas'][(this.a1a2FilterModal) ? 'A1/A2' : (this.a2b1FilterModal) ? 'A2/B1' : (this.b1b2FilterModal) ? 'B1/B2' : (this.b2c1FilterModal) ? 'B2/C1' : 'Apátrida']) > 0) ? (selectedEvent['Numero de plazas'] - (selectedEvent['Plazas ocupadas'][(this.a1a2FilterModal) ? 'A1/A2' : (this.a2b1FilterModal) ? 'A2/B1' : (this.b1b2FilterModal) ? 'B1/B2' : (this.b2c1FilterModal) ? 'B2/C1' : 'Apátrida'])) : selectedEvent['Numero de plazas']) == 0"
+                    [disabled]="(((selectedEvent['Plazas ocupadas'][(this.a1a2FilterModal) ? 'A1/A2' : (this.a2b1FilterModal) ? 'A2/B1' : (this.b1b2FilterModal) ? 'B1/B2' : (this.b2c1FilterModal) ? 'B2/C1' : 'Apátrida']) > 0) ? (selectedEvent['Numero de plazas'] - (selectedEvent['Plazas ocupadas'][(this.a1a2FilterModal) ? 'A1/A2' : (this.a2b1FilterModal) ? 'A2/B1' : (this.b1b2FilterModal) ? 'B1/B2' : (this.b2c1FilterModal) ? 'B2/C1' : 'Apátrida'])) : selectedEvent['Numero de plazas']) == 0"
+                    (click)="startStudentInscription()" class='btn light-green' type="submit"
+                    value="{{(inscribeCustomStudent) ? 'Cierra el formulario' : 'Inscribir a una libre golondrina'}}">
+                <button *ngIf="!isKeeplearning" (click)="desuscribirAlumno(singleEvent)" class="red btn">Anular suscripción</button>
+            </div>
+
+            <div class="custom-inscription" *ngIf="inscribeCustomStudent">
+                <form #inscribeCustomForm="ngForm">
+                    <input [(ngModel)]="fullName" name="fullName" type="text" placeholder='Nombre y apellidos' ngModel
+                        required>
+                    <input [(ngModel)]="username" name="username" type="text" placeholder='Usuario' ngModel required>
+                    <input (click)="inscribirAlumnoExterno(inscribeCustomForm)" type="submit" value="Inscribe al pajarillo"
+                        class="btn light-green">
+                </form>
+            </div>
+        </form>
+
+        <div class="past-event" *ngIf="selectedEvent['Pasado'] && !isAdmin">
+            <!-- <p>El evento ya pasó y estuvo genial. Deberías apuntarte a otros eventos en el futuro.</p> -->
+            <p>Ya se han cerrado las inscripciones para este evento.</p>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL DE LOGIN -->
+<div class="modal-background" *ngIf='modal.modals === "loginEvents"' (click)="closeLoginModal()"></div>
+<div class="modal-login modal" *ngIf='modal.modals === "loginEvents"'>
+    <div class="modal-header">
+        <h2 class="modal-title">Login</h2>
+        <div class="modal-close btn red" (click)="closeLoginModal()"><i class="fas fa-times"></i></div>
+    </div>
+
+    <div class="modal-content">
+        <form #loginEventsPopUp="ngForm">
+            <div class="inputs">
+                <input [(ngModel)]="username" ngModel required type="text" name='username'
+                    placeholder="Nombre de usuario o empresa">
+                <input [(ngModel)]="password" ngModel required type="password" name='password' placeholder="Contraseña">
+            </div>
+
+            <div class="login-buttons">
+                <input (click)="loginModalAct(loginEventsPopUp)" type="submit" value="Login" class="btn light-green">
+                <button (click)="closeLoginModal()" class="btn red">Invitado</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="toast-container">
+    <div [@toastOnOff] class="newToast" *ngFor="let toast of modal.toasts; let i = index" [ngClass]="{
+            success: toast['type'] === 'success',
+            error: toast['type'] === 'error'
+        }">
+        {{toast['message']}}
+    </div>
+</div>
+
+<button *ngIf="auth.isLogged || isTecnicas" class="btn red logout" (click)="activitiesLogout()">Logout</button>
+
+<div class="modal-background" *ngIf='modal.modals === "game-letter-winner"'
+  (click)="closeModal()"></div>
+<div class="modal-game-letter modal" *ngIf='modal.modals === "game-letter-winner"'>
+  <div class="modal-header">
+    <h2 class="modal-title">{{(gameInfo['winnerModal']) ? '¡Enhorabuena!' : '¿Cuál es la correcta?'}}</h2>
+    <div class="modal-close btn red" (click)="closeModal()"><i class="fas fa-times"></i></div>
+  </div>
+
+  <div class="modal-content">
+    <div class="first-try" *ngIf="gameInfo['firstTryStep']">
+      <p>¡{{gameInfo['wordToCheck']}} es incorrecta! ¿Cuál sería la correcta?</p>
+      <form #firstTryForm="ngForm">
+        <input type="text" [(ngModel)]="firstTry" ngModel name='firstTry' placeholder="Introduce la palabra correcta">
+        <input class="btn light-green" type="submit" (click)="sendFristTry(firstTryForm)" value='Comprobar'> 
+      </form>
+    </div>
+
+    <div class="preMail" *ngIf="gameInfo['winnerModal']">
+        <p class="space-text">¡Has ganado una <strong>camiseta gratis</strong>!</p>
+        <p class="space-text">Introduce aquí tu dirección de correo electrónico, en el que recibirás el <strong>cupón canjeable</strong> por la camiseta.</p>
+        <form #sendWinnerMail="ngForm">
+          <input type="email" [(ngModel)]="email" ngModel name='email' placeholder="Email">
+          <input class="btn light-green" type="submit" (click)="sendWinner(sendWinnerMail)" value='Ganar camiseta'> 
+        </form>
+        <p class="space-text">Recuerda que solo se podrá canjear <strong>una camiseta por persona</strong>.</p>
+        <p class="space-text">¡Muchas gracias por participar! ¡Nos vemos!</p>
+    </div>
+
+    <div class="afterMail" *ngIf="afterMailMsg">
+      <p>Si quieres, puedes seguir con la carta para encontrar más fallos.</p>
+    </div>
+  </div>
+</div>

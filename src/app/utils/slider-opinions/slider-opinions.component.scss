@@ -1,0 +1,244 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors';
+
+.opinions-header {
+    margin-bottom: 40px;
+}
+.opinion-container{
+    padding: 30px;
+    margin: auto;
+    max-width: $break-mobile;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    .card{
+        max-width: 400px;
+        width: 80%;
+        flex-shrink: 0;
+        margin: 15px;
+    }
+    .opinion{
+        margin-top: 30px;
+        text-align: left;
+        font-size: $font-large;
+        font-family: Gotham-Light;
+    }
+    .opinion-author{
+        text-align: right;
+        font-family: Gotham-Rounded-Light-Italic;
+        line-height: 16px;
+    }
+    .opinion-stars{
+        text-align: center;
+        margin: 15px 0px;
+        font-size: $font-large;
+    }
+}
+
+.first-opinion-block {
+    margin: 50px auto;
+    // padding-top: 60px;
+    .skew-block-container {
+        h2 {
+            color: white;
+            @media screen and (min-width: $break-tablet) {
+                margin-bottom: -150px;
+            }
+        }
+    }
+    // @media screen and (min-width: $break-tablet + 1) {
+    //     margin-bottom: 180px;
+    // }
+}
+.companies-opinions,
+.opinions-full-continer {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    @media screen and (min-width: $break-mobile +1){
+        margin-top: 70px;
+        justify-content: center;
+    }
+    .opinions-card-container {
+        flex-direction: row;
+        overflow: auto;
+        .row {
+            display: flex;
+            flex-direction: row;    
+            overflow: auto;
+        }
+        .column {
+            display: flex;
+            flex-direction: column;
+            @media screen and (min-width: $break-mobile + 1) {
+                flex-direction: row;
+                .beauty-pill {
+                    padding: 50px 20px;
+                }
+            }
+        }
+        .beauty-pill {
+            width: 90vw;
+            flex-shrink: 0;
+            padding: 80px 5vw 20px 5vw;
+            animation: fadeIn .8s ease-in-out forwards;
+            @media screen and (min-width: $break-mobile +1){
+                width: 35vw;
+                // padding: 80px 30vw 20px 30vw;
+                padding: 20px;
+            }
+            .beauty-card{
+                background-color: white;
+                @include box-shadow(0,10px,10px,rgba($black,0.1));
+                text-align: center;
+                border-radius: 10px;
+            }
+            &.small-pill {
+                .beauty-header {
+                    height: 36px;
+                    .dark-side {
+                        line-height: 36px;
+                    }
+                    .beauty-image {
+                        width: 72px; height: 72px;
+                        background-color: $teal;
+                        color: white;
+                        font-size: 30px;
+                        font-family: Gotham Rounded Light;
+                        text-transform: uppercase;
+                    }
+                }
+            }
+            .beauty-header {
+                height: 60px;
+                display: flex;
+                position: relative;
+                &.course-pill {
+                    .dark-side{
+                        padding-left: 40px;
+                        box-sizing: border-box;
+                    }
+                }
+                .beauty-image {
+                    position: absolute;
+                    left: 0; right: 0;
+                    bottom: 0;
+                    margin: auto;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 120px; height: 120px;
+                    &.saint-louis {
+                        background-color: $blue;
+                    }
+                    &.cambridge {
+                        padding-top: 10px;
+                        box-sizing: border-box;
+                        background-color: $light-green;
+                        img {
+                            width: 70%;
+                            height: auto;
+                        }
+                    }
+                    &.nat-geo {
+                        background-color: black;
+                        img {
+                            width: auto;
+                            height: 70%;
+                        }
+                    }
+                    img {
+                        height: 100%; width: auto;
+                        object-fit: cover;
+                        // border-radius: 50%;
+                        &.isotipo {
+                            // width: 150px; height: 56px;
+                            object-fit: contain;
+                            &.comillas {
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+                    }
+                }
+                .white-block {
+                    flex-basis: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    border-top-left-radius: 10px;
+                    color: $deep-orange;
+                    background-color: $very-light-gray;
+                }
+                .dark-side {
+                    flex-basis: 50%;
+                    color: white;
+                    // background-color: #4b4b4b;
+                    background-color: $very-light-gray;
+                    color: $deep-orange;
+                    border-top-right-radius: 10px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    line-height: 50px;
+                    font-size: $font-normal;
+                    font-family: Gotham-Rounded-Medium;
+                    &.opinions {
+                        padding-left: 20px;
+                        box-sizing: border-box;
+                        i {
+                            font-size: .8em;
+                            margin-right: 4px;
+                        }
+                    }
+                    span {
+                        font-size: 12px;
+                    }
+                }
+            }
+            .beauty-content {
+                padding: 18px;
+                box-sizing: border-box;
+                font-size: 14px;
+                color: #949494;
+                .beauty-course-title {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center;
+                    font-family: Gotham-Rounded-Medium;
+                    font-size: $font-medium;
+                    text-transform: uppercase;
+                    padding: 20px 40px;
+                    box-sizing: border-box;
+                }
+                .beauty-footer {
+                    margin-top: 18px;
+                    .beauty-job {
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.modal-original-opinion {
+    overflow: hidden;
+    @media screen and (min-width: $break-tablet + 1) {
+        width: 40%;
+    }
+    .modal-content {
+        .original-opinion {
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+}

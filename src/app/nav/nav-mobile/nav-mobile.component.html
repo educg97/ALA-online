@@ -1,0 +1,131 @@
+<nav *ngIf="window_util.isMobile || window_util.isTablet">
+	<!-- Hamburger mmmmmm -->
+	<div id="hamburger" class="btn blue" (click)="toggleMenu()">
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+
+	<!-- Hamburger Logo -->
+	<div id="logo-banner" routerLink="/">
+		<img src="/assets/images/ALO/american_language_online_panoramico.png" alt="American Language Online" width="250px">
+	</div>
+</nav>
+
+<div *ngIf="window_util.isMobile" class = "fecei-banner-mobile">
+	<img routerLink="/" src="/assets/images/banners/premio-fecei.png" alt="Primer puesto premio FECEI">
+</div>
+ 
+<div class="static-menu">
+	<div class="static-menu-background-trigger" (click)="toggleMenu()"></div>
+	<div class="static-menu-background">
+		<ul>
+			<li>
+				<a routerLink="/"
+				(click)="toggleMenu()">
+					<i class="fas fa-home"></i>
+					Home
+				</a>
+			</li>
+			
+			<li>
+				<a><i class="fas fa-list-alt"></i>Aprende Inglés Online</a>
+			</li>
+			<li class="slim">
+				<div class="menu-course-container">
+					<div class="menu-course card">
+						<!-- <a routerLink="/curso-ingles-online/intensivo" (click)="toggleMenu();" fragment="top"> -->
+						<a href="/curso-ingles-online/intensivo#top" (click)="toggleMenu();">
+							<div class="menu-course-image" [style.background-image]="'url(/assets/images/home/home-mejorar.jpeg)'"></div>
+							<div class="menu-course-title text-red bold">Cursos de inglés online</div>
+						</a>
+					</div>
+
+					<div class="menu-course card">
+						<!-- <a routerLink="/curso-ingles-online/particulares" fragment="top" (click)="toggleMenu();"> -->
+						<a href="/curso-ingles-online/particulares#top" (click)="toggleMenu();">
+							<div class="menu-course-image" [style.background-image]="'url(/assets/images/home/clases-ingles-online.jpg)'"></div>
+							<div class="menu-course-title text-red bold">Clases particulares de inglés online</div>
+						</a>
+					</div>
+				</div>
+			</li>
+			
+			<li> 
+				<a routerLink = "/examen-ingles-online" fragment = "top" (click)="toggleMenu(); setCourse('5ed6526fbf61493d6036c201');"><i class="fas fa-calendar"></i>Exámenes de inglés online</a>
+			</li>
+
+			<a routerLink = "/app-aprender-ingles" (click)="toggleMenu();">
+				<li class="submenu-mobile-container" (click)="toggleSubmenu('about-us')">
+					<div class="logo-ala">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 63.03 63.03"><defs><style>.cls-1{fill:#5e5e5e;}</style></defs><title>Nuevo símbolo (8)</title><g id="Layer_2" data-name="Layer 2"><g id="Capa_1" data-name="Capa 1"><g id="Nuevo_símbolo" data-name="Nuevo símbolo"><path class="cls-1" d="M15.44,4.56a3.84,3.84,0,0,1,7.29,0h0l6,18.57L25.05,34.58h0a.53.53,0,0,1-.52.37c-4.33-.12-8.57-.41-12.69-.84h-.07a.82.82,0,0,0-.54,1.43h0c3.18,2.68,6.54,5.31,10.07,7.86h0a1.07,1.07,0,0,1,.46.88,1,1,0,0,1-.1.46h0a13.58,13.58,0,0,1-12.37,8H.54A.54.54,0,0,1,0,52.16.57.57,0,0,1,0,52L15.44,4.56Z"/><path class="cls-1" d="M63,62.32,44,3.7A5.43,5.43,0,0,0,38.8,0H22.11a.28.28,0,0,0-.28.27A.27.27,0,0,0,22,.51h0a5.41,5.41,0,0,1,2.59,3.08h0l10.07,31h0a.53.53,0,0,0,.52.37c4.33-.12,8.56-.41,12.69-.84h.07a.82.82,0,0,1,.54,1.43h0c-3.25,2.74-6.69,5.43-10.31,8a.83.83,0,0,0-.33.67.85.85,0,0,0,0,.23h0l1.27,3.92h0A21.21,21.21,0,0,0,59.28,63h3.2a.55.55,0,0,0,.55-.55A.45.45,0,0,0,63,62.32Z"/></g></g></g></svg>
+					</div>
+					App
+				</li>
+			</a>
+
+			<li class="slim">
+				<a href="tel:+34-91-445-55-11" (click)="trackingPhoneCallGAnav()">
+					<div class="btn red btn-centered">
+						<table>
+							<tr>
+								<td style="vertical-align:middle">
+									<i class="fas fa-phone"></i>
+								</td>
+								<td style="vertical-align:middle">
+									<div class="bold">91 444 55 11</div>
+								</td>								
+							</tr>
+						</table>
+					</div>
+				</a>
+			</li>
+
+			<li class="slim">
+				<a href="//curso-ingles.americanlanguage.es" target="_blank" rel="nofollow">
+					<button class="btn green aula-virtual">
+						<table>
+							<tr>
+								<td style="vertical-align:middle">
+									<i class="fas fa-user"></i>
+								</td>
+								<td style="vertical-align:middle">
+									<div class="bold">Log In</div>
+								</td>
+							</tr>
+						</table>
+					</button>
+				</a>
+			</li>
+		</ul>
+
+		<!-- <div class="modal-background" *ngIf='(modal.modals === "login")' (click)="closeLoginModal()"></div>
+		<div class="modal-login modal" *ngIf='modal.modals === "login"'>
+			<div class="modal-header">
+				<h2 class="modal-title">Login</h2>
+				<div class="modal-close btn red" (click)="closeLoginModal()"><i class="fas fa-times"></i></div>
+			</div>
+
+			<div class="modal-content">
+				<form #loginPopUp="ngForm">
+					<input [(ngModel)]="username" ngModel required type="text" name='username' placeholder="Nombre de usuario">
+					<input [(ngModel)]="password" ngModel required type="password" name='password' placeholder="Contraseña">
+
+					<div class="login-buttons">
+						<input (click)="onSubmitLogin(loginPopUp)" type="submit" value="Login" class="btn light-green">	
+						<button class="btn red" *ngIf="router.url === '/actividades-en-ingles-madrid'">Invitado</button>
+					</div>
+				</form>
+			</div>
+		</div> -->
+
+		<div class="toast-container">
+			<div [@toastOnOff] class="newToast" *ngFor="let toast of modal.toasts; let i = index" [ngClass]="{
+				success: toast['type'] === 'success',
+				error: toast['type'] === 'error'
+			}">
+			{{toast['message']}}
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,162 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors';
+
+.window-companies {
+    width: 99%;
+    margin: 0 auto -75px;
+    overflow: auto;
+    box-sizing: border-box;
+    @media screen and (min-width: $break-tablet + 1) {
+        // margin: 50px auto;
+    }
+    .companies-opinions {
+        margin-bottom: 100px;
+        position: relative;
+        .testimonial-block {
+            .company-thumbnail {
+                width: 200px;
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        } 
+        .slider-companies-opinions {
+            display: flex;
+            box-sizing: border-box; 
+            @media screen and (min-width: $break-mobile + 1) {
+                  margin: auto;
+                  justify-content: center;
+            }
+            .column {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                box-sizing: border-box;
+                @media screen and (min-width: $break-mobile + 1) {
+                    align-items: center;
+                    width: auto;
+                    justify-items: space-around;
+                }
+                .company-pill {
+                    margin: 20px 15vw;
+                    padding: 0;
+                    width: 70vw;
+                    @media screen and (min-width: $break-mobile + 1){
+                        width: 400px;
+                        margin: 20px 35px;
+                    }
+                    &.cambridge {
+                        .company-header {
+                            .two-lines-name {
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                align-items: center;
+                            }
+                        }
+                    }
+                    .company-header {
+                        display: flex;
+                        justify-content: space-around;
+                        align-items: center;
+                        background-color: $very-light-gray;
+                        height: 80px;
+                        border-top-left-radius: 10px;
+                        border-top-right-radius: 10px;
+                        box-sizing: border-box;
+                        padding: 5px;
+                        .logo-full {
+                            width: 85%;
+                            margin: auto;
+                            display: flex;
+                            &.saint-louis {
+                                @media screen and (min-width: $break-tablet + 1){
+                                    width: 0%;
+                                }
+                                @media screen and (min-width: $break-desktop + 1){
+                                    width: 70%;
+                                }
+                            }
+                            &.cambridge {
+                                width: 68%;
+                                @media screen and (min-width: $break-tablet + 1){
+                                    width: 60%;
+                                }
+                            }
+                            &.nyu {
+                                width: 95%;
+                                // width: 60%;
+                                @media screen and (min-width: $break-tablet + 1){
+                                    width: 70%;
+                                }
+                            }
+                            &.comillas {
+                                width: 45%;
+                                @media screen and (min-width: $break-tablet + 1){
+                                    width: 30%;
+                                }
+                            }
+                            &.nat-geo {
+                                width: 60%;
+                                @media screen and (min-width: $break-tablet + 1){
+                                    width: 50%;
+                                }
+                            }
+                            &.schiller {
+                                width: 100%;
+                                @media screen and (min-width: $break-tablet + 1){
+                                    width: 85%;
+                                }
+                            }
+                            img {
+                                max-width: 100%;
+                                height: auto;
+                                max-height: 65px;
+                                margin: auto;
+                                @media screen and (min-width: $break-tablet + 1) {
+                                    width: auto;
+                                    height: 100%;
+                                }
+                            }
+                        }
+                    }
+                    .company-testimonial {
+                        padding: 20px;
+                        box-sizing: border-box;
+                        text-align: center;
+                    }
+                }
+            }
+            .beauty-pill {
+                padding: 40px;
+            }
+        }
+    }
+    .navigation-slider {
+        ul {
+            width: 80%;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            li {
+                margin-bottom: 10px;
+                font-size: $font-small;
+                &.actived {
+                    i {
+                        color: $light-green;
+                        font-size: 1.3em;
+                    }
+                }
+                i {
+                    color: $gray;
+                    margin-right: 8px;
+                    font-size: 1.1em;
+                    transition: all .3s ease-in-out;
+                }
+            }
+        }
+    }
+}

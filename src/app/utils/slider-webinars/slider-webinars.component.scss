@@ -1,0 +1,41 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors';
+
+@import 'src/app/utils/slider-companies-reviews/slider-companies-reviews.component.scss';
+
+iframe {
+    border-radius: 15px;
+}
+
+#slider-companies-flipping {
+    padding: 0;
+}
+
+.arrow {
+    padding: 0 15px;
+    width: auto;
+
+    @media screen and (max-width: 999px) { // For Mobile
+        color: red;
+        font-weight: bold;
+    }
+    
+}
+
+@media screen and (max-width: 999px) { // For Mobile
+
+    .arrow {
+        color: red;
+        font-weight: bold;
+    }
+
+    .rigth {
+        right: 0;
+    }
+
+    .left {
+        left: 0;
+    }
+    
+}

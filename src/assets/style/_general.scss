@@ -1,0 +1,79 @@
+body{
+    color: darken($gray, 40%);
+    font-family: Gotham-Rounded-Book;
+    font-size: $font-normal;
+}
+.page-width{
+    max-width: $page-width;
+    margin: auto;
+}
+
+.mt-15 {
+    margin-top: 15px;
+}
+
+.final-article-picture {
+    width: 100vw;
+    margin: 0 -40px;
+    display: flex;
+    height: auto;
+    @media screen and (min-width: $break-tablet){
+        height: 300px;
+        width: auto;
+        margin: auto;
+        object-fit: cover;
+        align-self: center;
+        text-align: center;
+    }
+}
+
+.description-initial-block {
+    .image-description-course {
+        // width: 90%;
+        width: 75%;
+        margin: 15px auto;
+        display: block;
+        @media screen and (min-width: $break-mobile){
+            // width: 30%;
+            width: 15%;
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+
+.post-image-content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    flex-grow: 0;  
+    img {
+        max-width: 100%;
+        height: auto;
+    } 
+}
+
+.grecaptcha-badge {
+    visibility: collapse !important;
+}
+
+::selection {
+    background-color: $green;
+    color: white;
+}
+
+.vertical-align {
+    vertical-align: middle;
+}
+
+// Blog general styles 
+.single-post {
+    a {
+        text-decoration: underline;
+        color: $blue;
+    }
+}

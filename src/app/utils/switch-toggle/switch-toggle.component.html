@@ -1,0 +1,11 @@
+<div class="switch-toggle-container">
+    <p>{{left}}</p>
+
+    <div (click)="toggleSwitch()" class="switch-toggle" [ngClass]="{left: isLeft, right: !isLeft}">
+      <div class="circle-switch"></div>
+      <div class="backline"></div>
+    </div>
+     
+    <p>{{right}}</p>
+</div>
+

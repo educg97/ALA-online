@@ -1,0 +1,141 @@
+<div class="btn red btn-centered" (click)="openAppointmentsModal( 'appointments' )">
+	<table>
+		<tr>
+			<td style="vertical-align:middle">
+				<i class="fas fa-calendar"></i>
+			</td>
+			<td style="vertical-align:middle">
+				<div class="text-small">Reservar</div>
+				<div class="bold">Evaluaci&oacute;n de nivel</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div class="modal-background" *ngIf='modal.modals === "appointments"' (click)="closeAppointmentsModal()"></div>
+<div class="modal-appointments modal" *ngIf="modal.modals === 'appointments'">
+	<div class="modal-header">
+		<h2 class="modal-title" style = "text-align: center;">Solicita tu prueba de nivel</h2>
+		<div class="modal-close btn red" (click)="closeAppointmentsModal()"><i class="fas fa-times"></i></div>
+	</div>
+
+	<div class="modal-content" *ngIf="!sentMail">
+		<div id="full-container-phases" class="full-container-phases" [ngClass]="{
+			'phaseOne': datePhase == 1,
+			'phaseTwo': datePhase == 2,
+			'phaseThree': datePhase == 3
+		}">
+			<div class="phase-date-calendar phase">
+				<app-calendar [from]=Appointments (today)="getCalendarData($event)" (newDay)="selectNewDay($event)">
+				</app-calendar>
+				<div class="currentDayContainer text-large ala-blue">
+					{{calendar['currentDay']}} {{calendar['currentMonthName']}}
+				</div>
+				<div class="calendarMessage" *ngIf="calendarMessage">
+					{{calendarMessage}}
+				</div>
+				<p class="space-text">Las pruebas de nivel se pueden realizar a distancia o de forma presencial en <a class="colorful underline" href="https://www.google.com/maps/place/American+Language+Academy/@40.432109,-3.7096485,17z/data=!3m1!4b1!4m5!3m4!1s0xd422860b9efeb9d:0xe425525a5e27d1ba!8m2!3d40.432109!4d-3.7074598" target="_blank">la sede principal de American Language Academy</a>, en la Plaza del
+					Conde Valle de Súchil, 17.</p>
+				<p>Temporalmente todas las pruebas de nivel se realizarán a distancia. </p>
+			</div>
+
+			<div class="phase-time-appointment phase">
+				<div class="appointments-container" *ngIf="datePhase == 2">
+					<div class="header-tabs">
+						<div class="tabs-container">
+							<div class="tab blue" [ngClass]="{'active': activeSchedule == range['name']}"
+								*ngFor="let range of schedules; let i = index" (click)="setDaytime( range['name'] )">
+								{{range['name']}}</div>
+						</div>
+					</div>
+
+					<div class="define-appointment-time" *ngFor="let range of schedules; let i = index">
+						<div class="rows-container" *ngIf="activeSchedule == range['name']">
+							<div class="appointment-time-row" *ngFor="let hour of range['hours']; let idx = index"
+								(click)="askForAppointment(hour)"
+								[ngClass]="{disabled: ( blockedSchedules && blockedSchedules.includes(hour)) || (range['appointmentsPerHour'][idx] >= config['appointmentsAtSameTime'])}">
+								{{hour}}
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="currentDayContainer text-large ala-blue">
+					{{calendar['currentDay']}} {{calendar['currentMonthName']}}
+				</div>
+
+				<p class="space-text">Las pruebas de nivel se pueden realizar a distancia o de forma presencial en <a class="colorful underline" href="https://www.google.com/maps/place/American+Language+Academy/@40.432109,-3.7096485,17z/data=!3m1!4b1!4m5!3m4!1s0xd422860b9efeb9d:0xe425525a5e27d1ba!8m2!3d40.432109!4d-3.7074598" target="_blank">la sede principal de American Language Academy</a>, en la Plaza del
+					Conde Valle de Súchil, 17.</p>
+				<p>Temporalmente todas las pruebas de nivel se realizarán a distancia. </p>
+			</div>
+
+			<div class="phase-form phase" [ngClass]="{'active': datePhase == 2}">
+				<form action="" #appointmentForm="ngForm">
+					<div class="nameAndLastname">
+						<div class="field">
+							<label for="name">Nombre (obligatorio):</label>
+							<input (change)="setFormfield($event, 'name')" type="text" placeholder="Tu nombre" required>
+						</div>
+						<div class="field">
+							<label for="lastname">Apellidos (obligatorio):</label>
+							<input (change)="setFormfield($event, 'lastname')" type="text" placeholder="Tus apellidos"
+								required>
+						</div>
+					</div>
+
+					<div class="field">
+						<label for="email">Email (obligatorio):</label>
+						<input [ngClass]="{error: emailErrorMessage}" (change)="setFormfield($event, 'email')"
+							pattern="isEmail" type="text" placeholder="Introduce tu email" required>
+						<p class="errorMsg" *ngIf="emailErrorMessage">{{emailErrorMessage}}</p>
+					</div>
+					<div class="field">
+						<label for="phoneNumber">Teléfono (obligatorio):</label>
+						<input [ngClass]="{error: phoneErrorMessage}" (change)="setFormfield($event, 'phoneNumber')"
+							type="tel" placeholder="Número de teléfono">
+						<p class="errorMsg" *ngIf="phoneErrorMessage">{{phoneErrorMessage}}</p>
+					</div>
+					<div class="dateAndTime">
+						<div class="field" (click)="goToSelectedPhase(1)">
+							<label for="date">Fecha:</label>
+							<input type="text" value="{{calendar['currentDay']}} {{calendar['currentMonthName']}}"
+								disabled required>
+						</div>
+						<div class="field" (click)="goToSelectedPhase(2)">
+							<label for="date">Hora:</label>
+							<input type="text" value="{{appointmentTimeUser}}" placeholder="Selecciona una hora"
+								disabled required>
+						</div>
+					</div>
+					<div class="field">
+						<label for="date">Mensaje:</label>
+						<textarea (change)="setFormfield($event, 'message')" name="message_appointment"
+							id="message_appointment" cols="30" rows="3"
+							placeholder="Cuéntanos tu objetivo..."></textarea>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<div class="navButtons">
+			<button class="btn prev" (click)="navigateAppointment( 'prev' )" *ngIf="datePhase != '1'">Volver</button>
+			<div class="bulto" *ngIf="(datePhase == '1') || (datePhase == '3')"></div>
+			<button (click)="submitAppointmentform()" class="btn submit-appointment-form"
+				[disabled]="!formName || !formEmail	|| !formPhone || phoneErrorMessage || emailErrorMessage"
+				*ngIf="datePhase == '3'">Pedir cita</button>
+		</div>
+	</div>
+
+	<div class="thanks-mail-sent" *ngIf="sentMail">
+		Email enviado.
+	</div>
+</div>
+
+<div class="toast-container">
+	<div [@toastOnOff] class="newToast" *ngFor="let toast of modal.toasts; let i = index" [ngClass]="{
+		success: toast['type'] === 'success',
+		error: toast['type'] === 'error'
+	}">
+		{{toast['message']}}
+	</div>
+</div>

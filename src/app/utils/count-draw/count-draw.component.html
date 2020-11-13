@@ -1,0 +1,61 @@
+<!-- <div class="draw-counter">
+  <div class="winner">
+    <span>Gonzalo Alcaide</span>: 489
+  </div>
+  <div *ngFor="let winner of winnersKeys; let i = index">
+    <div class="winner">
+      <span>{{winner}}</span>: {{finalWinners[winner]}}
+    </div>
+  </div>
+  <h2>{{amount}}</h2>
+</div>
+
+
+<ul class="testData">
+  <li *ngFor="let win of winnersTest; let i = index">
+    <span class="name">{{win['name']}}</span> | <span class="email">{{win['email']}}</span> | <span class="device">{{win['device']}}</span> | <span class="phone">{{win['phone']}}</span>
+  </li>
+</ul> -->
+<div class="random-number-generator">
+  <button class="btn blue" (click)="randomNumGenerator()">Conoce al ganador</button>
+  <!-- <div class="numero-random">{{randomNumber}}</div> -->
+</div>
+
+<!-- <form #drawForm="ngForm" class="form-stars">
+  <input [(ngModel)]="winner" ngModel name="winner" type="text" class="numberemail">
+  <input type="submit" class="btn green" (click)="knowWinner(drawForm)" value="Conocer al ganador">
+</form> -->
+
+<ul class="winner-stars">
+  <li *ngFor="let winner of winners; let i = index">{{winner['name']}}</li>
+</ul>
+
+<div class="estrellas">
+  <div class="star small late"><i class="fas fa-sun"></i></div>
+  <div class="star medium later"><i class="fas fa-sun"></i></div>
+  <div class="star large latest"><i class="fas fa-sun"></i></div>
+  <div class="star small sooner"><i class="fas fa-sun"></i></div>
+  <div class="star medium soon"><i class="fas fa-sun"></i></div>
+  <div class="star large soonest"><i class="fas fa-sun"></i></div>
+  <div class="star small late"><i class="fas fa-sun"></i></div>
+  <div class="star medium later"><i class="fas fa-sun"></i></div>
+  <div class="star large latest"><i class="fas fa-sun"></i></div>
+  <div class="star small sooner"><i class="fas fa-sun"></i></div>
+  <div class="star medium soon"><i class="fas fa-sun"></i></div>
+  <div class="star large soonest"><i class="fas fa-sun"></i></div>
+
+  <div class="star small late"><i class="fas fa-sun"></i></div>
+  <div class="star medium later"><i class="fas fa-sun"></i></div>
+  <div class="star large latest"><i class="fas fa-sun"></i></div>
+  <div class="star small sooner"><i class="fas fa-sun"></i></div>
+  <div class="star medium soon"><i class="fas fa-sun"></i></div>
+  <div class="star large soonest"><i class="fas fa-sun"></i></div>
+  <div class="star small late"><i class="fas fa-sun"></i></div>
+  <div class="star medium later"><i class="fas fa-sun"></i></div>
+  <div class="star large latest"><i class="fas fa-sun"></i></div>
+  <div class="star small sooner"><i class="fas fa-sun"></i></div>
+  <div class="star medium soon"><i class="fas fa-sun"></i></div>
+  <div class="star large soonest"><i class="fas fa-sun"></i></div>
+</div>
+
+

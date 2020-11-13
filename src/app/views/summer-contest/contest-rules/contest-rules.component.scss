@@ -1,0 +1,236 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors';
+
+.ala-fall-game {
+    .panom-logo-container {
+        width: 400px;
+        margin: auto;
+        @media screen and (max-width: $break-tablet + 1) {
+            width: 95%;
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+    .subtitle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto 50px;
+        @media screen and (max-width: $break-tablet + 1) {
+            justify-content: space-around;
+            box-sizing: border-box;
+            padding: 0 20px;
+        }
+        .icon-container {
+            margin: 0 50px;
+            i {
+                font-size: 40px;
+                cursor: pointer;
+                animation: sunGlitter 3s infinite ease-in-out;
+            }
+        }
+        .flag-container {
+            width: 50px;
+            margin: 0 50px;
+            cursor: pointer;
+            @media screen and (max-width: $break-tablet + 1) {
+                margin: 0;
+            }
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+    .intro, .play-claim {
+        box-sizing: border-box;
+        padding: 20px;
+    }
+    .skew-block {
+        margin: 70px 0;
+    }
+    .category {
+        margin: 50px 0;
+        padding-top: 20px;
+        &.second-category {
+            padding-top: 60px;
+        }
+        .intro-sorteo {
+            width: 70%;
+            color: white;
+        }
+        .awards-display {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            .card {
+                flex-basis: 21%;
+                hr {
+                    background-color: $light-gray;
+                }
+                .resalt {
+                    color: $purple;
+                }
+                &.main {
+                    flex-basis: 35%;
+                    .img-container {
+                        width: 50%;
+                    }
+                    .list-prizes {
+                        margin: auto;
+                        li {
+                            font-size: $font-medium;
+                        }
+                    }
+                }
+                .list-prizes {
+                    box-sizing: border-box;
+                    padding-left: 30px;
+                    list-style: disc;
+                    li {
+                        margin-bottom: 10px;
+                    }
+                }
+                .award-preview {
+                    max-height: 150px;
+                    max-width: 320px;
+                    margin: auto;
+                    overflow: hidden;
+                    border-radius: 10px;
+                    img {
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+                .img-container {
+                    border-radius: 10px;
+                    overflow: hidden;
+                    width: 90%;
+                    margin: auto;
+                    &.alexa {
+                        height: 150px;
+                        width: auto;
+                        display: flex;
+                        justify-content: center;
+                        img {
+                            height: 100%;
+                            width: auto;
+                            margin: auto;
+                        }
+                    }
+                    img {
+                        width: 100%;
+                        height: auto;
+                        margin-bottom: -5px;
+                    }
+                }
+                @media screen and (max-width: $break-tablet) {
+                    flex-basis: 80%;
+                    margin: 20px auto;
+                    &.main {
+                        order: 1;
+                        flex-basis: 80%;
+                    }
+                    &.second {
+                        order: 2;
+                    }
+                    &.third {
+                        order: 3;
+                    }
+                }
+            }
+        }
+        // @each $color in $colors {
+        //     &.#{map-get($color, color)}{
+        //         h3 {
+        //             color: rgba(map-get($color, normal), 0.5);
+        //         }
+        //     }
+        // }
+    }
+    .fotos-premios {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 90%;
+        margin: 100px auto 0;
+        .premio {
+            width: 170px;
+            margin: 20px auto;
+            img {
+                width: 100%;
+                height: auto;
+            }
+            &.waynabox {
+                width: 250px;
+                @media screen and (max-width: $break-tablet) {
+                    width: 90%;
+                }
+            }
+        }
+    }
+}
+
+.see-bases {
+    display: flex;
+    justify-content: center;
+}
+
+.buttons-to-play {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .play-now {
+        margin: 0 20px;
+    }
+}
+
+.images-draw {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.full-rules {
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.most-friendly-award-xiaomi {
+    @media screen and (min-width: $break-mobile + 1) {
+        margin-left: 80px;
+    }
+}
+
+.draw-image-container {
+    img {
+        width: 300px;
+    }
+}
+
+@keyframes sunGlitter {
+    0% {
+        color: $lime;
+    }
+    20% {
+        color: $yellow;
+    }
+    40% {
+        color: $amber;
+    }
+    60% {
+        color: $orange;
+    }
+    80% {
+        color: $deep-orange;
+    }
+    100% {
+        color: $lime;
+    }
+}

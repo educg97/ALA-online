@@ -1,0 +1,112 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors';
+
+/* TABLES */
+.table{
+    tr td{
+        padding: 5px 10px;
+    }
+    th {
+        border-right: 1px solid;
+        padding: 10px;
+        vertical-align: middle;
+    }
+}
+button > table,
+.btn > table {
+    tr td{
+        padding: 5px 10px;
+    }
+}
+
+.comparative-table{
+    max-width: 100%;
+    margin: 30px auto 100px;
+    @media screen and (max-width: $break-tablet - 1) {
+        flex-direction: column;
+    }
+    @media screen and (min-width: $break-tablet) {
+        flex-direction: row;
+    }
+    .title{
+        text-align: center;
+        font-family: Gotham-Rounded-Bold;
+        padding: 5px 15px;
+    }
+    .row{
+        margin: 15px 0px;
+        display: flex;
+        flex-direction: row;
+        width: 98vw;
+        @media screen and (min-width: $break-tablet) {
+            justify-content: center;
+        }
+        .column{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 5px 15px;
+            br {
+                line-height: unset;
+            }
+            div{
+                flex-shrink: 0;
+            }
+            .cell{
+                width: 100%;
+                padding: 10px;
+                margin: 5px;
+                border-radius: 5px;
+                text-align: center;
+                height: 75px;
+                @each $color in $colors {
+                    &.#{map-get($color, color)}{
+                        background-color: lighten(map-get($color, normal), 40%);
+                    }
+                }
+            }
+            .header{
+                background: $blue;
+                color: white;
+                font-family: Gotham-Rounded-Bold;
+                margin-right: 5px;
+                padding: 10px;
+                border-radius: 5px;
+                width: 100%;
+                text-align: center;
+            }
+        }
+    }
+    .c-header {
+        @media screen and (max-width: $break-tablet - 1) {
+            position: absolute;
+            left: 0;
+        }
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 5px 15px;
+        .cell{
+            width: 100%;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            text-align: center;
+            height: 75px;
+            display: flex;
+            justify-content:center;
+            align-content:center;
+            flex-direction:column; 
+            @include box-shadow();
+            @each $color in $colors {
+                &.#{map-get($color, color)}{
+                    background-color: lighten(map-get($color, normal), 40%);
+                }
+            }
+        }
+        .header{
+            padding: 17px;
+        }
+    }
+}

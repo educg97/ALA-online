@@ -1,0 +1,69 @@
+/* MODAL */ 
+
+.modal-background {
+    position: fixed; /* Stay in place */
+    width: 100%; height: 100vh;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    top: 0; left: 0;
+    z-index: 1000; /* Sit on top */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: backgroundIn .3s ease-in-out forwards;
+}
+
+.modal { 
+    position: fixed;
+    top: 10%;
+    left: 0; right: 0;
+    width: 80%;
+    overflow: auto;
+    margin: auto;
+    background-color: white;
+    padding: 16px;
+    border-radius: 10px;
+    z-index: 1500;
+    animation: modalIn .3s ease-in-out forwards;
+    @media screen and (min-width: $break-mobile + 1){
+        max-height: 80vh;
+    }
+    .modal-header{
+        display: flex;
+        align-items: center;
+        margin-bottom: 8px;
+    }
+    .modal-title{
+        float: left;
+        font-size: $font-large;
+        // text-align: center;
+        width: 100%;
+    }
+    .modal-content {
+        overflow: auto;
+    }
+    .modal-close {
+        float: right;
+    }
+    
+}
+
+@keyframes backgroundIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes modalIn {
+    0% {
+        top: 12%;
+        opacity: 0;
+    }
+    100% {
+        top: 10%;
+        opacity: 1;
+    }
+}

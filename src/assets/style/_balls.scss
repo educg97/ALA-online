@@ -1,0 +1,204 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors';
+
+.pill-banner-container {
+    width: 200px; height: 120px;
+    border-radius: 1000px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media screen and (max-width: $break-mobile){
+        &.hidden-pill {
+            display: none;
+            opacity: 0;
+        }
+    }
+}
+
+.bubble-container {
+    width: 170px; height: 170px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 500px;
+    margin: 15px;
+    @include box-shadow(0px, 5px, 10px, rgba(0,0,0,0.1));
+    @media screen and (max-width: $break-mobile){
+        &.hidden-pill {
+            display: none;
+            opacity: 0;
+        }
+    }
+    .circle-container {
+        width: 150px; height: 150px;
+        margin: auto;
+        position: relative;
+        @each $color in $colors {
+            &.#{map-get($color, color)}{
+                color: map-get($color, normal);
+                .super-circle {
+                    circle {
+                        stroke: map-get($color, normal);
+                    }
+                }
+            }
+        }
+        .bubble-content {
+            position: absolute;
+            top: 6px;
+            left: 0; right: 0;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            .text-large {
+                text-align: center;
+                margin-bottom: 5px;
+            }
+            .bubble-text {
+                text-align: center;
+            }   
+        }
+        .super-circle {
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+            animation: spin 60s linear infinite;
+            circle {
+                fill: $red;
+                stroke-width: 12; /* control the dashes width */
+                stroke-dasharray: 3, 3; /* control the dashes spacing */
+                fill: none;
+                // stroke: orange;
+            }
+        }
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.balls-divider-container {
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .image-container {
+        width: 100%;
+        position: relative;
+        z-index: -1;
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 99.5%;
+            background-color: rgba($teal, .2);
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+    .banner-container {
+        margin-top: -130px;
+    }
+}
+
+
+// NEW BANNER
+.new-banner {
+    @media screen and (min-width: $break-tablet){
+        @include transform(skewY(10deg));
+        margin: 10px 40px;
+    }
+    .square-container {
+        height: 150px; width: 150px;
+        margin: auto;
+        position: relative;
+        animation: spin 30s linear infinite;
+        transform-origin: center center;
+        .square {
+            position: absolute;
+            top: 0; left: 0;
+            height: 150px; width: 150px;
+            border-radius: 45px;
+            @each $color in $colors {
+                &.#{map-get($color, color)}{
+                    @include background-horizontal(map-get($color, gradient), map-get($color, normal));
+                }
+            }
+            &.one {
+                background-color: $red;
+                z-index: 20;
+                animation: roundify 10s ease-in-out infinite;
+            }
+            &.two {
+               background-color: $blue;
+               z-index: 30; 
+               transform: rotate(45deg);
+               animation: roundify 10s ease-in-out infinite;
+            }
+            &.text {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                border-radius: 5000px;
+                box-sizing: border-box;
+                padding: 15px;
+                z-index: 50;
+                background-color: white;
+                animation: spinReverse 30s linear infinite;
+                transform-origin: center center;
+                span {
+                    @each $color in $colors {
+                        &.#{map-get($color, color)}{
+                            color: map-get($color, normal);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spinReverse {
+    0% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(0);
+    }
+}
+
+@keyframes roundify {
+    0% {
+        border-radius: 45px;
+    }
+    50% {
+        border-radius: 60px;
+    }
+    100% {
+        border-radius: 45px;
+    }
+}

@@ -1,0 +1,60 @@
+<div class = "countdown-time" *ngIf="showTest && !time_finished && question != -1">
+    <p class="count-bg-two radius">{{minutes}} : {{seconds}}</p>
+</div>
+
+<!-- Level Test -->
+<div class="level-test">
+    <div class="select-level card" *ngIf="!showTest">
+        <h3 class="text-center" *ngIf="!showTest">¿Qué nivel crees que tienes?</h3>
+        <button (click)="startTest( 'Bajo' )" class="btn blue">
+            Bajo
+        </button>
+
+        <button (click)="startTest( ' Medio' )" class="btn green">
+            Medio
+        </button>
+
+        <button (click)="startTest( ' Alto' )" class="btn red">
+            Alto
+        </button>
+    </div>
+
+    <div id="actual-test" class="actual-test" *ngIf="showTest && !time_finished && question != -1">
+        <div class="info-progress">
+            <div class="progress-bar-container">
+                <div id="progress-bar" class="progressBar"></div>
+            </div>
+
+            <div class="question-progress" *ngIf="testData && question != -1">
+                {{question}}/{{testData.length}}
+            </div>
+        </div>
+
+        <div [@navQuestion] class="question-test question1" *ngIf="testData">
+            <div class="card card-block" *ngIf="question != -1" [ngClass]="{red: answerType === 'error', green: answerType === 'success'}">
+                <h3>{{testData[question - 1]['Pregunta']}}</h3>
+                <ul class="options">
+                    <li [ngClass]="{selected: (answerType === 'selected' && position == 1), blue : (answerType === 'selected' && position == 1)}" (click)="selectOption(1)"><span>A</span>{{testData[question - 1]['A']}}</li>
+                    <li [ngClass]="{selected: (answerType === 'selected' && position == 2), blue : (answerType === 'selected' && position == 2)}" (click)="selectOption(2)"><span>B</span>{{testData[question - 1]['B']}}</li>
+                    <li [ngClass]="{selected: (answerType === 'selected' && position == 3), blue : (answerType === 'selected' && position == 3)}" (click)="selectOption(3)"><span>C</span>{{testData[question - 1]['C']}}</li>
+                    <li [ngClass]="{selected: (answerType === 'selected' && position == 4), blue : (answerType === 'selected' && position == 4)}" (click)="selectOption(4)"><span>D</span>{{testData[question - 1]['D']}}</li>
+                </ul>
+
+                <div class="nextBtnContainer" *ngIf="question != -1">
+                    <button class="btn light-green nextBtn" (click)="nextQuestion()" [disabled]="disableBtn">
+                        {{(question == testData.length) ? 'Finalizar' : 'Siguiente'}}<i class="fas fa-angle-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal end-modal" *ngIf = "time_finished || question == -1">
+        <p class = "end-header">Has finalizado la prueba </p>
+        <div class = "end-content">
+            <p>Su resultado ha quedado guardado, </p>
+            <p>¡Muchas gracias!</p>
+        </div>
+    </div>
+
+</div>

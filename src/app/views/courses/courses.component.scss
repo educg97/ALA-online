@@ -1,0 +1,765 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors'; 
+
+.description{
+    padding: 0 10%;
+}
+
+.courses {
+    .description {
+        margin-bottom: 50px;
+    }
+    
+} 
+
+.loader-container {
+    @include transform(skewY(10deg));
+    margin: 20px auto;
+}
+
+.filterBtn {
+    margin: auto;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include transform(translateY(-30px) skewY(10deg));
+    @media screen and (min-width: $break-mobile + 1){
+        width: 25%;
+        padding: 10px 0;
+    }
+}
+
+.filters{
+    margin: 30px 15px;
+    h2{
+        width: 100%;
+        text-align: center;
+    }
+    table{
+        margin: 10px auto;
+    }
+}
+
+.groupFilters {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 10px;
+    margin-top: -10px;
+    margin: 20px 0;
+    max-width: 400px;
+    margin: auto;
+    &.reskew {
+        @include transform(skewY(10deg));
+    }
+    &:not(.reskew) {
+        .groupFilter {
+            border: 1px solid $gray;
+            padding: 5px;
+            margin-top: 0;
+        }
+    }
+    .groupFilter {
+        width: 100px; height: 100px;
+        border-radius: 10px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        margin: 0 5px;
+        @media screen and (min-width: $break-mobile + 1) {
+            margin-top: 20px;
+            transition: all .3s ease-in-out;
+        }
+        &.active {
+            border: 1px solid $green;
+            i {
+                color: $green;
+            }
+            .filterIcon {
+                .circle {
+                    background-color: $green;
+                }
+            }
+            &.online {
+                .circle {
+                    border: 1px solid $green;
+                }
+            }
+            .filterText {
+                .filterName {
+                    color: $green;
+                }
+            }
+        }
+        cursor: pointer;
+        .filterIcon {
+            flex-basis: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .circleGroup {
+                display: flex;
+                align-items: baseline;
+                .circle {
+                    &.small {
+                        width: 15px; height: 15px;
+                    }
+                }
+            }
+            .circle {
+                width: 25px; height: 25px;
+                border-radius: 50%;
+                background-color: $gray;
+            }
+        }
+        .filterText {
+            text-align: center;
+            .filterName {
+                margin-bottom: 5px;
+            }
+        }
+        &.online {
+            .circle {
+                background-color: white!important;
+                border: 1px solid $gray;
+            }
+        }
+    }
+}
+
+.switch-container {
+    // margin-top: -40px;
+    @include transform(skewY(10deg));
+    padding-bottom: 50px;
+    .switch-title{
+        padding: 0 10%;
+        text-align: center;
+    }
+    p {
+        text-align: center;
+    }
+}
+
+.courses-container{
+    background: #F5F5F5;
+    @include transform(skewY(-10deg));
+    width: 100%;
+    @media screen and (min-width: $break-mobile + 1){
+        margin-top: 120px;
+    }
+    .not-courses-found {
+        @include transform(skewY(10deg));
+        padding: 20px;
+        p {
+            margin-bottom: 15px;
+        }
+    }
+    // Empieza la forma nueva de representar los cursos
+    .mastercourses-minimal-container {
+        @media screen and (min-width: $break-mobile + 1){
+            display: flex;
+            flex-wrap: wrap;
+            // align-items: center;
+            margin: auto; 
+            justify-content: center;
+            @include transform(skewY(10deg));
+        }
+    }
+    .minimal-mastercourse {
+        width: 94vw;
+        margin: 50px auto;
+        border-radius: 10px;
+        background-color: white; 
+        box-shadow: 0 10px 10px rgba(0, 0, 0, .1);
+        &.hidden {
+            margin: 0;
+        }
+        @media screen and (min-width: $break-mobile + 1){
+            width: 400px;
+            margin: 20px;
+        }
+        @media screen and (max-width: $break-mobile){
+            @include transform(skewY(10deg));
+        }
+        .half {
+            &.bottom {
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                .minimal-courses {
+                    margin: -25% auto 0;
+                    padding-bottom: 1px;
+                    width: 90%;
+                    box-sizing: border-box;
+                    background-color: white;
+                    border-radius: 10px;
+                    @media screen and (min-width: $break-mobile + 1){
+                        position: relative;
+                    }
+                    .minimal-header{
+                        padding: 25px 20px 10px;
+                        cursor: pointer;
+                        h2 {
+                            color: $ala-blue;
+                            text-align: center;
+                            margin-bottom: 15px;
+                        }
+                        p{
+                            line-height: 14pt;
+                        }
+                        .num-courses {
+                            color: $ala-blue;
+                            text-align: center;
+                            margin-top: 10px;
+                        }
+                    }
+                    ul {
+                        margin: 0;
+                        padding: 0 20px 20px;
+                        li {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            margin-bottom: 10px;
+                            position: relative;
+                            opacity: .3;
+                            cursor: pointer;
+                            &:not(.selected){
+                                pointer-events: none;
+                            }
+                            &.selected {
+                                opacity: 1;
+                            }
+                            &:not(:last-of-type){
+                                &:after {
+                                    content: '';
+                                    position: absolute;
+                                    bottom: -6px;
+                                    left: 0; right: 0;
+                                    margin: auto;
+                                    height: 1px;
+                                    width: 80%;
+                                    background-color: $light-gray;
+                                }
+                            }
+                            .see-more {
+                                width: 20px;
+                                text-align: right;
+                            }
+                            .hours-per-week {
+                                width: 80px;
+                                flex-shrink: 0;
+                                padding: 5px;
+                                margin-left: unset;
+                            }
+                            .titles {
+                                flex-basis: 70%;
+                                p{
+                                    line-height: unset;
+                                }
+                            }
+                            
+                            .minimal-course-price {
+                                text-align: right;
+                                font-weight: bold;
+                            }
+                        }
+                    }
+                }
+            }
+            &.top {
+                // background-image: url(../../../assets/images/home/home-mejorar.jpeg);
+                // background-size: cover;
+                // background-position: 50% 20%;
+                // background-repeat: no-repeat;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                height: 47vw;
+                overflow: hidden;
+                position: relative;
+                img {
+                    width: 100%;
+                    height: auto;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0; right: 0;
+                    margin: auto;
+                    z-index: -1;
+                    width: 100%;
+                    @media screen and (min-width: $break-mobile + 1){
+                        z-index: unset;
+                    }
+                }
+                @media screen and (min-width: $break-mobile + 1){
+                    height: 200px;
+                }
+            }
+        }
+    }
+    // Acaba la forma nueva de representar los cursos
+    .courses-list{
+        @media screen and (max-width: $break-mobile - 1) {
+            margin: 10px 0 30px;
+        }
+        @media screen and (min-width: $break-mobile) {
+            padding: 20px 10% 100px 10%;
+        }
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 40px;
+        @include transform(skewY(10deg));
+
+        .course-list-title{
+            width: 100%;
+            text-align: center;
+            margin: 0 15px;
+        }
+
+        .course {
+            width: 100%;
+            @media screen and (min-width: $break-desktop) {
+                width: 47%;
+            }
+            margin: 10px;
+            cursor: pointer;
+            a{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }
+            @each $color in $colors {
+                &.#{map-get($color, color)}{
+                    .course-title{
+                        color: map-get($color, normal);
+                    }
+                }
+            }
+
+            .course-hours{
+                margin: 4px 0px;
+                width: 50%;
+            }
+
+            .course-image{
+                $image_size: 130px;
+                border-radius: $image_size;
+                overflow: hidden;
+                margin: 5px;
+                width: $image_size;
+                min-width: $image_size;
+                max-width: $image_size;
+                height: $image_size;
+                min-height: $image_size;
+                max-height: $image_size;
+                position: relative;
+                &:after {
+                    // content: '';
+                    // top: 0; left: 0;
+                    // border-radius: 50%;
+                    // width: 100%; height: 100%;
+                    // position: absolute;
+                    // z-index: 100;
+                    // opacity: .5;
+                    // background-color: $indigo;
+                    // @each $color in $colors {
+                    //     &.#{map-get($color, color)}{
+                    //         background-color: rgba(map-get($color, normal), 0.5);
+                    //     }
+                    // }
+                }
+                img{
+                    position: relative;
+                    height: $image_size;
+                }
+
+                .course-week{
+                    text-align: center;
+                    color: white;
+                    height: 100px;
+                    // margin-top: -50px;
+                    padding-top: 0;
+                    position: absolute;
+                    top: 25%; left: 25%;
+                    z-index: 200;
+                    @each $color in $colors {
+                        &.#{map-get($color, color)}{
+                            // background-color: rgba(map-get($color, normal), 0.5);
+                        }
+                    }
+                }
+            }
+
+            .course-text{
+                padding: 10px 30px 10px 10px;
+                width: 100%;
+                .course-description{
+                    color: $blue-gray;
+                    margin: 5px 0;
+                }
+            }
+        }
+    }
+}
+
+.filter-courses-modal {
+    top: 2%;
+    max-height: 98vh;
+    @media screen and (min-width: $break-mobile + 1){
+        top: 30%;
+        width: 40%;
+    }
+    .modal-content {
+        overflow: auto;
+        max-height: 80vh;
+        .filter-question {
+            color: $ala-blue;
+            text-align: center;
+            font-weight: bold;
+        }
+        .filter-row {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            @media screen and (min-width: $break-mobile + 1){
+                flex-direction: row;
+            }
+            button {
+                &:selected {
+                    background-color: white;
+                }
+                &:active {
+                    background-color: white;
+                }
+                &:focus {
+                    background-color: white;
+                }
+            }
+        }
+        p {
+            text-align: center;
+        }
+        .submitFilters {
+            display: flex;
+            justify-content: center;
+        }
+    }
+}
+
+.floating-filters {
+    .bubble-filters {
+        position: fixed;
+        bottom: -60px; left: 10px;
+        width: 100px; height: 35px;
+        background-color: $light-green;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 105;
+        cursor: pointer;
+        &.onScreen {
+            bottom: 10px;
+        }
+    }
+    .pre-filters {
+        // position: fixed;
+        // bottom: 90px; left: 30px;
+        // display: flex;
+        // flex-direction: column;
+        // z-index: 70;
+        .bubble {
+            width: 80px;
+            height: 35px;
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 104;
+            position: fixed;
+            text-align: center;
+            left: 10px;
+            &.type {
+                bottom: -100px;
+                transition: bottom .2s .4s ease-in-out;
+                &.onScreen {
+                    bottom: 205px;
+                }
+            }
+            &.goal {
+                bottom: -160px;  
+                transition: bottom .2s .2s ease-in-out;
+                &.onScreen {
+                    bottom: 145px;
+                }                   
+            }
+            &.group {
+                bottom: -220px;
+                transition: bottom .2s  ease-in-out;
+                &.onScreen {
+                    bottom: 85px;
+                }
+            }
+            
+        }
+    }
+    .prefilterLine {
+        position: fixed;
+        left: 90px;
+        height: 50px;
+        z-index: 103;
+        border-radius: 100px;
+        transition: all .3s ease-in-out;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        @media screen and (min-width: $break-desktop){
+            padding-left: 20px; 
+        }
+        &.active {
+            width: 250px;
+            color: $blue-gray;
+            .bubble-filter {
+                margin: 8px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                align-items: baseline;
+                cursor: pointer;
+                i {
+                    align-self: center;
+                }
+                .groups-circles {
+                    display: flex;
+                    align-items: baseline;
+                    align-self: center;
+                }
+                &.active {
+                    color: $green;
+                    .circle {
+                        background-color: $green;
+                        &.ferencia {
+                            background-color: transparent;
+                            border: 1px solid $green;
+                        }
+                    }
+                }
+                .circle{
+                    width: 14px; height: 14px;
+                    border-radius: 50%;
+                    background-color: $blue-gray;
+                    &:not(.grouped){
+                        margin: auto;
+                    }
+                    &.small {
+                        width: 8px; height: 8px;
+                    }
+                    &.ferencia {
+                        width: 13px; height: 13px;
+                        background-color: transparent;
+                        border: 1px solid $blue-gray;
+                    }
+                }
+                &.group {
+                    &:first-child {
+                        margin: 6px;
+                    }
+                }
+            }
+        }
+        &.type {
+            bottom: 210px;
+            background-color: white;
+            @include box-shadow(0,10px,10px,rgba($blue,0.3));     
+        }
+        &.goal {
+            bottom: 150px;
+            background-color: white;
+            @include box-shadow(0,10px,10px,rgba($red,0.3));     
+        }
+        &.group {
+            bottom: 90px;
+            background-color: white;
+            @include box-shadow(0,10px,10px,rgba($deep-purple,0.3));     
+        }
+    }
+}
+
+.mastercourse-pills-container {
+    margin-top: 40px;
+    .mastercourses-pills {
+        h2, .short-description {
+            @include transform(skewY(10deg));
+            text-align: center;
+        }
+        .short-description {
+            margin-top: 10px;
+        }
+    }
+}
+
+.mastercourse-final-container {
+    @include transform(skewY(10deg));
+    width: 100%;
+    margin-bottom: 60px;
+    position: relative;
+    .final-mastercourse {
+        width: 70%;
+        @media screen and (min-width: $break-desktop) {
+            width: 80%;
+        }
+        margin: auto;
+        &.top {
+            height: 400px;
+            overflow: hidden;
+            border-radius: 20px 20px 0 0;
+            img {
+                width: 100%;
+                height: auto;
+                margin-top: -10%;
+            }
+        }
+        &.bottom {
+            .final-mastercourse-content {
+                width: 100%;
+                margin: -20px auto auto;
+                background-color: #fff;
+                position: relative;
+                box-sizing: border-box;
+                padding: 40px;
+                border-radius: 20px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            
+                .final-mastercourses-list {
+                    .courses-list {
+                        @include transform(skewY(0));
+                        padding: 20px 0 20px 0;
+                        margin: auto;
+                        width: 80%;
+                        .course {
+                            &:not(.selected) {
+                                pointer-events: none;
+                                .course-image {
+                                    filter: grayscale(1);
+                                    opacity: .4;
+                                }
+                                .course-text {
+                                    h3 {
+                                        color: $light-gray;
+                                        &.course-hours {
+                                            background-color: $light-gray;
+                                            color: white;
+                                            background-image: none;
+                                            @include box-shadow(0,10px,10px,rgba($gray,0.3));
+                                        }
+                                    }
+                                    .course-price {
+                                        .text-gray {
+                                            color: $light-gray;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.mastercourses-nav-list {
+    position: fixed;
+    top: 0; bottom: 0;
+    left: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    z-index: 101;
+    justify-content: center;
+    ul {
+        margin-left: 20px;
+        li {
+            overflow: hidden;
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background-color: white;
+            color: white;
+            margin: 10px; 
+            transition: all .3s ease-in-out;
+            border: 2px solid $green;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            // transform: translateX(-160px);
+            &.hidden {
+                display: none;
+            }
+            &:hover, &.active {
+                // transform: translateX(0);
+                padding: 10px;
+                margin: 10px 0;
+                background-color: white;
+                flex-grow: 0;   
+                color: unset;
+                border: none;
+                height: auto;
+                width: 150px;
+                // border-top-right-radius: 500px;
+                // border-bottom-right-radius: 500px; 
+                border-radius: 500px;
+            }
+            @each $color in $colors {
+                &.#{map-get($color, color)}{
+                    cursor: pointer;
+                    // color: map-get($color, normal);
+                    // border: 1px solid map-get($color, normal);
+                    @include box-shadow(0px, 5px, 10px, rgba(map-get($color, normal), 0.15));
+                    &:focus,
+                    &:hover{
+                        @include box-shadow(0px, 10px, 15px, rgba(map-get($color, normal), 0.20));
+                    }
+                    &:active{
+                        @include box-shadow(0px, 0px, 0px, white);
+                    }
+                }
+            }
+            p{
+                min-width: 150px;
+                text-align: center;
+            }
+        }
+    }
+}
+
+.megacourse-container {
+    background-color: $red;
+}
+
+.questions{
+    @media screen and (max-width: $break-mobile){
+        margin: 80px auto;
+    }
+    @media screen and (min-width: $break-mobile + 1){
+        margin: 150px auto;
+    }
+    padding: 0 10%;
+    h3{
+        margin: 20px 0;
+    }
+}
+
+.banner-courses {
+    @media screen and (min-width: $break-tablet + 1) {
+        width: 65%;
+        .background-img {
+            margin-top: 150px;
+        }
+    }
+    @media screen and (max-width: $break-tablet) {
+        .card {
+            border-radius: 0;
+        }
+    }
+}

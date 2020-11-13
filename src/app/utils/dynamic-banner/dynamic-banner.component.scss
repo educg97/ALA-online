@@ -1,0 +1,50 @@
+.dynamic-banner-content {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 10px;
+    max-width: 227px;
+    margin: 15px auto;
+}
+
+.dynamic-banner-button {
+    padding: 15px;
+    font-weight: bold;
+    font-size: medium;
+    color: #f93738;
+    box-shadow: -1px 3px 4px 0px #b9cfdc;
+}
+
+.dynamic-banner-button:hover {
+    color: red;
+    box-shadow: -1px 3px 4px 0px #61a3ca;
+}
+
+.dynamic-button1 {
+    position: relative;
+    animation: banner-move 10s infinite ease-in-out;
+}
+
+@keyframes banner-move {
+    0%   {left:0px; top:0px;}
+    25%  {left:0px; top:0px;}
+    30%  {left: 115px; top: 0px;}
+    50%  {left:115px; top:0px;}
+    75%  {left:115px; top:0px;}
+    80%  {left:0px; top:0px;}
+    100% {left:0px; top:0px;}
+}
+
+.dynamic-button2 {
+    position: relative;
+    animation: banner-move-2 10s infinite ease-in-out;
+}
+
+@keyframes banner-move-2 {
+    0%   {right:0px; top:0px;}
+    25%  {right:0px; top:0px;}
+    30%  {right: 115px; top: 0px;}
+    50%  {right:115px; top:0px;}
+    75%  {right:115px; top:0px;}
+    80%  {right:0px; top:0px;}
+    100% {right:0px; top:0px;}
+}

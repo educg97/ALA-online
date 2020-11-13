@@ -1,0 +1,49 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors';
+
+.game-container {
+    box-sizing: border-box;
+    padding: 20px;
+    @media screen and (max-width: $break-tablet) {
+        padding: 0;
+    }
+    .game-explanation {
+        margin-bottom: 20px;
+    }
+    .score {
+        margin: 20px 0;
+        font-size: $font-large;
+        &.low {
+            color: $red;
+        }
+        &.medium {
+            color: $deep-orange;
+        }
+        &.excellent {
+            color: $green;
+        }
+    }
+    .game {
+        &.letter {
+            p {
+                margin-bottom: 15px;
+                display: flex;
+                flex-wrap: wrap;
+                span {
+                    cursor: pointer;
+                    transition: color .3s ease-in-out;
+                    &:hover {
+                        color: $blue;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.modal-game-letter {
+    @media screen and (min-width: $break-mobile + 1) {
+        width: 350px;
+    }
+}

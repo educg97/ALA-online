@@ -1,0 +1,820 @@
+<div class="courses" id="top" name="top" fragment="top">
+	<div class="description page-width">
+		<h1 style = "margin-bottom: 0px;" class="text-ala-blue">Cursos Ingl&eacute;s Madrid & Online</h1>
+		<app-dynamic-banner></app-dynamic-banner>
+
+
+		<p><strong>Los mejores cursos de ingl&eacute;s en Madrid y Online</strong> para todos los niveles, disponibles en nuestro
+			centro en Madrid, en
+			empresa, a distancia y online para adultos, j&oacute;venes y empresas.</p>
+		<br>
+		<p>Elige tu modalidad entre <strong>m&aacute;s de 50 cursos de ingl&eacute;s</strong> y consigue tus objetivos.
+		</p>
+
+		<p class="space-text">
+			¿Estás valorando realizar un curso de inglés y necesitas saber cuáles son los mejores cursos de inglés en
+			Madrid o a distancia?
+		</p>
+
+		<p class="space-text">
+			En ese caso, has dado con el lugar adecuado. American Language Online ofrece <strong>los mejores cursos de
+				inglés
+				en Madrid y Online</strong> para todos los niveles del idioma, disponibles en nuestros centros en Madrid, y
+			también cursos
+			impartidos en empresas, a distancia y online para adultos, jóvenes y cursos de inglés profesional. Estamos
+			ubicados en el centro de Madrid, entre los <strong>barrios de Chamberí y Malasaña</strong>, muy bien
+			comunicados y fácilmente
+			accesibles en transporte público, cerca de las paradas de metro de San Bernardo, Quevedo, Bilbao y
+			Argüelles.
+		</p>
+
+		<p class="space-text">
+			<strong>Ofrecemos más de 50 cursos de inglés</strong> de alta calidad, a un precio económico y disponemos de
+			un amplio equipo
+			de asesores que te ayudarán a elegir el curso más apropiado para ti, de entre todo nuestro catálogo de
+			cursos, para que puedas alcanzar tus objetivos de aprendizaje.
+		</p>
+
+	</div>
+
+
+
+	<div class="banner banner-courses">
+		<div class="background" [ngClass]="{borderless:!windowSize.isMobile, card:!windowSize.isMobile}">
+			<div class="gradient blue">
+				<p class="bold">
+					¡Los mejores cursos de inglés!
+				</p>
+			</div>
+			<!-- <img src="assets/images/teachers/foto_profes012019.jpg" alt="Aprende inglés con el blog de American Language Online." class="background-img"> -->
+			<img src="assets/images/teachers/curso-ingles-online-profesores-nativos.jpg"
+				alt="Aprende inglés con el blog de American Language Online." class="background-img">
+		</div>
+		<div class="icon-banner bottom-left">
+			<img src="assets/images/logos/Your-best-learning-experience.png" alt='Los mejores cursos de inglés.'>
+		</div>
+	</div>
+
+	<div class="courses-container" id="courses" name="courses">
+		<button (click)="filterModal()" class="filterBtn btn green btn-centered">
+			<table>
+				<tr>
+					<td style="vertical-align:middle">
+						<i class="fas fa-search text-large"></i>
+					</td>
+					<td style="vertical-align:middle">
+						<div class="bold">Limitar b&uacute;squeda</div>
+						<div class="text-small">Filtrar</div>
+					</td>
+				</tr>
+			</table>
+		</button>
+
+		<div _ngcontent-c8="" class="presYLineas" style="transform: skewY(10deg);display: flex;justify-content: center;margin-right: 135px;">
+			<div _ngcontent-c8="" class="ng-tns-c8-3" style="width: 23px;margin-right: 10px;margin-left: 50px;">
+				<hr _ngcontent-c8="" class="ng-tns-c8-3" style="height: 1px;background-color: #3f48cc;">
+			</div>
+			<div _ngcontent-c8="" class="vl" style="border-left: 2px solid #3f48cc;height: 15px;padding-right: 135px;margin-top: 8px; position:absolute;"></div>
+			<div _ngcontent-c8="" class="presencial" style="color:red;"> 
+				Presencial 
+			</div>
+			<div _ngcontent-c8="" class="vl" style="border-left: 2px solid #3f48cc;height: 15px;margin-left: 70px;margin-top: 8px;position: absolute;"></div>
+			<div _ngcontent-c8="" class="ng-tns-c8-3" style="width: 23px;margin-left: 10px;margin-right: 46px;">
+				<hr _ngcontent-c8="" class="ng-tns-c8-3" style="height: 1px;background-color: #3f48cc;">
+			</div>
+		</div>
+		
+		<div _ngcontent-c8="" class="Distancia" style="transform: skewY(10deg); display: flex; color:red; justify-content: center;margin-left: 255px;padding-top: 15px;"> 
+			A Distancia 
+			<div _ngcontent-c8="" class="vl" style="border-left: 2px solid #3f48cc; height: 13px;margin-top: 17px;position: absolute;margin-left: 5px;"></div>
+		</div>
+		
+
+		<div class="groupFilters reskew" id="outside-filters">
+			<div class="groupFilter group" [ngClass]="{active: filters['courseFilters']['modalidad_grupo']}"
+				(click)="toggleFilter('modalidad_grupo')">
+				<div class="filterIcon">
+					<div class="circleGroup">
+						<div class="circle small"></div>
+						<div class="circle"></div>
+						<div class="circle small"></div>
+					</div>
+				</div>
+
+				<div class="filterText">
+					<div class="filterName bold">
+						Mini Grupo
+					</div>
+
+					<div class="filterCourses text-small">
+						{{groupCounter}} Cursos
+					</div>
+				</div>
+			</div>
+
+			<div class="groupFilter single" [ngClass]="{active: filters['courseFilters']['modalidad_individual']}"
+				(click)="toggleFilter('modalidad_individual')">
+				<div class="filterIcon">
+					<div class="circle"></div>
+				</div>
+
+				<div class="filterText">
+					<div class="filterName bold">
+						Individual
+					</div>
+
+					<div class="filterCourses text-small">
+						{{singleCounter}} Cursos
+					</div>
+				</div>
+			</div>
+
+			<div class="groupFilter online" [ngClass]="{active: filters['courseFilters']['modalidad_online']}"
+				(click)="toggleFilter('modalidad_online')">
+				<div class="filterIcon">
+					<div class="circle"></div>
+				</div>
+
+				<div class="filterText">
+					<div class="filterName bold">
+						Online
+					</div>
+
+					<div class="filterCourses text-small">
+						{{onlineCounter}} Cursos
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="loader-container" *ngIf="isLoading">
+			<app-loader></app-loader>
+		</div>
+
+		<div *ngIf="windowSize.isDesktop">
+			<div class="mastercourse-final-container" *ngFor="let mastercourse of mastercourses; let i = index">
+				<div class="visible-container" *ngIf="mastercourse['Visible'] &&
+				(
+					(mastercourse['Para Adultos'] && filters['courseFilters']['alumno_adulto']) ||
+					(mastercourse['Para Jovenes'] && filters['courseFilters']['alumno_joven']) ||
+					(mastercourse['Para Empresas'] && filters['courseFilters']['alumno_empresas']) ||
+					(!filters['courseFilters']['alumno_adulto'] && !filters['courseFilters']['alumno_joven'] && !filters['courseFilters']['alumno_empresas'])
+				) && (
+					(mastercourse['Para Mejorar'] && filters['courseFilters']['objetivo_ingles']) ||
+					(mastercourse['Para Certificar'] && filters['courseFilters']['objetivo_certificar']) ||
+					(mastercourse['Para Trabajo'] && filters['courseFilters']['objetivo_empresa']) ||
+					(!filters['courseFilters']['objetivo_ingles'] && !filters['courseFilters']['objetivo_certificar'] && !filters['courseFilters']['objetivo_empresa'])
+				)">
+					<div class="final-mastercourse top">
+						<img src="https://api.americanlanguage.es{{mastercourse['Foto'][0]['url']}}"
+							alt="{{mastercourse['Name']}}">
+					</div>
+					<div class="final-mastercourse bottom">
+						<span *ngIf = "mastercourse['Name']== 'Cursos de preparación TOEFL®'" id = "masterToefl"></span>
+						<div class="final-mastercourse-content">
+							<h2 class="text-center space-title2">{{mastercourse['Name']}}</h2>
+							<p class="short-description text-center bold"
+								[innerHTML]="mastercourse['Descripcion corta']"></p>
+
+							<div class="final-mastercourses-list">
+								<ul class="courses-list">
+									<li class="course {{course.Color}}" *ngFor="let course of mastercourse['courses']"
+										[ngClass]="{selected: (onlineFilter && course['Modalidad Online']) || (singleFilter && course['Modalidad Individual']) || (groupFilter && course['Modalidad Grupo']) || (!singleFilter && !onlineFilter && !groupFilter)}">
+
+										<a (click)="setCourse(course._id)"
+											routerLink="/curso-ingles-online{{course['URL']}}" fragment="top">
+											<div class="course-image {{course.Color}}">
+												<img src="https://api.americanlanguage.es{{course['Image']}}"
+													alt="{{course.title}}">
+											</div>
+											<div class="course-text">
+												<h3 class="course-title">{{course["Title"]}}</h3>
+												<h3 class="course-hours bold btn {{course.Color}}"
+													*ngIf="course['Horas Semanales']">
+													{{ isNaN(course['Horas Semanales']) ? course['Horas Semanales'] : course['Horas Semanales']+'h/week' }}
+												</h3>
+												<h3 class="course-hours bold btn {{course.Color}}"
+													*ngIf="!course['Horas Semanales']"><br>
+												</h3>
+												<div class="course-price">
+													<div class="text-gray">Ver más <i
+															class="far fa-arrow-alt-circle-right"></i></div>
+												</div>
+											</div>
+										</a>
+
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="mastercourses-minimal-container  page-width" *ngIf="!windowSize.isDesktop">
+			<div class="minimal-mastercourse" [ngClass]="{hidden: !mastercourse['Visible']}"
+				*ngFor="let mastercourse of mastercourses; let i = index" [@courseOnOff]>
+				<div class="visible-mobile-container" *ngIf="mastercourse['Visible'] &&
+					(
+						(mastercourse['Para Adultos'] && filters['courseFilters']['alumno_adulto']) ||
+						(mastercourse['Para Jovenes'] && filters['courseFilters']['alumno_joven']) ||
+						(mastercourse['Para Empresas'] && filters['courseFilters']['alumno_empresas']) ||
+						(!filters['courseFilters']['alumno_adulto'] && !filters['courseFilters']['alumno_joven'] && !filters['courseFilters']['alumno_empresas'])
+					) && (
+						(mastercourse['Para Mejorar'] && filters['courseFilters']['objetivo_ingles']) ||
+						(mastercourse['Para Certificar'] && filters['courseFilters']['objetivo_certificar']) ||
+						(mastercourse['Para Trabajo'] && filters['courseFilters']['objetivo_empresa']) ||
+						(!filters['courseFilters']['objetivo_ingles'] && !filters['courseFilters']['objetivo_certificar'] && !filters['courseFilters']['objetivo_empresa'])
+					)">
+					<div class="top half">
+						<a routerLink="/curso-ingles-online{{mastercourse['URL']}}">
+							<img src="https://api.americanlanguage.es{{mastercourse['Foto'][1]['url']}}"
+								alt="cursos de ingl&eacute;s en madrid">
+						</a>
+					</div>
+					<div class="bottom half">
+						<div class="minimal-courses">
+							<div class="minimal-header">
+								<a routerLink="/curso-ingles-online{{mastercourse['URL']}}">
+									<h2>{{mastercourse['Name']}}</h2>
+									<p [innerHTML]="mastercourse['Descripcion corta']"></p>
+									<!-- <p class="">
+										El Curso de Preparaci&oacute;n del Examen TOEFL® est&aacute; diseñado para alumnos que desean conseguir una alta puntuaci&oacute;n en el examen TOEFL® IBT (Test of English as a Foreign Language).
+									</p> -->
+									<p class="bold text-small num-courses" *ngIf="mastercourse">Hay
+										{{mastercourse['courses'].length}} cursos
+										en esta categor&iacute;a:</p>
+								</a>
+							</div>
+
+							<ul>
+								<li *ngFor="let course of mastercourse['courses']"
+									[ngClass]="{selected: (onlineFilter && course['Modalidad Online']) || (singleFilter && course['Modalidad Individual']) || (groupFilter && course['Modalidad Grupo']) || (!singleFilter && !onlineFilter && !groupFilter)}"
+									(click)="setCourse(course._id)" routerLink="/curso-ingles-online{{course['URL']}}"
+									fragment="top">
+									<button class="hours-per-week bold btn {{course['Color']}}"
+										[disabled]="!((onlineFilter && course['Modalidad Online']) || (singleFilter && course['Modalidad Individual']) || (groupFilter && course['Modalidad Grupo']) || (!singleFilter && !onlineFilter && !groupFilter))">
+										<a (click)="setCourse(course._id)"
+											routerLink="/curso-ingles-online{{course['URL']}}" fragment="top"
+											class="text-small">
+											{{ isNaN(course['Horas Semanales']) ? course['Horas Semanales'] : course['Horas Semanales']+'h/week' }}
+										</a>
+									</button>
+									<div class="titles">
+										<p class="text-small medium">{{course['Title']}}</p>
+									</div>
+									<div class="see-more">
+										<i class="fas fa-angle-right"
+											*ngIf="((onlineFilter && course['Modalidad Online']) || (singleFilter && course['Modalidad Individual']) || (groupFilter && course['Modalidad Grupo']) || (!singleFilter && !onlineFilter && !groupFilter))"></i>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="not-courses-found" *ngIf="visibleCounter == 0">
+			<p class="text-center">No hemos encontrado ning&uacute;n curso que se adapte a tus necesidades. Por favor,
+				contacta con nuestros asesores.</p>
+
+			<div class="btn red btn-centered">
+				<table>
+					<tr>
+						<td style="vertical-align:middle">
+							<i class="fas fa-envelope"></i>
+						</td>
+						<td style="vertical-align:middle">
+							<div class="text-small">Habla con</div>
+							<div class="bold">UN ASESOR</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+	</div>
+
+
+
+	<div class="banner">
+		<div class="background" [ngClass]="{borderless:!windowSize.isMobile, card:!windowSize.isMobile}">
+			<div class="gradient blue">
+				<p class="bold">+50 Cursos de Inglés</p>
+			</div>
+			<img class="background-img" src="assets/images/banners/50-cursos.jpg" alt="banner verano">
+		</div>
+		<div class="icon-banner bottom-left">
+			<img src="assets/images/logos/Your-best-learning-experience.png"
+				alt="Your best learning experience - Cursos de inglés de verano">
+		</div>
+	</div>
+
+	<div class="questions page-width">
+
+		<h4 class="space-title2">¿Cuál de todos nuestros cursos de inglés es el apropiado para ti?</h4>
+
+		<p class="space-text">
+			Si continúas desplazándote hacia abajo podrás consultar todo nuestro catálogo de cursos de inglés, con más
+			de 50 para elegir. Seguro que te estarás preguntando <strong>cómo elegir el curso de inglés más adecuado
+				para ti</strong>.
+		</p>
+
+		<p class="space-text">
+			Estos son los principales criterios que tienes que tener en cuenta a la hora de elegir el curso de inglés
+			más apropiado para ti:
+		</p>
+
+		<h5 class="space-text">Objetivo que deseas alcanzar</h5>
+
+		<p class="space-text">
+			La mayoría de alumnos suelen tener el objetivo genérico de <strong>aprender y mejorar su nivel de
+				inglés</strong> para lograr
+			comunicarse mejor. Otros alumnos suelen tener <strong>objetivos más específicos</strong> tales como
+			prepararse para un
+			examen, desarrollar habilidades especializadas en inglés profesional y de negocios, e incluso necesidades
+			mucho más personalizadas como podría ser mejorar la pronunciación o su escritura.
+		</p>
+
+		<h5 class="space-text">Modalidad de la formación</h5>
+
+		<p class="space-text">
+			Desde el equipo de American Language Online te recomendamos que trates de adaptarte a la formación
+			presencial, ya que es la más efectiva al <strong>permitirte realizar una inmersión completa con el
+				idioma</strong> estando en
+			contacto con nuestro equipo de profesores nativos. Si por motivos profesionales o personales te es imposible
+			asistir a cursos presenciales, puedes elegir entre nuestros cursos blended (modalidad mixta que combina
+			clases presenciales y a distancia) o nuestros cursos e-learning impartidos completamente a distancia.
+		</p>
+
+		<h5 class="space-text">Frecuencia de las clases y dedicación</h5>
+
+		<p class="space-text">
+			Es necesario que valores cuántas horas por semana de tu tiempo vas a poder dedicar al aprendizaje del
+			inglés, teniendo en cuenta el resto de obligaciones profesionales, personales y tiempo de ocio. Dentro de
+			todo el tiempo que vas a disponer para el aprendizaje del inglés, no solo tienes que tener en cuenta el
+			<strong>tiempo de duración de la clase</strong> sino también el <strong>tiempo dedicado al estudio y
+				realización de tareas en casa</strong>,
+			que suele representar aproximadamente un 50% del tiempo de duración de la clases.
+		</p>
+
+		<p class="space-text">
+			Disponemos de cursos intensivos diarios para personas con mayor disponibilidad y de cursos semi-intensivos
+			para aquellas personas que solo puedan asistir a clase dos o tres días por semana. Incluso disponemos de
+			cursos para personas que solo pueden asistir a clase un día por semana (Curso One-session) o para personas
+			que solo pueden asistir a clase durante su pausa para comer a mediodía (Curso Lunchtime).
+		</p>
+
+		<h5 class="space-text">Duración del curso</h5>
+
+		<p class="space-text">
+			Otro aspecto que has de tener en cuenta es durante cuánto tiempo vas a querer estar realizando tu curso de
+			inglés o, en el caso de que tengas un objetivo muy específico, cuál es la fecha límite en la que tienes que
+			haber alcanzado dicho objetivo.
+		</p>
+
+		<p class="space-text">
+			Para la mayoría de alumnos cuyo objetivo es <strong>aprender y mejorar su nivel de inglés</strong>,
+			recomendamos que realicen
+			cursos de larga duración, tales como nuestro servicio de formación continua, ya que el <strong>aprendizaje
+				de un
+				idioma es un proceso progresivo, continuo y gradual y nunca debería abandonarse</strong>. Si tienes un
+			objetivo muy específico con una fecha concreta para alcanzarlo, deberías elegir un
+			curso o combinación de cursos de inglés con una duración que coincidan con el plazo del que dispones y
+			también con una carga lectiva semanal que te permita alcanzar tu objetivo en el plazo marcado.
+		</p>
+
+		<p class="space-text">
+			Tras la realización de la prueba de nivel, nuestro equipo de asesores puede ayudarte a elegir el curso que
+			más se adapte a estas necesidades.
+		</p>
+
+		<h5 class="space-text">Precio del curso</h5>
+
+		<p class="space-text">
+			A la hora de inscribirte en un curso de inglés, hay que tener en cuenta cuánto dinero quieres o te puedes
+			permitir invertir para tal fin. <strong>Todos nuestros cursos de inglés son bastante económicos</strong>,
+			pero si dispones de
+			un límite económico en concreto, siempre puedes contar con nuestros asesores para focalizar tu búsqueda en
+			los cursos de inglés que más se ajusten a tus necesidades en nuestro catálogo.
+		</p>
+
+		<h5 class="space-text">Nivel de inglés</h5>
+
+		<p class="space-text">
+			Por último, también has de ser consciente de tu nivel actual de inglés para elegir el curso de inglés que
+			más se adapte a ti, ya que muchos alumnos no tienen en cuenta este aspecto. Si desconoces tu nivel actual de
+			inglés puedes realizar un <a routerLink="/test-niveles-ingles">test básico online de nivel</a> o puedes
+			pasarte por nuestro
+			centro para que uno de nuestros asesores del departamento de Dirección de Estudios te realicen una prueba de
+			nivel de inglés más completa.
+		</p>
+
+		<p class="space-text">
+			A los alumnos con niveles muy básicos, e incluso intermedios, en el idioma se les recomienda realizar cursos
+			presenciales de inglés general ya que necesitan <strong>aprender toda la base del idioma y adquirir algo de
+				fluidez</strong>
+			antes de poder pasar a realizar cursos más especializados. Para alumnos con niveles más funcionales y
+			avanzados tienen la opción de continuar desarrollando sus habilidades generales y mejorando su nivel de
+			inglés, o pasar a realizar cursos más especializados en función del objetivo que posean.
+		</p>
+
+	</div>
+
+	<div class="banner" id = "bannerAsesoramiento">
+		<div class="background" [ngClass]="{borderless:!windowSize.isMobile, card:!windowSize.isMobile}">
+			<div class="gradient green">
+				<p class="bold">Asesoramiento Personalizado</p>
+			</div>
+			<img class="background-img offset-100" src="assets/images/banners/mejor-academia-ingles-madrid.jpg"
+				alt="banner verano">
+		</div>
+		<div class="icon-banner bottom-left">
+			<img src="assets/images/logos/Your-best-learning-experience.png"
+				alt="Your best learning experience - Cursos de inglés de verano">
+		</div>
+	</div>
+
+	<div class="questions page-width">
+
+		<h4 class="space-text">¿Quieres recibir un asesoramiento personalizado para elegir el mejor curso de inglés para
+			ti?</h4>
+
+		<p class="space-text">
+			Te invitamos a que te pases por nuestro <a routerLink="/academias-de-ingles-madrid">centro en Chamberí
+				(Plaza Conde Valle Suchil, 17)</a> ya que disponemos de un amplio equipo de asesores especializados muy
+			amables y expertos en el
+			aprendizaje de inglés que van a estar encantados de darte orientación personalizada para ayudarte a definir
+			tus objetivos y elegir el curso de inglés más adecuado para ti.
+		</p>
+
+		<p class="space-text">
+			Como parte de este coaching, comenzaremos con una <strong>prueba de nivel de inglés y análisis de
+				necesidades</strong>. Esta
+			prueba de nivel consta de dos partes: una prueba oral para evaluar tu nivel actual de fluidez en el idioma y
+			un test escrito para evaluar tu nivel de conocimientos en el idioma. Nuestra prueba de nivel de inglés se
+			realiza por personas nativas o bilingües integrantes de nuestro departamento de Dirección de Estudios.
+		</p>
+
+		<p class="space-text">
+			Una vez realizada la prueba de nivel, conoceremos tus necesidades formativas y podremos darte una
+			<strong>orientación más personalizada</strong>. Asimismo, con el objetivo de conocerte mejor y, por tanto,
+			asesorarte mejor,
+			nuestros coaches te realizarán una serie de preguntas para conocer más en profundidad tus necesidades,
+			motivaciones, objetivos, metas y situaciones personales y profesionales particulares para poder darte el
+			mejor asesoramiento y ayudarte a <strong>elegir mejor el curso de inglés para ti</strong>.
+		</p>
+
+		<h4 class="space-text">¿Cómo son nuestros cursos de inglés? ¿Por qué son los mejores cursos de inglés en Madrid?
+		</h4>
+
+		<h5 class="space-text">Trayectoria y experiencia</h5>
+
+		<p class="space-text">
+			American Language Academy tiene una trayectoria y experiencia de más 50 años en la enseñanza de inglés para
+			adultos profesionales y empresas y tenemos un amplio reconocimiento en el sector de enseñanza de inglés en
+			Madrid.
+		</p>
+
+		<h5 class="space-text">Metodología</h5>
+
+		<p class="space-text">
+			Nuestros cursos de inglés siguen una metodología americana muy innovadora centrada en ayudarte a
+			<strong>desarrollar
+				principalmente tus habilidades orales y comunicativas en el idioma</strong>. Se trata de clases
+			eminentemente
+			prácticas y participativas donde vas a poder exponerte al máximo al inglés y dónde vas a tener muchas
+			oportunidades de practicar el idioma. Además, los profesores suelen seleccionar temas muy interesantes y
+			actividades muy dinámicas, interactivas y dinámicas para que aprendas inglés de una forma divertida y
+			distendida.
+		</p>
+
+		<p class="space-text">
+			Además, nuestros cursos de inglés se imparten en grupos muy reducidos, como máximo 7 estudiantes, para que
+			puedas optimizar al máximo el tiempo de conversación en inglés y participación en la clase.
+		</p>
+
+		<h5 class="space-text">Profesores</h5>
+
+		<p class="space-text">
+			Nuestros cursos de inglés son impartidos por excelentes <strong>profesores nativos, con una amplia
+				experiencia en la
+				enseñanza de inglés</strong> y muy cercanos e involucrados en tu aprendizaje. Todos nuestros profesores
+			recibido
+			formación universitaria relacionada con la educación, la enseñanza y el inglés y, además, son seleccionados
+			a través de rigurosos y exigentes procesos de selección para que puedas recibir clases eficaces y de alta
+			calidad. Además, también son seleccionados teniendo en cuenta su personalidad y características personales
+			para que sean amables y cercanos con sus alumnos, así como divertidos, creativos y dinámicos.
+		</p>
+
+		<h5 class="space-text">Valoración y opiniones sobre nuestros cursos de inglés</h5>
+
+		<p class="space-text">
+			Todos nuestros cursos de inglés reciben una valoración muy alta por parte de nuestros alumnos y empresas
+			cliente (con una media de 9/10), por lo que te garantizamos que, si quieres obtener altos resultados en tu
+			aprendizaje, <strong>nuestros cursos de inglés son de los mejores que puedes encontrar en Madrid</strong>.
+			Además, nuestros
+			cursos tienen un precio bastante barato, ofreciendo una de las mejores relaciones calidad-precio del
+			mercado.
+		</p>
+
+	</div>
+
+	<div class="banner">
+		<div class="background" [ngClass]="{borderless:!windowSize.isMobile, card:!windowSize.isMobile}">
+			<div class="gradient amber">
+				<p class="bold">Actividades en inglés</p>
+			</div>
+			<img class="background-img" src="assets/images/banners/activities.jpg" alt="banner verano">
+		</div>
+		<div class="icon-banner bottom-left">
+			<img src="assets/images/logos/Your-best-learning-experience.png"
+				alt="Your best learning experience - Cursos de inglés de verano">
+		</div>
+	</div>
+
+	<div class="questions page-width">
+
+		<h4 class="space-text">¿Qué servicios adicionales y complementarios a tu curso de inglés podemos ofrecerte?</h4>
+
+		<p class="space-text">
+			En American Language Online ofrecemos una gran cantidad de servicios adicionales a tu curso de inglés para
+			que puedas optimizar tu aprendizaje al máximo.
+		</p>
+
+		<h5 class="space-text">Plataforma online y Open English</h5>
+
+		<p class="space-text">
+			Como complemento a tus clases de inglés, tendrás acceso a nuestra exclusiva plataforma online AuLA Virtual
+			alaprograms© y a nuestra aplicación para smartphones MyALA App, a través de la cual podrás comunicarte con
+			tu profesor y compañeros fuera de clase, tener <strong>acceso a recursos y materiales adicionales, e incluso
+				realizar actividades y ejercicios complementarios</strong> para continuar practicando el inglés desde
+			casa.
+		</p>
+
+		<p class="space-text">
+			Asimismo, los alumnos bajo el servicio de formación continua, tendrán acceso en exclusiva a nuestro curso
+			e-learning de aprendizaje <a routerLink="/curso-ingles-online/curso-ingles-online#top">Open English by
+				ALA</a>,
+			con actividades y ejercicios online interactivos y video-lecciones para que puedas seguir practicando el
+			inglés desde tu casa, en el metro, en el tren…
+		</p>
+
+		<h5 class="space-text">Extra social activities</h5>
+
+		<p class="space-text">American Language Online ofrece a todos sus alumnos una amplia variedad de <strong>clases
+				gratis
+				extras de conversación</strong> todas las semanas así como actividades sociales como nuestro popular
+			tapas night
+			mensual. Todas estas actividades sociales son gratis y te permitirán continuar practicando el inglés en un
+			ambiente social mucho más distendido, a la vez que podrás conocer a nueva gente y a todos nuestros
+			profesores.</p>
+
+		<h5 class="space-text">Préstamo de libros y películas</h5>
+
+		<p class="space-text">
+			Nuestro centro ofrece un <strong>servicio gratuito de préstamo de libros en inglés</strong>, categorizados
+			por niveles, y de
+			películas en versión original, para que puedas continuar repasando y estudiando el inglés en tu tiempo libre
+			leyendo o viendo tus libros y películas favoritas.
+		</p>
+
+		<h5 class="space-text">Coaching personalizado</h5>
+
+		<p class="space-text">
+			Siempre que lo necesites, podrás solicitar gratuitamente una sesión de coaching o de asesoramiento con uno
+			de nuestros asesores o coaches especializados de nuestro departamento de dirección de estudios, tanto para
+			resolver dudas relacionadas con el idioma inglés como dudas más relacionadas con tu proceso de aprendizaje.
+		</p>
+
+		<h5 class="space-text">Recuperaciones</h5>
+
+		<p class="space-text">
+			Para darle una mayor flexibilidad a tu curso de inglés, ofrecemos la posibilidad de recuperar un 15% de las
+			clases que no puedas asistir, por motivos laborales o de enfermedad, siempre y cuando avises con al menos 24
+			horas de antelación.
+		</p>
+
+		<h4 class="space-text">¿Ofrecemos cursos de inglés bonificados y cursos de inglés para empresas?</h4>
+
+		<p class="space-text">
+			American Language Online también ofrece cursos de inglés para empresas. Si estás interesado en recibir
+			clases en tu oficina o en implementar un programa de formación de inglés para tus empleados en tus oficinas,
+			ponte en contacto con uno de nuestros asesores especializados de <a
+				routerLink="/curso-ingles-online/para-empresas">cursos de inglés en empresas.</a>
+		</p>
+
+		<p class="space-text">
+			Además, todos nuestros cursos de inglés, tanto los impartidos en nuestro centro como los impartidos en
+			empresas, se pueden bonificar a través de <a routerLink="/curso-ingles-online/para-empresas">Fundae
+				(antigua Fundación Tripartita</a>) para obtener un precio más barato. Incluso, si no quieres preocuparte
+			en realizar
+			todos estos trámites, ofrecemos un servicio especializado para empresas y particulares para gestionar y
+			tramitar completamente tus bonificaciones de Fundae. Recuerda que para poder obtener estas bonificaciones
+			tienes que estar trabajando en activo y cumplir con al menos un 75% de asistencia en tu curso.
+		</p>
+
+
+	</div>
+
+	<div class="modal-background" *ngIf='modal.modals === "filterCourses"' (click)="closeFilterModal()"></div>
+	<div class="modal filter-courses-modal" *ngIf='modal.modals === "filterCourses"'>
+		<div class="modal-header">
+			<h2 class="modal-title">Filtrar cursos</h2>
+			<div class="modal-close btn red" (click)="closeFilterModal()"><i class="fas fa-times"></i></div>
+		</div>
+
+		<div class="modal-content">
+			<div class="filter-question">¿Qu&eacute; tipo de curso est&aacute;s buscando?</div>
+
+			<div class="groupFilters">
+				<div class="groupFilter group" [ngClass]="{active: filters['courseFilters']['alumno_adulto']}"
+					(click)="toggleFilter('alumno_adulto')">
+					<div class="filterIcon">
+						<i class="fas fa-male fa-2x"></i>
+					</div>
+
+					<div class="filterText">
+						<div class="filterName bold">
+							Adultos
+						</div>
+					</div>
+				</div>
+
+				<div class="groupFilter single" [ngClass]="{active: filters['courseFilters']['alumno_joven']}"
+					(click)="toggleFilter('alumno_joven')">
+					<div class="filterIcon">
+						<i class="fas fa-child fa-2x"></i>
+					</div>
+
+					<div class="filterText">
+						<div class="filterName bold">
+							J&oacute;venes (10-17 años)
+						</div>
+					</div>
+				</div>
+
+				<div class="groupFilter online" [ngClass]="{active: filters['courseFilters']['alumno_empresas']}"
+					(click)="toggleFilter('alumno_empresas')">
+					<div class="filterIcon">
+						<i class="fas fa-building fa-2x"></i>
+					</div>
+
+					<div class="filterText">
+						<div class="filterName bold">
+							Empresas
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="filter-question">¿Cu&aacute;l es tu objetivo?</div>
+
+			<div class="groupFilters">
+				<div class="groupFilter group" [ngClass]="{active: filters['courseFilters']['objetivo_ingles']}"
+					(click)="toggleFilter('objetivo_ingles')">
+					<div class="filterIcon">
+						<i class="fas fa-2x fa-arrow-alt-circle-up"></i>
+					</div>
+
+					<div class="filterText">
+						<div class="filterName bold">
+							Mejorar nivel
+						</div>
+					</div>
+				</div>
+
+				<div class="groupFilter single" [ngClass]="{active: filters['courseFilters']['objetivo_certificar']}"
+					(click)="toggleFilter('objetivo_certificar')">
+					<div class="filterIcon">
+						<i class="fas fa-2x fa-certificate"></i>
+					</div>
+
+					<div class="filterText">
+						<div class="filterName bold">
+							Certificar nivel
+						</div>
+					</div>
+				</div>
+
+				<div class="groupFilter online" [ngClass]="{active: filters['courseFilters']['objetivo_empresa']}"
+					(click)="toggleFilter('objetivo_empresa')">
+					<div class="filterIcon">
+						<i class="fas fa-2x fa-user-tie"></i>
+					</div>
+
+					<div class="filterText">
+						<div class="filterName bold">
+							Ingl&eacute;s para el trabajo
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="submitFilters">
+				<button (click)="closeFilterModal()" class="go-filtered-courses btn light-green">
+					Ver cursos
+				</button>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="floating-filters" id="floating-filters">
+		<div class="bubble-filters btn green" [ngClass]="{onScreen: showBubble}" (click)="togglePreFilters()">
+			<i class="fas fa-search text-large"></i> Filtrar selecci&oacute;n
+		</div>
+		<ul class="pre-filters">
+			<li [ngClass]="{onScreen: preFiltersOn && showBubble}" (click)="showHorizLine('type')"
+				class="bubble type btn blue">
+				¿Para qui&eacute;n?
+			</li>
+			<div *ngIf="typePrefilter && showBubble && preFiltersOn" @expansionLine [ngClass]="{active: typePrefilter}"
+				class="prefilterLine type">
+				<div title="Adultos" class="bubble-filter"
+					[ngClass]="{active: filters['courseFilters']['alumno_adulto']}"
+					(click)="toggleFilter('alumno_adulto')">
+					<i class="fas fa-male"></i>
+					<p class="text-small">Adultos</p>
+				</div>
+				<div title="J&oacute;venes" class="bubble-filter"
+					[ngClass]="{active: filters['courseFilters']['alumno_joven']}"
+					(click)="toggleFilter('alumno_joven')">
+					<i class="fas fa-child"></i>
+					<p class="text-small">J&oacute;venes</p>
+				</div>
+				<div title="Empresas" class="bubble-filter"
+					[ngClass]="{active: filters['courseFilters']['alumno_empresas']}"
+					(click)="toggleFilter('alumno_empresas')">
+					<i class="fas fa-building"></i>
+					<p class="text-small">Empresas</p>
+				</div>
+			</div>
+			<li [ngClass]="{onScreen: preFiltersOn && showBubble}" (click)="showHorizLine('goal')"
+				class="bubble goal btn red">
+				Objetivo
+			</li>
+			<div *ngIf="goalPrefilter && showBubble && preFiltersOn" @expansionLine [ngClass]="{active: goalPrefilter}"
+				class="prefilterLine goal">
+				<div class="bubble-filter" [ngClass]="{active: filters['courseFilters']['objetivo_ingles']}"
+					(click)="toggleFilter('objetivo_ingles')">
+					<i class="fas fa-arrow-alt-circle-up"></i>
+					<p class="text-small">Mejorar</p>
+				</div>
+				<div class="bubble-filter" [ngClass]="{active: filters['courseFilters']['objetivo_certificar']}"
+					(click)="toggleFilter('objetivo_certificar')">
+					<i class="fas fa-certificate"></i>
+					<p class="text-small">Certificar</p>
+				</div>
+				<div class="bubble-filter" [ngClass]="{active: filters['courseFilters']['objetivo_empresa']}"
+					(click)="toggleFilter('objetivo_empresa')">
+					<i class="fas fa-user-tie"></i>
+					<p class="text-small">Trabajo</p>
+				</div>
+			</div>
+			<li [ngClass]="{onScreen: preFiltersOn && showBubble}" (click)="showHorizLine('group')"
+				class="bubble group btn deep-purple">
+				Modalidad
+			</li>
+			<div *ngIf="groupPrefilter && showBubble && preFiltersOn" @expansionLine
+				[ngClass]="{active: groupPrefilter}" class="prefilterLine group">
+				<div class="bubble-filter group" [ngClass]="{active: filters['courseFilters']['modalidad_grupo']}"
+					(click)="toggleFilter('modalidad_grupo')">
+					<div class="groups-circles">
+						<div class="circle small grouped"></div>
+						<div class="circle grouped"></div>
+						<div class="circle small grouped"></div>
+					</div>
+					<p class="text-small">Mini Grupos</p>
+				</div>
+				<div class="bubble-filter" [ngClass]="{active: filters['courseFilters']['modalidad_individual']}"
+					(click)="toggleFilter('modalidad_individual')">
+					<div class="circle"></div>
+					<p class="text-small">Individual</p>
+				</div>
+				<div class="bubble-filter" [ngClass]="{active: filters['courseFilters']['modalidad_online']}"
+					(click)="toggleFilter('modalidad_online')">
+					<div class="circle ferencia"></div>
+					<p class="text-small">Online</p>
+				</div>
+			</div>
+		</ul>
+	</div>
+
+
+
+</div>
+
+<div class="mastercourses-nav-list" *ngIf="windowSize.isDesktop">
+	<ul>
+		<li class="blue" [ngClass]="{
+			active: (currentScroll >= mastercoursesOffset[i] && mastercoursesOffset[i+1] > currentScroll) || currentScroll >= mastercoursesOffset[mastercoursesOffset.length-1] && i == mastercoursesOffset.length - 1,
+			hidden: !mastercourse['Visible']
+		}" *ngFor="let mastercourse of mastercourses; let i = index"
+			(click)="modernest[i].scrollIntoView({behavior: 'smooth', block: 'center'})">
+			<p>{{mastercourse['Name']}}</p>
+		</li>
+	</ul>
+</div>

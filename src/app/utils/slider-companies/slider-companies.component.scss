@@ -1,0 +1,472 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors';
+
+$number-of-companies: 15;
+$durationMobile: $number-of-companies*8s; 
+$durationDesktop: $number-of-companies*6s; 
+
+.skew-block {
+    margin: 110px auto;
+    @media screen and (max-width: $break-mobile) {
+        margin: 70px auto;
+    }
+}
+
+.skew-block-container {
+    overflow: hidden;
+    margin:  0;
+    .companies-container {
+        width: $break-hd;
+        position: relative;
+        height: 25vh;
+        // padding: 0 16px;
+        padding: 10px;
+        overflow: hidden;
+        opacity: 0;
+        animation: fadeIn 5s ease-in-out 1 forwards;
+        @media screen and (min-width: $break-mobile + 1){
+            height: 500px;
+            padding: 0 16px;
+            // margin: 60px 0;
+        }
+        .companies-slider {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            .company-logo {
+                border-radius: 50%;
+                overflow: hidden;
+                background-color: white;
+                position: absolute;
+                left: 120vw;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                @each $color in $colors {
+                    &.#{map-get($color, color)}{
+                        @include box-shadow(0,10px,10px,rgba(map-get($color, normal),0.15));
+                    }
+                }
+                // EMPRESAS
+                &.promotion-star {
+                    top: 15%;
+                    position: relative;
+                    z-index: 1000;
+                    animation: averageMoving $durationMobile linear infinite,  bounce-small 8s  ease-in-out infinite;
+                    @media screen and (min-width: $break-mobile + 1){
+                        animation: averageMovingDesktop $durationMobile linear infinite,  bounce-small 8s  ease-in-out infinite;
+                    }
+                }
+                &.acciona {
+                    top: 15%;
+                    animation: averageMoving $durationMobile linear infinite,  bounce-small 8s  ease-in-out infinite;
+                    @media screen and (min-width: $break-mobile + 1){
+                        animation: averageMovingDesktop $durationMobile linear infinite,  bounce-small 8s  ease-in-out infinite;
+                    }
+                }
+                &.bbva {
+                    top: 35%;
+                    animation: averageMoving $durationMobile 6s linear infinite,  bounce-small 8s 1s ease-in-out infinite;
+                    @media screen and (min-width: $break-mobile + 1){
+                        animation: averageMovingDesktop $durationMobile 6s linear infinite,  bounce-small 8s 1s  ease-in-out infinite;
+                        top: 45%;
+                    }
+                }
+                &.tecnicas-reunidas {
+                    top: 18%;
+                    animation: averageMoving $durationMobile 12s linear infinite,  bounce-small 8s 2s ease-in-out infinite;
+                    @media screen and (min-width: $break-mobile + 1){
+                        animation: averageMovingDesktop $durationMobile 12s linear infinite,  bounce-small 8s 2s  ease-in-out infinite;
+                    }
+                }
+                &.general-electric {
+                    top: 23%;
+                    animation: averageMoving $durationMobile 18s linear infinite,  bounce-small 8s  ease-in-out infinite;
+                    @media screen and (min-width: $break-mobile + 1){
+                        animation: averageMovingDesktop $durationMobile 18s linear infinite,  bounce-small 8s  ease-in-out infinite;
+                        top: 53%;
+                    }
+                }
+                &.boeing {
+                    top: 7%;
+                    animation: averageMoving $durationMobile 24s linear infinite,  bounce-small 8s 1s ease-in-out infinite;
+                    @media screen and (min-width: $break-mobile + 1){
+                        animation: averageMovingDesktop $durationMobile 24s linear infinite,  bounce-small 8s 1s  ease-in-out infinite;
+                    }
+                }
+                &.usa-embassy {
+                    top: 30%;
+                    animation: averageMoving $durationMobile 30s linear infinite,  bounce-small 8s 2s ease-in-out infinite;
+                    @media screen and (min-width: $break-mobile + 1){
+                        animation: averageMovingDesktop $durationMobile 30s linear infinite,  bounce-small 8s 2s ease-in-out infinite;
+                    }
+                }
+                &.saudi-aramco {
+                    top: 8%;
+                    animation: averageMoving $durationMobile 36s linear infinite,  bounce-small 8s 3s ease-in-out infinite;
+                    @media screen and (min-width: $break-mobile + 1){
+                        animation: averageMovingDesktop $durationMobile 36s linear infinite,  bounce-small 8s 3s ease-in-out infinite;
+                        top: 4%;
+                    }
+                }
+                &.texaco {
+                    top: 32%;
+                    animation: averageMoving $durationMobile 42s linear infinite,  bounce-small 8s  ease-in-out infinite;
+                    @media screen and (min-width: $break-mobile + 1){
+                        animation: averageMovingDesktop $durationMobile 42s linear infinite,  bounce-small 8s  ease-in-out infinite;
+                        top: 40%;
+                    }
+                }
+                &.banco-de-espana {
+                    top: 36%;
+                    animation: averageMoving $durationMobile 48s linear infinite,  bounce-small 8s 1s ease-in-out infinite;
+                    @media screen and (min-width: $break-mobile + 1){
+                        animation: averageMovingDesktop $durationMobile 48s linear infinite,  bounce-small 8s 1s ease-in-out infinite;
+                        top: 63%;
+                    }
+                }
+                &.eae {
+                    top: 10%;
+                    animation: averageMoving $durationMobile 54s linear infinite,  bounce-small 8s 2s ease-in-out infinite;
+                    @media screen and (min-width: $break-mobile + 1){
+                        animation: averageMovingDesktop $durationMobile 54s linear infinite,  bounce-small 8s 2s ease-in-out infinite;
+                        top: 20%;
+                    }
+                }
+                &.initec {
+                    top: 15%;
+                    animation: averageMoving $durationMobile 60s linear infinite,  bounce-small 8s 3s ease-in-out infinite;
+                    @media screen and (min-width: $break-mobile + 1){
+                        animation: averageMovingDesktop $durationMobile 60s linear infinite,  bounce-small 8s 3s ease-in-out infinite;
+                        top: 55%;
+                    }
+                }
+                &.johnandjohn {
+                    top: 8%;
+                    animation: averageMoving $durationMobile 66s linear infinite,  bounce-small 8s  ease-in-out infinite;
+                    @media screen and (min-width: $break-mobile + 1){
+                        animation: averageMovingDesktop $durationMobile 66s linear infinite,  bounce-small 8s  ease-in-out infinite;
+                        top: 3%;
+                    }
+                }
+                &.arena-media {
+                    top: 20%!important;
+                    left: 105vw;
+                    width: 100px;
+                    height: 100px;
+                    animation: averageMoving $durationMobile 74s linear infinite,  bounce-small 8s ease-in-out infinite;
+                    @media screen and (min-width: $break-mobile + 1){
+                        animation: averageMovingDesktop $durationMobile 74s linear infinite,  bounce-small 8s  ease-in-out infinite;
+                    }
+                }
+                &.grupo-ica {
+                    top: 60%!important;
+                    left: 140vw;
+                    width: 120px;
+                    height: 120px;
+                    animation: averageMoving $durationMobile 82s linear infinite,  bounce-small 8s 1s ease-in-out infinite;
+                    @media screen and (min-width: $break-mobile + 1){
+                        animation: averageMovingDesktop $durationMobile 82s linear infinite,  bounce-small 8s 1s ease-in-out infinite;
+                        top: 65%;
+                    }
+                }
+                &.accenture {
+                    top: 30%!important;
+                    left: 175vw;
+                    width: 140px;
+                    height: 140px;
+                    animation: averageMoving $durationMobile 88s linear infinite,  bounce-small 8s 2s ease-in-out infinite;
+                    @media screen and (min-width: $break-mobile + 1){
+                        animation: averageMovingDesktop $durationMobile 88s linear infinite,  bounce-small 8s  ease-in-out infinite;
+                        top: 40%;   
+                    }
+                }
+                // TAMAÑOS
+                &.small{
+                        width: 60px;
+                        height: 60px;
+                    @media screen and (min-width: $break-mobile + 1){
+                        width: 100px;
+                        height: 100px;
+                    }
+                }
+                &.medium {
+                        width: 80px;
+                        height: 80px;
+                    @media screen and (min-width: $break-mobile + 1){
+                        width: 120px;
+                        height: 120px;
+                    }
+                }
+                &.large {
+                        width: 100px;
+                        height: 100px;
+                    @media screen and (min-width: $break-mobile + 1){
+                        width: 150px;
+                        height: 150px;
+                    }
+                }
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
+    }
+
+    .companies-container-2 {
+        width: 100%;
+        padding: 10px;
+        overflow: hidden;
+        opacity: 0;
+        animation: fadeIn 5s ease-in-out 1 forwards;
+        @media screen and (min-width: $break-mobile + 1){
+            padding: 0 16px;
+        }
+        .companies-slider-2 {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            .company-logo {
+                border-radius: 50%;
+                overflow: hidden;
+                background-color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 10px;
+                position: relative;
+                @each $color in $colors {
+                    &.#{map-get($color, color)}{
+                        @include box-shadow(0,10px,10px,rgba(map-get($color, normal),0.15));
+                    }
+                }
+                // TAMAÑOS
+                &.small{
+                    width: 60px;
+                    height: 60px;
+                @media screen and (min-width: $break-mobile + 1){
+                    width: 100px;
+                    height: 100px;
+                }
+            }
+            &.medium {
+                    width: 80px;
+                    height: 80px;
+                @media screen and (min-width: $break-mobile + 1){
+                    width: 120px;
+                    height: 120px;
+                }
+            }
+            &.large {
+                    width: 100px;
+                    height: 100px;
+                @media screen and (min-width: $break-mobile + 1){
+                    width: 150px;
+                    height: 150px;
+                }
+            }
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+}
+
+
+    @keyframes bounce-small {
+        0% {
+            transform: translateY(0);
+            transform: translateX(0);
+        }
+        20% {
+            transform: translateY(-5px);
+            transform: translateX(0);
+        }
+        40% {
+            transform: translateY(0);
+            transform: translateX(5px);
+        }
+        60% {
+            transform: translateY(-5px);
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateY(0);
+            transform: translateX(0);
+        }
+    }
+
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    // ANIMACIONES INDIVIDUALES
+    @keyframes averageMoving {
+        0% {
+            left: 101vw;
+        }
+        50% {
+            left: -155px;
+        }
+    }
+
+    @keyframes averageMovingDesktop {
+        0% {
+            left: $break-hd;
+        }
+        100% {
+            left: -155px;
+        }
+    }
+
+    // ANIMATE THE FIRST ELEMENTS
+
+    @keyframes firstMoveAcciona {
+        100% {
+            left: -95vw;
+        }
+    }
+
+    @keyframes firstMoveAccionaMobile {
+        100% {
+            left: -395vw;
+        }
+    }
+
+
+    @keyframes firstMoveBBVA {
+        100% {
+            left: -89vw;
+        }
+    }
+
+    @keyframes firstMoveBBVAMobile {
+        100% {
+            left: -389vw;
+        }
+    }
+
+
+    @keyframes firstMoveTecnicas {
+        100% {
+            left: -83vw;
+        }
+    }
+
+    @keyframes firstMoveTecnicasMobile {
+        100% {
+            left: -352vw;
+        }
+    }
+
+
+    @keyframes firstMoveGeneralElectrics {
+        100% {
+            left: -77vw;
+        }
+    }
+
+    @keyframes firstMoveGeneralElectricsMobile {
+        100% {
+            left: -345vw;
+        }
+    }
+
+
+    @keyframes firstMoveBoeing {
+        100% {
+            left: -70vw;
+        }
+    }
+
+    @keyframes firstMoveBoeingMobile {
+        100% {
+            left: -310vw;
+        }
+    }
+
+
+    @keyframes firstMoveUsaEmb {
+        100% {
+            left: -64vw;
+        }
+    }
+
+    @keyframes firstMoveSaudi {
+        100% {
+            left: -59vw;
+        }
+    }
+
+    @keyframes firstMoveTexaco {
+        100% {
+            left: -53vw;
+        }
+    }
+
+    @keyframes firstMoveBancoESP {
+        100% {
+            left: -47vw;
+        }
+    }
+
+    @keyframes firstMoveEAE {
+        100% {
+            left: -40vw;
+        }
+    }
+
+    @keyframes firstMoveInitec {
+        100% {
+            left: -34vw;
+        }
+    }
+
+    @keyframes firstMoveJohnson {
+        100% {
+            left: -28vw;
+        }
+    }
+
+    @keyframes firstMoveArenaMedia {
+        100% {
+            left: -22vw;
+        }
+    }
+
+    @keyframes firstMoveGrupoIca {
+        100% {
+            left: -20vw;
+        }
+    }
+
+    @keyframes firstMoveAccenture {
+        100% {
+            left: -20vw;
+        }
+    }
+
+    .modal-promotion {
+        @media screen and (min-width: $break-mobile + 1) {
+            width: 40vw;
+            form {
+                margin: 15px auto;
+            } 
+        }
+        .modal-content {
+            overflow: auto;
+            max-height: 70vh;
+        }
+    }
+}

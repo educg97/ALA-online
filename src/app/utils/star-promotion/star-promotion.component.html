@@ -1,0 +1,84 @@
+<div class="star-promotion" *ngIf="!hideStar" (click) = "openStarModal(); hideStarIcon();">
+    <i class="fas fa-2x fa-sun"></i>
+</div>
+
+<div class="modal-background" *ngIf='modal.modals === "sorteo-estrellas"' (click)="closeStarsModal()"></div>
+<div class="modal-promotion modal" *ngIf='modal.modals === "sorteo-estrellas"'>
+    <div class="modal-header">
+    <div *ngIf = "introductionSecond" class="modal-close btn blue" (click)="back()"><i class="fas fa-long-arrow-alt-left"></i></div>
+      <h2 class="modal-title centered">
+            {{
+                (introductionFirst) ? '¡Enhorabuena!' :
+                (introductionSecond) ? 'Has encontrado tu primer sol ☀️' : 'Hemos recibido tu sol'
+            }}
+      </h2>
+      <div class="modal-close btn red" (click)="closeStarsModal()"><i class="fas fa-times"></i></div>
+    </div>
+
+    <div class="modal-content">
+        <div *ngIf = "introductionFirst">
+            <p>¡Has encontrado un sol del <a href = "/summer-challenge" target="_blank">#ALASummerChallenge!</a></p><br>
+            <p>¿<strong>Quieres ganar</strong> un Smartphone, un patinete eléctrico, una Smart TV o un viaje por Europa?</p><br>
+            <p><a href = "/summer-challenge" target = "_blank">Consulta las bases del concurso aquí</a>.</p><br>
+            <p>Cualquier persona puede participar. ¡Díselo a tus familiares y amigos!</p><br>
+            <p>Completa tus datos para participar:</p>
+        </div>
+        
+        <div *ngIf = "introductionSecond">
+            <p>Sigue participando para ganar un Smartphone, un patinete eléctrico, una Smart TV o un viaje por Europa.</p>
+            <br>
+            <p><a href = "/summer-challenge" target = "_blank">Consulta las bases del concurso aquí</a></p>
+        </div>
+
+        <!-- FORMULARIO -->
+        <form #StarsPopUp="ngForm" *ngIf = "introductionFirst || introductionSecond">
+            <div class="inputs centered">
+                <div *ngIf = "introductionFirst">
+                    <input [(ngModel)]="userData.email" ngModel required type="email" name="star-email" placeholder="Correo electrónico">
+                    <input [(ngModel)]="userData.Telefono" ngModel required type="phone" name="star-phone" placeholder="Teléfono">  
+                </div>
+
+                <div *ngIf = "introductionSecond">
+                    <div>
+                        <p>Nombre y apellidos (Campo obligatorio):</p>
+                        <p><input [(ngModel)]="userData.Nombre" ngModel required type="text" name="star-fullname" placeholder="Nombre y apellidos"></p>
+                    </div>
+                    <br>
+                    
+                    <div>
+                        <p>¿Quién te ha animado a participar? (Campo opcional)</p>
+                        <p><input [(ngModel)]="userData.Colaborador" ngModel required type="text" name="star-colaborator" placeholder="Nombre y apellidos"></p>
+                    </div>
+                    <br>
+                </div>
+
+            </div>
+
+            <p *ngIf = "introductionSecond"><strong>¡Invita a más personas a participar para ganar más premios!</strong></p>
+
+            <div class="submit-buttons">
+                <button *ngIf = "introductionFirst" class="btn light-green" (click)="catchStar()"><strong>Aceptar y enviar Sol</strong></button>
+                <button *ngIf = "introductionSecond" class="btn light-green" (click)="addUserToSummerContest()"><strong>Enviar Sol ☀️</strong></button>
+            </div>
+        </form>
+
+        <div *ngIf = "introductionThird">
+            <p>¡Enhorabuena! <strong>Has encontrado un sol. Ya llevas {{userData.Puntos}}</strong>.</p><br>
+            <p>Puedes encontrar hasta 5 soles diarios desde cada dispositivo. Cuantos más soles encuentres, más posibilidades tendrás de ganar.</p><br>
+            <p>Para seguir buscando soles, 
+                <span *ngIf = "googleSearchOption">
+                    haz una búsqueda en Google de "{{randomGoogleSearch.searchTerm}}" y entra en la web de {{randomGoogleSearch.domain}}
+                    para seguir buscando soles. Recuerda que no son válidos los soles que encuentres si has llegado a la web a través de un anuncio.
+                </span> 
+                <span *ngIf = "backlinksOption">entra al <a [href] = "randomBacklink.link" rel = "no follow" >siguiente enlace</a> y haz click en el link {{randomBacklink.guideline1}} que encontrarás {{randomBacklink.guideline2}} para continuar buscando desde ahí</span>
+                <span *ngIf = "urlsOption">Introduce esta URL en tu navegador: "{{randomUrl.link}}" o haz click en este enlace para seguir buscando desde ahí:</span>
+            </p>
+
+            <p *ngIf = "urlsOption" style = "text-align: center;"><a [href] = "randomUrl.link"><button class = "btn light-green"><strong>{{randomUrl.button}}</strong></button></a></p>
+            <div *ngIf = "googleSearchOption">
+                <img style = "margin: 15px auto;" width = "100%" src="assets/images/sorteo/ad-not-valid.png" alt="No es válido a través de un anuncio">
+                <p style = "text-align: center;"><a [href] = "randomGoogleSearch.searchUrl"><button class = "btn light-green"><strong>Ir a Google</strong></button></a></p>
+            </div>
+        </div>
+    </div>
+</div>

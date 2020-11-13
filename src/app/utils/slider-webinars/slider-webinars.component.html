@@ -1,0 +1,36 @@
+<div class="skew-block slider-companies">
+    <div class="skew-block-container scrollable" id="slider-companies-flipping">
+
+        <div class="company-card-container" *ngFor="let webinar of webinars; let i = index">
+            <div class="single-company card" [ngClass]="{flipao: webinar['flipped']}">
+
+                <div style = "text-align: center;" class="company-front" *ngIf="!webinar['flipped']" [@frontContent] [ngClass]="{flipando: floating}">
+                    <h3 style = "padding-top: 10px; padding-bottom: 5px;" [title] = "webinar.webinarName">{{(webinar.webinarName.length > 20) ? (webinar.webinarName | slice:0:20)+'..' : (webinar.webinarName)}} </h3>
+                    <div class="quotes-container">
+                        <iframe [src] = "webinar.video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="spacer"></div>
+    </div>
+
+    <!-- <div *ngIf="webinarPosition !== 0" (click)="moveSlider2('prev')" class="arrow webinars left blue" [@arrowLeft]>
+        <i class="fas fa-angle-left"></i>
+    </div>
+    
+    <div style = "top: 43%;" *ngIf="(webinarPosition !== webinars.length)" (click)="moveSlider2('next')" class="arrow companies right blue" [@arrowRight]>
+        <i class="fas fa-angle-right"></i>
+    </div> -->
+
+    <div *ngIf="webinarPosition !== 0" (click)="moveSlider2('prev')" class="arrow left blue" [@arrowLeft]>
+        Ver anterior
+    </div>
+    
+    <div *ngIf="(webinarPosition !== webinars.length)" (click)="moveSlider2('next')" class="arrow right blue" [@arrowRight]>
+        Ver Más
+    </div>
+
+</div>

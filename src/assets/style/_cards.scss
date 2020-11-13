@@ -1,0 +1,50 @@
+/* CARDS */
+.card{
+    border: 0px solid white;
+    background: white;
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 15px;
+    @include box-shadow();
+    @include css3-prefix(user-select, none);
+    @include css3-prefix(transition-duration, 0.3s);
+    &:focus,
+    &:hover{
+        @include box-shadow();
+    }
+    &:active{
+        border: 2px solid $orange;
+        @include box-shadow();
+    }
+    &.video,
+    &.borderless{
+        padding: 0;
+        overflow: hidden;
+        iframe {
+            margin-bottom: -5px;
+        }
+    }
+}
+.image-message{
+    position: relative;
+    padding: 20px;
+    width: 250px;
+    margin: auto;
+    .message{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 10px;
+        background-color: white;
+        border-radius: 10px;
+        @each $color in $colors {
+            &.#{map-get($color, color)}{
+                color: map-get($color, normal);
+                @include box-shadow-color(map-get($color, normal));
+            }
+        }
+    }
+    .video{
+        width: 250px;
+    }
+}

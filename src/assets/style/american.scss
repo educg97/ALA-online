@@ -1,0 +1,50 @@
+/* Custom Stylesheet for American Language Academy */
+/* Author: Adrian Pappalardo */
+/* To compile, install with npm install -g sass and run sass american.scss:american.css */
+
+/* INDEX -- outdated
+* RESET             - The standard reset to all elements to work with a clean environment
+* FONTS             - The physical ALA fonts to be used in the web
+* COLORS            - All the available colors to be used, please try not to use others, so everything is consistent
+* BROWSER SUPPORT   - Mixins for the SCSS to allow for browser compatibility
+* DOM               - All the DOM elements to be modified in a general case
+* PARAGRAPH         - Text formatting
+* BUTTONS           - Button formating and animation
+* FORM              - Form DOM element formatting
+* TABLES            - Tables with the class '.table'
+* DROPDOWN          - Dropdown functionality and animation (Center alignment in american.js)
+* MODAL             - Modal animation and formatting (Functionality in american.js)
+* LESSON            - Lesson formating including lesson modal
+* INDEX             - The little index at the page's beginning
+* BALLS             - Divider for the text
+*/
+
+/* DOM */
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/reset';
+@import 'src/assets/style/colors';
+@import 'src/assets/style/fonts';
+@import 'src/assets/style/buttons';
+@import 'src/assets/style/pills';
+@import 'src/assets/style/forms';
+@import 'src/assets/style/cards';
+@import 'src/assets/style/tables';
+@import 'src/assets/style/dropdowns';
+@import 'src/assets/style/modals';
+@import 'src/assets/style/toasts';
+// @import 'src/assets/style/lessons';
+@import 'src/assets/style/charts';
+@import 'src/assets/style/general';
+@import 'src/assets/style/blocks';
+@import 'src/assets/style/tabs';
+@import 'src/assets/style/balls';
+@import 'src/assets/style/index';
+@import 'src/assets/style/banners';
+@import 'src/assets/style/indicators';
+
+/* Font Awesome */
+@import 'src/assets/style/icons/fontawesome';
+@import 'src/assets/style/icons/brands';
+@import 'src/assets/style/icons/solid';
+@import 'src/assets/style/icons/regular';

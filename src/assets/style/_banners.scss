@@ -1,0 +1,312 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors';
+
+.banner {
+    @media screen and (min-width: $break-tablet){
+        width: 80%;
+        margin: 20px auto 80px;
+        position: relative;
+        .background {
+            height: 300px;
+            @media screen and (min-width: $break-desktop - 1){
+                height: 400px;
+            }
+            overflow: hidden;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            .gradient {
+                @each $color in $colors {
+                    &.#{map-get($color, color)}{
+                        @include background-horizontal(rgba(0, 0, 0, 0), map-get($color, normal));
+                        background-color: unset;
+                    }
+                }
+                height: 100%;
+                width: 45%;
+                position: absolute;
+                right: 0;
+                top: 0;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                box-sizing: border-box;
+                padding-right: 50px;
+                p {
+                    color: white;
+                    display: flex;
+                    flex-direction: column;
+                    text-align: center;
+                    line-height: 1.2;
+                    width: 33%;
+                    font-size: $font-large;
+                    .logo-toefl-white {
+                        width: auto;
+                        height: 50px;
+                        img {
+                            width: auto;
+                            height: 40px;
+                            margin: 0 auto;
+                        }
+                    }
+                    .disney {
+                        font-family: RemachineScript;
+                        line-height: 1;
+                        font-size: $font-title;
+                    }
+                }
+            }
+            .background-img {
+                width: 100%;
+                height: auto;
+                margin-top: 210px;
+                &.offset-0{
+                    margin-top: 0px;
+                }
+                &.offset-100{
+                    margin-top: 100px;
+                }
+                &.offset-200{
+                    margin-top: 200px;
+                }
+                &.offset-300{
+                    margin-top: 300px;
+                }
+                &.offset-400{
+                    margin-top: 400px;
+                }
+                &.offset-500{
+                    margin-top: 500px;
+                }
+            }
+        }
+        .icon-banner {
+            margin-bottom: -80px;
+            margin-left: -40px;
+            z-index: 50;
+            position: absolute;
+            top: 65%; left: -7%;
+            height: 50%;
+            width: 21%;
+            text-align: center;
+            &.bottom-right {
+                margin: -110px -40px 15px auto;
+            }
+            img {
+                height: 100%;
+            }
+        }
+    }
+
+    @media screen and (max-width: $break-tablet - 1){
+        .background {
+            overflow: hidden;
+            width: 100vw;
+            @include transform(skewY(-10deg));
+            // margin: 20px -40px 60px;
+            position: relative;
+            .gradient {
+                @each $color in $colors {
+                    &.#{map-get($color, color)}{
+                        @include background-horizontal(map-get($color, normal), rgba(0, 0, 0, 0));
+                        background-color: unset;
+                    }
+                }
+                background-color: unset;
+                width: 66%;
+                height: 100%;
+                position: absolute;
+                top: 0; left: 0;
+                z-index: 510;
+                display: flex;
+                align-items: center;
+                p {
+                    color: white;
+                    @include transform(skewY(10deg));
+                    width: 55%;
+                    font-size: $font-large;
+                    margin-left: 20px;
+                    text-align: center;
+                    .disney {
+                        font-family: RemachineScript;
+                        line-height: 1;
+                    }
+                }
+                br {
+                    line-height: 19pt;
+                }
+            }
+            .background-img {
+                transform: skewY(10deg) scale(1.2);
+                width: 100%;
+            }
+        }
+        .icon-banner {
+            width: 60%;
+            position: relative;
+            text-align: center;
+            z-index: 50;
+            margin: -60px 0px 35px auto;
+            img {
+                width: 80%;
+                height: auto;
+            }
+        }
+    }
+
+}
+
+// .inter-banner {
+//     width: 80%;
+//     margin: 20px auto 100px;
+//     position: relative;
+//     // &.preparacion-toefl {
+//     //     img {
+//     //         margin-top: 210px;
+//     //     }
+//     // }
+//     // &.verano {
+//     //     img {
+//     //         margin-top: 0px;
+//     //     }
+//     // }
+
+//     .banner-image {
+//         height: 300px;
+//         overflow: hidden;
+//         padding: 0;
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//         position: relative;
+//         .gradient-banner {
+//             @each $color in $colors {
+//                 &.#{map-get($color, color)}{
+//                     @include background-horizontal(rgba(0, 0, 0, 0), map-get($color, color));
+//                     background-color: unset;
+//                 }
+//             }
+//             height: 100%;
+//             width: 45%;
+//             position: absolute;
+//             right: 0;
+//             top: 0;
+//             display: flex;
+//             justify-content: flex-end;
+//             align-items: center;
+//             box-sizing: border-box;
+//             padding-right: 50px;
+//             p {
+//                 color: white;
+//                 display: flex;
+//                 flex-direction: column;
+//                 text-align: center;
+//                 line-height: 1.2;
+//                 width: 33%;
+//                 font-size: $font-large;
+//                 .logo-toefl-white {
+//                     width: auto;
+//                     height: 50px;
+//                     img {
+//                         width: auto;
+//                         height: 40px;
+//                         margin: 0 auto;
+//                     }
+//                 }
+//                 .disney {
+//                     font-family: RemachineScript;
+//                     line-height: 1;
+//                     font-size: $font-title;
+//                 }
+//             }
+//         }
+//         img {
+//             width: 100%;
+//             height: auto;
+//             margin-top: 210px;
+//         }
+//     }
+//     .banner-msg {
+//         padding: 8px 16px;
+//         position: absolute;
+//         width: 300px;
+//         bottom: -20px;
+//         left: 0; right: 0;
+//         margin: auto;
+//         font-size: $font-large;
+//     }
+// }
+
+// .banner-master {
+//     overflow: hidden;
+//     width: 100vw;
+//     @include transform(skewY(-10deg));
+//     margin: 20px -40px 60px;
+//     position: relative;
+//     &.preparacion-toefl {
+//         .gradient-banner {
+//             @include background-horizontal($teal, rgba(0, 0, 0, 0));
+//             background-color: unset;
+//             .text-small {
+//                 .logo-toefl-white {
+//                     width: 50px;
+//                     img {
+//                         width: 70%;
+//                         height: auto;
+//                         margin: auto;
+//                     }
+//                 }
+//             }
+//         }
+//         p {
+//             line-height: 1.2;
+//         }
+//         .skew-container {
+//             img {
+//                 margin-top: -20px;
+//             }
+//         }
+//     }
+//     &.verano {
+//         .gradient-banner {
+//             @include background-horizontal($orange, rgba(0, 0, 0, 0));
+//             background-color: unset;
+//         }
+//     }
+//     .gradient-banner {
+//         background-color: unset;
+//         width: 66%;
+//         height: 100%;
+//         position: absolute;
+//         top: 0; left: 0;
+//         z-index: 510;
+//         display: flex;
+//         align-items: center;
+//         p {
+//             color: white;
+//             @include transform(skewY(10deg));
+//             width: 55%;
+//             font-size: $font-large;
+//             margin-left: 20px;
+//             text-align: center;
+//             .disney {
+//                 font-family: RemachineScript;
+//                 line-height: 1;
+//             }
+//         }
+//         br {
+//             line-height: 19pt;
+//         }
+//     }
+//     .skew-container {
+//         img {
+//             @include transform(skewY(10deg));
+//             width: auto;
+//             height: 300px;
+//             margin-top: -50px;
+//         }
+//     }
+// }

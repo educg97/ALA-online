@@ -1,0 +1,24 @@
+<section id="exam-inscription" class="exam-inscription">
+  <h2>Preparación para el examen {{(webpage === 'preparacion-toefl') ? 'TOEFL' : (webpage === 'preparacion-examen-toeic') ? 'TOEIC' : 'TOEFL'}}® de American Language Academy</h2>
+  <!-- <div class="img-container">
+    <img src="{{(webpage === 'preparacion-toefl') ? imgToefl : (webpage === 'preparacion-examen-toeic') ? imgToeic : imgToefl}}" alt="Centro exclusivo de inscripción al {{(webpage === 'preparacion-toefl') ? 'TOEFL' : (webpage === 'preparacion-examen-toeic') ? 'TOEIC' : 'TOEFL'}}®">
+  </div> -->
+  <div class="btn-container">
+    <button class="btn green" (click)="openModal()">Solicita información para inscripción</button>
+  </div>
+</section>
+
+<div class="modal-background"
+  *ngIf='modal.modals === "info-inscription"'
+  (click)="closeModal()"></div>
+
+<div class="modal-inscription modal" *ngIf='modal.modals === "info-inscription"'>
+  <div class="modal-header">
+      <h2 class="modal-title">Solicitar información</h2>
+      <div class="modal-close btn red" (click)="closeModal()"><i class="fas fa-times"></i></div>
+  </div>
+  <div class="modal-content">
+    <app-contact-form></app-contact-form>
+  </div>
+</div>
+

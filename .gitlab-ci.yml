@@ -1,0 +1,11 @@
+deploy:
+  stage: deploy
+  script:
+    - npm i
+    - ng build --prod
+    - rm -rf /var/www/american-language-online/prod
+    - cp -r dist/ /var/www/american-language-online/prod
+    - rm -rf /var/www/american-language-online/backend
+    - cp -r backend/ /var/www/american-language-online/backend
+  only:
+    - master

@@ -1,0 +1,28 @@
+<div class="form-tutoria page-width">
+  <h1>Solicita tu tutoría</h1>
+
+  <div class="tutoria-form-container card">
+      <form #tutoria="ngForm" (ngSubmit)="sendTutoria(tutoria)" *ngIf="!sentForm">
+          <input [(ngModel)]="name" 	 name="name" 	id="contact-name" 	 placeholder="Nombre/s" 	   type="text" 	autocomplete="name" 	ngModel required>
+          <input [(ngModel)]="surname" name="surname" id="contact-surname" placeholder="Apellido/s"	   type="text" 	autocomplete="surname" 	ngModel>
+          <input [ngClass]="{error: checked && !mailCorrect}" [(ngModel)]="email" 	 name="email" 	id="contact-email" 	 placeholder="E-Mail" 		   type="email"	autocomplete="email" 	ngModel email required>
+          <p class="errorMessage" *ngIf="checked && !mailCorrect">Formato de email no válido</p>
+          <textarea [(ngModel)]="message" name="message" id="contact-message" placeholder="¿Qué te gustaría mejorar de tu proceso de aprendizaje?" ngModel></textarea>
+          
+          <input id="contact-terms" [(ngModel)]="terms" type="checkbox" name="terms">
+          <label for="contact-terms" class="label-checkbox text-small">He leído y acepto los <a routerLink="/terminos-y-condiciones" target="_blank">términos y condiciones</a></label>
+          <p class="errorTerms" *ngIf="notTerms">Tienes que aceptar los términos y condiciones</p>
+          <button class="btn green" id="contact-form-btn">Enviar</button>
+          <!-- [disabled]="!terms" [ngClass]="{'disabled': !terms}"  -->
+          <div class="text-small">
+            This site is protected by reCAPTCHA and the Google
+            <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+            <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+          </div>
+      </form>
+
+      <div class="sent-request text-center" *ngIf="sentForm">
+        Tu solicitud ha sido enviada. Muchas gracias por confiar en American Language Online.
+      </div>
+  </div>
+</div>

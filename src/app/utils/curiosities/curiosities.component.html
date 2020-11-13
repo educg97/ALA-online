@@ -1,0 +1,16 @@
+<div class="skew-block blue curiosities">
+  <div class="scrollable skew-block-container" id="curiosities-container">
+    <div class="single-curiosity card" *ngFor="let curiosity of funFacts; let i = index">
+      <div class="curiosity-header">{{curiosity['Title']}}</div>
+      <div class="curiosity-body">{{curiosity['Body']}}</div>
+    </div>
+    <div class="spacer"></div>
+  </div>
+  <div *ngIf="windowSize.isMobile" class="slider-controls skew-block-container">
+		<ul>
+			<li class="white" [ngClass]="{active: funFactPosition === i}"
+				(click)="scrollComponent('curiosities-container', i)"
+				*ngFor="let dot of dotsFacts; let i = index"></li>
+		</ul>
+	</div>
+</div>

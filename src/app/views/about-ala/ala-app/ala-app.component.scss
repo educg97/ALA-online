@@ -1,0 +1,228 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors';
+
+.banner {
+    margin-bottom: 15px;
+}
+
+.bolt {
+    color: yellow;
+    &:hover {
+        // color: #ffc800;
+        color: red;
+    }
+}
+
+.column-block {
+    width: 80%;
+    
+    .flash-logo {
+        text-align: center;
+        img {
+            width: 150px;
+        }
+    }
+    
+    .flash-content {
+        padding: 20px;
+        @media screen and (min-width: $break-mobile + 1) {
+            padding: 40px;
+        }
+    
+        h3 {
+            text-align: center;
+        }
+    }
+}
+
+.text{
+    margin: auto;
+    max-width: $page-width;
+    padding: 0 40px;
+    &.after-company-balls {
+        @media screen and (min-width: $break-mobile + 1) {
+            margin: 80px auto 0;
+        }
+    }
+}
+.description-media{
+    margin: 0px auto -125px auto;
+    width: 290px;
+    height: 163.13px;
+    &-placeholder{
+        height: 130px;
+    }
+}
+.circular-image{
+    width: 150px;
+    float: left;
+    margin-right: 10px;
+    border-radius: 1000px;
+    -webkit-shape-outside:circle();
+    shape-outside:circle();
+}
+.color-block{
+    .block-content{
+        padding: 20px 40px;
+    }
+}
+.timeline-container{
+    .timeline-item-left{
+        width: 50%;
+        text-align: right;
+        border-right: 1px solid white;
+        .timeline-item-circle{
+            margin-right: -8px;
+            margin-left: 5px;
+            order: 2;
+        }
+    }
+    .timeline-item-right{
+        width: 50%;
+        margin-left: 50%;
+        border-left: 1px solid white;
+        .timeline-item-circle{
+            margin-left: -8px;
+            margin-right: 5px;
+            order: 0;
+        }
+    }
+    .timeline-item-left,
+    .timeline-item-right{
+        display: flex;
+        flex-direction: row;
+        .timeline-item-circle{
+            height: 15px;
+            width: 15px;
+            border-radius: 100px;
+            background: white;
+            flex-shrink: 0;
+            margin-top: 8px;
+        }
+        .timeline-item-container{
+            order: 1;
+            .timeline-item-title{
+                font-size: $font-large;
+                margin: 5px 0;
+            }
+        }
+    }
+}
+
+.academy {
+    margin: 40px auto;
+    .flex-content {
+        display: flex;
+        align-items: space-around;
+        justify-content: space-around;
+        @media screen and (max-width: $break-tablet) {
+            flex-direction: column;
+        }
+        .map-pic-container {
+            flex-basis: 75%;
+            align-self: center;
+            .academy-img-container:not(.balcony) {
+                img {
+                    width: 175%;
+                }
+            }
+        }
+        .academy-params {
+            @media screen and (min-width: $break-tablet + 1){
+                margin: 50px;
+            }
+        }
+    }
+}
+
+.academy-image-container {
+    margin: 100px 0;
+    padding-bottom: 20px;
+    .academy-image {
+        @media screen and (min-width: $break-tablet + 1) {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 80%;
+            margin: auto;
+        } 
+        .pic-slide-academy {
+            flex-shrink: 0;
+            width: 90vw;
+            margin: 0 5vw;
+            @media screen and (min-width: $break-tablet + 1) {
+                flex-shrink: 1;
+                width: auto;
+                margin: 0;
+            }
+            h5 {
+                color: white;
+                margin-top: 10px;
+                &.text-blue {
+                    color: $blue;
+                }
+            }
+            .card {
+                padding: 0;
+                overflow: hidden;
+                min-height: 140px;
+                margin: auto;
+                padding-top: 15px;
+                @media screen and (min-width: $break-tablet) {
+                    width: 300px;
+                    height: 350px;
+                }
+                @media screen and (min-width: $break-desktop) {
+                    width: 350px;
+                    height: 350px;
+                }
+
+                .card-header {
+                    height: 50%;
+                    width: auto;
+                    text-align: center;
+
+                    img {
+                        height: 100%;
+                        width: 80%;
+                    }
+                }
+                hr {
+                    border: 1px solid #7c939f;
+                    border-radius: 15px;
+                    width: 80%;
+                    margin: 10px auto;
+                }
+                .card-content {
+                    width: 80%;
+                    margin: auto;
+                    padding: 15px 0;
+
+                    hr {
+                        width: 20%;
+                        margin: 10px 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.app-link-img {
+    @media screen and (max-width: $break-mobile) {
+        width: 100%;
+    }
+}
+
+.top-app-NYT {
+    margin: 100px auto;
+    text-align: center;
+
+    h2 {
+        color: gray;
+        font-weight: bold;
+        font-family: auto;
+    }
+}

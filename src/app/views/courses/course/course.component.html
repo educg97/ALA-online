@@ -1,0 +1,708 @@
+<div class="loader-container" *ngIf="isLoading">
+	<app-loader></app-loader>
+</div>
+
+<div class="text" *ngIf="mastercourse">
+	<h1 style = "margin-bottom: 0px;" class="text-ala-blue">{{mastercourse.H1}}</h1>
+</div>
+
+<div class="banner banner-verano" *ngIf="mastercourse && mastercourse['slug'] == 'verano'">
+	<div class="background" [ngClass]="{borderless:!windowSize.isMobile, card:!windowSize.isMobile}">
+		<div class="gradient orange">
+			<p class="bold">
+				Discover<br>
+				<span class="disney">and make</span>
+				the most
+				of your
+				summer
+			</p>
+		</div>
+		<img class="background-img" src="assets/images/banners/summer-vibes.jpg" alt="banner verano">
+	</div>
+	<div class="icon-banner bottom-left">
+		<img src="assets/images/logos/Your-best-learning-experience.png"
+			alt="Your best learning experience - Cursos de inglés de verano">
+	</div>
+</div>
+
+<div class="banner banner-toefl" *ngIf="mastercourse && mastercourse['slug'] == 'preparacion-toefl'">
+	<div class="background" [ngClass]="{borderless:!windowSize.isMobile, card:!windowSize.isMobile}">
+		<div class="gradient teal">
+			<p class="bold">
+				Centro de preparación
+				<span class="logo-toefl-white">
+					<img style = "margin: 5px auto;" src="assets/images/logos-asociaciones/academia-oficial-toefl.png"
+						alt="La mejor academia de inglés en Madrid. Expertos en la preparación de TOEFL®.">
+				</span>
+			</p>
+		</div>
+		<!-- <img class="background-img offset-400" src="assets/images/banners/profesor-toefl-clase.jpg" alt="banner verano"> -->
+		<img class="background-img offset-400" src="http://api.americanlanguage.es:4200/uploads/f4c5c78b41c44319b4a5b0cfdefec340.jpg" alt="banner verano">
+	</div>
+	<div class="icon-banner bottom-left">
+		<img src="assets/images/logos/Your-best-learning-experience.png"
+			alt="Your best learning experience - Cursos de inglés de verano">
+	</div>
+</div>
+
+<div class="text" style = "margin-top: 15px">
+	<p class="text-ala-blue description-initial-block" [innerHtml]="mastercourse['Description']"></p>
+</div>
+
+<div class="faded-container" id="faded-messages" *ngIf="mastercourse && mastercourse['slug'] === 'preparacion-toefl'">
+	<div class="skew-block {{course['Color']}}">
+		<div class="skew-block-container">
+			<div class="faded-messages negative">
+				<div class="first message bold text-large" [ngClass]="{actived: firstMessageOn}">
+					+100.000<div>Alumnos</div>
+				</div>
+				<div class="second message bold text-large" [ngClass]="{actived: secondMessageOn}">
+					103.6 Puntuación<div>media TOEFL®</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="text" *ngIf="mastercourse">
+	<h2 class="color-block-title course-title text-{{course['Color']}}" *ngIf="mastercourse">{{mastercourse.H2}}</h2>
+	<!-- <p>Tenemos <strong>{{mastercourse['courses'].length}} cursos recomendados</strong> en esta categor&iacute;a:</p> -->
+	<p>Elige entre estos <strong>cursos de ingl&eacute;s online</strong></p>
+
+	<div class="preview-courses">
+		<div class="preview-row" *ngFor="let course_card of mastercourse['courses']; let i = index"
+			(click)="scrollElement('.course-buttons',i); scrollElement('.course-block',i)">
+			<div class="selector-container">
+				<div class="selector {{course_card['Color']}}" [ngClass]="{'active': course_position == i}"></div>
+			</div>
+			<div class="text-blue-gray text-small course-title-preview">{{course_card['Title']}}</div>
+		</div>
+	</div>
+</div>
+
+<div id="top"></div>
+
+<div id="course-preview" class="course-buttons-container page-width" *ngIf="mastercourse">
+	<div class="course-buttons" [ngClass]="{'scrollable': windowSize['isMobile']}">
+		<div *ngIf="windowSize['isMobile']" class="spacer"></div>
+		<div *ngFor="let course_card of mastercourse['courses']; let i = index">
+			<button class="{{course_card['Color']}} text-small negative title-btn"
+				(click)="scrollElement('.course-buttons',i); scrollElement('.course-block',i)"
+				[ngClass]="{'active': course_position == i}">
+				<span class="course-hours {{course_card['Color']}}">{{course_card["Horas Semanales"]}}<span
+						*ngIf="!isNaN(course_card['Horas Semanales'])">h/week</span></span>
+				{{course_card['Title']}}
+			</button>
+		</div>
+		<div *ngIf="windowSize['isMobile']" class="spacer"></div>
+	</div>
+</div>
+
+<div class="course-slide btn-centered" *ngIf="mastercourse">
+	<table>
+		<tr>
+			<td class="course-slide-control" (click)="scrollRelative('left')"><i class="fas fa-long-arrow-alt-left"></i>
+			</td>
+			<td class="course-slide-control text-small"
+				*ngFor="let course_card of mastercourse['courses']; let i = index">
+				<div class="selector {{course_card['Color']}}" [ngClass]="{'active': course_position == i }"
+					(click)="scrollElement('.course-buttons',i); scrollElement('.course-block',i)">
+					<div [@bar] *ngIf="windowSize['isMobile'] && course_position == i" class="little-bar"></div>
+				</div>
+			</td>
+			<td class="course-slide-control" (click)="scrollRelative('right')"><i
+					class="fas fa-long-arrow-alt-right"></i></td>
+		</tr>
+	</table>
+</div>
+
+<div class="course-skew-block skew-block {{course['Color']}}" *ngIf="mastercourse">
+	<div class="skew-block-container beauty-container course-block scrollable">
+		<div class="beauty-pill course" *ngFor="let course_card of mastercourse['courses']; let i = index"
+			(click)="scrollElement('.course-block',i)">
+			<div class="beauty-card">
+				<div class="beauty-header course-pill">
+					<div class="white-block"></div>
+					<div class="beauty-image course-image">
+						<app-loader></app-loader>
+						<img *ngIf="course['Image']!=undefined" [src]="api + course.Image.url"
+							alt="{{(course['Alt imagen'] != 0) ? course['Alt imagen'] : 'Ingl&eacute;s online'}}">
+					</div>
+					<div class="dark-side" [ngClass]="{'text-small': course_card['Horas Semanales'] == 0}">
+						{{(course_card['Horas Semanales'] != 0) ? course_card["Horas Semanales"] : 'A medida'}}
+						<div *ngIf="!isNaN(course_card['Horas Semanales'])">h/<span>week</span></div>
+					</div>
+				</div>
+				<div class="beauty-content">
+					<div class="beauty-course-title text-{{course['Color']}}">
+						{{course_card["Title"]}}
+					</div>
+				</div>
+			</div>
+			<div class="spacer"> </div>
+		</div>
+	</div>
+	<div class="description-media-placeholder"></div>
+</div>
+
+<div class="description-block caracteristics">
+	<div class="course-data">
+
+		<div class="description-item" *ngIf='course && course["Horarios"]'>
+			<div class="description-icon">
+				<i class="fas fa-circle text-{{course['Color']}}"></i>
+			</div>
+			<div class="description-title text-{{course['Color']}}">
+				{{course["Horarios (Titulo)"] ? course["Horarios (Titulo)"] : "Clases"}}
+			</div>
+			<p class="description-content" [innerHTML]="course['Horarios']"></p>
+		</div>
+
+		<div class="description-item" *ngIf="course && course['Grupos']">
+			<div class="description-icon">
+				<i class="fas fa-circle text-{{course['Color']}}"></i>
+			</div>
+			<div class="description-title text-{{course['Color']}}">
+				{{course["Grupos (Titulo)"] ? course["Grupos (Titulo)"] : "Grupos"}}
+			</div>
+			<p class="description-content" [innerHTML]="course['Grupos']"></p>
+		</div>
+
+		<div class="description-item" *ngIf="course && course['dates']">
+			<div class="description-icon">
+				<i class="fas fa-circle text-{{course['Color']}}"></i>
+			</div>
+			<div class="description-title text-{{course['Color']}}">Fechas</div>
+			<div class="description-content">
+				<!-- <table class="responsive">
+					<tr *ngFor="let date of course['dates']['Fechas']; trackBy: title">
+						<th *ngIf="date.title">{{date.title}}</th>
+						<td *ngIf="date.start || date.end">{{date.start}} - {{date.end}}</td>
+					</tr>
+				</table> -->
+
+				<!-- <table *ngIf = "mastercourse['URL'] != '/verano' && mastercourse['URL'] != '/intensivo-adultos' && mastercourse['URL'] != '/para-ninos-jovenes'" class="responsive"> -->
+				<table class="responsive" *ngIf = "!course['dates']['Por semanas']">
+					<tr *ngFor="let date of course['dates']['Fechas']; trackBy: title">
+						<th *ngIf="date.title">{{date.title}}</th>
+						<td *ngIf="date.start || date.end">{{date.start}} - {{date.end}}</td>
+					</tr>
+				</table>
+
+				<div class = "by-weeks-dates" *ngIf = "course['dates']['Por semanas']">
+					<div>
+						<p *ngIf="course['dates']['Fechas'][0].title"><strong>{{course['dates']['Fechas'][0].title}}</strong></p>
+						<p *ngIf="course['dates']['Fechas'][0].start || course['dates']['Fechas'][0].end">Del {{course['dates']['Fechas'][0].start}} al {{course['dates']['Fechas'][0].end}}</p>
+					</div>
+
+					<p><strong>Próximos inicios</strong></p>
+					<p *ngFor="let date of course['dates']['Fechas']; trackBy: title; let i = index">
+						<span *ngIf="(date.start || date.end) && i > 0">&bull; {{date.start}} - {{date.end}}</span>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="description-item" *ngIf='course && course["Precio Modulo"]'>
+			<div class="description-icon">
+				<i class="fas fa-circle text-{{course['Color']}}"></i>
+			</div>
+			<div class="description-title text-{{course['Color']}}">
+				<p>Tarifa</p>
+				{{course["Precio (Titulo)"] ? course["Precio (Titulo)"] : "Tarifa"}}
+			</div>
+			<div class="description-content">
+				<div *ngIf="course['Precio (Texto)']"><span [innerHTML]="course['Precio (Texto)']"></span><br></div>
+				<p *ngIf="!course['Precio (Texto)']"><strong>{{course["Precio Modulo"]}}€ por m&oacute;dulo</strong><br>
+				</p>
+				<span *ngIf = "mastercourse['Name'] != 'Certificación Marco Común Europeo'" class="bold">Matr&iacute;cula Gratuita</span>
+			</div>
+		</div>
+
+		<div *ngIf = "course['Title'] == 'Curso de prueba'"><app-buy-course-modal></app-buy-course-modal></div>
+		<!-- <div *ngIf = "course['Title'] == 'Curso de prueba'"><app-buy-course-test></app-buy-course-test></div> -->
+
+		<div *ngIf = "mastercourse['Name'] == 'Certificación Marco Común Europeo'">
+			<a style = "padding: 15px; margin: 10px auto;" class = "btn red btn-centered" href="https://exams.americanlanguage.es/" target="_blank">
+				<i class="fas fa-calendar" style="margin-right: 15px;"></i>
+				Reservar Examen
+			</a>
+		</div>
+
+		<div *ngIf = "mastercourse['Name'] != 'Certificación Marco Común Europeo'">
+			<div class="description-item" *ngIf="course && course['Precio FC']">
+				<div class="description-icon">
+					<!-- <i class="fas fa-circle text-{{course['Color']}}"></i> -->
+				</div>
+				<div class="description-title text-{{course['Color']}}">
+					<p>O si prefieres</p>
+					{{course["Precio FC (Titulo)"] ? course["Precio FC (Titulo)"] : "Formaci&oacute;n Continua"}}
+				</div>
+				<div class="description-content">
+					<p><span class="strike text-gray">{{course["Precio Modulo"]}}€</span> {{course["Precio FC"]}}€
+						<strong>{{course["Precio FC (Texto)"] ? course["Precio FC (Texto)"] : "por mes"}}</strong><br>
+					</p>
+	
+					<div>
+						<span class="bold">Clases online o presenciales + Open English Online Free</span><br>(5 meses o m&aacute;s)<br>
+						<span class="bold">Matr&iacute;cula Gratuita</span><br>
+						<a class="text-{{course['Color']}}" routerLink="/tipos-de-formacion" fragment = "formacion-continua">m&aacute;s informaci&oacute;n
+							sobre formaci&oacute;n continua</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="description-item" *ngIf="course && course['Precio Suscripcion anual']">
+				<div class="description-icon">
+					<!-- <i class="fas fa-circle text-{{course['Color']}}"></i> -->
+				</div>
+				<div class="description-title text-{{course['Color']}}">
+					<p>O si prefieres</p>
+					Suscripci&oacute;n anual
+				</div>
+				<div class="description-content">
+					<p><span class="strike text-gray">{{course["Precio Modulo"]}}€</span> {{course["Precio Suscripcion anual"] / 10}}€
+						<strong>por mes</strong><br>
+					</p>
+	
+					<div>
+						<span class="bold">Precio bonificado con pago anual</span>
+						<br>
+
+						<a class="text-{{course['Color']}}" routerLink="/tipos-de-formacion" fragment = "anual">m&aacute;s informaci&oacute;n
+							sobre suscripci&oacute;n anual</a>
+					</div>
+				</div>
+			</div>
+			
+			<div class="description-item" *ngIf="course && course['Description']">
+				<div class="description-icon">
+					<i class="fas fa-circle text-{{course['Color']}}"></i>
+				</div>
+				<div class="description-title text-{{course['Color']}}">Descripci&oacute;n</div>
+				<p class="description-content" [innerHTML]="course['Description']"></p>
+			</div>
+		</div>
+
+		<div *ngIf = "mastercourse['Name'] == 'Certificación Marco Común Europeo'">
+			<div class="description-item" *ngIf="course && course['Description']">
+				<div class="description-icon">
+					<i class="fas fa-circle text-{{course['Color']}}"></i>
+				</div>
+				<div class="description-title text-{{course['Color']}}">Descripci&oacute;n</div>
+				<p class="description-content" [innerHTML]="course['Description']"></p>
+			</div>
+
+			<div class="description-item" *ngIf="course && course['Precio FC']">
+				<div class="description-icon"></div>
+
+				<div class="description-title text-{{course['Color']}}">
+					{{course["Precio FC (Titulo)"] ? course["Precio FC (Titulo)"] : "Formaci&oacute;n Continua"}}
+				</div>
+
+				<div class="description-content">
+					<p>{{course["Precio FC"]}}€
+						<strong>{{course["Precio FC (Texto)"] ? course["Precio FC (Texto)"] : "por mes"}}</strong><br>
+					</p>
+				</div>
+			</div>
+		</div>
+		
+		<div class="description-item" *ngIf="url_params[0] == 'preparacion-toefl'">
+			<div class="description-icon">
+				<i class="fas fa-circle text-{{course['Color']}}"></i>
+			</div>
+			<div class="description-title text-{{course['Color']}}">A tu disposición</div>
+			<div class="description-content">
+				<ul class="other-advantages-toefl">
+					<li><i class="far fa-circle text-teal"></i>Centro de preparación para el examen TOEFL®</li>
+					<li><i class="far fa-circle text-teal"></i>+1000m² de instalaciones</li>
+					<li><i class="far fa-circle text-teal"></i>Pizarras digitales y Test Center con más de 25 puestos de
+						simulación in situ o remoto de examen</li>
+					<li><i class="far fa-circle text-teal"></i>Los mejores preparadores para TOEFL® de España</li>
+					<li><i class="far fa-circle text-teal"></i>Becas de preparación TOEFL® cada trimestre</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- <div class="description-item" *ngIf="mastercourse && mastercourse['slug'] && mastercourse['slug'] == 'preparacion-toefl'"> -->
+		<div class="description-item" *ngIf="url_params[0] == 'preparacion-toefl'">
+			<div class="description-icon">
+				<i class="fas fa-circle text-{{course['Color']}}"></i>
+			</div>
+			<div class="description-title text-{{course['Color']}}">Reconocimiento ALA</div>
+			<div class="description-content">
+				Experiencias de universidades internacionales sobre la preparación TOEFL® en American Language Online
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<!-- <app-exam-inscription [webpage]="mastercourse['slug']" *ngIf="mastercourse['slug'] === 'preparacion-toefl' || mastercourse['slug'] === 'preparacion-examen-toeic'"></app-exam-inscription> -->
+<div *ngIf="mastercourse['slug'] === 'preparacion-toefl' || mastercourse['slug'] === 'preparacion-examen-toeic'">
+	<app-exam-inscription></app-exam-inscription>
+</div>
+
+<div class="full-width from-course" *ngIf="mastercourse['slug'] == 'preparacion-toefl'">
+	<app-slider-universities></app-slider-universities>
+</div>
+
+<div id="prueba-de-nivel">	
+	<app-appointments></app-appointments>
+</div>
+
+<div class="skew-block {{course['Color']}}" *ngIf="course && course['Video']">
+	<div class="skew-block-container">
+		<div class="description-media video card">
+			<iframe width="100%" height="100%" [src]="course_video" frameborder="0"
+				allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+				allowfullscreen></iframe>
+		</div>
+	</div>
+</div>
+
+<div class="skew-block {{course['Color']}}" *ngIf="mastercourse && mastercourse['Video']">
+	<div class="skew-block-container">
+		<div class="description-media video video-card">
+			<iframe width="100%" height="100%" [src]="mastercourse_video" frameborder="0"
+				allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+				allowfullscreen></iframe>
+				<!-- <iframe width="560" height="315" [src]="mastercourse_video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+		</div>
+	</div>
+</div>
+
+<div class="custom-html" [innerHTML]="course['Custom HTML']" *ngIf="course"></div>
+
+<div class="description-block preguntas-frecuentes" *ngIf="course && course['faqs'] && course['faqs'].length>0">
+	<div class="course-data">
+		<div class="description-item" *ngIf='course && course["Horarios"]'>
+			<div class="description-icon">
+				<i class="fas fa-circle text-{{course['Color']}}"></i>
+			</div>
+			<div class="description-title text-{{course['Color']}}">
+				Preguntas frecuentes
+			</div>
+			<div class="description-content preguntas-container">
+				<div class="pregunta-block" *ngFor="let faq of course['faqs']">
+					<p class="question medium space-text" (click)="faq['show'] = !faq['show']">{{faq['Title']}}</p>
+					<p class="answer">{{faq['Question']}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="btn red btn-centered">
+		<a (click)="openContactModal()">
+			<table>
+				<tr>
+					<td style="vertical-align:middle">
+						<i class="fas fa-envelope"></i>
+					</td>
+					<td style="vertical-align:middle">
+						<div class="text-small">Habla con</div>
+						<div class="bold">UN ASESOR</div>
+					</td>
+				</tr>
+			</table>
+		</a>
+	</div>
+</div>
+
+<!-- <h2 class="text-center opinions-title"
+	*ngIf="mastercourse && mastercourse['opinions'] && mastercourse['opinions'].length > 0">Sobre el
+	curso</h2> -->
+<div class="skew-block {{course['Color']}} opinions-skew"
+	*ngIf="mastercourse && mastercourse['opinions'] && mastercourse['opinions'].length > 0"
+	(loaded)="slideOpinionsPro()">
+	<div class="skew-block-container beauty-container beauty-container-opinions comments scrollable" id="comment-slider">
+		<!-- LA TARJETA BONITA -->
+		<div class="beauty-pill beauty-pill-opinions small-pill single-comment" [ngClass]="{center: i == opinion_counter}"
+			*ngFor="let pill of mastercourse['opinions']; let i = index">
+			<div class="beauty-card">
+				<div class="beauty-header opinions">
+					<div class="white-block">
+						<span *ngIf="pill['Original']"
+							(click)="seeOriginalOpinion(mastercourse['opinions'][i]['Original']['url'])"><i
+								class="fas fa-file-alt"></i>&nbsp;Ver original</span>
+					</div>
+					<div class="beauty-image thin" (click)="printComment(mastercourse['opinions'][i])">
+						{{mastercourse['opinions'][i]['Author'].split(' ')[0][0]}}{{mastercourse['opinions'][i]['Author'].split(' ')[0][1]}}
+					</div>
+					<div class="dark-side opinions">
+						<!-- {{course['opinions'][i]['Stars']}}/ <span>10</span> -->
+						<div class="toefl-score" *ngIf="mastercourse['opinions'][i]['Puntuacion TOEFL'].length > 0">
+							{{pill['Puntuacion TOEFL']}}&nbsp;/120 TOEFL®
+						</div>
+						<div class="stars"
+							*ngIf="pill['realStars'] && !(mastercourse['opinions'][i]['Puntuacion TOEFL'].length > 0)">
+							<i class="fas fa-star"
+								*ngFor="let star of pill['realStars']['fullStars']; let i = index"></i>
+							<i class="fas fa-star-half" *ngIf="pill['realStars']['halfStar']"></i>
+						</div>
+					</div>
+				</div>
+				<div class="beauty-content" (click)="openFullOpinion('full-text-opinion', mastercourse['opinions'][i])">
+					<div class="beauty-comment">
+						{{mastercourse['opinions'][i]['shortComment']}}
+						<div class="click-to-see" *ngIf="mastercourse['opinions'][i]['shortComment'] == ''">Toca para
+							ver más</div>
+					</div>
+					<div class="beauty-footer">
+						<div class="beauty-author">
+							{{mastercourse['opinions'][i]['Author']}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- <div class="spacer"></div> -->
+	</div>
+	<div class="range-line opinions-range">
+		<input type="range" id="inputRangeCourse" (change)="handleRangeCourse()" value="0">
+	</div>
+	<div class="see-opinions-container">
+		<button class="btn light see-all-opinions {{course['Color']}}"
+			routerLink="/american-language-academy-opiniones">Ver todas</button>
+	</div>
+
+</div>
+
+<!-- <img class="banner-img" src="/assets/images/banners/banner_general_english.svg" alt=""> -->
+
+<div class="description-block">
+	<div class="course-data">
+		<div class="description-item" *ngIf='course && course["Horarios"]'>
+			<div class="description-icon">
+				<i class="fas fa-circle text-{{course['Color']}}"></i>
+			</div>
+			<div class="description-title text-{{course['Color']}}">
+				Beneficios
+				<p class="text-small text-gray">American Language Online</p>
+			</div>
+
+			<div *ngIf = "mastercourse['Name'] != 'Certificación Marco Común Europeo'" class="description-content">
+				<div style = "text-align: right;">
+					<p class = "text-orange">The best Learning Experience</p>
+					<p class = "text-small text-gray">American Language Online</p>
+				</div>
+
+				<div class="ventaja">
+					<p class="bold">Disponble 24/7</p>
+					<p class="text-small text-light-green">Desde cualquier parte del mundo</p>
+				</div>
+				<div class="ventaja">
+					<p class="bold">Los mejores profesores online</p>
+					<p class="text-small text-teal">La experiencia que asegura el &eacute;xito</p>
+				</div>
+				<div class="ventaja">
+					<p class="bold">Resultados garantizados</p>
+					<p class="text-small text-cyan">+50 años de experiencia</p>
+				</div>
+				<div class="ventaja">
+					<p class="bold">La mejor aplicación de ingl&eacute;s</p>
+					<p class="text-small text-deep-purple">Diseñada por expertos de la enseñanza</p>
+				</div>
+				<div class="ventaja">
+					<p class="bold">Garant&iacute;a de &eacute;xito</p>
+					<p class="text-small text-pink">Premios nacionales 2018, 2019 y 2020</p>
+				</div>
+				<div class="ventaja">
+					<p class="bold">R&aacute;pido y efectivo</p>
+					<p class="text-small text-red">Aprende ingl&eacute;s en un Flash!</p>
+				</div>
+			</div>
+
+			<div *ngIf = "mastercourse['Name'] == 'Certificación Marco Común Europeo'" class="description-content">
+				<div class="ventaja">
+					<p class="bold">Consigue tu certificado en 5 días</p>
+					<p class="text-small text-light-green">Válido para A1-A2-B1-B2-C1-C2.</p>
+				</div>
+				<div class="ventaja">
+					<p class="bold">Realiza tu examen en 48h</p>
+					<p class="text-small text-teal">Obtén los resultados en 3 días.</p>
+				</div>
+				<div class="ventaja">
+					<p class="bold">Máximo reconocimiento internacional</p>
+					<p class="text-small text-cyan">El examen más riguroso.</p>
+				</div>
+				<div class="ventaja">
+					<p class="bold">Tarifas Excepcionales</p>
+					<p class="text-small text-deep-purple">Desde 100€ (A1) hasta 175€ (C2).</p>
+				</div>
+				<div class="ventaja">
+					<p class="bold">Examen para el Marco Común Europeo</p>
+					<p class="text-small text-pink">Evalúa las capacidades de cada nivel.</p>
+				</div>
+				<div class="ventaja">
+					<p class="bold">Centro Oficial Examinador</p>
+					<p class="text-small text-red">Zona Chamberí-Arguelles.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<h3 class="text-center"  *ngIf="mastercourse['slug'] === 'preparacion-toefl'">Nuestros profesores de preparación TOEFL®</h3>
+
+<app-slider-teachers *ngIf="mastercourse['slug'] === 'preparacion-toefl'" [webpage]="mastercourse['slug']">
+</app-slider-teachers>
+
+
+<div class="modal-background" *ngIf='(modal.modals === "original-opinion") || (modal.modals === "full-text-opinion")'
+	(click)="closeOpinionModal()"></div>
+<div class="modal-original-opinion modal" *ngIf='modal.modals === "original-opinion"'>
+	<div class="modal-header">
+		<h2 class="modal-title">Opini&oacute;n original</h2>
+		<div class="modal-close btn red" (click)="closeOpinionModal()"><i class="fas fa-times"></i></div>
+	</div>
+
+	<div class="modal-content">
+		<div class="original-opinion">
+			<img src="https://api.americanlanguage.es{{urlOriginal}}" alt="foto de prueba">
+		</div>
+	</div>
+</div>
+
+<div class="modal-full-text-opinion modal" *ngIf='modal.modals === "full-text-opinion"'>
+	<div class="modal-header">
+		<h2 class="modal-title">Opini&oacute;n completa</h2>
+		<div class="modal-close btn red" (click)="closeOpinionModal()"><i class="fas fa-times"></i></div>
+	</div>
+
+	<div class="modal-content">
+		<div class="full-text-opinion">
+			<h3 class="space-title3">{{selectedComment['Author']}}</h3>
+			<p>{{selectedComment['Comentario']}}</p>
+			<div class="award" *ngIf="selectedComment && selectedComment['Ocupacion'].length > 0">
+				{{selectedComment['Ocupacion']}}</div>
+		</div>
+	</div>
+</div>
+
+<div class="becas-toefl page-width" *ngIf="mastercourse['slug'] === 'preparacion-toefl'" id="becas-toefl">
+	<h2 class="text-center">Becas de preparación TOEFL®</h2>
+</div>
+<div class="skew-block {{course['Color']}} intro-becas-toefl"  *ngIf="mastercourse['slug'] === 'preparacion-toefl'">
+	<div class="skew-block-container">
+		<div class="card">
+			<h4 class="text-center text-{{course['Color']}}">Participa en las becas alaprograms© para alumnos de preparación TOEFL®.</h4>
+			<p class="text-center">3 premios a la mejor puntuación y 1 al alumno más dedicado.</p>
+			<p class="text-center">Comparte tu experiencia de éxito para participar.</p>
+		</div>
+	</div>
+</div>
+
+<div class="becas-toefl page-width" *ngIf="mastercourse['slug'] === 'preparacion-toefl'">
+
+	<div class="description-block">
+			<div class="description-item">
+					<div class="description-icon">
+						<i class="fas fa-circle text-{{course['Color']}}"></i>
+					</div>
+					<div class="description-title text-{{course['Color']}}">Primer premio: Mejor puntuación</div>
+					<div class="description-content">
+						<p class="space-text"><strong>Beca alaprograms© de tu curso de preparación con ALA,</strong> consistente en
+							el
+							reintegro del
+							importe.</p>
+					</div>
+				</div>
+			
+				<div class="description-item">
+					<div class="description-icon">
+						<i class="fas fa-circle text-{{course['Color']}}"></i>
+					</div>
+					<div class="description-title text-{{course['Color']}}">Segundo y tercer premio: Mejor puntuación</div>
+					<div class="description-content">
+						<p class="space-text">Premio consistente en un <strong>Curso Monográfico Especializado de Business
+								English.</strong>
+						</p>
+					</div>
+				</div>
+			
+				<div class="description-item">
+					<div class="description-icon">
+						<i class="fas fa-circle text-{{course['Color']}}"></i>
+					</div>
+					<div class="description-title text-{{course['Color']}}">Premio especial a la dedicación</div>
+					<div class="description-content">
+						<p class="space-text">El profesor de cada grupo de preparación para el TOEFL® seleccionará al alumno más
+							dedicado e
+							involucrado.
+						</p>
+						<p class="space-text">Entre todos los seleccionados, el alumno que tenga mayor asistencia obtendrá como
+							premio un
+							<strong>Curso
+								Monográfico Especializado de Business English</strong>.</p>
+					</div>
+				</div>
+	</div>
+
+	<h4 class="text-center space-text" *ngIf="mastercourse['slug'] === 'preparacion-toefl'">¿Quieres participar?</h4>
+	<div class="description-item"  *ngIf="mastercourse['slug'] === 'preparacion-toefl'">
+		<div class="description-content">
+			<ul class="other-advantages-toefl">
+				<li>
+					<!-- <i class="far fa-circle text-teal"></i> -->
+					<div>
+						Envía un email a <a href="mailto:students@americanlanguage.es">students@americanlanguage.es</a>
+						indicándonos la
+						puntuación que has obtenido en tu examen junto con tu certificado de resultados.
+					</div>
+				</li>
+				<!-- <li>
+					<i class="far fa-circle text-teal"></i>
+					<div>
+						Los ganadores tendrán que autorizar a compartir su exitosa experiencia y sus buenos
+						resultados en la futura sección de nuestra web.
+					</div>
+				</li>
+				<li>
+					<i class="far fa-circle text-teal"></i>
+					<div>
+						Durante los siguientes 3 meses, hasta 3 alumnos podrían contactarte para saber más
+						sobre tu experiencia.
+					</div>
+				</li>
+				<li>
+					<i class="far fa-circle text-teal"></i>
+					<div>
+						Deberás compartir tu experiencia en nuestras redes sociales.
+					</div>
+				</li> -->
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div  *ngIf="mastercourse['slug'] === 'preparacion-toefl'">
+	<app-book-multimedia></app-book-multimedia>
+</div>
+
+
+<!-- <a target="_blank" href="https://calendar.google.com/event?action=TEMPLATE&amp;tmeid=NDc4bzl1ZGhzMjYwaTA4NGI1bzY0ODNwZGFfMjAxOTA5MTBUMDgwMDAwWiBkYXlsLmJ1Y2tsZXk4N0Bt&amp;tmsrc=dayl.buckley87%40gmail.com&amp;scp=ALL"><img border="0" src="https://www.google.com/calendar/images/ext/gc_button1_es.gif"></a> -->
+
+
+<div class="btn red btn-centered">
+	<a (click)="trackCallGAcourse()">
+		<table>
+			<tr>
+				<td style="vertical-align:middle">
+					<i class="fas fa-phone"></i>
+				</td>
+				<td style="vertical-align:middle">
+					<div class="text-small">Contactanos</div>
+					<div class="">+34 91 444 55 11</div>
+				</td>
+			</tr>
+		</table>
+	</a>
+</div>
+
+<!-- <div class = "contests" *ngIf="showStar">
+	<app-star-promotion></app-star-promotion>
+</div> -->
+
+<div class="final-article page-width" *ngIf="mastercourse && mastercourse['Articulo final']"
+	[innerHTML]="mastercourse['Articulo final']"></div>

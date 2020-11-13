@@ -1,0 +1,114 @@
+<div class="horse" *ngIf="showHorse">
+    <i (click)="startContest()" class="fas fa-chess-knight"></i>
+</div>
+
+<!-- MODAL DE CONCURSO -->
+<div class="modal-background"
+    *ngIf='modal.modals === "horse-contest"'
+    (click)="closeModal()"></div>
+<div class="modal-horse modal" *ngIf='modal.modals === "horse-contest"'>
+    <div class="modal-header">
+        <h2 class="modal-title">
+            {{
+                (introductionFirst && step === 0)  ? '¡Hola! :)' :
+                (introductionSecond && step === 0) ? '¿Cómo funciona el concurso?' :
+                (step === 0 && !introductionFirst && !introductionSecond) ? 'Ponte a prueba y participa' : 
+                (stopGame) ? '¡Muy bien!' : 
+                (player) ? player['Nombre'] + ': ' + player['Puntos'] + ' puntos' :
+                'Pregunta'
+            }}
+        </h2>
+        <div class="modal-close btn red" (click)="closeModal()"><i class="fas fa-times"></i></div>
+    </div>
+
+    <div class="modal-content">
+        <div class="introductionFirst introduction" *ngIf="introductionFirst && step == 0">
+
+            <p class="space-text">¿Quieres saber cuánto sabes sobre el mundo en general?</p>
+            <p class="space-text">¡Juega al ALA Cultural Game!</p>
+
+            <p class="space-text">Consigue puntos por cada respuesta correcta.</p>
+            <button (click)="introductionNav('first')" class="bnt light-blue">Jugar</button>
+        </div>
+        <div class="introductionSecond introduction" *ngIf="introductionSecond && step == 0">
+
+            <p class="space-text">El concurso ya ha terminado, pero si quieres, puedes seguir poniendo a prueba tu nivel cultural.</p>
+            <p class="space-text">¡Suerte!</p>
+            <button (click)="introductionNav('second')" class="btn cyan">Let's go</button>
+        </div>
+
+        <form #initForm="ngForm" *ngIf="step === 0 && !introductionFirst && !introductionSecond && !newPlayer">
+            <p class="space-text">Introduce tus datos personales:</p>
+            <div class="inputs">
+                <input [ngClass]="{error: checked && !mailCorrect}" [(ngModel)]="email" ngModel required type="email"
+                    name='email' placeholder="Email">
+                <input [ngClass]="{error: checked && !phoneCorrect}" *ngIf="!alreadyPlaying" [(ngModel)]="phone" ngModel
+                    required type="phone" name='phone' placeholder="Teléfono">
+            </div>
+
+            <div class="login-buttons">
+                <input (click)="submitInitForm(initForm)" type="submit"
+                    value="Participar" class="btn light-green">
+            </div>
+        </form>
+
+        <form #nameForm="ngForm" *ngIf="step === 0 && !introductionFirst && !introductionSecond && newPlayer">
+                <p class="space-text">¡Bienvenido al ALA Cultural Game! Esperamos que te lo pases bien jugando.</p>
+                <p class="space-text">¿Cómo te llamas?</p>
+                <div class="inputs">
+                    <input [ngClass]="{error: checked && !nameCorrect}" [(ngModel)]="name" ngModel required type="name"
+                        name='name' placeholder="Nombre">
+                </div>
+    
+                <div class="login-buttons">
+                    <input (click)="submitNameForm(nameForm)" type="submit"
+                        value="Jugar" class="btn light-green">
+                </div>
+            </form>
+
+        <div class="question-container question-{{step}}" *ngIf="!stopGame && step !== 0 && selectedQuestion">
+            <div class="question">
+                <div class="title">{{selectedQuestion['question']}}</div>
+                <ul class="answers-container">
+                    <li class="answer answer-{{k}}" (click)="checkAnswer(selectedQuestion['index'], answer)"
+                        *ngFor="let answer of selectedQuestion['answers']; let k = index">{{answer}}</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="nextChallenge" *ngIf="stopGame && inputQuestionCounter !== 15 && suggestedCounter !== 31">
+            <div class="connection home" *ngIf="url === '/'">
+                Ya tienes {{player['Puntos']}}. Para continuar jugando, dirígete a la <a class="underline colorful" (click)="closeModal()" routerLink="/academias-de-ingles-madrid" fragment="horse">página de Academias</a>
+            </div>
+            <div class="connection academies" *ngIf="url === '/academias-de-ingles-madrid'">
+                Ya tienes {{player['Puntos']}}. Para continuar jugando, dirígete a la <a class="underline colorful" (click)="closeModal()" routerLink="/cursos-ingles-madrid/preparacion-toefl" fragment="horse">página de cursos de TOEFL®</a>
+            </div>
+            <div class="connection courses" *ngIf="url === '/cursos-ingles-madrid/preparacion-toefl'">
+                Ya tienes {{player['Puntos']}}. Para continuar jugando, dirígete a la <a class="underline colorful" (click)="closeModal()" routerLink="/cursos-ingles-madrid" fragment="horse">página de cursos</a>
+            </div>
+        </div>
+ 
+        <div class="inputQuestion" *ngIf="stopGame && inputQuestionCounter === 15">
+            <form #inputQuestionForm="ngForm">
+                <h4>{{selectedInputQuestion['question']}}</h4>
+                <input type="number" ngModel [(ngModel)]="number" name="number" placeholder="Responde aquí">
+                <input type="submit" class="btn light-green" value="Responder" (click)="answerInputQuestion(inputQuestionForm)">
+            </form>
+        </div>
+
+        <div class="randomSearch" *ngIf="stopGame && suggestedCounter === 31">
+            <p>Para continuar jugando, realiza la siguiente búsqueda en <a class="underline colorful" href="https://www.google.com/search?q={{suggestedUrl}}" target="_blank">Google</a> y vuelve a entrar en la web de American Language Academy:</p>
+            <p>{{suggestedRandom}}</p>
+            <p><strong>(Recuerda no hacer click en los anuncios)</strong></p>
+        </div>
+    </div>
+</div>
+
+<div class="toast-container">
+    <div [@toastOnOff] class="newToast" *ngFor="let toast of modal.toasts; let i = index" [ngClass]="{
+            success: toast['type'] === 'success',
+            error: toast['type'] === 'error'
+        }">
+        {{toast['message']}}
+    </div>
+</div>

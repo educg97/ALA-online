@@ -1,0 +1,98 @@
+/* COLORS */
+// Material Palette 2014
+// $white:         #FFFFFF;
+// $black:         #000000;
+// $red:           #F44336;
+// $pink:          #E91E63;
+// $purple:        #9C27B0;
+// $deep-purple:   #673AB7;
+// $indigo:        #3F51B5;
+// $blue:          #2196F3;
+// $light-blue:    #03A9F4;
+// $cyan:          #00BCD4;
+// $teal:          #009688;
+// $green:         #4CAF50;
+// $light-green:   #8BC34A;
+// $lime:          #CDDC39;
+// $yellow:        #FFEB3B;
+// $amber:         #FFC107;
+// $orange:        #FF9800;
+// $deep-orange:   #FF5722;
+// $brown:         #795548;
+// $gray:          #9E9E9E;
+// $blue-gray:     #607D8B;
+// $ala-blue:      #133D68;
+// $ala-cyan:      #90CAF9;
+
+// (color: 'red',      light: lighten($red, 10%),      normal: $red,       dark: darken($red, 20%),        gradient: $deep-orange),
+// (color: 'pink',     light: lighten($pink, 10%),     normal: $pink,      dark: darken($pink, 20%),       gradient: $purple),
+// (color: 'purple',   light: lighten($purple, 10%),   normal: $purple,    dark: darken($purple, 20%),     gradient: $deep-purple),
+// (color: 'blue',     light: lighten($indigo, 10%),   normal: $indigo,    dark: darken($indigo, 20%),     gradient: $blue),
+// (color: 'green',    light: lighten($green, 10%),    normal: $green,     dark: darken($green, 20%),      gradient: $lime),
+// (color: 'yellow',   light: lighten($yellow, 10%),   normal: $yellow,    dark: darken($yellow, 20%),     gradient: $orange),
+// (color: 'orange',   light: lighten($orange, 10%),   normal: $orange,    dark: darken($orange, 20%),     gradient: $deep-orange),
+// (color: 'gray',     light: lighten($gray, 10%),     normal: $gray,      dark: darken($gray, 20%),       gradient: darken($gray, 20%)),
+// (color: 'blue-gray',light: lighten($blue-gray, 10%),normal: $blue-gray, dark: darken($blue-gray, 20%),  gradient: darken($blue-gray, 20%))
+
+// Curtom ALA colors
+$white:           #FFFFFF;
+$black:           #000000;
+$red:             #FC4E4E;
+$pink:            #FF49B6;
+$purple:          #9C27B0;
+$deep-purple:     #7E57C2;
+$indigo:          #3F51B5;
+$blue:            #2196F3;
+$light-blue:      #03A9F4;
+$cyan:            #00BCD4;
+$teal:            #009688;
+$dark-green:      #2E7D32;
+$green:           #4CAF50;
+$light-green:     #8BC34A;
+$lime:            #CDDC39;
+$yellow:          #FDD835;
+$amber:           #FFC107;
+$orange:          #FF9800;
+$deep-orange:     #FC824E;
+$brown:           #795548;
+$gray:            #c4c4c4;
+$light-gray:      #EBEBEB;
+$very-light-gray: #F5F5F5;
+$blue-gray:       #78909C;
+$ala-blue:        #133D68;
+$ala-cyan:        #90CAF9;
+$transparent: rgba(255, 255, 255, 0);
+
+$colors: (
+    //                          normal: normal/dark version     gradient: light version
+    (color: 'white',            normal: $white,                 gradient: $white),
+    (color: 'black',            normal: $black,                 gradient: $black),
+    (color: 'red',              normal: $red,                   gradient: $deep-orange),
+    (color: 'pink',             normal: $pink,                  gradient: lighten($red, 10%)),
+    (color: 'purple',           normal: $purple,                gradient: $pink),
+    (color: 'deep-purple',      normal: $deep-purple,           gradient: $purple),
+    (color: 'indigo',           normal: $indigo,                gradient: $blue),
+    (color: 'blue',             normal: $blue,                  gradient: $light-blue),
+    (color: 'light-blue',       normal: $light-blue,            gradient: lighten($cyan, 10%)),
+    (color: 'cyan',             normal: $cyan,                  gradient: lighten($cyan, 10%)),
+    (color: 'teal',             normal: $teal,                  gradient: $light-green),
+    (color: 'dark-green',       normal: $dark-green,            gradient: $light-green),
+    (color: 'green',            normal: $green,                 gradient: $light-green),
+    (color: 'light-green',      normal: $light-green,           gradient: $lime),
+    (color: 'lime',             normal: $lime,                  gradient: $yellow),
+    (color: 'yellow',           normal: darken($yellow, 10%),   gradient: $yellow),
+    (color: 'amber',            normal: $amber,                 gradient: $yellow),
+    (color: 'orange',           normal: $orange,                gradient: $amber),
+    (color: 'deep-orange',      normal: $deep-orange,           gradient: $amber),
+    (color: 'brown',            normal: $brown,                 gradient: $red),
+    (color: 'gray',             normal: $gray,                  gradient: lighten($gray, 10%)),
+    (color: 'blue-gray',        normal: $blue-gray,             gradient: $blue),
+    (color: 'ala-blue',         normal: $ala-blue,              gradient: $ala-blue),
+    (color: 'ala-cyan',         normal: $ala-cyan,              gradient: $ala-cyan),
+    (color: 'light-gray',       normal: $light-gray,            gradient: $light-gray),
+    (color: 'very-light-gray',  normal: $very-light-gray,       gradient: $very-light-gray)
+);
+
+@function color($color, $type: normal) {
+    @return map-get(map-get($colors, $color), $type);
+}

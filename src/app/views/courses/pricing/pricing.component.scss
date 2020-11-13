@@ -1,0 +1,26 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors';
+
+.text{
+    margin: auto;
+    max-width: $page-width;
+    padding: 0 40px;
+}
+
+.pricing-container {
+    .block-content {
+        ul {
+            margin: 10px 0;
+            li {
+                margin: 10px 0;
+            }
+        }
+    }
+}
+
+.by-year-title {
+    font-family: Gotham-Rounded-Bold;
+    font-size: 13pt;
+    margin: 5px auto;
+}

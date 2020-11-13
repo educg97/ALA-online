@@ -1,0 +1,4 @@
+Sitemap: https://americanlanguage.online/sitemap.xml
+User-agent: *
+Disallow: 
+Disallow: /api

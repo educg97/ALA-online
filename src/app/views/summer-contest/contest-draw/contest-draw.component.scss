@@ -1,0 +1,157 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors';
+
+.draw-counter {
+    padding: 0 20px;
+    .winner {
+        margin-bottom: 10px;
+        span {
+            color: $ala-blue;
+            font-weight: bold;
+        }
+    }
+}
+
+.testData {
+    li {
+        display: flex;
+        justify-content: space-around;
+        margin: 10px 0;
+        span {
+            width: 20%;
+        }
+    }
+}
+
+.random-number-generator {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    button {
+        margin: 0 auto 20px;
+    }
+    .numero-random {
+        font-size: 50px;
+        text-align: center;
+    }
+}
+
+.form-stars {
+    margin: auto;
+}
+.winner-stars {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+        font-size: 80px;
+        margin: 100px 0;
+        text-align: center;
+        animation: fadeInCredible .7s ease-in-out forwards, colorss 3s ease-in-out infinite;
+    }
+}
+
+.estrellas {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-around;
+    z-index: 50000;
+    .star {
+        &.late {
+            animation: starbalance 2s ease-in-out infinite;
+        }
+        &.later {
+            animation: starbalance 2s .5s ease-in-out infinite;
+        }
+        &.latest {
+            animation: starbalance 2s .7s ease-in-out infinite;
+        }
+        &.soon {
+            animation: starbalance 2s .2s ease-in-out infinite;
+        }
+        &.sooner {
+            animation: starbalance 2s 1s ease-in-out infinite;
+        }
+        &.soonest {
+            animation: starbalance 2s .8s ease-in-out infinite;
+        }
+        &.large {
+            i {
+                font-size: 40px;
+            }
+        }
+        &.medium {
+            i {
+                font-size: 30px;
+            }
+        }
+        &.small {
+            i {
+                font-size: 20px;
+            }
+        }
+        i {
+            animation: colorss 3s ease-in-out infinite;
+        }
+    }
+}
+
+@keyframes fadeInCredible {
+    0% {
+        opacity: 0;
+    }
+    30% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    60% {
+        transform: scale(1);
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes colorss {
+    0% {
+        color: $lime;
+    }
+    20% {
+        color: $yellow;
+    }
+    40% {
+        color: $amber;
+    }
+    60% {
+        color: $orange;
+    }
+    80% {
+        color: $deep-orange;
+    }
+}
+
+@keyframes starbalance {
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    20% {
+        opacity: 1;
+        
+    }
+    80% {
+        opacity: 1;
+        
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100vh);
+    }
+}

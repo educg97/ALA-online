@@ -1,0 +1,33 @@
+<script>
+    fbq('track', 'Contact');
+</script>
+
+<div id="contact-form-container" *ngIf = "!sentForm">
+    <div id="contact-form">
+        <form #EventsPopUp="ngForm">
+            <input [(ngModel)] = "contactData.name" name="name" id="contact-name" placeholder="Tu nombre" type="text" autocomplete="name" ngModel required>
+            <input [(ngModel)] = "contactData.surname" name="surname" id="contact-surname" placeholder="Tus apellidos" type="text" autocomplete="surname" ngModel required>
+            <p class="errorMessage" *ngIf="checked && !mailCorrect">Formato de email no válido</p>
+            <input [ngClass]="{error: checked && !mailCorrect}" [(ngModel)]="contactData.email" name="email" id="contact-email" placeholder="Tu correo electr&oacute;nico" type="email" autocomplete="email" ngModel email required>
+            <p class="errorMessage" *ngIf="checked && !phoneCorrect">Formato de teléfono no válido</p>
+            <input [ngClass]="{error: checked && !phoneCorrect}" [(ngModel)]="contactData.phone" name="phone" id="contact-phone" placeholder="Tu n&uacute;mero de tel&eacute;fono" type="tel" autocomplete="tel" ngModel>
+            
+            <select [(ngModel)]="contactData.selectedCourse" name="selectedCourse" onmousedown="if(this.options.length>8){this.size=8;}"  onchange='this.size=0;' onblur="this.size=0;">
+                <option value = "" selected hidden>Elije tu curso</option>
+                <option *ngFor = "let course of availableCourses" [value] = "course.value">{{course.courseName}}</option>
+            </select>
+            
+            <textarea [(ngModel)]="contactData.message" name="message" id="contact-message" placeholder="Tus comentarios" ngModel></textarea>
+
+            <!-- <input type="checkbox" name="terms">
+            <label for="contact-terms" class="label-checkbox text-small">He leído y acepto los <a routerLink="/terminos-y-condiciones" target="_blank">términos y condiciones</a></label> -->
+
+            <button class="btn green" id="contact-form-btn" (click) = "sendForm(form)"><strong>Enviar tu solicitud</strong></button>
+            <div class="text-small">
+                This site is protected by reCAPTCHA and the Google
+                <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+                <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+            </div>
+        </form>
+    </div>
+</div>

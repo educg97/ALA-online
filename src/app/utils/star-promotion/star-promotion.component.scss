@@ -1,0 +1,73 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors';
+
+a {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.centered {
+    text-align: center;
+}
+
+.star-promotion {
+    font-size: 40px;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    margin: 20px auto;
+    text-align: center;
+    animation: sunGlitter 3s infinite ease-in-out;
+
+    i {
+        cursor: pointer;
+    }
+}
+
+.modal-promotion {
+    @media screen and (min-width: $break-mobile + 1) {
+        width: 40vw;
+        form {
+            margin: 15px auto;
+        } 
+    }
+    .modal-content {
+        overflow: auto;
+        max-height: 70vh;
+        form {
+            .label-checkbox {
+                line-height: 1.8;
+            }
+            .submit-buttons {
+                display: flex;
+                justify-content: center;
+            }
+        }
+    }
+}
+
+@keyframes sunGlitter {
+    0% {
+        color: $lime;
+    }
+    20% {
+        color: $yellow;
+    }
+    40% {
+        color: $amber;
+    }
+    60% {
+        color: $orange;
+    }
+    80% {
+        color: $deep-orange;
+    }
+    100% {
+        color: $lime;
+    }
+}
+
+// form {
+//     text-align: center;
+// }

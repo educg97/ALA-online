@@ -1,0 +1,20 @@
+<div id="contact-btn" (click)="openContactModal()" class="btn blue" title="Contact form">
+	<i class="fas fa-envelope"></i>
+</div>
+
+<div class="contact-banner" (click)="callPhone()">
+		<i class="fas fa-phone"></i>
+	<p class="bold">¡Contacta!</p>
+</div>
+
+<div class="modal-background" *ngIf='modal.modals === "contact"' (click)="closeContactModal()"></div>
+<div class="modal-contact modal" *ngIf='modal.modals === "contact"'>
+	<div class="modal-header">
+		<h2 class="modal-title">Envíanos tu consulta</h2>
+		<div class="modal-close btn red" (click)="closeContactModal()"><i class="fas fa-times"></i></div>
+	</div>
+
+	<div>
+		<app-contact-form></app-contact-form>
+	</div>
+</div>

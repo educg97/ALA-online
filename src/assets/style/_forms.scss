@@ -1,0 +1,229 @@
+/* FORM */
+input{
+    font-family: Gotham-Rounded-Book;
+    font-size: $font-normal;
+    padding: 8px 17px;
+    margin: 5px 10px;
+    background-image: none;
+    background-color: white;
+    border: 1px solid $blue-gray;
+    color: $blue-gray;
+    border-radius: 1000px;
+    text-decoration: none;
+}
+textarea{
+    font-family: Gotham-Rounded-Book;
+    font-size: $font-normal;
+    padding: 8px 17px;
+    margin: 5px 10px;
+    background-image: none;
+    background-color: white;
+    border: 1px solid $blue-gray;
+    color: $blue-gray;
+    border-radius: 20px;
+    text-decoration: none;
+}
+
+/* Checkbox */
+
+/* Base for label styling */
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+  position: relative;
+  padding-left: 28px;
+  margin: 8px 17px;
+  cursor: pointer;
+}
+
+/* checkbox aspect */
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  border: 2px solid $blue-gray;
+  background: #fff;
+  border-radius: 100px;
+}
+
+/* checked mark aspect */
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  transition-duration: 0.3s;
+  background: $teal;
+  border-radius: 100%;
+}
+/* checked mark aspect changes */
+[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  @include transform(scale(0));
+}
+[type="checkbox"]:checked + label:after {
+  opacity: 1;
+  @include transform(scale(1));
+}
+/* disabled checkbox */
+[type="checkbox"]:disabled:not(:checked) + label:before,
+[type="checkbox"]:disabled:checked + label:before {
+  box-shadow: none;
+  border-color: #bbb;
+  background-color: #ddd;
+}
+[type="checkbox"]:disabled:checked + label:after {
+  color: #999;
+}
+[type="checkbox"]:disabled + label {
+  color: #aaa;
+}
+
+/* Hover */
+[type="checkbox"]:checked:hover + label:before,
+[type="checkbox"]:not(:checked):hover + label:before {
+  @include box-shadow(0px, 5px, 5px, rgba($blue-gray, 0.1));
+}
+
+/* Select */
+select {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 5px 10px;
+  padding: 8px 17px;
+  border: 1px solid $blue-gray;
+  background-color: white;
+  border-radius: 200px;
+  color: $blue-gray;
+  position: relative;
+  @media screen and (max-width: $break-tablet) {
+    width: 90%;
+    margin: auto;
+  }
+  &:after {
+      content: '5';
+      position: absolute;
+      top: 0;
+      right: 10px;
+      width: 10px;
+      z-index: 50;
+  }
+  option {
+    @media screen and (max-width: $break-tablet) {
+      width: 90%;
+      margin: auto;
+    }
+  }
+}
+
+/* Input Range */
+.range-line {
+  padding-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  position: relative;
+  .range-legend {
+    position: absolute;
+    top: -25px;
+    left: 0; right: 0;
+    margin: auto;
+    text-align: center;
+    @each $color in $colors {
+      &.#{map-get($color, color)}{
+        color: map-get($color, normal);
+      }
+  }
+    &.white {
+      color: white;
+    }
+  }
+  .arrow {
+    position: absolute;
+    width: 10px;
+    top: -5px;
+    z-index: 30;
+    @each $color in $colors {
+      &.#{map-get($color, color)}{
+        color: map-get($color, normal);
+      }
+    }
+    &.left {
+      left: -15px;
+    }
+    &.right {
+      right: -15px;
+    }
+  }
+  // &.arrows {
+  //   // &:before {
+  //   //   content: '<';
+  //   //   position: absolute;
+  //   //   top: -5px; left: -15px;
+  //   //   width: 10px;
+  //   //   color: white;
+  //   // }
+  //   // &:after {
+  //   //   content: '>';
+  //   //   position: absolute;
+  //   //   top: -5px; right: -15px;
+  //   //   width: 10px;
+  //   //   color: white;
+  //   // }
+  // }
+  &.companies,
+  &.blue {
+      input[type=range]{
+          background-color: $blue;
+      }
+      input[type=range]::-webkit-slider-thumb {
+          background-color: $blue;
+      }
+      &.arrows {
+        &:before {
+          content: '<';
+          position: absolute;
+          top: -5px; left: -15px;
+          width: 10px;
+          color: $blue;
+        }
+        &:after {
+          content: '>';
+          position: absolute;
+          top: -5px; right: -15px;
+          width: 10px;
+          color: $blue;
+        }
+      }
+  }
+  &.asociations-range {
+      padding: 0;
+  }
+  input[type=range] {
+      -webkit-appearance: none;
+      appearance: none;
+      height: 2px;
+      margin: 0;
+      padding: 0;
+      border: none;
+  }
+  input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 15px; height: 15px;
+      background-color: white;
+      border-radius: 50%;
+      border: none;
+  }
+}

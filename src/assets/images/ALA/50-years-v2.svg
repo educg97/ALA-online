@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 177.5 177.5">
+    <defs>
+        <style>
+            .opacity-100,.opacity-75,.opacity-50,.opacity-25{fill: url(#circle_gradient);}
+            .opacity-100{opacity:1.00;}
+            .opacity-75{opacity:0.75;}
+            .opacity-50{opacity:0.50;}
+            .opacity-25{opacity:0.25;}
+            .cls-8,.cls-9{fill:#133d68;}
+            .cls-8{font-size:75.65px;font-family:Gotham-Book, Gotham;font-weight:300;}
+            .cls-9{font-size:22.69px;font-family:GothamRounded-Light, Gotham Rounded;font-weight:300;}
+        </style>
+        <linearGradient id="circle_gradient" y1="88.75" x2="177.5" y2="88.75" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#5dc1de"/>
+            <stop offset="1" stop-color="#e0adcf"/>
+        </linearGradient>
+    </defs>
+    <title>50-years-v2</title>
+    <g>
+        <path class="opacity-100" d="M88.75,177.5A88.75,88.75,0,1,1,177.5,88.75,88.85,88.85,0,0,1,88.75,177.5ZM88.75,2A86.75,86.75,0,1,0,175.5,88.75,86.85,86.85,0,0,0,88.75,2Z"/>
+        <path class="opacity-75" d="M88.75,171.45a82.7,82.7,0,1,1,82.7-82.7A82.79,82.79,0,0,1,88.75,171.45Zm0-163.4a80.7,80.7,0,1,0,80.7,80.7A80.79,80.79,0,0,0,88.75,8.05Z"/>
+        <path class="opacity-50" d="M88.75,166.72a78,78,0,1,1,78-78A78.06,78.06,0,0,1,88.75,166.72Zm0-153.94a76,76,0,1,0,76,76A76.06,76.06,0,0,0,88.75,12.78Z"/>
+        <path class="opacity-25" d="M88.75,163.13a74.38,74.38,0,1,1,74.38-74.38A74.47,74.47,0,0,1,88.75,163.13Zm0-146.76a72.38,72.38,0,1,0,72.38,72.38A72.46,72.46,0,0,0,88.75,16.37Z"/>
+    </g>
+    <g>
+        <text class="cls-8" transform="translate(41.58 101.86)">50</text>
+        <text class="cls-9" transform="translate(45.76 130.61)">YEARS</text>
+    </g>
+</svg>

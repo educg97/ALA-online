@@ -1,0 +1,9 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors'; 
+
+.error-list {
+    li {
+        margin: 10px 0;
+    }
+}

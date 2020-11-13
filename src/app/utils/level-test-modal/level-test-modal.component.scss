@@ -1,0 +1,458 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors';
+
+// CountDown Styles
+.countdown-time {
+    text-align: center;
+    margin: 25px auto;
+
+    p {
+        font-family: gotham;
+        font-size: xxx-large;
+        color: #fff;
+    }
+}
+
+ul {
+    display: flex;
+    justify-content: center;
+}
+
+.coming-soon {
+    width: 100%;
+}
+
+.time-countdown ul {
+    margin: 36px auto;
+}
+
+.time-countdown ul li.count-bg-one {
+    background: #468dbc;
+}
+
+.time-countdown ul li.count-bg-two {
+    background: #ef9024;
+}
+
+.time-countdown ul li.count-bg-three {
+    background: #ee337f;
+}
+
+.time-countdown ul li.count-bg-four {
+    background: #1fb1f4;
+    margin-right: 0;
+}
+
+.time-countdown ul li {
+    width: 12%;
+    margin-right: 4%;
+    text-align: center;
+    display: inline-block;
+    padding: 24px 20px;
+    color: #fff;
+}
+
+.radius {
+    border-radius: 5px;
+}
+
+.time-countdown ul li span {
+    color: #FFF;
+    font-family: 'Poppins', sans-serif;
+    font-size: 50px;
+    line-height: 60px;
+    font-weight: 700;
+    display: block;
+}
+
+// Level Test Styles
+.level-test {
+    h1 {
+        margin-bottom: 0;
+    }
+    .level-test-description {
+        padding: 20px;
+        @media screen and (min-width: $break-mobile){
+            max-width: 1100px;
+            margin: auto;
+        }
+        p {
+            margin: 10px 0;
+        }
+    }
+    .start-level-test {
+        display: flex;
+        justify-content: center;
+        width: 85%;
+        margin: 0 auto 20px;
+        @media screen and (min-width: $break-mobile) {
+            width: 350px;
+        }
+    }
+    .select-level {
+        text-align: center;
+        padding: 35px;
+        width: 100%;
+        margin: auto;
+        @media screen and (max-width: $break-mobile) {
+            width: 80%;
+            padding: 25px;
+        }
+
+        h3 {
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            padding: 10px;
+            width: 130px;
+            @media screen and (max-width: $break-mobile) {
+                width: 100%;
+                margin: 5px auto;
+            }
+        }
+    }
+    .actual-test {
+        padding: 10px;
+        position: relative;
+        min-height: 400px;
+        transition: all .3s ease-in-out;
+        @media screen and (min-width: $break-mobile){
+            max-width: 500px;
+            margin: auto;
+        }
+        .nextBtnContainer {
+            display: flex;
+            justify-content: flex-end;
+            .nextBtn {
+                width: 40%;
+                i {
+                    margin-left: 5px;
+                }
+            }
+        }
+        .info-progress {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            margin: auto;
+            .progress-bar-container {
+                background-color: $light-gray;
+                border-radius: 500px;
+                flex-basis: 75%;
+                height: 6px;
+                .progressBar {
+                    background-color: $green;
+                    height: 6px;
+                    transition: width .3s ease-in-out;
+                    border-radius: 4000px;
+                    width: 0%;
+                }
+            }
+            .question-progress {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-right: 10px;
+                padding: 5px 10px;
+                border-radius: 500px;
+                color: white;
+                background-color: $gray;
+            }
+        }
+        
+        .question-test {
+            top: 90px;
+            left: 0; right: 0;
+            width: 95%;
+            margin: auto;
+            .card-block {
+                padding: 20px 0;
+                margin-top: 10px;
+                transition: all .3s ease-in-out;
+                @each $color in $colors {
+                    &.#{map-get($color, color)}{
+                        @include box-shadow(0px, 5px, 5px, rgba(map-get($color, normal), 0.30));
+                    }
+                }
+            }
+            &.final-stage {
+                text-align: center;
+                font-size: $font-large;
+                display: block;
+                color: $ala-blue;
+                .card-block {
+                    padding: 16px;
+                }
+            }
+            h3 {
+                text-align: center;
+                padding: 0 10px;
+            }
+            .options {
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+                margin: 20px 0;
+                padding: 0 10px;
+                li {
+                    cursor: pointer;
+                    padding: 8px 15px 8px 30px;
+                    width: 48%;
+                    text-align: center;
+                    font-size: $font-small;
+                    border-radius: 200px;
+                    margin: 10px 0;
+                    position: relative;
+                    box-sizing: border-box;
+                    transition: all .3s ease-in-out;
+                    @include box-shadow(0px, 5px, 5px, rgba(0, 0, 0, .2));
+                    @media screen and (min-width: $break-mobile){
+                        font-size: $font-normal;
+                    }
+                    span {
+                        position: absolute;
+                        top: 0; left: 0;
+                        padding: 5px;
+                        border-radius: 50%;
+                        background-color: $blue-gray;
+                        color: white;
+                        width: 18px; height: 18px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                    &.error {
+                        color: $red;
+                        @each $color in $colors {
+                            &.#{map-get($color, color)}{
+                                @include box-shadow(0px, 5px, 5px, rgba(map-get($color, normal), 0.30));
+                                span {
+                                    background-color: $red;
+                                }
+                            }
+                        }
+                    }
+                    &.success {
+                        color: $green;
+                        @each $color in $colors {
+                            &.#{map-get($color, color)}{
+                                @include box-shadow(0px, 5px, 5px, rgba(map-get($color, normal), 0.30));
+                                span {
+                                    background-color: $green;
+                                }
+                            }
+                        }
+                    }
+                    &.selected {
+                        color: #2323e6;
+                        @each $color in $colors {
+                            &.#{map-get($color, color)}{
+                                @include box-shadow(0px, 5px, 5px, rgba(#2323e6, 0.30));
+                                span {
+                                    background-color: #2323e6;
+                                }
+                            }
+                        }
+                    }
+                    &.disable {
+                        pointer-events: none;
+                    }
+                }
+            }
+            .answerMessage {
+                text-align: center;
+                padding: 20px;
+                margin: 20px 0;
+                color: white;
+                font-size: $font-small;
+                @media screen and (min-width: $break-mobile){
+                    font-size: $font-normal;
+                }
+                &.success {
+                    background-color: $green;
+                }
+                &.error {
+                    background-color: $red;
+                }
+                &.selected {
+                    background-color: blue;
+                }
+                &.empty {
+                    margin: 0;
+                    padding: 0;
+                }
+                &.correction {
+                    padding: 16px 0;
+                    color: $green;
+                }
+            }
+        }
+    }
+    .levels-nav {
+        max-width: 350px;
+        margin: 40px auto 0;
+        ul {
+            display: flex;
+            justify-content: space-around;
+        }
+    }
+    .level-test-text {
+        @media screen and (max-width: $break-mobile - 1) {
+            // padding: 20px;
+            .levels-graphic {
+                height: 45vh;
+                overflow: auto;
+                padding: 20px;
+                margin: 0;
+                scroll-behavior: smooth;
+                img {
+                    height: 99%;
+                    width: auto;
+                }
+            }
+        }
+        .elemental-block {
+            margin: 50px 0;
+            @media screen and (min-width: $break-mobile){
+                margin: 80px 0 100px 0;
+            }
+            @media screen and (min-width: $break-tablet){
+                margin: 150px 0;
+            }
+        }
+        .levels-container {
+            width: 100vw;
+            display: flex;
+            overflow: auto;
+            padding: 20px 0;
+            .spacer {
+                min-width: 1px;
+            }
+            .level-expl {
+                padding: 0;
+                flex-shrink: 0;
+                width: 85vw;
+                margin: auto 15vw;
+                @media screen and (min-width: $break-mobile){
+                    width: 30vw;
+                    margin: auto 70vw;
+                }
+                .level-expl-header {
+                    height: 40px;
+                    background-color: $very-light-gray;
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
+                    position: relative;
+                    .level-expl-image {
+                        position: absolute;
+                        left: 0; right: 0;
+                        margin: auto;
+                        bottom: 0;
+                        width: 60px; height: 60px;
+                        background-color: $teal;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 50%;
+                        color: white;
+                    }
+                }
+                .level-expl-content {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center;
+                    color: $ala-blue;
+                    padding: 20px;
+                    box-sizing: border-box;
+                    margin: 0;
+                }
+            }
+        }
+        
+        .level-description {
+            padding: 0 20px 0 50px;
+            @each $color in $colors {
+                &.#{map-get($color, color)}{
+                    ul {
+                        li {
+                            .bold {
+                                &:before {
+                                    background-color: map-get($color, normal);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            ul {
+                position: relative;
+                &:after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: -18px;
+                    width: 1px; height: 100%;
+                    background-color: $light-gray;
+                }
+                li {
+                    margin-bottom: 20px;
+                    .bold {
+                        position: relative;
+                        &:before {
+                            content: '';
+                            position: absolute;
+                            top: -4px;
+                            left: -30px;
+                            width: 16px; height: 16px;
+                            border-radius: 50%;
+                            // background-color: $light-blue;
+                            margin: 4px;
+                            z-index: 20;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .final-article {
+        padding: 40px;
+        p {
+            margin: $font-normal-margin;
+        }
+    }
+    .andre-divider {
+        @media screen and (max-width: $break-mobile){
+            img {
+                width: 100vw;
+                margin: 0 -40px;
+            }
+        }
+    }
+}
+
+.end-modal {
+    background: rgba(255, 255, 255, 0.9);
+    position: inherit;
+    text-align: center;
+
+    .end-header {
+        font-weight: 325;
+        font-size: 37px;
+        line-height: 44px;
+        color: #004393;
+        width: 90%;
+        margin: auto;
+    }
+
+    .end-content{
+        margin-top: 20px;
+        p {
+            line-height: 23px;
+            color: #004393;
+        }
+    }
+}

@@ -1,0 +1,198 @@
+.color-block{
+    color: white;
+    @each $color in $colors {
+        &.#{map-get($color, color)}{
+            @include background-gradient(map-get($color, gradient), map-get($color, normal));
+        }
+    }
+    .block-content{
+        padding: 30px;
+        margin: auto;
+        max-width: $page-width;
+        .block-subtitle{
+            color:white;
+            margin: 10px 0;
+        }
+    }
+}
+
+.color-block-title{
+    @media screen and (max-width: $break-mobile - 1) {
+        text-align: left;
+    }
+    @media screen and (min-width: $break-mobile) {
+        text-align: center;
+    }
+    padding: 25px 40px;
+    margin: auto;
+    max-width: $page-width;
+}
+
+.description-block{
+    padding: 20px 40px;
+    padding-bottom: -100px;
+    @media screen and (max-width: $break-mobile - 1) {
+        .description-item{
+            border-left: 1px solid;
+            padding: 5px 0px 0px 30px;
+            .description-icon {
+                width: 35px;
+                height:35px;
+                display: flex;
+                align-items: center;
+                justify-items: center;
+                float: left;
+                margin-left: -52px;
+                background: white;
+                padding: 4px;
+                border-radius: 100px;
+                i{
+                    margin: 8px auto;
+                }
+                img{
+                    width: 35px;
+                    margin: 8px auto;
+                }
+            }
+            .description-title{
+                padding: 15px 0;
+                font-family: Gotham-Rounded-Bold;
+                font-size: $font-medium;
+            }
+        }
+    }
+    @media screen and (min-width: $break-mobile) {
+        .description-item{
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            max-width: 700px;
+            margin: auto;
+            .description-icon {
+                width: 35px;
+                height:35px;
+                display: flex;
+                align-items: center;
+                justify-items: center;
+                background: white;
+                padding: 4px 10px 4px 60px;
+                border-radius: 100px;
+                i{
+                    margin: 8px auto;
+                }
+                img{
+                    width: 35px;
+                    margin: 8px auto;
+                }
+            }
+            .description-title{
+                width: 200px;
+                padding: 10px 10px;
+                text-align: right;
+                font-family: Gotham-Rounded-Bold;
+                font-size: $font-medium;
+            }
+            .description-content{
+                border-left: 1px solid;
+                padding: 10px 10px;
+                width: 500px;
+            }
+        }
+    }
+}
+
+.skew-block{
+    @each $color in $colors {
+        &.#{map-get($color, color)}{
+            @include background-horizontal(map-get($color, gradient), map-get($color, normal));
+            @include transform(skewY(-10deg));
+            .skew-block-container{
+                @include transform(skewY(10deg));
+            }
+        }
+    }
+}
+
+.andre-divider {
+    @media screen and (min-width: $break-mobile + 1) {
+        width: 500px;
+        margin: auto;
+    }
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+// Features section
+.feature-container {
+    display: flex;
+    margin: 25px;
+    @media screen and (max-width: $break-tablet){
+        flex-direction: column;
+    }
+    @media screen and (min-width: $break-tablet + 1){
+        flex-direction: row;
+    }
+    .feature {
+        margin: 5px;
+        width: 100%;
+        .feature-top{
+            padding: 50px;
+            text-align: center;
+            color: white;
+            @each $color in $colors {
+                &.#{map-get($color, color)}{
+                    background-color: map-get($color, normal);
+                }
+            }
+        }
+        .feature-content{
+            padding: 30px;
+        }
+    }
+}
+
+.column-block {
+    display: flex;
+    justify-content: center;
+
+    @media screen and (max-width: $break-tablet){
+        flex-direction: column;
+    }
+    @media screen and (min-width: $break-tablet + 1){
+        &:nth-child(odd){
+            flex-direction: row;
+        }
+        &:nth-child(even){
+            flex-direction: row-reverse;
+        }
+    }
+    .image {
+        position: relative;
+        margin: 2%;
+
+        @media screen and (max-width: $break-tablet){
+            height: 200px;
+        }
+        @media screen and (min-width: $break-tablet + 1){
+            width: 35%;
+        }
+
+        img {
+            position: absolute;
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+        }
+    }
+    .content {
+        @media screen and (max-width: $break-tablet){
+            padding: 40px;
+        }
+        @media screen and (min-width: $break-tablet + 1){
+            width: 65%;
+            padding: 2%;
+        }
+    }
+}

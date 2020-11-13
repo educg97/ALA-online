@@ -1,0 +1,172 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors';
+@import 'src/app/views/level-test/level-test.component.scss';
+
+.results-content {
+    width: 85%;
+    margin: auto;
+    display: flex;
+}
+
+.modal-content {
+    @media screen and (max-width: $break-mobile) {
+        width: 90%;
+    }
+
+    .table-container {
+        @media screen and (max-width: $break-mobile) {
+            width: 100%;
+            overflow-x: auto;
+            max-height: 250px;
+        }
+    }
+}
+
+table {
+    margin: auto;
+    th {
+        border-bottom: 2px solid white;
+        border-right: 2px solid white;
+        padding: 15px;
+        font-family: 'Gotham';
+        color: white;
+
+        &:last-child {
+            border-right: none;
+            text-align: center;
+        }
+
+        i {
+            cursor: pointer;
+        }
+    }
+
+    .table_body {
+        overflow-x:auto;
+
+        tr {
+            border-bottom: 2px solid white;
+
+            &:nth-child(odd) {
+                background: rgba(255, 255, 255, 0.2);
+            }
+            
+            td {
+                color: #004393;
+                padding: 15px;
+                border-right: 2px solid white;
+                position: relative;
+                text-align: center;
+                &:last-child {
+                    border-right: none;
+                    min-width: 150px;
+                }
+
+                .report-button {
+                    background: rgba(255, 255, 255, 0.85);
+                    color: #6DA0D9;
+                    cursor: pointer;
+                }
+            }
+
+            .report-modal {
+                position: absolute;
+                overflow: auto;
+                left: -15px;
+                background: rgb(255, 255, 255);
+                max-height: 175px;
+                width: 200px;
+                padding: 16px;
+                border-radius: 10px;
+                z-index: 1500;
+                animation: modalIn .3s ease-in-out forwards;
+                text-align: left;
+
+                .closeModalButton {
+                    text-align: right;
+                    margin-bottom: 5px;
+                    cursor: pointer;
+
+                    &:hover {
+                        color: red;
+                    }
+                }
+
+                .reportContent {
+                    padding: 5px;
+                }
+            }
+        }
+    }
+}
+
+.num-page {
+    width: 100%;
+    text-align: center;
+    margin-top: 15px;
+    color: white;
+
+    span {
+        margin: auto 15px;
+    }
+
+    i {
+        cursor: pointer;
+    }
+}
+
+.scrollable-option {
+    min-width: 110%;
+    margin: auto 50px;
+    position: relative;
+
+    .image-buttons {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+
+        &.left {
+            left: 15%;
+            @media screen and (max-width: $break-mobile) {
+                top: auto;
+                left: auto;
+                bottom: 55px;
+                right: 50%;
+            }
+        }
+
+        &.right {
+            right: 15%;
+            @media screen and (max-width: $break-mobile) {
+                top: auto;
+                right: auto;
+                bottom: 55px;
+                left: 50%;
+            }
+        }
+    }
+}
+
+.move-slider {
+    text-align: center;
+    margin: 15px auto;
+}
+
+.lt-images {
+    width: 55%;
+    margin: auto;
+    display: flex;
+    @media screen and (max-width: $break-mobile) {
+        width: 93%;
+    }
+
+    .image-container {
+        min-width: 100%;
+        margin: auto 30px;
+
+        img {
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,47 @@
+<div class="skew-block light-blue asociations">
+    <div class="skew-block-container scrollable" id="asociations-container">
+        <div class="window-companies">
+            <div class="companies-opinions">
+                <div *ngIf="!windowSize.isDesktop && asociationsPosition !== 0" (click)="moveSlider('prev')" class="arrow left" [@arrowLeft]>
+                    <i class="fas fa-angle-left"></i>
+                </div>
+
+                <div *ngIf="!windowSize.isDesktop && asociationsPosition !== 2" (click)="moveSlider('next')" class="arrow right" [@arrowRight]>
+                    <i class="fas fa-angle-right"></i>
+                </div>
+
+                <div class="slider-companies-opinions slider-asociations-opinions scrollable" id="slider-asociations-single">
+                    <div class = "column" *ngFor="let asociation of asociations; let i = index">
+                        <div class="company-pill card">
+                            <div class="company-header">
+                                <div class="logo-full {{asociation['slug']}}">
+                                    <img src="{{asociation['imageUrl']}}" alt="{{asociation['Texto SEO']}}">
+                                </div>
+                            </div>
+
+                            <div class="company-testimonial" [innerHTML]="asociation['testimonial']"></div>
+                        </div>
+                    </div>
+                  <!-- <div class="column" *ngFor="let column of asociations; let i = index">
+                    <div *ngFor="let divider of column">
+                      <div class="company-pill card" *ngFor="let asociation of divider">
+                        <div class="company-header">
+                          <div class="logo-full {{asociation['slug']}}">
+                            <img src="{{asociation['imageUrl']}}" alt="{{asociation['Texto SEO']}}">
+                          </div>
+                        </div>
+                        <div class="company-testimonial" [innerHTML]="asociation['testimonial']"></div>
+                      </div>
+                    </div>
+                  </div> -->
+            
+                </div>
+          
+                <div class="range-line companies input">
+                    <div  *ngIf="windowSize.isMobile || windowSize.isTablet" class="range-legend white">{{asociationsPosition + 1}} de 3</div>
+                </div>
+              
+            </div>
+        </div>
+    </div>
+</div>

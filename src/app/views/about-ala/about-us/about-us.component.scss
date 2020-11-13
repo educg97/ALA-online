@@ -1,0 +1,589 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors'; 
+
+
+.contact-intro {
+    width: 90%;
+    margin: auto;
+    &.final-article {
+        margin-top: 120px;
+    }
+    .go-to-form {
+        cursor: pointer;
+    }
+}
+
+.contact-seo-form-container {
+    width: 85%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    .form-header {
+        background-color: $green;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        min-height: 50px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        color: white;
+        box-sizing: border-box;
+        padding: 10px;
+        .icon-form-container {
+            margin-right: 20px;
+        }
+        h4, h2 {
+            color: white;
+        }
+    }
+    .form-content {
+        padding: 15px;
+    }
+    @media screen and (min-width: $break-tablet + 1){
+        width: 50%;
+    }
+    @each $color in $colors {
+        &.#{map-get($color, color)}{
+            @include box-shadow(0px, 5px, 10px, rgba(map-get($color, normal), 0.20));
+            &:focus,
+            &:hover{
+                @include box-shadow(0px, 10px, 15px, rgba(map-get($color, normal), 0.30));
+            }
+            &:active{
+                @include box-shadow(0px, 0px, 0px, white);
+            }
+        }
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        input,
+        textarea {
+            width: 80%;
+        }
+    }
+}
+
+.video-presentation {
+    .skew-block-container {
+        .presentation-intro {
+            width: 300px;
+            margin: auto;
+            iframe {
+                width: 100%;
+                height: 100%;
+            }
+            @media screen and (min-width: $break-tablet) {
+                width: 600px;
+                height: 300px;
+            }
+        }
+    }
+    @media screen and (min-width: $break-mobile) {
+        margin: 40px 0 125px 0;
+    }
+}
+
+.logo-academy-container {
+    display: flex;
+    max-height: 180px;
+    @media screen and (max-width: $break-tablet) {
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+}
+
+.academy {
+    margin: 40px auto;
+    .flex-content {
+        display: flex;
+        align-items: space-around;
+        justify-content: space-around;
+        @media screen and (max-width: $break-tablet) {
+            flex-direction: column;
+        }
+        .map-pic-container {
+            flex-basis: 75%;
+            align-self: center;
+            .academy-img-container:not(.balcony) {
+                img {
+                    width: 175%;
+                }
+            }
+        }
+        .academy-params {
+            @media screen and (min-width: $break-tablet + 1){
+                margin: 50px;
+            }
+        }
+    }
+}
+
+.map-pic-container {
+    padding: 0;
+    overflow: hidden;
+    iframe {
+        margin-bottom: -5px;
+    }
+    .academy-img-container {
+        margin-bottom: -5px;
+        display: flex;
+        justify-content: center;
+        // max-height: 150px;
+        @media screen and (max-width: $break-mobile) {
+            height: 50%;
+            img {
+                width: 180%;
+            }
+        }
+        &.headquarters {
+            height: 215px;
+            max-height: 215px;
+            overflow: hidden;
+            @media screen and (max-width: $break-mobile) {
+                height: 150px;
+            }
+            img {
+                object-fit: cover;
+                width: 100%;
+            }
+        }
+        &.balcony {
+            height: 215px;
+            overflow: hidden;
+            @media screen and (max-width: $break-mobile) {
+                height: 150px;
+            }
+            img {
+                object-fit: cover;
+                width: 100%;
+            }
+        }
+        &.test-center {
+            max-height: 215px;
+            img {
+                object-fit: cover;
+            }
+            @media screen and (max-width: $break-mobile) {
+                img {
+                    object-fit: cover;
+                    width: 250%;
+                }
+            }
+        }
+    }
+}
+
+.curiosities {
+    height: 150px;
+}
+
+.curiosities-container {
+    position: relative;
+    .arrow {
+        position: absolute;
+        top: 60px;
+        &.left {
+            left: 10px;
+        }
+        &.right {
+            right: 10px;
+        }
+        i {
+            color: white;
+        }
+    }
+    .card {
+        width: 70%;
+        margin: auto;
+        padding: 0;
+        background-color: transparent;
+        position: relative;
+        .curiosity-card {
+            position: absolute; 
+            top: 0;
+            left: 0;
+            .curiosity-header {
+                display: flex;
+                align-items: center;
+                background-color: $very-light-gray;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                .curiosity-title {
+                    display: flex;
+                    justify-content: center;
+                    flex-basis: 100%;
+                    h3 {
+                        text-align: center;
+                    }
+                }
+                .symbol {
+                    height: 60px;
+                    width: 60px;
+                    background-color: $deep-orange;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-top-left-radius: 10px;
+                    border-bottom-right-radius: 10px;
+                    color: white;
+                    flex-shrink: 0;
+                }
+            }
+            .curiosity-content {
+                box-sizing: border-box;
+                padding: 20px;
+                background-color: white;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+            }
+        }
+    }
+}
+
+.banner-master {
+    overflow: hidden;
+    width: 100vw;
+    @include transform(skewY(-10deg));
+    margin: 20px 0 60px;
+    position: relative;
+    &.academies {
+        .gradient-banner {
+            @include background-horizontal($blue, rgba(0, 0, 0, 0));
+            background-color: unset;
+            p {
+                line-height: 1.5;
+            }
+        }
+        .skew-container {
+            img {
+                margin-left: -90px;
+                margin-top: -33px;
+            }
+            &.alumnos-valoran {
+                img {
+                    margin-top: -30px;
+                    margin-left: -15px;
+                }
+            }
+        }
+        .installations {
+            img {
+                margin-top: -20px;
+                height: 383px;
+            }
+        }
+        .summer-teacher {
+            img {
+                margin-left: 0;
+                margin-top: -5px;
+            }
+        }
+    }
+    .gradient-banner {
+        background-color: unset;
+        width: 66%;
+        height: 100%;
+        position: absolute;
+        top: 0; left: 0;
+        z-index: 510;
+        display: flex;
+        align-items: center;
+        p {
+            color: white;
+            @include transform(skewY(10deg));
+            width: 55%;
+            font-size: $font-large;
+            margin-left: 20px;
+            text-align: center;
+            .disney {
+                font-family: RemachineScript;
+                line-height: 1;
+            }
+        }
+        br {
+            line-height: 19pt;
+        }
+        &.embassy {
+            p {
+                width: 65%;
+                .reduced {
+                    @media screen and (max-width: $break-tablet){
+                        font-size: $font-medium;
+                    }
+                }
+            }
+        }
+    }
+    .skew-container {
+        height: 215px;
+        img {
+            @include transform(skewY(10deg));
+            width: auto;
+            height: 290px;
+            margin: -56px auto auto -124px;
+        }
+    }
+}
+
+
+.msg-banner {
+    margin: -80px auto 50px;
+    position: relative; 
+    width: 50%;
+    padding: 12px 20px;
+}
+
+// Desktop banner
+.inter-banner {
+    width: 80%;
+    margin: 20px auto 100px;
+    position: relative;
+    &.academies {
+        .banner-image{
+            img {
+                margin-top: -45px;
+            }
+            .gradient-banner-notmobile {
+                @include background-horizontal(rgba(0, 0, 0, 0), $blue);
+                background-color: unset;
+                p {
+                    line-height: 1.5;
+                }
+            }
+        }
+    }
+    .banner-image {
+        height: 300px;
+        overflow: hidden;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        &.alumnos-valoran {
+            .gradient-banner-notmobile {
+                width: 75%;
+                p {
+                    font-size: $font-title;
+                }
+            }
+            img {
+                margin-top: 450px;
+            }
+        }
+        .gradient-banner-notmobile {
+            height: 100%;
+            width: 45%;
+            position: absolute;
+            right: 0;
+            top: 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            box-sizing: border-box;
+            padding-right: 50px;
+            p {
+                color: white;
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                line-height: 1.2;
+                width: 33%;
+                font-size: $font-large;
+                .logo-toefl-white {
+                    width: auto;
+                    height: 50px;
+                    img {
+                        width: auto;
+                        height: 40px;
+                        margin: 0 auto;
+                    }
+                }
+                .disney {
+                    font-family: RemachineScript;
+                    line-height: 1;
+                    font-size: $font-title;
+                }
+            }
+        }
+        img {
+            width: 100%;
+            height: auto;
+            margin-top: 210px;
+        }
+        &.premio-aniversario {
+            img {
+                margin-top: 525px;
+            }
+        }
+    }
+    .banner-msg {
+        padding: 8px 16px;
+        position: absolute;
+        width: 300px;
+        bottom: -20px;
+        left: 0; right: 0;
+        margin: auto;
+        font-size: $font-large;
+    }
+}
+
+.full-width {
+    // margin: auto -40px;
+    @media screen and (min-width: $break-tablet){
+        margin: auto;
+    }
+}
+
+.academy-image-container {
+    margin: 110px 0;
+    padding-bottom: 20px;
+    .academy-image {
+        @media screen and (min-width: $break-tablet + 1) {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 80%;
+            margin: auto;
+        } 
+        .pic-slide-academy {
+            flex-shrink: 0;
+            width: 90vw;
+            margin: 0 5vw;
+            @media screen and (min-width: $break-tablet + 1) {
+                flex-shrink: 1;
+                width: auto;
+                margin: 0;
+            }
+            h5 {
+                color: white;
+                margin-top: 10px;
+                &.text-blue {
+                    color: $blue;
+                }
+            }
+            .card {
+                padding: 0;
+                overflow: hidden;
+                min-height: 140px;
+                margin: auto;
+                @media screen and (min-width: $break-tablet) {
+                    width: 300px;
+                    height: 200px;
+                }
+                @media screen and (min-width: $break-desktop) {
+                    width: 350px;
+                }
+                img {
+                    margin-bottom: -5px;
+                    // margin-top: -30px;
+                    @media screen and (min-width: $break-tablet) {
+                        height: 120%;
+                        width: auto;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.caracs-academy {
+    margin: 20px auto 20px 20px;
+    padding-left: 20px;
+    border-left: 1px solid $blue;
+    li {
+        position: relative;
+        margin-bottom: 10px;
+        &:before {
+            content: '';
+            width: 15px;
+            height: 15px;
+            border-radius: 5000px;
+            background-color: $blue;
+            position: absolute;
+            top: 0;
+            left: -28px;
+        }
+        &:last-of-type {
+           &:before {
+               background-color: white;
+               border: 1px solid $blue;
+           }                 
+        }
+    }
+}
+
+.map-three-academies {
+    padding: 0;
+    overflow: hidden;
+    img {
+        width: 100%;
+        height: auto;
+        margin-bottom: -5px;
+    }
+}
+
+.banner-plaza {
+    .background {
+        img {
+            @media screen and (min-width: $break-tablet) {
+                margin-top: 0;
+            }
+        }
+    }
+}
+
+.banner-alumnos {
+    .background {
+        img {
+            @media screen and (max-width: $break-mobile) {
+                width: 150%;
+                margin-bottom: -30px;
+            }
+            @media screen and (min-width: $break-tablet) {
+                margin-top: 30px;
+            }
+        }
+    }
+}
+
+.banner-embassy {
+    @media screen and (max-width: $break-mobile) {
+        margin-top: 20px;
+    }
+    .background {
+        @media screen and (max-width: $break-mobile) {
+            height: 230px;
+            img {
+                width: 150%;
+            }
+        }
+        img {
+            @media screen and (min-width: $break-tablet) {
+                margin-top: 500px;
+            }
+        }
+    }
+}
+
+.banner-innovation {
+    .background {
+        img {
+            @media screen and (min-width: $break-tablet) {
+                margin-top: -50px;
+            }
+        }
+    }
+}
+
+.contact-form-block {
+    margin-bottom: 80px;
+}

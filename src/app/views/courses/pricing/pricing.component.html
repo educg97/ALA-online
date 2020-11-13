@@ -1,0 +1,310 @@
+<div class="text">
+	<h1>Tipos de Formación en A.L.A.</h1>
+</div>
+
+<div class="banner">
+	<div class="background" [ngClass]="{borderless:!windowSize.isMobile, card:!windowSize.isMobile}">
+		<div class="gradient teal">
+			<p>
+				<span class="bold">Formación Continua</span><br>
+				<span class="text-small">
+					La modalidad de aprendizaje y ventajas con los mejores recursos para optimizar al máximo tu
+					experiencia de aprendizaje</span>
+			</p>
+		</div>
+		<img class="background-img offset-100" src="assets/images/banners/tipos-de-formacion.jpg" alt="banner verano">
+	</div>
+	<div class="icon-banner bottom-left">
+		<img src="assets/images/logos/Your-best-learning-experience.png"
+			alt="Your best learning experience - Cursos de inglés de verano">
+	</div>
+</div>
+
+<div class="text-center">
+	<h2 *ngIf="course">
+		{{course['Title']}}<br>
+	</h2>
+	<p>{{(course['Horas Semanales'] != 0) ? course["Horas Semanales"] : 'A medida'}}
+		<span *ngIf="!isNaN(course['Horas Semanales'])">h/week</span>
+	</p>
+	<br>
+	<br>
+</div>
+
+<h2 class="text-center text-{{course['Color']}}">Módulo Lectivo Independiente</h2>
+<div class="text-center">
+	<br>
+	<p *ngIf="course['Precio (Texto)']" [innerHTML]="course['Precio (Texto)']"></p>
+	<p *ngIf="!course['Precio (Texto)']"><strong>{{course["Precio Modulo"]}}€ por m&oacute;dulo</strong></p>
+	<p *ngIf="course['Precio Mensual']"> ({{course["Precio Mensual"]}}€ Módulo mensual)</p>
+	<br>
+</div>
+<div class="description-block">
+	<div class="description-item">
+		<div class="description-icon">
+			<i class="fas fa-puzzle-piece text-orange"></i>
+		</div>
+		<div class="description-title">Cursos por módulos</div>
+		<div class="description-content">
+			<span class="bold">
+				<span>{{(course['Horas Semanales'] != 0) ? course["Horas Semanales"] : 'A medida'}}
+					<span *ngIf="!isNaN(course['Horas Semanales'])">horas </span>
+				</span>
+				de inglés presenciales</span>
+				<span *ngIf="course['Precio Mensual']"> - Módulo trimestral (o módulo mensual)</span>
+				<span *ngIf="!course['Precio Mensual']"> - Módulo 4 semanas</span>
+				.</div>
+	</div>
+	<div class="description-item">
+		<div class="description-icon">
+			<i class="fas fa-plus-circle text-orange"></i>
+		</div>
+		<div class="description-title">Matrícula</div>
+		<div class="description-content">Gratuita</div>
+	</div>
+	<div class="description-item">
+		<div class="description-icon">
+			<i class="fas fa-chalkboard-teacher text-orange"></i>
+		</div>
+		<div class="description-title">Profesorado</div>
+		<div class="description-content">Profesores nativos y expertos.</div>
+	</div>
+	<div class="description-item">
+		<div class="description-icon">
+			<i class="fas fa-clock text-orange"></i>
+		</div>
+		<div class="description-title">Clases extra</div>
+		<div class="description-content">Clases de conversación gratuitas todos los viernes.</div>
+	</div>
+	<div class="description-item">
+		<div class="description-icon">
+			<i class="fas fa-credit-card text-orange"></i>
+		</div>
+		<div class="description-title">Pago por módulo</div>
+		<div class="description-content">El alumno abona el curso completo al inicio del módulo lectivo.</div>
+	</div>
+</div>
+<br>
+
+<div class="text-center text-large text-{{course['Color']}}">
+	O si prefieres:
+	<br>
+	<br>
+	<br>
+</div>
+
+<div id = "formacion-continua"></div>
+
+<h2 class="text-center text-{{course['Color']}}">Formación Continua</h2>
+<div class="text-center">
+	<br>
+	<span class="strike text-gray">{{course["Precio Modulo"]}}€</span> {{course["Precio FC"]}}€
+	<strong>{{course["Precio FC (Texto)"] ? course["Precio FC (Texto)"] : "por mes"}}</strong>
+	<br>
+</div>
+
+<div class="description-block">
+	<div class="description-item">
+		<div class="description-icon">
+			<i class="fas fa-users text-teal"></i>
+		</div>
+		<div class="description-title">Mini grupos</div>
+		<div class="description-content">
+			<span class="bold">
+				<span>{{(course['Horas Semanales'] != 0) ? course["Horas Semanales"] : 'A medida'}}
+					<span *ngIf="!isNaN(course['Horas Semanales'])">horas </span>
+				</span>
+				de clases presenciales</span> a la semana en mini grupo de 2-7 alumnos
+		</div>
+	</div>
+	<div class="description-item">
+		<div class="description-icon">
+			<i class="fas fa-plus-circle text-teal"></i>
+		</div>
+		<div class="description-title">Curso online gratuito</div>
+		<div class="description-content"><span class="text-red bold"><i class="fas fa-plus"></i> Gratis:</span> Curso
+			online Open English by ALA, premio 2019 a la innovación en España (valorado en 25€ al mes)</div>
+	</div>
+	<div class="description-item">
+		<div class="description-icon">
+			<i class="fas fa-plus-circle text-teal"></i>
+		</div>
+		<div class="description-title">Matrícula</div>
+		<div class="description-content">Gratuita</div>
+	</div>
+	<div class="description-item">
+		<div class="description-icon">
+			<i class="fas fa-hands-helping text-teal"></i>
+		</div>
+		<div class="description-title">Actividades gratuitas</div>
+		<div class="description-content">Acceso ilimitado a talleres y actividades gratuitas en mini grupo.</div>
+	</div>
+	<div class="description-item">
+		<div class="description-icon">
+			<i class="fas fa-wine-glass text-teal"></i>
+		</div>
+		<div class="description-title">Eventos en Inglés</div>
+		<div class="description-content">Actividades en inglés con profesores - Tapas Night, Desayunos.</div>
+	</div>
+	<div class="description-item">
+		<div class="description-icon">
+			<i class="fas fa-clock text-teal"></i>
+		</div>
+		<div class="description-title">Clases extra</div>
+		<div class="description-content">Clases de conversación gratuitas todos los viernes.</div>
+	</div>
+	<div class="description-item">
+		<div class="description-icon">
+			<i class="fas fa-user-clock text-teal"></i>
+		</div>
+		<div class="description-title">Flexibilidad</div>
+		<div class="description-content">Posibilidad de modificar el plan según tus necesidades mes a mes.</div>
+	</div>
+	<div class="description-item">
+		<div class="description-icon">
+			<i class="fas fa-user-check text-teal"></i>
+		</div>
+		<div class="description-title">Seguimiento personalizado</div>
+		<div class="description-content">Tutorías y coaching gratuitos.</div>
+	</div>
+	<div class="description-item">
+		<div class="description-icon">
+			<i class="fas fa-chalkboard-teacher text-teal"></i>
+		</div>
+		<div class="description-title">Profesorado</div>
+		<div class="description-content">Profesores nativos y expertos.</div>
+	</div>
+	<div class="description-item">
+		<div class="description-icon">
+			<i class="fas fa-credit-card text-teal"></i>
+		</div>
+		<div class="description-title">Pago bonificado</div>
+		<div class="description-content">Pago mensual bonificado con formación continua.</div>
+	</div>
+	<div class="description-item">
+		<div class="description-icon">
+			<i class="fas fa-user-clock text-teal"></i>
+		</div>
+		<div class="description-title">Carencia</div>
+		<div class="description-content">Es posible solicitar hasta 2 meses de carencia en la formación continua
+			manteniendo todas las condiciones.</div>
+	</div>
+
+	<br>
+	<div class="text-small page-width">Con el Programa de Formación Continua la tarifa es mensual disponible
+		para un periodo mínimo de 5 meses. Una vez transcurridos los primeros 5 meses, el programa se prolonga
+		automáticamente el día 15 de cada mes, por 1 mes adicional hasta el momento en que desees finalizar tu
+		formación de inglés.
+	</div>
+	<br>
+</div>
+<br>
+
+<div *ngIf="course['Precio Suscripcion anual']">
+	<h2 class="text-center text-{{course['Color']}}">Suscripción anual</h2>
+	<div class="text-center">
+		<br>
+		<span class="strike text-gray">{{course["Precio Modulo"] * 10}}€</span>
+		<strong> {{course["Precio Suscripcion anual"]}}€ pago único por 10 meses </strong>
+		<br>
+	</div>
+	<div class="text-center">
+		<br>
+		({{course["Precio Suscripcion anual"] / 10}}€ / mes)
+		<br>
+	</div>
+	<br>
+	<div class="text-center">
+		<p class="by-year-title">Todas las ventajas de la Formación Continua</p>
+		<p class="by-year-title">Con el precio más bajo a través de pago anual</p>
+		<p class="by-year-title">Posibilidad de cancelar en cualquier momento con reembolso de todo lo no consumido</p>	
+	</div>
+	<br>
+	<div style = "padding: 15px" class = "btn red btn-centered" (click) = "changeShowByYearStatus()"><strong>Ver más información</strong></div>
+	<div *ngIf = "showByYearDescription">
+		<div class="description-block">
+			<div class="description-item">
+				<div class="description-icon">
+					<i class="fas fa-puzzle-piece text-purple"></i>
+				</div>
+				<div class="description-title">Mini grupos</div>
+				<div class="description-content">3 horas de clases presenciales a la semana en mini grupo de 2-7 alumnos</div>
+			</div>
+			<div class="description-item">
+				<div class="description-icon">
+					<i class="fas fa-user-check text-purple"></i>
+				</div>
+				<div class="description-title">Curso online gratuito</div>
+				<div class="description-content"><span class="text-red bold"><i class="fas fa-plus"></i> Gratis:</span> Curso online Open English by ALA, premio 2019 a la innovación en España (valorado en 25€ al mes)</div>
+			</div>
+			<div class="description-item">
+				<div class="description-icon">
+					<i class="fas fa-globe-europe text-purple"></i>
+				</div>
+				<div class="description-title">Matrícula</div>
+				<div class="description-content">Gratuita</div>
+			</div>
+			<div class="description-item">
+				<div class="description-icon">
+					<i class="fas fa-credit-card text-purple"></i>
+				</div>
+				<div class="description-title">Actividades gratuitas</div>
+				<div class="description-content">Acceso ilimitado a talleres y actividades gratuitas en mini grupo.</div>
+			</div>
+			<div class="description-item">
+				<div class="description-icon">
+						<i class="fas fa-calendar-alt text-purple"></i>
+				</div>
+				<div class="description-title">Eventos en inglés</div>
+				<div class="description-content">Actividades en inglés con profesores - Tapas Night, Desayunos.</div>
+			</div>
+			<div class="description-item">
+				<div class="description-icon">
+						<i class="fas fa-plus-square text-purple"></i>
+				</div>
+				<div class="description-title">Clases extra</div>
+				<div class="description-content">Clases de conversación gratuitas todos los viernes.</div>
+			</div>
+			<div class="description-item">
+				<div class="description-icon">
+					<i class="fas fa-credit-card text-purple"></i>
+				</div>
+				<div class="description-title">Flexibilidad</div>
+				<div class="description-content">Permite cambiar a cualquier otro tipo de programa así como cambiar la modalidad de contratación a una de duración inferior, pudiendo acogerse a la devolución del importe no consumido.</div>
+			</div>
+			<div class="description-item">
+				<div class="description-icon">
+						<i class="fas fa-search text-purple"></i>
+				</div>
+				<div class="description-title">Seguimiento personalizado</div>
+				<div class="description-content">Tutorías y coaching gratuitos.</div>
+			</div>
+			<div class="description-item">
+				<div class="description-icon">
+						<i class="fas fa-chalkboard-teacher text-purple"></i>
+				</div>
+				<div class="description-title">Profesorado</div>
+				<div class="description-content">Profesores nativos y expertos.</div>
+			</div>
+			<div class="description-item">
+				<div class="description-icon">
+						<i class="fas fa-money-check-alt text-purple"></i>
+				</div>
+				<div class="description-title">Pago bonificado</div>
+				<div class="description-content">La mejor tarifa abonando al inicio la suscripción anual.</div>
+			</div>
+			<div class="description-item">
+				<div class="description-icon">
+						<i class="fas fa-hourglass-end text-purple"></i>
+				</div>
+				<div class="description-title">Carencia</div>
+				<div class="description-content">Es posible solicitar hasta 2 meses de carencia en la dentro de la Suscripción Anual manteniendo todas las condiciones.</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="anual"></div>
+
+<!-- <div *ngIf = "showStar">
+    <app-summer-contest></app-summer-contest>
+</div> -->

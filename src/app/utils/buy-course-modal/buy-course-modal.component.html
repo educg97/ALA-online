@@ -1,0 +1,123 @@
+<!-- MODAL -->
+<div class = "hiddenElement" id = "hiddenModal">
+    <div class="modal-background"  (click)="closeBuyCourseModal()"></div>
+    <div class="modal-buy-course modal">
+        <div class="modal-header">
+            <h2 style = "text-align: center;" class="modal-title">Inscripción en el curso: {{currentCourse.Title}}</h2>
+            <div class="modal-close btn red" (click)="closeBuyCourseModal()"><i class="fas fa-times"></i></div>
+        </div>
+
+        <div class="modal-content">
+            <form #EventsPopUp="ngForm">
+                <div class = "form-div scrollable" id = "form-div">
+                    <div class = "scrollable-option" style = "margin-right: 35px;">
+                        <div class = "flex">
+                            <input (change) = "validateInput('name')" class = "{{inputsColor.name}}" [(ngModel)]="user.name" ngModel required type="text" name='name' placeholder="Nombre">
+                            <input (change) = "validateInput('lastname')" class = "{{inputsColor.lastname}} f-right" [(ngModel)]="user.lastname" ngModel required type="text" name='lastname' placeholder="Apellidos">
+                        </div>
+                        
+                        <div><input (change) = "validateInput('email')" class = "{{inputsColor.email}}" [(ngModel)]="user.email" ngModel required type="email" name='email' placeholder="Email"></div>
+                        <div><input (change) = "validateInput('address')" class = "{{inputsColor.address}}" [(ngModel)]="user.address" ngModel required type="text" name='address' placeholder="Dirección"></div>
+                        <div><input (change) = "validateInput('house')" class = "{{inputsColor.house}}" [(ngModel)]="user.house" ngModel type="text" name='house' placeholder="Casa, apartamento, etc. (opcional)"></div>
+                        <div><input (change) = "validateInput('city')" class = "{{inputsColor.city}}" [(ngModel)]="user.city" ngModel required type="text" name='city' placeholder="Ciudad"></div>
+                        
+                        <div class = "flex">
+                            <!-- <select [(ngModel)]="user.country" name="country" onmousedown="if(this.options.length>8){this.size=8;}"  onchange='this.size=0;' onblur="this.size=0;">
+                                <option value="" selected disabled>País/Región</option>
+                                <option *ngFor = "let country of countries" [value] = "country.id">{{country.name}}</option>
+                            </select>
+    
+                            <select [(ngModel)]="user.state" required name="state" onmousedown="if(this.options.length>8){this.size=8;}"  onchange='this.size=0;' onblur="this.size=0;">
+                                <option value="" selected disabled>Provincia/Estado</option>
+                                <option *ngFor = "let country of countries" [value] = "country.id">{{country.name}}</option>
+                            </select> -->
+
+                            <input (change) = "validateInput('state')" class = "{{inputsColor.state}}" [(ngModel)]="user.state" ngModel required type="text" name='state' placeholder="Provincia">
+                            <input (change) = "validateInput('country')" class = "f-right {{inputsColor.country}}" [(ngModel)]="user.country" ngModel required type="text" name='country' placeholder="País">
+                        </div>
+
+                        <div class = "flex">
+                            <input (change) = "validateInput('CP')" class = "{{inputsColor.CP}}" [(ngModel)]="user.CP" ngModel required type="text" name='pd' placeholder="Código postal">
+                            <input (change) = "validateInput('phoneNumber')" class = "f-right {{inputsColor.phoneNumber}}" [(ngModel)]="user.phoneNumber" ngModel required type="text" name='phoneNumber' placeholder="Teléfono">
+                        </div>
+
+                        <div><input (change) = "validateInput('dni')" [(ngModel)]="user.dni"class = "{{inputsColor.dni}}"  ngModel required type="text" name='DNI' placeholder="DNI/NIE" title = "Debe poner 8 números y una letra (sin espacios)"></div>
+        
+                        <div class = "level-test">
+                            <p>¿Ya ha realizado una prueba de nivel con American Language Academy?</p> 
+                            <p class = "lt-options">YES <input [(ngModel)]="user.levelTest" type="radio" name="levelTest" value = "Yes"> NO <input [(ngModel)]="user.levelTest" type="radio" name="levelTest" value = "No"></p>
+                        </div>
+
+                        <div class="buttons">
+                            <button (click)="closeBuyCourseModal()" class="btn light blue">
+                                Volver al curso
+                            </button>
+    
+                            <button (click)="moveSlider('next')" class="bn light green">
+                                Continuar
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class = "scrollable-option">
+                        <div class = "flex">
+                            <select (change) = "validateInput('schedule')" class="course-select {{inputsColor.schedule}}" [(ngModel)]="userCourseInfo.schedule" name="schedule" (change)="set_schedule_value()" onmousedown="if(this.options.length>8){this.size=8;}"  onchange='this.size=0;' onblur="this.size=0;">
+                                <option value="" selected disabled>Días de clase</option>
+                                <option *ngFor = "let schedule of currentCourse['schedules']" [value] = "schedule['schedule_name']">{{schedule['schedule_name']}}</option>
+                            </select>
+
+                            <select (change) = "validateInput('timetable')" class="course-select {{inputsColor.timetable}}" [(ngModel)]="userCourseInfo.timetable" name="timetable" onmousedown="if(this.options.length>8){this.size=8;}"  onchange='this.size=0;' onblur="this.size=0;">
+                                <option value="" selected disabled>Horario del curso</option>
+                                <option *ngFor = "let timetable of currentCourse['timetables']" [value] = "timetable">{{timetable}} GMT+1 (Madrid)</option>
+                            </select>
+                        </div>
+
+                        <div class = "flex">
+                            <input (change) = "validateInput('num_weeks')" class = "fit-content {{inputsColor.num_weeks}}" style = "width: -webkit-fill-available;" [(ngModel)]="userCourseInfo.num_weeks" name="num_weeks" type="number" placeholder="Nº semanas" min="1" pattern="^[0-9]+">
+
+                            <select (change) = "validateInput('start_week')" class="course-select fit-content {{inputsColor.start_week}}" [(ngModel)]="userCourseInfo.start_week" name="start_week" onmousedown="if(this.options.length>8){this.size=8;}"  onchange='this.size=0;' onblur="this.size=0;">
+                                <option value="" selected disabled>Semana de inicio</option>
+                                <option *ngFor = "let date of weekDates" [value] = "date">{{date}}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <div id="card-element"></div>
+                        </div>
+
+                        <div style = "margin-top: 15px;" id="card-errors" role="alert"></div>
+
+                        <div class = "terms">
+                            <button class = "btn blue" (click) = "showTermsAndConditions()"><strong>Ver términos y condiciones</strong></button>
+    
+                            <div *ngIf = "termsAndConditions">
+                                <p><strong>Esto son los términos y condiciones</strong></p>
+                                <!-- <p>Estoy de acuerdo con los términos y condiciones<input class = "checkbox" [(ngModel)]="user.acceptedTermsAndCond" type="checkbox" name="termsAndCond"></p> -->
+                            </div>
+                        </div>
+    
+                        <div class = "course-price">
+                            <h1>Precio total</h1>
+                            <h1>{{currentCourse['Precio Modulo'] * userCourseInfo['num_weeks'] * userCourseInfo['schedule_value']}} €</h1>
+                        </div>
+    
+                        <div class="confirm-payment-buttons">
+                            <button (click)="moveSlider('prev')" class="btn light red">
+                                Volver
+                            </button>
+    
+                            <!-- <input (click)="modalAction()" style = "height: auto; width: auto;" type="submit" value="Validar datos" class="btn light-green" [disabled] = "!user.acceptedTermsAndCond"> -->
+                            <input (click)="modalAction()" style = "height: auto; width: auto;" type="submit" value="Validar datos" class="btn light-green">
+                            <button (click) = "pay()" class = "btn blue light hiddenButton" id = "payButton"><i class="fas fa-shopping-cart"></i> Confirmar compra</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<button (click) = "openBuyCourseModal();" style = "padding: 15px; margin: 10px auto; font-weight: bold;" class = "btn green btn-centered">
+    <i class="fas fa-shopping-cart" style="margin-right: 15px;"></i>
+    Comprar Curso
+</button>

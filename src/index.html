@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="es" prefix="og: http://ogp.me/ns#">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="google-site-verification" content="223l08wo7mBPc1Uboli0rcn511MYaMvdaO_GYLJdv_c" />
+  <title>American Language Online</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#2196F3">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <script src="https://www.google.com/recaptcha/api.js?render=6LcxpI8UAAAAAITij1aqDDz0gZLmAnMVsIUsEagZ"></script>
+  
+  <!-- Stripe scripts -->
+  <script src="https://checkout.stripe.com/checkout.js"></script>
+  <script src="https://js.stripe.com/v3/"></script>
+
+  <!-- Fonts -->
+  <!-- <link rel="preload" href="/assets/style/fonts/Gotham_Rounded_Bold.otf" as="font"/>
+  <link rel="preload" href="/assets/style/fonts/fa-brands-400.woff2" as="font"/>
+  <link rel="preload" href="/assets/style/fonts/fa-solid-900.woff2" as="font"/> -->
+
+  <meta name="description"
+    content="Más de 100.000 alumnos formados con expertos profesionales. The best learning experience 👍 con American Language Online! Since 1968 ✔️">
+
+
+  <!-- LOGOS SI ALGUIEN QUISIERA PONER UN ACCESO DIRECTO EN EL MÓVIL (NO FUNCIONA) -->
+  <meta name="msapplication-square70x70logo" content="assets/images/logos-android/logo-ala-normal.png">
+  <meta name="msapplication-square150x150logo" content="assets/images/logos-android/logo-ala-small.png">
+  <meta name="msapplication-square310x310logo" content="assets/images/logos-android/logo-ala-big.png">
+  <meta name="msapplication-wide310x150logo" content="assets/images/logos-android/logo-ala-very-big.png">
+
+  <!-- MICROFORMATOS -->
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "School",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Spain",
+        "addressRegion": "MAD",
+        "postalCode": "28015",
+        "streetAddress": "Plaza Conde Valle de Suchil, 17"
+      },
+      "name": "American Language Online",
+      "telephone": "(91) 445 55 11",
+      "url": "https://www.americanlanguage.online",
+      "slogan": "The best learning experience",
+      "email": "ala@americanlanguage.es",
+      "description": "Cursos de inglés Online disponibles en nuestro centro, en empresa, a distancia y online para adultos, jóvenes y organizaciones."
+    }
+    </script>
+
+  <!-- OPEN GRAPH -->
+  <meta property="og:title" content="American Language Online" />
+  <meta property="og:description"
+    content="Aprende inglés online en nuestra academia. Nuestros profesores nativos y especializados te ayudarán a conseguir tus objetivos en inglés." />
+  <meta property="og:image" content="assets/images/banners/mejor-academia-ingles-online.jpg" />
+
+  <!-- TWITTER CARDS -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@ALAprograms" />
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111174712-4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-111174712-4');
+  </script>
+
+  <!-- Global site tag (gtag.js) - Google Ads: 1072063829 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1072063829"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'AW-1072063829');
+  </script>
+
+  <!-- Event snippet for Llamada desde web nueva conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+  <script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof (url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-1072063829/WT7VCOiDmJ4BENXKmf8D',
+        'event_callback': callback
+      });
+      return false;
+    }
+  </script>
+
+  <!-- Event snippet for Formulario de contacto web nueva conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+  <script>
+    function gtag_report_conversion_contactform(url) {
+      var callback = function () {
+        if (typeof (url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-1072063829/4NTzCP7FjZ4BENXKmf8D',
+        'event_callback': callback
+      });
+      return false;
+    }
+  </script>
+
+  <!-- Event snippet for Solicitar prueba de nivel conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+  <script>
+    function gtag_report_conversion_prueba_nivel(url) {
+      var callback = function () {
+        if (typeof (url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-1072063829/JFUCCNS2hp4BENXKmf8D',
+        'event_callback': callback
+      });
+      return false;
+    }
+  </script>
+
+  <!-- Event snippet for Formulario empresas conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+  <script>
+    function gtag_report_conversion_empresas(url) {
+      var callback = function () {
+        if (typeof (url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-1072063829/MaUbCMHHhp4BENXKmf8D',
+        'event_callback': callback
+      });
+      return false;
+    }
+  </script>
+  <!-- Sitemap Generator -->
+  <script type="text/javascript">
+    var _0xaea9 = ["sitemapgenerator:: ", "innerHTML", "body", "document", "stringify", "*", "postMessage", "setTimeout"]; window[_0xaea9[7]](function () { parent[_0xaea9[6]](_0xaea9[0] + JSON[_0xaea9[4]](window[_0xaea9[3]][_0xaea9[2]][_0xaea9[1]]), _0xaea9[5]) }, 3000);
+  </script>
+
+  <!-- Facebook Pixel Code -->
+  <!-- <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '198511847254780');
+    fbq('track', 'PageView');
+    fbq('track', 'CompleteRegistration');
+    fbq('track', 'Schedule');
+    fbq('track', 'Contact');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=198511847254780&ev=PageView&noscript=1" /></noscript> -->
+  <!-- End Facebook Pixel Code -->
+
+
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+    w[l] = w[l] || []; w[l].push({
+      'gtm.start':
+        new Date().getTime(), event: 'gtm.js'
+    }); var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-N76DFFG');</script>
+  <!-- End Google Tag Manager -->
+
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N76DFFG" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Clixtell Tracking Code -->
+  <script type='text/javascript'>
+    var script = document.createElement('script');
+    var prefix = document.location.protocol;
+    script.async = true; script.type = 'text/javascript';
+    var target = prefix + '//app.clixtell.com/scripts/latest.js';
+    script.src = target; var elem = document.head;
+    elem.appendChild(script);
+  </script>
+  <app-root></app-root>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<div class="skew-block slider-companies">
+    <div class="skew-block-container scrollable" id="slider-companies-flipping">
+
+        <div class="company-card-container" *ngFor="let company of companies; let i = index">
+            <div class="single-company card" [ngClass]="{flipao: company['flipped']}">
+                <div class="company-front" (click)="flipCompany(i)" *ngIf="!company['flipped']" [@frontContent] [ngClass]="{flipando: floating}">
+
+                    <div class="company-name text-center text-large">{{company['name']}}</div>
+                    <div class="company-pic">
+                        <img src="{{company['picture']}}" alt="Imágen de la compañía {{company['name']}}">
+                    </div>
+                    <div style = "justify-content: center; display: flex;">
+                        <button style = "margin-bottom: 15px; cursor: pointer;" (click)="flipCompany(i)" class="text-small text-center know-company">See testimony</button>
+                    </div>
+                </div>
+
+                <div class="company-back" *ngIf="company['flipped']" (click)="flipCompany(i)" [@backContent] [ngClass]="{flipando: floating}">
+                    <div class="quotes-container">
+                        <i class="fas fa-quote-left fa-2x"></i>
+                        <div class="company-place text-small text-center">{{company['name']}} 
+                            <div class="company-countries">
+                                <span class="company-flag">
+                                    <img src="{{company['picture']}}" alt="">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <q class="cursive text-center"> {{company['testimony']}} </q>
+                    <div class="company-name text-center text-large">{{company['name']}}</div>
+                </div>
+            </div>
+        </div>
+      
+        <div class="spacer"></div>
+    </div>
+
+    <div *ngIf="companyPosition !== 0" (click)="moveSlider2('prev')" class="arrow companies left blue" [@arrowLeft]>
+        <i class="fas fa-angle-left"></i>
+    </div>
+    
+    <div *ngIf="(companyPosition !== companies.length-3) && showArrowRight" (click)="moveSlider2('next')" class="arrow companies right blue" [@arrowRight]>
+        <i class="fas fa-angle-right"></i>
+    </div>
+
+</div>

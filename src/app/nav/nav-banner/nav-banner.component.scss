@@ -1,0 +1,92 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors';
+
+@media screen and (max-width: $break-mobile - 1) {
+    #nav-banner{
+        display: flex;
+        flex-flow: column;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 150px;
+        width: 100%;
+        margin: 10px auto 40px;
+        .pill {
+            background-color: white;
+            position: relative;
+            z-index: 100;
+            &.hidden-pill {
+                display: none;
+                opacity: 0;
+            }
+        }
+        .new-banner {
+            position: relative;
+            z-index: 100;
+            &.hidden {
+                display: none;
+                opacity: 0;
+            }
+        }
+    }
+}
+@media screen and (min-width: $break-mobile) and (max-width: $break-desktop - 1) {
+    #nav-banner{
+        .bubble-container, .new-banner{
+            position: absolute;
+            right: 10px;
+            top: 14vw;
+            z-index: 101;
+        }
+        .message-container{
+            opacity: 0;
+            position: absolute;
+            right: 0;
+            transform: skewY(-10deg);
+            color: white;
+            display: flex;
+            flex-direction: row;
+            top: 22.2vw;
+            text-align: center;
+            width: 38vw;
+            z-index: 101;
+            .message{
+                margin: 0 10px;
+            }
+        }
+    }
+}
+@media screen and (min-width: $break-desktop) {
+    #nav-banner{
+        .bubble-container, .new-banner{
+            position: absolute;
+            right: 35px;
+            top: 11vw;
+            z-index: 101;
+        }
+        .message-container{
+            position: absolute;
+            right: 0px;
+            transform: skewY(-10deg);
+            color: white;
+            display: flex;
+            // flex-direction: row;
+            top: 13.5vw;
+            text-align: center;
+            // width: 50vw;
+            justify-content: flex-end;
+            z-index: 101;
+            .message{
+                margin: 0 10px;
+                &:last-child{
+                    margin-right: 300px;
+                }
+            }
+        }
+    }
+}
+
+.skewed {
+    @include transform(skewY(0));
+}

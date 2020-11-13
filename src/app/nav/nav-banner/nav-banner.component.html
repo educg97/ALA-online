@@ -1,0 +1,190 @@
+<div id="nav-banner" class="page-width nav-banner" *ngIf="window_util['isMobile']">
+
+	<div *ngIf="!filters['courseFilters']['course_alumno_empresas'] && !filters['courseFilters']['course_objetivo_certificar']"
+		class="bubble-container" [ngClass]="{desktop: !window_util['isMobile']}">
+		<img src="/assets/images/ALA/curso-ingles-online-con-experiencia.svg" alt="Plataforma inglés online recomendada">
+	</div>
+
+	<div class="new-banner hidden"
+		*ngIf="!filters['courseFilters']['course_objetivo_certificar'] && !filters['courseFilters']['course_alumno_empresas']">
+		<div class="square-container">
+			<div class="square-background">
+				<div class="square one light-blue"></div>
+				<div class="square two light-gray"></div>
+			</div>
+			<div class="square text">
+				<span class="text-large bold blue">+100 mil</span>
+				<span class="text-small blue">Estudiantes formados</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="new-banner hidden"
+		*ngIf="filters['courseFilters']['course_alumno_empresas'] && !filters['courseFilters']['course_objetivo_certificar']">
+		<div class="square-container">
+			<div class="square-background">
+				<div class="square one light-blue"></div>
+				<div class="square two light-gray"></div>
+			</div>
+			<div class="square text">
+				<span class="text-large bold blue">Top Companies</span>
+				<span class="text-small blue">U.S. & IBEX 35</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="new-banner hidden"
+		*ngIf="filters['courseFilters']['course_alumno_empresas'] && !filters['courseFilters']['course_objetivo_certificar']">
+		<div class="square-container">
+			<div class="square-background">
+				<div class="square one light-blue"></div>
+				<div class="square two light-gray"></div>
+			</div>
+			<div class="square text">
+				<span class="text-large bold blue">Top U.S. Companies</span>
+				<span class="text-small blue">IBM | Warner | Boeing</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="new-banner hidden"
+		*ngIf="filters['courseFilters']['course_alumno_empresas'] && !filters['courseFilters']['course_objetivo_certificar']">
+		<div class="square-container">
+			<div class="square-background">
+				<div class="square one light-blue"></div>
+				<div class="square two light-gray"></div>
+			</div>
+			<div class="square text">
+				<span class="text-large bold blue">IBEX 35</span>
+				<span class="text-small blue">500 CEOs</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="new-banner hidden"
+		*ngIf="filters['courseFilters']['course_objetivo_certificar'] && !filters['courseFilters']['course_alumno_empresas']">
+		<div class="square-container">
+			<div class="square-background">
+				<div class="square one light-blue"></div>
+				<div class="square two light-gray"></div>
+			</div>
+			<div class="square text">
+				<span class="text-large bold blue">103,6</span>
+				<span class="text-small blue">Media TOEFL</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="new-banner hidden"
+		*ngIf="filters['courseFilters']['course_objetivo_certificar'] && !filters['courseFilters']['course_alumno_empresas']">
+		<div class="square-container">
+			<div class="square-background">
+				<div class="square one light-blue"></div>
+				<div class="square two light-gray"></div>
+			</div>
+			<div class="square text">
+				<span class="text-large bold blue">Certificados</span>
+				<span class="text-small blue">TOEFL</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="new-banner hidden"
+		*ngIf="filters['courseFilters']['course_objetivo_certificar'] && !filters['courseFilters']['course_alumno_empresas']">
+		<div class="square-container">
+			<div class="square-background">
+				<div class="square one light-blue"></div>
+				<div class="square two light-gray"></div>
+			</div>
+			<div class="square text">
+				<span class="text-large bold blue">Maximiza</span>
+				<span class="text-small blue">tu nivel</span>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div id="nav-banner" *ngIf="!window_util['isMobile']">
+
+	<!-- Companies -->
+	<div class="message-container" *ngIf="messages_onScreen">
+		<div class="message" *ngIf="filters['courseFilters']['course_alumno_empresas']">
+			<div class="text-large bold">+100</div>
+			<div class="text-small bubble-text">Top U.S. Companies & IBEX 35</div>
+		</div>
+
+		<div class="message" *ngIf="filters['courseFilters']['course_alumno_empresas']">
+			<div class="text-large bold">Consultants</div>
+			<div class="text-small bubble-text">IBEX 35 + 500 CEOs</div>
+		</div>
+	</div>
+
+	<div class="bubble-container" *ngIf="filters['courseFilters']['course_alumno_empresas']">
+		<div class="circle-container deep-purple">
+			<svg class="super-circle">
+				<circle cx="50%" cy="50%" r="67px"></circle>
+			</svg>
+			<div class="bubble-content">
+				<div class="text-large bold">Top US Companies</div>
+				<div class="text-small bubble-text">IBM | Warner | Boeing</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- General -->
+
+	<div class="message-container" *ngIf="messages_onScreen">
+		<div class="message"
+			*ngIf="!filters['courseFilters']['course_objetivo_certificar'] && !filters['courseFilters']['course_alumno_empresas']">
+			<div class="text-large bold">+100 mil</div>
+			<div class="text-small bubble-text">Estudiantes formados</div>
+		</div>
+
+		<div class="message"
+			*ngIf="!filters['courseFilters']['course_alumno_empresas'] && !filters['courseFilters']['course_objetivo_certificar']">
+			<div class="text-large bold">
+				<!-- <div> -->
+					+4,5/5 <i style = "color: yellow;" class="fas fa-star"></i> <i style = "color: yellow;" class="fas fa-star"></i> <i style = "color: yellow;" class="fas fa-star"></i> <i style = "color: yellow;" class="fas fa-star"></i> <i style = "color: yellow;" class="fas fa-star-half"></i></div>
+				<!-- </div> -->
+			<div class="text-small bubble-text">Valoración media</div>
+		</div>
+	</div>
+
+	<div *ngIf="!filters['courseFilters']['course_alumno_empresas'] && !filters['courseFilters']['course_objetivo_certificar']"
+		class="bubble-container" [ngClass]="{desktop: !window_util['isMobile']}">
+		<img src="/assets/images/ALA/curso-ingles-online-con-experiencia.svg" alt="Plataforma inglés online recomendada">
+	</div>
+
+	<!-- Test Prep -->
+
+	<div class="message-container" *ngIf="messages_onScreen">
+		<div class="message"
+			*ngIf="filters['courseFilters']['course_objetivo_certificar'] && !filters['courseFilters']['course_alumno_empresas']">
+			<div class="text-large bold">103,6</div>
+			<div class="text-small bubble-text">Media TOEFL</div>
+		</div>
+
+		<div class="message"
+			*ngIf="filters['courseFilters']['course_objetivo_certificar'] && !filters['courseFilters']['course_alumno_empresas']">
+			<div class="text-large bold">+7.000</div>
+			<div class="text-small bubble-text">Certificados TOEFL</div>
+		</div>
+	</div>
+
+	<div class="new-banner skewed"
+		*ngIf="filters['courseFilters']['course_objetivo_certificar'] && !filters['courseFilters']['course_alumno_empresas']">
+		<div class="square-container">
+			<div class="square-background">
+				<div class="square one light-blue"></div>
+				<div class="square two light-gray"></div>
+			</div>
+			<div class="square text">
+				<span class="text-large bold blue">Maximiza</span>
+				<span class="text-small blue">tu nivel</span>
+			</div>
+		</div>
+	</div>
+
+
+</div>

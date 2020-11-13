@@ -1,0 +1,111 @@
+<div class="pre-footer">
+	<div class="header block">
+		<div class="text-large bold text-ala-blue">Empieza ahora</div>
+		<p class="text-small">Aprende ingl&eacute;s online</p>
+	</div>
+
+	<div class="call-block block">
+		<p>Reserva por tel&eacute;fono</p>
+		<button class="btn green" >
+			<a (click)="trackingPhoneCallGA()">+34 91 444 55 11</a>
+		</button>
+	</div>
+
+	<div class="assistant-block block">
+		<p>O reserva online</p>
+		<button (click)="openContactModal()" class="btn green">
+			<strong>Rellenar formulario</strong>
+		</button>
+	</div>
+</div>
+
+<div class="footer" *ngIf="!window_util.isMobile">
+	<div class="footer-fill">
+		
+		<p id="footer-terms">
+			<a href="/terminos-y-condiciones" target="_blank">Ver t&eacute;rminos y condiciones</a>
+		</p>
+
+		<h3 class = "know-our-academies"><a routerLink="/curso-ingles-online/intensivo" fragment = "top">Aprende Inglés Online con los cursos mejor valorados</a></h3>
+
+		<ul id="footer-companies">
+			<li><img src="/assets/images/logos-asociaciones/recomendacion-academia-ingles-online.svg" height="35px" alt="Curso inglés online seguro"></li>
+			<li><img src="/assets/images/logos-asociaciones/asociacion-centros-enseñanza-privados.svg" height="35px" alt="Academia online con experiencia"></li>
+			<li><img src="/assets/images/logos-asociaciones/asociacion-academias-madrid-online.svg" height="35px" alt="Empresas idiomas online de Madrid"></li>
+			<li><img src="/assets/images/logos/mejores-academias-de-ingles.svg" height="35px" alt="Formación de inglés online para empresas"></li>
+			<li><img src="/assets/images/logos/cursos-ingles-recomendados.svg" height="55px" alt="Cursos de inglés a distancia"></li>
+			<li><img src="/assets/images/logos/centros-enseñanza-idiomas-españa.svg" height="55px" alt="Asociación de Centros de Idiomas a distancia"></li>
+		</ul>
+
+		<ul id="footer-address">
+			<li>
+				<img src="/assets/images/ALO/ingles-americano-online.png" alt="Logo academia de inglés online">
+			</li>
+			<a class = "btn white btn-centered" routerLink = "/sobre-nosotros" style = "margin-top: 20px; color: #0ca3f4;">Sobre nosotros</a>
+		</ul>
+		
+		<ul id="footer-social">
+			<li><a rel="nofollow" target="_blank" href="https://www.linkedin.com/company/american-language-academy"><i class="fab fa-linkedin"></i></a></li>
+			<li><a rel="nofollow" target="_blank" href="https://www.facebook.com/AmericanLanguageAcademySpain/"><i class="fab fa-facebook-square"></i></a></li>
+			<li><a rel="nofollow" target="_blank" href="https://twitter.com/alaprograms"><i class="fab fa-twitter-square"></i></a></li>
+			<li><a rel="nofollow" target="_blank" href="https://www.youtube.com/channel/UCTp3fzT83SNKWWVPAn8L2jw"><i class="fab fa-youtube-square"></i></a></li>
+			<li><a routerLink="/blog-aprender-ingles"><i class="fas fa-rss-square"></i></a></li>
+			<li><a rel="nofollow" target="_blank" href="https://goo.gl/maps/drK4mz6jJvu"><i class="fas fa-map-marker-alt"></i></a></li>
+		</ul>
+
+		<div id="footer-phone">
+			<button class="btn white" style = "color: #0ca3f4;" (click)="trackingPhoneCallGA(); google.phoneBtn()">
+				<i class="fas fa-phone"></i>
+				<a class = "blue-hover" href="tel:+34-91-444-55-11">&nbsp; +34 91 444 55 11</a>
+			</button>
+
+			<div class = "address-div">
+				<p>Pz. Conde Valle Suchil 4</p>
+				<p>28015 - Spain</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="mobile-footer blue" *ngIf="window_util.isMobile">
+	<ul class="address">
+		<li>
+			<div style = "text-align: center;">
+				<img style = "width: 70%;" src="/assets/images/ALO/ingles-americano-online.png" alt="Logo Blanco de American Language Online">
+				<a class = "btn white btn-centered" routerLink = "/sobre-nosotros" style = "margin-top: 20px; color: #0ca3f4;">Sobre nosotros</a>
+				<h3 style = "color: white; margin: 15px auto;"><a routerLink="/curso-ingles-online/intensivo" fragment = "top">Aprende Inglés Online con los cursos mejor valorados</a></h3>
+			</div>
+
+			<ul id="footer-social" class="footer-social">
+				<li><a rel="nofollow" target="_blank" href="https://www.linkedin.com/company/american-language-academy"><i class="fab fa-2x fa-linkedin"></i></a></li>
+				<li><a rel="nofollow" target="_blank" href="https://www.facebook.com/AmericanLanguageAcademySpain/"><i class="fab fa-2x fa-facebook-square"></i></a></li>
+				<li><a rel="nofollow" target="_blank" href="https://twitter.com/alaprograms"><i class="fab fa-2x fa-twitter-square"></i></a></li>
+				<li><a rel="nofollow" target="_blank" href="https://www.youtube.com/channel/UCTp3fzT83SNKWWVPAn8L2jw"><i class="fab fa-2x fa-youtube-square"></i></a></li>
+				<li><a routerLink="/blog-aprender-ingles"><i class="fas fa-2x fa-rss-square"></i></a></li>
+				<li><a rel="nofollow" target="_blank" href="https://goo.gl/maps/drK4mz6jJvu"><i class="fas fa-2x fa-map-marker-alt"></i></a></li>
+			</ul>
+
+			<div class="location-block">
+				<div class="blue-filter bold">
+						Conde Valle Suchil 17
+						<br>
+						28015 - Spain
+				</div>
+			</div>
+
+			
+		</li>
+	</ul>
+
+	<p class="privacy-terms"><a href="/terminos-y-condiciones" target="_blank">Ver t&eacute;rminos y condiciones</a></p>
+	
+	<ul class="footer-companies" routerLink="/american-language-academy-opiniones">
+		<li><img src="/assets/images/logos-asociaciones/recomendacion-academia-ingles-online.svg" height="25px" alt="Curso inglés online seguro"></li>
+		<li><img src="/assets/images/logos-asociaciones/asociacion-centros-enseñanza-privados.svg" height="25px" alt="Academia online con experiencia"></li>
+		<li><img src="/assets/images/logos-asociaciones/asociacion-academias-madrid-online.svg" height="25px" alt="Empresas idiomas online de Madrid"></li>
+		<li><img src="/assets/images/logos/mejores-academias-de-ingles.svg" height="25px" alt="Formación de inglés online para empresas"></li>
+		<li><img src="/assets/images/logos/cursos-ingles-recomendados.svg" height="40px" alt="Cursos de inglés a distancia"></li>
+		<li><img src="/assets/images/logos/centros-enseñanza-idiomas-españa.svg" height="40px" alt="Asociación de Centros de Idiomas a distancia"></li>
+	</ul>
+
+</div>

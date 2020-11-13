@@ -1,0 +1,109 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors';
+
+#contact-btn{
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 95;
+    i{
+        font-size: 20pt;
+        padding: 5px;
+    }
+}
+
+.contact-banner {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 90;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 2000px;
+    width: 105px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    animation: banner-appear 16s 20s ease-in-out infinite forwards;
+    cursor: pointer;
+    @include box-shadow(5px, 5px, 15px, rgba($blue, 0.2));
+    p {
+        color: $red;
+    }
+    i {
+        margin: 0 5px 0 0;
+        color: $red;
+        font-size: $font-large;
+    }
+}
+
+@keyframes banner-appear {
+    0% {
+        width: 105px;
+    }
+
+    2% {
+        width: 195px;
+    }
+
+    23% {
+        width: 195px;
+    }
+
+    25% {
+        width: 105px;
+    }
+
+    100% {
+        width: 105px;
+    }
+}
+
+.modal-contact {
+    @media screen and (min-width: $break-tablet) {
+        width: 30%;
+    }
+}
+
+#contact-form-container{
+    display: none;
+    z-index: 100;
+    .dim-background{
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0,0,0,0.4);
+    }
+    #contact-form{
+        width: 90%;
+        max-width: 350px;
+        position: fixed;
+        right: 10px;
+        bottom: 70px;
+        background: white;
+        border-radius: 5px;
+        z-index: 99;
+        margin: 10px;
+        @include box-shadow(0px, 5px, 15px, rgba(0,0,0,0.2));
+        form{
+            margin: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-items: center;
+            flex-grow: 0;
+        }
+        .contact-title{
+            font-size: $font-large;
+            text-align: center;
+            margin: 30px 0px;
+        }
+    }
+}
+
+.captcha{
+    padding: 10px;
+}

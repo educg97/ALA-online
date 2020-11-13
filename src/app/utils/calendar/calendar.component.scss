@@ -1,0 +1,84 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors';
+
+.calendar_container {
+    width: 80vw;
+    margin: auto;
+    @media screen and (min-width: $break-mobile + 1) {
+        width: 80%;
+    }
+    .select_month {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 20px;
+        color: $ala-blue;
+        font-family: Gotham-Rounded-Medium;
+        i {
+            margin: 0 20px;
+            font-size: 1.7em;
+            cursor: pointer;
+        }
+        span {
+            margin-left: 10px;
+        }
+    }
+    .weekdays {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        color: $ala-blue;
+        font-family: Gotham-Rounded-Light;
+        margin-bottom: 15px;
+    }
+    .calendar {
+        display: flex;
+        justify-content: flex-start;
+        align-items: baseline;
+        flex-wrap: wrap;
+        margin-bottom: 16px;
+        &.appointments,
+        &.multimedia {
+            .weekend {
+                color: $gray;
+                pointer-events: none;
+            }
+        }
+        .dayBox {
+            width: 14%;
+            height: 42px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 50000px;
+            color: $ala-blue;
+            font-family: Gotham-Rounded-Light;
+            cursor: pointer;
+            cursor: pointer;
+            &.selected {
+                box-shadow: 0 5px 15px rgba($blue, .3);
+            }
+            .dots {
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+                align-items: center;
+                width: 70%;
+                margin: 0;
+                .dot {
+                    width: 8px; height: 8px;
+                    border-radius:  50%;
+                    @each $color in $colors {
+                        &.#{map-get($color, color)}{
+                            color: map-get($color, normal);
+                            background-color: map-get($color, normal);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

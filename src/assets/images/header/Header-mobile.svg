@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="nav-shape-mobile" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 323.2 251.1" style="enable-background:new 0 0 323.2 251.1;" xml:space="preserve">
+<style type="text/css">
+	.st0{clip-path:url(#SVGID_2_);}
+	.st1{opacity:0.2;fill:url(#SVGID_3_);enable-background:new    ;}
+</style>
+<g>
+	<g>
+		<defs>
+			<path id="SVGID_1_" d="M323.2,222.9l-133.4,24.6c-18.5,4.9-37.9,4.9-56.3,0L0,222.9V0h323.2V222.9z"/>
+		</defs>
+		<clipPath id="SVGID_2_">
+			<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+		</clipPath>
+		<g transform="matrix(1 0 0 1 0 0)" class="st0">
+			
+				<image style="overflow:visible;enable-background:new    ;" width="5760" height="3840" xlink:href="nav-background.jpg"  transform="matrix(8.206019e-02 0 0 8.206019e-02 -126.5026 -2.137675e-05)">
+			</image>
+		</g>
+	</g>
+	
+		<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="22.845" y1="872.073" x2="770.3452" y2="125.3117" gradientTransform="matrix(1 0 0 1 0 -622.0002)">
+		<stop  offset="0" style="stop-color:#673AB7"/>
+		<stop  offset="1" style="stop-color:#9C27B0"/>
+	</linearGradient>
+	<path class="st1" d="M323.2,222.9l-133.4,24.6c-18.5,4.9-37.9,4.9-56.3,0L0,222.9V0h323.2V222.9z"/>
+</g>
+</svg>

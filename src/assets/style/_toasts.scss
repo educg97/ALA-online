@@ -1,0 +1,67 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors';
+
+.toast {
+    position: fixed;
+    bottom: 3%; left: -80vw;
+    padding: 10px 10px 10px 10vw;
+    width: 40vw;
+    background-color: white;
+    border-top-right-radius: 200px;
+    border-bottom-right-radius: 200px;
+    z-index: 1500;
+    &.success {
+        animation: comeIn 2s ease-in-out 1;
+        p {
+            color: $green;
+        }
+    }
+    &.error {
+        animation: comeIn 2s ease-in-out 1;
+        p {
+            color: $red;
+        }
+    }
+}
+
+// PRUEBA
+.toast-container {
+    position: fixed;
+    bottom: 3%; left: -5vw;
+    width: 100%;
+    z-index: 1500;
+    .newToast {
+        padding: 10px 10px 10px 10vw;
+        width: 200px;
+        background-color: white;
+        border-top-right-radius: 200px;
+        border-bottom-right-radius: 200px;
+        margin: 5px 0;
+        &.success {
+            color: $green;
+            @include box-shadow(0px, 5px, 15px, rgba($green, 0.20));
+            // box-shadow: 0px, 5px, 5px, rgba($green, 0.30);
+        }
+        &.error {
+            color: $red;
+            @include box-shadow(0px, 5px, 15px, rgba($red, 0.20));
+        }
+    }
+}
+
+@keyframes comeIn {
+    0% {
+        // left: -80vw;
+        transform: translateX(-100%);
+    }
+    20%,
+    80% {
+        // left: -5vw;
+        transform: translateX(0);
+    }
+    100% {
+        // left: -80vw;
+        transform: translateX(-100%);
+    }
+}

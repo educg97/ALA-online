@@ -1,0 +1,48 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors';
+
+#contact-form-container{
+    z-index: 100;
+    #contact-form{
+        padding-top: 15px;
+        border-radius: 5px;
+        z-index: 99;
+        form{
+            display: flex;
+            flex-direction: column;
+            justify-items: center;
+            flex-grow: 0;
+            .label-checkbox {
+                &:checked {
+                    // &:before {
+                    //     background-color: $blue;                            
+                    // }
+                }
+            }
+            input {
+                &.error {
+                    border: 2px solid $red;
+                }
+            }
+            .errorMessage {
+                color: $red;
+            }
+        }
+        .contact-title{
+            font-size: $font-large;
+            text-align: center;
+            margin: 30px 0px;
+        }
+
+        select {
+            font-family: Gotham-Rounded-Book;
+            font-size: 11pt;
+            color: #777777;
+            border-radius: 15px;
+        }
+        select:after {
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,36 @@
+<div class="calendar_container">
+  <div class="select_month">
+      <i class="fas fa-angle-left" (click)="selectMonth( 'prev' )"></i>
+      {{currentMonthName}} <span>{{currentYear}}</span>
+      <i class="fas fa-angle-right" (click)="selectMonth( 'next' )"></i>
+  </div>
+
+  <ul class="weekdays">
+      <li>L</li>
+      <li>M</li>
+      <li>X</li>
+      <li>J</li>
+      <li>V</li>
+      <li>S</li>
+      <li>D</li>
+  </ul>
+
+  <ul class="calendar" [ngClass]="{appointments: from == 'appointments', multimedia: from == 'book-multimedia'}">
+      <li class="dayBox" *ngFor="let day of whiteBoxes; let i = index"></li>
+      <li class="dayBox" [ngClass]="{
+          selected: (i + 1) == currentDay,
+          weekend: weekendsArray[i] == 'weekend'
+    }" *ngFor="let day of arrOfDays; let i = index"
+          (click)="selectDay(i + 1)">
+          {{i + 1}}
+          <ul class="dots" *ngIf="isActivities">
+            <li class="dot" [ngClass]="{
+                red: dayEvents['Tipo de evento'] === 'Inglés general',
+                purple: dayEvents['Tipo de evento'] === 'Tapas Night',
+                green: dayEvents['Tipo de evento'] === 'Business',
+                cyan: dayEvents['Tipo de evento'] === 'Eventos'
+            }" *ngFor="let dayEvents of day; let i = index"></li>
+        </ul>
+      </li>
+  </ul>
+</div>

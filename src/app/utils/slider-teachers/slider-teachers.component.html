@@ -1,0 +1,117 @@
+<div class="skew-block slider-teachers">
+  <div class="skew-block-container scrollable" id="slider-teachers-flipping">
+
+    <div class="teacher-card-container" *ngFor="let teacher of teachers; let i = index">
+      <div class="single-teacher card" [ngClass]="{flipao: teacher['flipped']}" *ngIf="(webpage === 'preparacion-toefl' && teacher['toefl']) || webpage !== 'preparacion-toefl'">
+      <div class="teacher-front" (click)="flipTeacher(i)" *ngIf="!teacher['flipped']" [@frontContent]
+        [ngClass]="{flipando: floating}">
+        <div class="teacher-left">
+          <div class="teacher-pic">
+            <!-- <img src="assets/images/teachers/{{teacher['picture']}}.jpg" alt=""> -->
+            <img src="{{teacher['picture']}}" alt="">
+          </div>
+          <button (click)="flipTeacher(i)" class="text-small text-center know-teacher">About me</button>
+        </div>
+
+        <div class="teacher-right">
+          <div class="teacher-name text-center text-large">{{teacher['name']}}</div>
+
+          <div class="teacher-caption text-center">
+            <q>{{(webpage === 'preparacion-toefl' && teacher['toefl']) ? teacher['toeflText'] : teacher['caption']}}</q>
+          </div>
+
+          <div class="teacher-place text-small text-center">{{teacher['city']}}</div>
+          <div class="teacher-countries">
+            <span class="teacher-flag" *ngFor="let flag of teacher['flag']; let i = index">
+              <!-- <img src="assets/images/icons/{{flag}}.svg" alt=""> -->
+              <img src="{{flag}}" alt="">
+            </span>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="teacher-back" *ngIf="teacher['flipped']" (click)="flipTeacher(i)" [@backContent]
+        [ngClass]="{flipando: floating}">
+        <div class="quotes-container">
+          <i class="fas fa-quote-left fa-2x"></i>
+          <div class="teacher-place text-small text-center">{{teacher['city']}} <div class="teacher-countries">
+              <span class="teacher-flag" *ngFor="let flag of teacher['flag']; let i = index">
+                <!-- <img src="assets/images/icons/{{flag}}.svg" alt=""> -->
+                <img src="{{flag}}" alt="">
+              </span>
+            </div>
+          </div>
+        </div>
+        <q class="cursive text-center">
+          {{teacher['interests']}}
+        </q>
+        <div class="teacher-name text-center text-large">{{teacher['name']}}</div>
+      </div>
+    </div>
+    </div>
+    
+    <div class="spacer"></div>
+  </div>
+  <div *ngIf="teacherPosition !== 0" (click)="moveSlider('prev')" class="arrow teachers left blue" [@arrowLeft]>
+    <i class="fas fa-angle-left"></i>
+  </div>
+  <div *ngIf="(teacherPosition !== teachers.length-1) && showArrowRight" (click)="moveSlider('next')"
+    class="arrow teachers right blue" [@arrowRight]>
+    <i class="fas fa-angle-right"></i>
+  </div>
+
+
+  <h3 class="text-center">Nuestro Director de Estudios</h3>
+
+  <div class="single-teacher jeff card" [ngClass]="{flipao: jeffFlipped}">
+    <div class="teacher-front" *ngIf="!jeffFlipped" (click)="flipJeff()" [@frontContent]
+      [ngClass]="{flipando: floatingJeff}">
+      <div class="teacher-left">
+        <div class="teacher-pic">
+          <img src="assets/images/teachers/jeff.jpg" alt="">
+        </div>
+        <button (click)="flipJeff()" class="text-small text-center know-teacher">About me</button>
+      </div>
+
+      <div class="teacher-right">
+        <div class="teacher-name text-center text-large">Jeff</div>
+
+        <div class="teacher-caption text-center">
+          <q>
+            Master in Teaching English as a Second Language.<br>
+            <!-- Ohio State Teacher.<br> -->
+            Worked in Ohio State University as a teacher.<br>
+            25 años como Director de Programas y Estudios.
+          </q>
+        </div>
+
+        <div class="teacher-place text-small text-center">Ohio, USA</div>
+        <div class="teacher-countries">
+          <span class="teacher-flag">
+            <img src="assets/images/icons/usa.svg" alt="">
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="teacher-back" *ngIf="jeffFlipped" (click)="flipJeff()" [@backContent]
+      [ngClass]="{flipando: floatingJeff}">
+      <div class="quotes-container">
+        <i class="fas fa-quote-left fa-2x"></i>
+        <div class="teacher-place text-small text-center">Ohio, USA <div class="teacher-countries">
+            <span class="teacher-flag">
+              <img src="assets/images/icons/usa.svg" alt="">
+            </span>
+          </div>
+        </div>
+      </div>
+      <q class="cursive text-center">
+        Me gusta estar al día de todo lo que ocurre a mi alrededor y compartir experiencias con las personas de mi
+        entorno.
+      </q>
+      <div class="teacher-name text-center text-large">Jeff</div>
+    </div>
+  </div>
+
+</div>

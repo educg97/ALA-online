@@ -1,0 +1,61 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors';
+
+.switch-toggle-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 15px;
+    @media screen and (min-width: $break-mobile + 1) {
+        max-width: 400px;
+        margin: auto;
+    }
+    p {
+        text-align: center;
+    }
+    .switch-toggle {
+        margin: 20px auto 0;
+        width: 150px;
+        height: 80px;
+        position: relative;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .backline {
+            position: relative;
+            height: 5px;
+            width: 60px;
+            border-radius: 100px;
+            background-color: $light-gray;
+            position: absolute;
+            top: 26px;
+            left: 0; right: 0;
+            margin: auto;
+        }
+        .circle-switch {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            position: absolute;
+            top: 13px;
+            z-index: 60;
+            transition: all .3s ease-in-out;
+        }
+        &.left {
+            .circle-switch {
+                left: 30px;
+                background-color: $blue;
+                @include box-shadow(0,10px,10px,rgba($blue,0.2));
+            }
+        }
+        &.right {
+            .circle-switch {
+                left: 80px;
+                background-color: $orange;
+                @include box-shadow(0,10px,10px,rgba($orange,0.2));
+            }
+        }
+    }
+}

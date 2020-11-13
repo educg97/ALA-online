@@ -1,0 +1,22 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors'; 
+
+.error-code-container{
+    text-align: center;
+    padding: 50px;
+    background-color: $very-light-gray;
+    border-radius: 10px;
+    .links-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .error-code{
+        font-size: 50pt;
+        margin: 50px;
+    }
+    button{
+        margin: 30px 10px;
+    }
+}

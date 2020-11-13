@@ -1,0 +1,249 @@
+<div class="contact-intro page-width">
+	<h1>Grupo American Language Online</h1>
+</div>
+
+<div class="banner banner-alumnos">
+	<div class="background" [ngClass]="{borderless:!windowSize.isMobile, card:!windowSize.isMobile}">
+		<div class="gradient blue">
+			<p class="bold">
+				La red global de formación líder para adultos y profesionales
+			</p>
+		</div>
+		<img src="assets/images/teachers/academia-ingles-online-profesores-nativos.jpg" alt="Academia de inglés online" class="background-img">
+	</div>
+	<div class="icon-banner bottom-left">
+		<img src="assets/images/logos/Your-best-learning-experience.png" alt='Cursos de inglés Online'>
+	</div>
+</div>
+
+<div class="contact-intro page-width">
+	<p class="space-text">
+		El grupo American Language ha formado a <strong>cientos de miles de adultos y empresas</strong> líderes en todo el 
+		mundo. Nuestro equipo cuenta con <strong>más de 100 profesionales de la educación, de la tecnología</strong> y 
+		profesores nativos que imparten clases de inglés desde decenas de países.
+	</p>
+
+	<ul class="color-circles-block">
+		<li class="border-circle blue">
+			<div class="circle-container">
+				<div class="top-block">
+					<i class="fas fa-award"></i>
+				</div>
+				<div class="bottom-block text-center"
+					[ngClass]="{'text-medium': !windowSize.isMobile, 'text-small': windowSize.isMobile}">
+					Premio nacional <strong>innovación</strong> educativa 2019
+				</div>
+			</div>
+		</li>
+
+		<li class="border-circle green">
+			<div class="circle-container">
+				<div class="top-block">
+					<i class="fas fa-trophy"></i>
+				</div>
+				<div class="bottom-block text-center"
+					[ngClass]="{'text-medium': !windowSize.isMobile, 'text-small': windowSize.isMobile}">
+					Premio nacional <strong>mejor metodología</strong> 2020
+				</div>
+			</div>
+		</li>
+
+		<li class="border-circle purple">
+			<div class="circle-container">
+				<div class="top-block">
+					<i class="fas fa-star"></i>
+				</div>
+				<div class="bottom-block text-center"
+					[ngClass]="{'text-medium': !windowSize.isMobile, 'text-small': windowSize.isMobile}">
+					Premio a la <strong>excelencia profesional</strong> 2018
+				</div>
+			</div>
+		</li>
+
+
+		<li class="border-circle red">
+			<div class="circle-container">
+				<div class="top-block">
+					<i class="fas fa-chalkboard-teacher"></i>
+				</div>
+				<div class="bottom-block text-center"
+					[ngClass]="{'text-medium': !windowSize.isMobile, 'text-small': windowSize.isMobile}">
+					Los <strong>mejores</strong> profesores nativos
+				</div>
+			</div>
+		</li>
+
+
+		<li class="border-circle orange">
+			<div class="circle-container">
+				<div class="top-block">
+					<i class="fas fa-user-graduate"></i>
+				</div>
+				<div class="bottom-block text-center"
+					[ngClass]="{'text-medium': !windowSize.isMobile, 'text-small': windowSize.isMobile}">
+					<strong>+100.000</strong> estudiantes en todo el mundo
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>
+
+<div class = "contact-intro page-width">
+	<p>
+		Desde la <strong>excelencia en la educación</strong> y en la <strong>innovación tecnológica</strong>, 
+		somos pioneros en la educación online. Nuestra formación online ha conseguido el 
+		<strong>premio nacional a la Innovación</strong> en España por la Federación Nacional de Enseñanza 
+		de Idiomas por el desarrollo de nuestra aplicación Flash Class <a>(link a la app)</a> en 2019.
+	</p>
+
+	<p>
+		Los servicios de formación de American Language Online se imparten en todo el mundo, con formación 
+		de inglés en grupo, clases individuales y con la app Flash Class que permite recibir clases 24/7 
+		cualquier día del año en el momento que quieras y desde donde quieras: clases individuales o en 
+		grupo bajo demanda en el momento que tu quieras ¡aprende en un flash!.
+	</p>
+</div>
+
+<h1>Servicios 360º at your choice</h1>
+
+<div class="skew-block blue academy-image-container">
+	<div class="skew-block-container academy-image" [ngClass]="{scrollable: !windowSize.isDesktop}" id="slider-headquarters">
+		<a routerLink = "/">
+			<div class="pic-slide-academy">
+				<div class="card">
+					<img src="/assets/images/about_ala/aprende-ingles-a-distancia.jpg"
+						alt="Aprender inglés online" width="100%">
+				</div>
+				<h5 class="text-center">Online</h5>
+			</div>
+		</a>
+
+		<a href = "https://www.americanlanguage.es/cursos-ingles-madrid">
+			<div class="pic-slide-academy">
+				<div class="card">
+					<img src="/assets/images/academies/curso-de-ingles-presencial.jpg"
+						alt="American Language Online" width="100%">
+				</div>
+				<h5 class="text-center">Presencial</h5>
+			</div>
+		</a>
+		
+		<a routerLink = "/app-aprender-ingles">
+			<div class="pic-slide-academy">
+				<div class="card lighter-image">
+					<img src="/assets/images/home/app/apps-para-clases-de-ingles.jpeg"
+						alt="Las mejores apps para aprender inglés" width="100%">
+				</div>
+				<h5 class="text-center" [ngClass]="{'text-blue': windowSize.isDesktop}">App</h5>
+			</div>
+		</a>
+
+		<div class="spacer" *ngIf="windowSize.isMobile"></div>
+	</div>
+	<div *ngIf="windowSize.isMobile" class="slider-controls skew-block-container">
+		<ul>
+			<li class="white" [ngClass]="{active: headquarterPosition === i}"
+				(click)="scrollComponent('slider-headquarters', i)" *ngFor="let dot of dotsHeadquarters; let i = index">
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class = "contact-intro page-width">
+	<p style = "padding-top: 10px;">
+		Tras décadas de excelencia al servicio de la formación, ahora puedes disfrutar nuestros servicios 
+		internacionales <strong>desde cualquier parte del mundo</strong> con la metodología que ha conseguido 
+		en 2020 el primer <strong>premio a la Mejor Metodología y Satisfacción</strong> de los Clientes en la enseñanza de idiomas en España.
+	</p>
+
+	<p>
+		American Language Online es símbolo de la excelencia en la enseñanza de idiomas y ha recibido el 
+		<strong>reconocimiento de las instituciones educativas más importantes del mundo</strong>:
+	</p>
+</div>
+
+<h1>Sobre Nosotros</h1>
+
+<app-slider-universities></app-slider-universities>
+
+<!-- <div class = "contests" *ngIf="showStar">
+	<app-star-promotion></app-star-promotion>
+</div> -->
+
+<h1>Certificaciones de nivel de inglés</h1>
+<div class="contact-intro page-width">
+	<p class="space-text">
+		A través de nuestra formación podrás certificar tu nivel de inglés con el Marco Europeo de 
+		Referencia (B1, B2, C1 o C2) o a través de certificaciones numéricas del sistema americano (TOEFL). 
+		¡Consigue tus objetivos y abre todas las puertas con la preparación para certificar tu nivel de inglés 
+		con exámenes oficiales de American language Online!
+	</p>
+</div>
+
+<app-slider-asociations></app-slider-asociations>
+
+<div class="contact-intro page-width">
+	<p class="space-text">
+		El equipo de investigación docente y tecnológico de American Language trabaja non-stop para 
+		incorporar mejoras continuas en calidad, metodología y en innovación para <strong>optimizar tus 
+		resultados</strong> en la formación a distancia.
+	</p>
+
+	<p class="space-text">
+		Las instituciones y empresas más importantes del mundo han confiado la formación en idiomas de 
+		sus directivos y personal estratégico a American Language:
+	</p>
+</div>
+
+<h1>Nuestros clientes</h1>
+
+<app-slider-companies></app-slider-companies>
+
+<h1>Sedes Internacionales</h1>
+<div class = "contact-intro page-width">
+	<p class="space-text">El grupo American Language tiene tres sedes internacionales:</p>
+	<div style = "margin-left: 15px;">
+		<p>&bull; 📍Headquarters y servicios centrales para Europa y África en Madrid, España.</p>
+		<p>&bull; 📍Servicios centrales para Asia y Australia en Cebú, Filipinas.</p>
+		<p>&bull; 📍Servicios centrales para América en Ohio, Estados Unidos.</p>
+	</div>
+	<p class="space-text">
+		El campus presencial de American Language se encuentra en el distrito universitario de la capital 
+		de España con un campus de +1.000 m2 ubicado en los Jardines del Almirante Cervera - Plaza Conde 
+		Valle Suchil.
+	</p>
+</div>
+
+<div class="contact-intro page-width">
+	<div class="academy business-center">
+		<div class="logo-academy-container" *ngIf="!windowSize.isDesktop">
+				<img src="/assets/images/ALO/american_language_online_logo_3_azul.png" alt="Academia de inglés online" width="200px">
+		</div>
+		<div class="flex-content">
+			<div class="map-pic-container card">
+				<!-- <iframe
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d956.5843544494487!2d-3.7050842781126962!3d40.43175175501112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422860f5f92185%3A0x19177b89cc310c85!2sAmerican+Business+Center-+Ingl%C3%A9s+para+Empresas!5e0!3m2!1sen!2ses!4v1558024688299!5m2!1sen!2ses"
+					width="100%" height="{{windowSize.isMobile ? '50%' : '360px'}}" frameborder="0" style="border:0"
+					allowfullscreen></iframe> -->
+					<iframe src="https://www.google.com/maps/d/embed?mid=148ZlV841lyJZLkPNOWv3pZmHy51G9jF_" width="100%" height="{{windowSize.isMobile ? '50%' : '360px'}}" frameborder="0" style="border:0"></iframe>
+			</div>
+
+			<div class="academy-params">
+				<div class="logo-academy-container" *ngIf="windowSize.isDesktop">
+						<img src="/assets/images/ALO/american_language_online_logo_3_azul.png" alt="Academia de inglés online" width="200px">
+				</div>
+				<h3 class="space-title3">American Language Online</h3>
+				<p>Primer centro del grupo desde 1967. Continúa siendo un centro de idiomas de excelencia, orientado a
+					las clases de empresas y Business English.</p>
+				<ul class="caracs-academy business-center">
+					<li>Servicio 24/7</li>
+					<li>Más de 100 profesionales de la educación y la tecnología</li>
+					<li>Call center</li>
+					<li>Campus Madrid +1000m2</li>
+					<li>Test Center oficial</li>
+					<li>Servicios de formación globales</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

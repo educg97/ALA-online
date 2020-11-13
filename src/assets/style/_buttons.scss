@@ -1,0 +1,102 @@
+/* BUTTONS */
+.btn,
+button {
+    padding: 8px 17px;
+    margin: 5px 10px;
+    border-radius: 1000px;
+    font-size: $font-normal;
+    text-decoration: none;
+    border: none;
+    border-collapse: separate;
+    text-align: center;
+    @include css3-prefix(user-select, none);
+    @include css3-prefix(transition-duration, 0.3s);
+    &.btn-circular{
+        padding: 10px;
+    }
+    @each $color in $colors {
+        &.#{map-get($color, color)}{
+            @if map-get($color, color) != 'white' {
+                color: white;
+            }
+            cursor: pointer;
+            @include background-horizontal(map-get($color, gradient), map-get($color, normal));
+            @include box-shadow(0px, 5px, 5px, rgba(map-get($color, normal), 0.30));
+            &.negative{
+                @include background-horizontal(white, white);
+                border: 1px solid $blue-gray;
+                color: $blue-gray;
+                @include box-shadow(0px, 0px, 0px, white);
+            }
+            &.light{
+                @include background-horizontal(white, white);
+                color: map-get($color, normal);
+                font-weight: bold;
+                &:hover{
+                    @if map-get($color, color) != 'white' {
+                        color: white;
+                    }
+                    border: unset;
+                    @include background-horizontal(white, white);
+                    @include box-shadow(0px, 5px, 10px, rgba(map-get($color, normal), 0.80));
+                }
+            }
+            @media (hover: hover) {
+                &:hover{
+                    @if map-get($color, color) != 'white' {
+                        color: white;
+                    }
+                    border: unset;
+                    @include background-horizontal(map-get($color, gradient), map-get($color, normal));
+                    @include box-shadow(0px, 5px, 10px, rgba(map-get($color, normal), 0.80));
+                }
+            }
+            &.active{
+                @if map-get($color, color) != 'white' {
+                    color: white;
+                }
+                border: unset;
+                outline: none;
+                @include background-horizontal(map-get($color, gradient), map-get($color, normal));
+                @include box-shadow(0px, 5px, 10px, rgba(map-get($color, normal), 0.80));
+            }
+            &:focus{
+                border: 1px solid black;
+                outline: none;
+            }
+        }
+    }
+    &:disabled,
+    &[disabled]{
+        background-image: unset;
+        background-color: $gray;
+        cursor: not-allowed;
+        pointer-events: none;
+        color: white;
+        @include box-shadow(0px, 0px, 0px, white);
+    }
+    table {
+        tr {
+            td {
+                &:first-child {
+                    padding: 0 6px;
+                }
+            }
+        }
+    }
+    .btn-circular-img{
+        border-radius: 100px;
+        height: 100px;
+        width: 100px;
+        margin: 10px 0;
+        overflow: hidden;
+        img{
+            height: 100px;
+        }
+    }
+}
+
+.btn-centered{
+    display: table;
+    margin: auto;
+}

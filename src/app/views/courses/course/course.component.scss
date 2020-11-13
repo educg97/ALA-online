@@ -1,0 +1,840 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors';
+
+.contests {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    div {
+        margin: auto 15px;
+    }
+}
+
+.text{
+    margin: auto;
+    max-width: $page-width;
+    padding: 0 40px;
+}
+
+p{
+    line-height: 14pt;
+}
+
+#advantages{
+    max-width: 350px;
+    text-align: left;
+    border: 0;
+    .image-container{
+        text-align: center;
+        vertical-align: middle;
+        img{
+            border: 0;
+        }
+    }
+    .text-container{
+        height: 100%;
+        vertical-align: middle;
+    }
+}
+
+h2.course-title.color-block-title {
+    padding: 15px 0 25px;
+}
+
+$image_size: 120px;
+$image_size_large: 200px;
+.course-image{
+    overflow: hidden;
+    margin: auto;
+    @media screen and (max-width: $break-tablet){
+        border-radius: $image_size;
+        margin-top: $image_size / 2 * -1;
+        width: $image_size;
+        min-width: $image_size;
+        max-width: $image_size;
+        height: $image_size;
+        min-height: $image_size;
+        max-height: $image_size;
+        img{
+            position: relative;
+            height: $image_size;
+        }
+    }
+    @media screen and (min-width: $break-tablet +1){
+        border-radius: $image_size_large;
+        margin-top: $image_size_large / 2 * -1;
+        width: $image_size_large;
+        min-width: $image_size_large;
+        max-width: $image_size_large;
+        height: $image_size_large;
+        min-height: $image_size_large;
+        max-height: $image_size_large;
+        img{
+            position: relative;
+            height: $image_size_large;
+        }
+    }
+
+    .course-week{
+        text-align: center;
+        color: white;
+        height: 100px;
+        margin-top: -152px;
+        padding-top: 60%;
+        position: relative;
+        @each $color in $colors {
+            &.#{map-get($color, color)}{
+                background-color: rgba(map-get($color, normal), 0.5);
+            }
+        }
+    }
+}
+
+.course-text{
+    padding: 20px 0;
+    line-height: 16px;
+    text-align: left;
+}
+
+.course-hours{
+    background-color: white;
+    border-radius: 100px;
+    padding: 4px;
+    margin-left: -12px;
+    color: gray;
+    @each $color in $colors {
+        &.#{map-get($color, color)}{
+            color: map-get($color, normal);
+        }
+    }
+}
+
+.btn-summer{
+    background-image: url(/assets/images/banners/summer-vibes.jpg)!important;
+    background-color: #FFC107;
+    background-size: cover;
+    background-blend-mode: soft-light;
+}
+
+.course-slide{
+    padding: 10px 0;
+    .course-slide-control{
+        margin: 3px;
+        vertical-align: middle;
+        min-width: 15px;
+        font-size: $font-large;
+        .selector{
+            width: 15px;
+            height: 15px;
+            background-color: $gray;
+            border-radius: 15px;
+            margin: 6px;
+            position: relative;
+            content: "";
+            &.active{
+                width: 18px;
+                height: 18px;
+                @each $color in $colors {
+                    &.#{map-get($color, color)}{
+                        background-color: map-get($color, normal);
+                    }
+                }
+                .little-bar {
+                    width: 1px;
+                    height: 30px;
+                    background-color: #4b4b4b;
+                    position: absolute;
+                    bottom: 18px;
+                    left: 8px;
+                    margin: auto;
+                    z-index: -1;
+                }
+            }
+        }
+    }
+}
+
+.opinion-container{
+    padding: 30px;
+    margin: auto;
+    max-width: $break-mobile;
+    text-align: center;
+    .opinion{
+        margin: 30px auto;
+        text-align: left;
+        font-size: $font-large;
+        font-family: Gotham-Light;
+    }
+    .opinion-author{
+        text-align: right;
+        font-family: Gotham-Rounded-Light-Italic;
+        line-height: 16px;
+    }
+}
+
+.card-button{
+    position: relative;
+    .btn{
+        position: absolute;
+        bottom: 50px;
+        left: 50%;
+        @include transform(translateX(-50%));
+    }
+}
+
+.course-data{
+    margin: 0 3%;
+    .course-data-title{
+        font-size: $font-large;
+        text-align: center;
+        margin-bottom: 20px;
+        font-family: Gotham-Rounded-Bold;
+    }
+}
+
+.course-buttons-container {
+    width: 100%;
+    margin-bottom: 10px;
+    .course-buttons{
+        display: flex;
+        flex-direction: row;
+        @media screen and (min-width: $break-mobile + 1){
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        margin-bottom: -25px;
+        div{
+            flex-shrink: 0;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.skew-block {
+    &.course-skew-block{
+        margin: 55px 0 15px 0;
+    }
+    margin: 50px 0 30px;
+    position: relative;
+    width: 100%;
+    @media screen and (max-width: $break-mobile){
+        height: 200px;
+    }
+    @media screen and (min-width: $break-mobile +1){
+        height: 250px;
+    }
+    &.opinions-skew {
+        // height: 380px;
+        height: 350px;
+        .see-opinions-container {
+            display: flex;
+            justify-content: center;
+            .see-all-opinions {
+                @include transform(skewY(10deg));
+            }
+        }
+    }
+    .skew-block-container {
+        width: 100%;
+        position: relative;
+        .description-media {
+            position: absolute;
+            left: 0; right: 0;
+            margin: -95px auto 0 auto;
+            @media screen and (max-width: $break-mobile){
+                width: 290px;
+                height: 163.13px;
+                bottom: -200px;
+            }
+            @media screen and (min-width: $break-mobile +1){
+                width: 400px;
+                height: 225px;
+                bottom: -265px;
+            }
+            &-placeholder{
+                height: 95px;
+            }
+            img {
+                margin-top: -80px;
+            }
+        }
+
+        .video.card {
+            iframe {
+                border-radius: 10px;
+                box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+                user-select: none;
+                transition-duration: 0.3s;
+            }
+        }
+    }
+}
+
+.opinions-title {
+    margin: 30px auto -20px;
+}
+
+.beauty-container {
+    position: absolute;
+    top: -10px;
+    &.beauty-container-opinions {
+        top: 0px;
+    }
+    left: 0; right: 0;
+    margin: auto;
+    box-sizing: border-box;
+    .beauty-pill {
+        flex-shrink: 0;
+        @media screen and (max-width: $break-mobile){
+            width: 90vw;
+            padding: 80px 5vw 20px 5vw;
+        }
+        @media screen and (min-width: $break-mobile +1) and (max-width: $break-tablet){
+            width: 40vw;
+            padding: 80px 30vw 20px 30vw;
+        }
+        @media screen and (min-width: $break-tablet +1){
+            width: 40vw;
+            padding: 150px 30vw 20px 30vw;
+            &.beauty-pill-opinions {
+                padding: 75px 30vw 0px 30vw;
+            }
+        }
+        .beauty-card{
+            background-color: white;
+            @include box-shadow(0,10px,10px,rgba($black,0.1));
+            text-align: center;
+            border-radius: 10px;
+        }
+        &.small-pill {
+            .beauty-header {
+                height: 36px;
+                .dark-side {
+                    line-height: 36px;
+                }
+                .beauty-image {
+                    width: 72px; height: 72px;
+                    background-color: $teal;
+                    color: white;
+                    font-size: 30px;
+                }
+            }
+        }
+        .beauty-header {
+            height: 60px;
+            display: flex;
+            position: relative;
+            &.course-pill {
+                .dark-side{
+                    padding-left: 40px;
+                    box-sizing: border-box;
+                }
+            }
+            &.opinions {
+                .dark-side, 
+                .white-block {
+                    background-color: $very-light-gray;
+                    color: $deep-orange;
+                }
+            }
+            .beauty-image {
+                position: absolute;
+                left: 0; right: 0;
+                bottom: 0;
+                margin: auto;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+                @media screen and (max-width: $break-tablet){
+                    width: $image_size; height: $image_size;
+                }
+                @media screen and (min-width: $break-tablet +1){
+                    width: $image_size_large; height: $image_size_large;
+                }
+                img {
+                    height: 100%; width: auto;
+                    object-fit: cover;
+                    border-radius: 50%;
+                    @include animation(fadeIn 200ms ease-in-out 0.5s both);
+                }
+                app-loader {
+                    position: absolute;
+                    @media screen and (max-width: $break-tablet){
+                        @include transform(scale(0.8));
+                    }
+                    @media screen and (min-width: $break-tablet +1){
+                        @include transform(scale(1.2));
+                    }
+                }
+            }
+            .white-block {
+                flex-basis: 50%;
+                border-top-left-radius: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+            }
+            .dark-side {
+                flex-basis: 50%;
+                color: white;
+                background-color: #4b4b4b;
+                border-top-right-radius: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                line-height: 50px;
+                font-size: $font-normal;
+                font-family: Gotham-Rounded-Medium;
+                &.opinions {
+                    padding-left: 20px;
+                    box-sizing: border-box;
+                    i {
+                        font-size: .8em;
+                        margin-right: 4px;
+                    }
+                }
+                span {
+                    font-size: 12px;
+                }
+            }
+        }
+        .beauty-content {
+            padding: 20px;
+            cursor: pointer;
+            color: #949494;
+            .beauty-course-title {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                font-family: Gotham-Rounded-Medium;
+                font-size: $font-large;
+                padding: 5px;
+                box-sizing: border-box;
+            }
+            .beauty-footer {
+                margin-top: 18px;
+            }
+        }
+    }
+}
+
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes fadeOut{from{opacity:1}to{opacity:0}}
+
+.preguntas-frecuentes {
+    .description-title {
+        padding-bottom: 20px;
+    }
+}
+
+.preguntas-container {
+    .pregunta-block {
+        margin-bottom: $font-normal-margin;
+        .question {
+            color: $ala-blue;
+            cursor: pointer;
+        }
+        .answer {
+            color: #949494;
+            transition: height .3s ease-in-out;
+            overflow: hidden;
+            &.hidden {
+                height: 0;
+            }
+        }
+    }
+}
+
+.assistant-thumbnail {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    overflow: hidden;
+    img {
+        height: 100%;
+        width: auto;
+    }
+}
+
+.bubbles-container {
+    display: flex;
+    justify-content: space-around;
+    @media screen and (min-width: $break-mobile + 1){
+        justify-content: center;
+    }
+    margin: 20px 0;
+    .bubble {
+        width: 40%;
+        @media screen and (min-width: $break-mobile + 1){
+            width: 200px;
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+
+.preview-courses {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-gap: 5px;
+    margin: 20px 0;
+    .preview-row {
+        display: grid;
+        grid-template-columns: 10% 90%;
+        grid-gap: 5px;
+        height: 18px;
+        cursor: pointer;
+        .selector-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .selector {
+                width: 10px;
+                height: 10px;
+                background-color: $gray;
+                border-radius: 10px;
+                transition: all .3s ease-in-out;
+                &.active{
+                    width: 14px;
+                    height: 14px;
+                    @each $color in $colors {
+                        &.#{map-get($color, color)}{
+                            background-color: map-get($color, normal);
+                        }
+                    }
+                }
+            }
+        }
+        .course-title-preview {
+            display: flex;
+            align-items: center;
+        }
+    }
+}
+
+.ventaja {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: $font-normal-margin - $font-normal;
+}
+
+table.responsive{
+    line-height: 14pt;
+    th{
+        font-family: Gotham-Rounded-Bold;
+    }
+    @media screen and (max-width: $break-mobile - 1) {
+        tr{
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            margin-bottom: $font-normal-margin - $font-normal;
+        }
+    }
+
+    @media screen and (min-width: $break-mobile) {
+        th{
+            text-align: left;
+            padding-right: 5px;
+        }
+    }
+}
+
+.final-article {
+    padding: 40px;
+}
+
+.modal-original-opinion {
+    @media screen and (min-width: $break-mobile + 1){
+        width: 500px;
+    }
+    .modal-content {
+        // padding: 10px;
+        height: 100%;
+        
+        .original-opinion {
+            height: 100%;
+            border-radius: 10px;
+            img {
+                width: 100%;
+                height: auto;
+                border-radius: 10px;
+            }
+        }
+        
+    }
+}
+
+.modal-full-text-opinion {
+    @media screen and (min-width: $break-mobile + 1){
+        width: 40%;
+    }
+    .modal-content {
+        .full-text-opinion {
+            .award {
+                margin: 10px 0;
+                text-align: center;
+                color: $ala-blue;
+            }
+        }
+    }
+}
+
+.opinions-range {
+    @include transform(skewY(10deg));
+}
+
+.full-width {
+    // margin: auto -40px;
+    @media screen and (min-width: $break-tablet){
+        margin: auto;
+    }
+}
+
+.from-course {
+    .window-companies {
+        width: 100vw;
+    }
+}
+
+// List of other advantages ALA offers to the students (TOEFL)
+.description-content {
+    .other-advantages-toefl {
+        li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            i {
+                font-size: 8px;
+                margin-right: 8px;
+            }
+        }
+    }
+
+    .by-weeks-dates {
+        div {
+            margin-bottom: 5px;
+        }
+
+        span {
+            margin-left: 15px;
+        }
+    }
+}
+
+.logo-toefl-white {
+    width: auto;
+    height: 50px;
+    img {
+        width: auto;
+        height: 40px;
+        margin: 0 auto;
+    }
+}
+
+.faded-container {
+    .skew-block {
+        height: 110px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @media screen and (min-width: $break-mobile + 1) {
+            margin: 85px 0;
+        }
+        .skew-block-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .faded-messages {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                min-height: 100px;
+                position: relative;
+                width: 70%;
+                margin: auto;
+                &.circle {
+                    border-radius: 2000px;
+                    width: 150px;
+                    height: 150px;
+                }
+                &.negative {
+                    .message {
+                        color: white;
+                    }
+                }
+                @media screen and (min-width: $break-mobile + 1){
+                    width: 400px;
+                }
+                .message {
+                    text-align: center;
+                    color: $ala-blue;
+                    transition: opacity .6s ease-in-out;
+                    opacity: 0;
+                    position: absolute;
+                    top: 0; bottom: 0;
+                    left: 0; right: 0;
+                    margin: auto;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    &.actived {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+    .degraded {
+        height: 100px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .degraded-line {
+            position: absolute;
+            width: 20%;
+            top: 0;
+            height: 100%;
+            background-color: unset;
+            &.left {
+                left: 0; 
+                background-color: unset!important;
+                @include background-horizontal($teal, rgba(0, 0, 0, 0));
+            }
+            &.right {
+                right: 0;  
+                background-color: unset!important;
+                @include background-horizontal(rgba(0, 0, 0, 0), $teal);
+            }
+        }
+        .faded-messages {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100px;
+            position: relative;
+            width: 70%;
+            margin: auto;
+            &.circle {
+                border-radius: 2000px;
+                width: 150px;
+                height: 150px;
+            }
+            &.negative {
+                .message {
+                    color: white;
+                }
+            }
+            @media screen and (min-width: $break-mobile + 1){
+                width: 400px;
+            }
+            .message {
+                text-align: center;
+                color: $ala-blue;
+                transition: opacity .6s ease-in-out;
+                opacity: 0;
+                position: absolute;
+                top: 0; bottom: 0;
+                left: 0; right: 0;
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                &.actived {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+.becas-toefl {
+    margin: 20px auto;
+    padding: 60px 20px 20px;
+    box-sizing: border-box;
+    h2 {
+        margin-bottom: -20px;
+    }
+    @media screen and (max-width: $break-mobile) {
+        padding-top: 30px;
+    }
+    .becas-prizes {
+        li {
+            padding-left: 100px;
+            box-sizing: border-box;
+            @media screen and (max-width: $break-mobile) {
+                padding-left: 40px;
+            }
+            h4 {
+                position: relative;
+                &::before {
+                    content: '';
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 3000px;
+                    background-color: $green;
+                    position: absolute;
+                    left: -40px;
+                    top: 0;
+                }
+            }
+        }
+    }
+    .instructions-toefl-beca {
+        padding-left: 100px;
+        box-sizing: border-box;
+        @media screen and (max-width: $break-mobile) {
+            padding-left: 40px;
+        }
+        ul {
+            li {
+                position: relative;
+                &::before {
+                    content: '';
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 3000px;
+                    background-color: white;
+                    box-sizing: border-box;
+                    border: 1px solid $green;
+                    position: absolute;
+                    left: -40px;
+                    top: 0;
+                }
+            }
+        }
+    }
+}
+
+.intro-becas-toefl {
+    margin-bottom: 50px;
+    @media screen and (max-width: $break-mobile) {
+        box-sizing: border-box;
+        padding: 0 20px;
+        margin-bottom: 0;
+    }
+    .card {
+        max-width: 400px;
+        margin: auto;
+        padding: 30px;
+        h4 {
+            color: $green;
+            margin-bottom: 30px;
+        }
+        p {
+            margin: 5px 0;
+        }
+    }
+}

@@ -1,0 +1,244 @@
+$url: "/assets/style/fonts";
+/* Gotham */
+@font-face {
+    font-family: Gotham-Light;
+    font-display: auto;
+    src: url(#{$url}/Gotham_Light.otf);
+}
+@font-face {
+    font-family: Gotham-Book;
+    font-display: auto;
+    src: url(#{$url}/Gotham_Book.otf);
+}
+@font-face {
+    font-family: Gotham-Medium;
+    font-display: auto;
+    src: url(#{$url}/Gotham_Medium.otf);
+}
+@font-face {
+    font-family: Gotham-Bold;
+    font-display: auto;
+    src: url(#{$url}/Gotham_Bold.otf);
+}
+/* Gotham Rounded */
+@font-face {
+    font-family: Gotham-Rounded-Light;
+    font-display: auto;
+    src: url(#{$url}/Gotham_Rounded_Light.otf);
+}
+@font-face {
+    font-family: Gotham-Rounded-Book;
+    font-display: auto;
+    src: url(#{$url}/Gotham_Rounded_Book.otf);
+}
+@font-face {
+    font-family: Gotham-Rounded-Medium;
+    font-display: auto;
+    src: url(#{$url}/Gotham_Rounded_Medium.otf);
+}
+@font-face {
+    font-family: Gotham-Rounded-Bold;
+    font-display: auto;
+    src: url(#{$url}/Gotham_Rounded_Bold.otf);
+}
+@font-face {
+    font-family: Gotham-Rounded-Light-Italic;
+    font-display: auto;
+    src: url(#{$url}/Gotham_Rounded_Light_Italic.otf);
+}
+@font-face {
+    font-family: Gotham-Rounded-Book-Italic;
+    font-display: auto;
+    src: url(#{$url}/Gotham_Rounded_Book_Italic.otf);
+}
+@font-face {
+    font-family: Gotham-Rounded-Medium-Italic;
+    font-display: auto;
+    src: url(#{$url}/Gotham_Rounded_Medium_Italic.otf);
+}
+@font-face {
+    font-family: Gotham-Rounded-Bold-Italic;
+    font-display: auto;
+    src: url(#{$url}/Gotham_Rounded_Bold_Italic.otf);
+}
+/* Remachine Script */
+@font-face {
+    font-family: RemachineScript;
+    font-display: auto;
+    src: url(#{$url}/RemachineScript.ttf);
+}
+
+/* PARAGRAPH */
+strong,
+.bold,
+.thicc,
+b{
+    font-family: Gotham-Rounded-Bold;
+}
+em,
+.cursive {
+    font-family: Gotham-Rounded-Book-Italic;
+}
+strong + em,
+strong > em,
+b + em,
+b > em {
+    font-family: Gotham-Rounded-Bold-Italic;
+}
+u,
+strong + em,
+strong > em,
+em > strong {
+    text-decoration: underline;
+}
+.medium{
+    font-family: Gotham-Rounded-Medium;
+}
+.thin{
+    font-family: Gotham-Rounded-Light;
+}
+.text-small{
+    font-size: $font-small;
+}
+.text-normal{
+    font-size: $font-normal;
+}
+.text-medium{
+    font-size: $font-medium;
+}
+.text-large{
+    font-size: $font-large;
+}
+.text-title{
+    font-size: $font-title;
+}
+.text-left {
+    text-align: left;
+}
+.text-center {
+    text-align: center;
+}
+.text-right {
+    text-align: right;
+}
+@each $color in $colors {
+    .text-#{map-get($color, color)} {
+        color: map-get($color, normal);
+    }
+}
+
+/* DOM */
+h1 {
+    font-family: Gotham-Bold;
+    font-size: $font-title;
+    margin: 30px 0;
+    width: 100%;
+    text-align: center;
+    color: $ala-blue;
+}
+
+h2 {
+    font-family: Gotham-Rounded-Bold;
+    font-size: $font-large;
+    color: $ala-blue;
+}
+
+h3 {
+    font-family: Gotham-Rounded-Medium;
+    font-size: $font-medium;
+    color: $ala-blue;
+}
+
+h4 {
+    color: $ala-blue;
+    font-family: Gotham-Bold;
+    font-size: $font-medium;
+}
+
+h5 {
+    color: $ala-blue;
+    font-family: Gotham-Bold;
+}
+
+
+p {
+    font-family: Gotham-Rounded-Book;
+    font-size: $font-normal;
+    line-height: $font-normal-spacing;
+}
+
+a {
+    font-family: Gotham-Rounded-Bold;
+    transition: color .3s ease-in-out;
+    &:hover {
+        color: $green;
+    }
+}
+
+pre {
+    font-family: Gotham-Rounded-Book;
+    font-size: $font-normal;
+    line-height: 14pt;
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+br {
+    line-height: $font-large;
+}
+
+.separator {
+    text-align: center;
+    font-size: .8em;
+    color: $gray;
+    width: 100%;
+}
+
+.space-title1 {
+    margin: 30px auto;
+}
+
+.space-title2 {
+    margin: 25px auto;
+}
+
+.space-title2-alt {
+    margin: 25px auto 15px;
+}
+
+.space-title3 {
+    margin: 20px auto 15px;
+}
+
+.space-text {
+    margin: 16pt auto;
+}
+
+.space-text-sub {
+    margin: 9pt auto;
+}
+
+.strike {
+    text-decoration:line-through;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.colorful {
+    color: $blue;
+}
+
+/*
+    Titulo 1 | size: 22pt | spacing: 22pt | margin: 30px:30px
+    Titulo 2 | size: 16pt | spacing: 16pt | margin: 25px:15|25px
+    Titulo 3 | size: 13pt | spacing: 13pt | margin: 20px:15px
+    Text     | size: 11pt | spacing: 14pt | margin: 16pt
+    Text sub | size:  9pt | spacing:  9pt | margin:  9pt
+*/
+
+

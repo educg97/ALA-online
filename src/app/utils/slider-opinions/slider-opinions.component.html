@@ -1,0 +1,115 @@
+<div class="skew-block light-blue first-opinion-block">
+	<div class="skew-block-container">
+		<!-- <h2 class="text-center">Conoce las opiniones de nuestros alumnos</h2> -->
+		<div class="opinions-full-continer">
+			<div class="opinions-card-container scrollable" id="opinions-line">
+				<!-- <div class="top row scrollable" id="top-row"> -->
+				<div class="column" *ngFor="let opinion of topRowOpinions; let i = index">
+
+					<div class="beauty-pill small-pill" [ngClass]="{
+							'center': i == opinion_counter,
+							'fade-out': fadeOut
+						}">
+						<div class="beauty-card">
+							<div class="beauty-header">
+								<div class="white-block">
+									<span (click)="watchOriginal( opinion['Original'] )" *ngIf="opinion['Original']"><i
+											class="fas fa-file-alt"></i>&nbsp;Ver original</span></div>
+								<div class="beauty-image">
+									{{opinion['Author'].split(' ')[0][0]}}{{opinion['Author'].split(' ')[0][1]}}
+								</div>
+								<div class="dark-side opinions">
+									<div class="toefl-score" *ngIf="opinion['Puntuacion TOEFL'].length > 0">
+										{{opinion['Puntuacion TOEFL']}}/120 TOEFL
+									</div>
+									<div class="stars" *ngIf="!opinion['Puntuacion TOEFL'].length > 0">
+										<i class="fas fa-star"
+											*ngFor="let star of opinion['realStars']['fullStars']; let i = index"></i>
+										<i class="fas fa-star-half" *ngIf="opinion['realStars']['halfStar']"></i>
+									</div>
+								</div>
+							</div>
+							<div class="beauty-content">
+								<div class="beauty-comment">
+									{{opinion['shortComment']}}
+								</div>
+								<div class="beauty-footer">
+									<div class="beauty-author">
+										{{opinion['Author']}}
+									</div>
+									<!-- <div class="beauty-job">
+											Ingeniero Informático
+										</div> -->
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- </div> -->
+					<!-- <div class="bottom row scrollable" id="bottom-row"> -->
+					<div class="beauty-pill small-pill" [ngClass]="{
+							'center': i == opinion_counter,
+							'fade-out': fadeOut
+						}">
+						<div class="beauty-card">
+							<div class="beauty-header">
+								<div class="white-block" (click)="watchOriginal( bottomRowOpinions[i]['Original'] )">
+									<span *ngIf="opinion['Original']"><i class="fas fa-file-alt"></i>&nbsp;Ver
+										original</span></div>
+								<div class="beauty-image">
+									{{bottomRowOpinions[i]['Author'].split(' ')[0][0]}}{{bottomRowOpinions[i]['Author'].split(' ')[1][0]}}
+								</div>
+								<div class="dark-side opinions">
+									<div class="toefl-score"
+										*ngIf="bottomRowOpinions[i]['Puntuacion TOEFL'].length > 0">
+										{{bottomRowOpinions[i]['Puntuacion TOEFL']}}/120 TOEFL
+									</div>
+									<div class="stars" *ngIf="!bottomRowOpinions[i]['Puntuacion TOEFL'].length > 0">
+										<i class="fas fa-star"
+											*ngFor="let star of bottomRowOpinions[i]['realStars']['fullStars']; let i = index"></i>
+										<i class="fas fa-star-half"
+											*ngIf="bottomRowOpinions[i]['realStars']['halfStar']"></i>
+									</div>
+								</div>
+							</div>
+							<div class="beauty-content">
+								<div class="beauty-comment">
+									{{bottomRowOpinions[i]['shortComment']}}
+								</div>
+								<div class="beauty-footer">
+									<div class="beauty-author">
+										{{bottomRowOpinions[i]['Author']}}
+									</div>
+									<!-- <div class="beauty-job">
+											Ingeniero Informático
+										</div> -->
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- </div> -->
+				</div>
+			</div>
+
+			<div class="range-line arrows">
+				<div class="range-legend white">{{opinionsPosition*2}} de {{topRowOpinions.length*2}}</div>
+				<input type="range" id="inputRange" (change)="handleRange()" value="0">
+				<!-- <div class="arrow left white"><i class="fas fa-angle-left"></i></div>
+				<div class="arrow right white"><i class="fas fa-angle-right"></i></div> -->
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal-background" *ngIf='modal.modals === "original-opinion"' (click)="closeOpinionModal()"></div>
+<div class="modal-original-opinion modal" *ngIf='modal.modals === "original-opinion"'>
+	<div class="modal-header">
+		<h2 class="modal-title">Opinión original</h2>
+		<div class="modal-close btn red" (click)="closeOpinionModal()"><i class="fas fa-times"></i></div>
+	</div>
+
+	<div class="modal-content">
+		<div class="original-opinion">
+			<img src="https://api.americanlanguage.es{{selectedOpinion}}" alt="">
+		</div>
+	</div>
+</div>

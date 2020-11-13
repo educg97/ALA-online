@@ -1,0 +1,104 @@
+/* PILLS */
+.pill {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    padding: 17px 17px;
+    margin: 25px 15px;
+    width: 170px;
+    border-radius: 1000px;
+    font-size: $font-normal;
+    text-align: center;
+    text-decoration: none;
+    border-collapse: separate;
+    @include css3-prefix(user-select, none);
+    @include css3-prefix(transition-duration, 0.3s);
+    @each $color in $colors {
+        &.#{map-get($color, color)}{
+            cursor: pointer;
+            color: map-get($color, normal);
+            border: 1px solid map-get($color, normal);
+            @include box-shadow(0px, 5px, 10px, rgba(map-get($color, normal), 0.15));
+            &:focus,
+            &:hover{
+                @include box-shadow(0px, 10px, 15px, rgba(map-get($color, normal), 0.20));
+            }
+            &:active{
+                @include box-shadow(0px, 0px, 0px, white);
+            }
+        }
+    }
+    h2 {
+        margin-bottom: 5px;
+    }
+}
+
+.color-circles-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    @media screen and (max-width: $break-mobile){
+        width: 86%;
+        margin: auto;
+    }
+    .border-circle {
+        width: 200px;
+        height: 200px;
+        border-radius: 2000px;
+        transform: rotate(45deg);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 50px;
+        @include css3-prefix(transition-duration, 0.3s);
+        @each $color in $colors {
+            &.#{map-get($color, color)}{
+                @include background-horizontal(map-get($color, gradient), map-get($color, normal));
+                @include box-shadow(0px, 10px, 15px, rgba(map-get($color, normal), 0.20));
+                &:hover {
+                    @include box-shadow(0px, 10px, 15px, rgba(map-get($color, normal), 0.30));
+                }
+                .circle-container {
+                    .top-block {
+                        color: map-get($color, normal);
+                    }
+                    .bottom-block {
+                        color: map-get($color, normal);
+                    }
+                }
+            }
+        }
+        .circle-container {
+            transform: rotate(-45deg);
+            width: 190px;
+            height: 190px;
+            border-radius: 3000px;
+            background-color: white;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+            padding: 40px;
+            .top-block {
+                i {
+                    font-size: 55px;
+                    margin: auto;
+                    @media screen and (max-width: $break-mobile) {
+                        font-size: 30px;
+                    }
+                }
+            }
+            @media screen and (max-width: $break-mobile) {
+                width: 110px;
+                height: 110px;
+            }
+        }
+        @media screen and (max-width: $break-mobile){
+            width: 120px;
+            height: 120px;
+        }
+    }
+}

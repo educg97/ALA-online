@@ -1,0 +1,171 @@
+<!-- Desktop Menu -->
+<div id="nav-shape"
+	*ngIf="window_util.isDesktop || window_util.isTablet">
+	<div class="nav-container">
+		<picture class="background" *ngIf="!config.header_image">
+			<source srcset='/assets/images/home/nav-background.webp' type='image/webp'>
+			<source srcset='/assets/images/home/nav-background.jpf' type='image/jpf'>
+			<source srcset='/assets/images/home/nav-background.jxr' type='image/vnd.ms-photo'>
+			<img srcset='/assets/images/home/clases-ingles-online.jpg' alt='Cursos de Inglés Online'>
+		</picture>
+		<img class="background" *ngIf="config.header_image" [src]="config.header_image" alt="American Language Online">
+		<div class="filter"></div>
+	</div>
+	<div id="corner">
+		<div id="corner-container">
+			<img id="header-remover" src="/assets/images/header/donde-hacer-curso-de-ingles-online.svg" alt="Mejorar nivel inglés online">
+			<img id="header-detail" src="/assets/images/header/opiniones-cursos-de-ingles-online.svg" alt="Mejores profesores de inglés online">
+		</div>
+	</div>
+</div>
+
+<div id="nav-shape-holder" class="svg-container desktop-svg"
+	*ngIf="window_util.isDesktop || window_util.isTablet"></div>
+
+<!-- Mobile Menu SVG -->
+<!-- <img id="nav-shape-mobile" src="/assets/images/nav-svg-background-mobile-MDPI.png" alt="Header"
+	*ngIf="window_util.isMobile"> -->
+<div id="nav-shape-mobile"
+		*ngIf="window_util.isMobile">
+	<div class="nav-container">
+		<picture class="background" *ngIf="!config.header_image">
+			<source srcset='/assets/images/home/nav-background.webp' type='image/webp'>
+			<source srcset='/assets/images/home/nav-background.jpf' type='image/jpf'>
+			<source srcset='/assets/images/home/nav-background.jxr' type='image/vnd.ms-photo'>
+			<img srcset='/assets/images/home/clases-ingles-online.jpg' alt='Cursos de Inglés Online'>
+		</picture>
+		<img class="background" *ngIf="config.header_image" [src]="config.header_image" alt="American Language Online">
+		<div class="filter"></div>
+	</div>
+	<div id="corner">
+		<div id="corner-container">
+			<img id="header-remover" src="/assets/images/header/header-remover-mobile.svg" alt="American Language Online">
+		</div>
+	</div>
+</div>
+
+<div id="nav-shape-mobile-holder" class="svg-container mobile-svg"
+	*ngIf="window_util.isMobile"></div>
+			
+<!-- Sticky bar underneath the svg -->
+<div id="nav-bar"
+	*ngIf="window_util.isDesktop"></div>
+<div id="nav-background"
+	*ngIf="window_util.isDesktop"></div>
+
+<img routerLink="/" id="nav-logo" src="/assets/images/ALO/american-academy-online.png" alt="Academia de inglés online">
+
+<div *ngIf="window_util.isDesktop" class = "fecei-banner">
+	<img routerLink="/" src="/assets/images/banners/banner-premio-fecei-vertical.png" alt="Primer puesto premio FECEI">
+</div>
+
+<!-- Menu links -->
+<div routerLink="/" id="nav-logo-sticky"
+	*ngIf="window_util.isDesktop && logo"
+	[@logo]>
+	<img src="/assets/images/ALO/american_language_online_panoramico.png" alt="American Language Online">
+</div>
+<nav id="menu-links" class="text-white"
+	*ngIf="window_util.isDesktop">
+	<ul>
+		<li class="link">
+			<a routerLink="/">Home</a>
+		</li>
+		<li><div class="spacer"></div></li>
+		<li class="link submenu-container" >
+			<a>Aprender Inglés Online</a>
+			<ul class="submenu column courses-submenu go-very-left">
+				<li class="menu-course" >
+					<!-- <a (click) = "setCourse('5ed50d6dbf61493d6036c1b1');" routerLink="/curso-ingles-online/intensivo" fragment="top"> -->
+					<a (click) = "setCourse('5ed50d6dbf61493d6036c1b1');" href="/curso-ingles-online/intensivo#top">
+						<div class="menu-course-title text-red bold">
+							Cursos de inglés online
+						</div>
+					</a>
+				</li>
+
+				<li class="menu-course" >
+					<!-- <a (click) = "setCourse('5ed64e16bf61493d6036c1f2');" routerLink="/curso-ingles-online/particulares" fragment="top"> -->
+					<a (click) = "setCourse('5ed64e16bf61493d6036c1f2');" href="/curso-ingles-online/particulares#top">
+						<div class="menu-course-title text-red bold">
+							Clases particulares de inglés online
+						</div>
+					</a>
+				</li>
+			</ul>
+		</li>
+		<li><div class="spacer"></div></li>
+		
+		<li class="link"><a (click) = "setCourse('5ed6526fbf61493d6036c201');" routerLink="/examen-ingles-online" fragment="top"><div>Exámenes de Inglés Online</div></a></li>
+		<li><div class="spacer"></div></li>
+
+		<li class="link"><a routerLink="/app-aprender-ingles"><div>App</div></a></li>
+		<li>
+			<a href="tel:+34-91-444-55-11" (click)="trackingPhoneCallGAnav(); google.phoneBtn()">
+				<div class="btn red btn-centered">
+					<table>
+						<tr>
+							<td style="vertical-align:middle">
+								<i class="fas fa-phone"></i>
+							</td>
+							<td style="vertical-align:middle">
+								<div class="bold">+34 91 444 55 11</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</a>
+		</li>
+
+		<!-- <li (click)="(router.url === '/actividades-en-ingles-madrid') ? onLogin( 'loginEvents' ) : onLogin('login')" *ngIf="!auth.isLogged">
+			<div class="btn green btn-centered" title="Log In">
+				<i class="fas fa-user login-btn"></i>
+			</div>
+		</li>
+
+		<li (click)="onLogout()" *ngIf="auth.isLogged">
+			<div class="btn red btn-centered" title="Log Out">
+				<i class="fas fa-user login-btn"></i>
+			</div>
+		</li> -->
+		<li>
+			<a href="//curso-ingles.americanlanguage.es" target="_blank" rel="nofollow">
+				<div class="btn green btn-centered" title="Aula Virtual">
+					<i class="fas fa-user login-btn"></i> Log In
+				</div>
+			</a>
+		</li>
+
+	</ul>
+</nav>
+
+<!-- <div class="modal-background" *ngIf='(modal.modals === "login")' (click)="closeLoginModal()"></div>
+<div class="modal-login modal" *ngIf='modal.modals === "login"'>
+	<div class="modal-header">
+		<h2 class="modal-title">Login</h2>
+		<div class="modal-close btn red" (click)="closeLoginModal()"><i class="fas fa-times"></i></div>
+	</div>
+
+	<div class="modal-content">
+		<form #loginPopUp="ngForm">
+			<input [(ngModel)]="username" ngModel required type="text" name='username' placeholder="Nombre de usuario">
+			<input [(ngModel)]="password" ngModel required type="password" name='password' placeholder="Contraseña">
+
+			<div class="login-buttons">
+				<input (click)="onSubmitLogin(loginPopUp)" type="submit" value="Login" class="btn light-green">	
+				<button class="btn red" *ngIf="router.url === '/actividades-en-ingles-madrid'">Invitado</button>
+			</div>
+		</form>
+	</div>
+</div> -->
+
+<div class="toast-container">
+	<div [@toastOnOff] class="newToast" *ngFor="let toast of modal.toasts; let i = index" [ngClass]="{
+		success: toast['type'] === 'success',
+		error: toast['type'] === 'error'
+	}">
+	{{toast['message']}}
+	</div>
+</div>
+
+<app-nav-banner class="banner-top"></app-nav-banner>

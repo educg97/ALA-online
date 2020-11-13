@@ -1,0 +1,46 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors';
+
+.header-tabs {
+    margin-bottom: 20px;
+    .tabs-container {
+        display: flex;
+        margin: auto;
+        .tab {
+            padding: 10px;
+            border-radius: 4px 4px 0 0;
+            cursor: pointer;
+            @each $color in $colors {
+                &.#{map-get($color, color)}{
+
+                    &:not(.active){
+                        background-color: lighten(map-get($color, normal), 10%);
+                        color: white;
+                        @include css3-prefix(box-shadow, 0 5px 10px -5px rgba(map-get($color, normal),0.2));
+                        transition: background-color .3s ease-in-out;
+                        &:hover {
+                            background-color: lighten(map-get($color, normal), 15%);
+                        }
+                    }
+                    &.active {
+                        background-color: white;
+                        border-width: 2px 2px 0 2px;
+                        border-color: map-get($color, normal);
+                        border-style: solid;
+                        color: map-get($color, normal);
+                    }
+
+                }
+            }
+        }
+        .tab-border {
+            @each $color in $colors {
+                &.#{map-get($color, color)}{
+                    @include css3-prefix(box-shadow, 0 5px 10px -5px rgba(map-get($color, normal),0.1));
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

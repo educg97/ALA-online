@@ -1,0 +1,1007 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors';
+
+.full-calendar {
+    @media screen and (min-width: $break-tablet + 1){
+        display: flex;
+        justify-content: space-between;
+    }
+    .left-side {
+        @media screen and (min-width: $break-tablet + 1) {
+            flex-basis: 50%;
+        }
+        .event_types {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 0 0 20px 0%;
+            flex-wrap: wrap;
+            .single_type {
+                display: flex;
+                align-items: center;
+                .circle {
+                    width: 10px; height: 10px;
+                    border-radius: 50%;
+                    margin-right: 3px;
+                    @each $color in $colors {
+                        &.#{map-get($color, color)}{
+                            background-color: map-get($color, normal);
+                        }
+                    }
+                }
+            }
+        }
+        
+        .calendar_container {
+            width: 80%;
+            margin: auto;
+            .select_month {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding-bottom: 20px;
+                color: $ala-blue;
+                font-family: Gotham-Rounded-Medium;
+                i {
+                    margin: 0 20px;
+                    font-size: 1.7em;
+                    cursor: pointer;
+                }
+                span {
+                    margin-left: 10px;
+                }
+            }
+            .weekdays {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                color: $ala-blue;
+                font-family: Gotham-Rounded-Light;
+                font-size: 20px;
+            }
+            .calendar {
+                display: flex;
+                justify-content: flex-start;
+                align-items: baseline;
+                flex-wrap: wrap;
+                margin-bottom: 16px;
+                .dayBox {
+                    width: 14%; height: 50px;
+                    text-align: center;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    border-radius: 50000px;
+                    color: $ala-blue;
+                    font-size: 20px;
+                    font-family: Gotham-Rounded-Light;
+                    cursor: pointer;
+                    &.selected {
+                            box-shadow: 0 5px 15px rgba($blue, .3);
+                    }
+                    .dots {
+                        display: flex;
+                        justify-content: space-around;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        width: 70%;
+                        margin: 0;
+                        .dot {
+                            width: 8px; height: 8px;
+                            border-radius:  50%;
+                            @each $color in $colors {
+                                &.#{map-get($color, color)}{
+                                    color: map-get($color, normal);
+                                    background-color: map-get($color, normal);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        .events_filter {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 20px;
+            .btn {
+                margin: 0;
+                &.disabled {
+                pointer-events: none;}
+            }
+            .single_level {
+                width: 50px; height: 50px;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                font-family: Gotham-Rounded-Medium;
+            }
+        }
+    }
+}
+
+.right-side {
+    @media screen and (min-width: $break-mobile + 1){
+        width: 100%;
+        flex-basis: 50%;
+        border-radius: 20px;
+    }
+    .events_block {
+        background-color: #f5f5f5;
+        padding: 25px 0;
+        @media screen and (min-width: $break-mobile + 1){
+            border-radius: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .event {
+            width: 95%;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 100px;
+            padding: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            @each $color in $colors {
+                &.#{map-get($color, color)}{
+                    cursor: pointer;
+                    color: map-get($color, normal);
+                    @include box-shadow(0px, 5px, 5px, rgba(map-get($color, normal), 0.30));
+                    p {
+                        color: $gray;
+                    }
+                    .event_content {
+                        .levels_container {
+                            .level_pair {
+                                background-color:  map-get($color, normal);
+                            }
+                        }
+                    }
+                }
+            }
+            .event_time {
+                flex-basis: 30%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .time_container {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center; 
+                    flex-direction: column;
+                    height: 80px; width: 80px;
+                    border: 1px solid $ala-blue;
+                    border-radius: 50%;
+                    hr {
+                        width: 75%; height: 1px;
+                        border: none;
+                        background-color: $gray;
+                    }
+                    p {
+                        font-size: 18px;
+                    }
+                }
+            }
+            .event_content {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-direction: column;
+                width: 100%;
+                margin-right: 10%;
+                h3 {
+                    text-align: center;
+                }
+                .event_text {
+                    flex-basis: 70%;
+                    text-align: right;
+                    padding-right: 8px;
+                    // align-self: flex-end;
+                    p {
+                        font-size: 10px;
+                        &.past {
+                            color: $red;
+                        }
+                    }
+                }
+                .levels_container {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    // align-self: flex-start;
+                    .level_pair {
+                        background-color: $red;
+                        padding: 5px;
+                        color: white;
+                        border-radius: 50px;
+                        margin: 2px;
+                        font-size: 12px;
+                        &.disabled {
+                            background-color: $gray;
+                        }
+                    }
+                }
+            }
+        }
+        .new-event-wrapper {
+            border-radius: 10px;
+            display: flex;
+            justify-content: flex-end;
+            width: 95%;
+            margin: 20px auto;
+            @media screen and (min-width: $break-mobile + 1){
+                width: 61%;
+                // margin: auto;
+            }
+            @each $color in $colors {
+                &.#{map-get($color, color)}{
+                    background-color:  map-get($color, normal);
+                    @include box-shadow(0px, 5px, 5px, rgba(map-get($color, normal), 0.30));
+                }
+            }
+            .new-event {
+                padding: 10px;
+                border-radius: 10px;
+                background-color: white;
+                width: 94%;
+                @each $color in $colors {
+                    &.#{map-get($color, color)}{
+                        cursor: pointer;
+                        color: map-get($color, normal);
+                        p {
+                            color: $gray;
+                        }
+                        .levels_container {
+                            .level_pair {
+                                background-color:  map-get($color, normal);
+                            }
+                        }
+                        .event-time {
+                            &:before {
+                                background-color:  map-get($color, normal);
+                            }
+                        }
+                    }
+                }
+                .event-time {
+                    padding-left: 20px;
+                    position: relative;
+                    &:before {
+                        content: '';
+                        position: absolute;
+                        width: 15px; height: 15px;
+                        background-color: $red;
+                        top: 10%; left: 0px;
+                        border-radius: 50%;
+                    }
+                }
+                .event-title {
+                    padding: 7px 0;
+                }
+                .levels_container {
+                    display: flex;
+                    align-items: center;
+                    // align-self: flex-start;
+                    .level_pair {
+                        background-color: $red;
+                        padding: 5px 8px;
+                        color: white;
+                        border-radius: 50px;
+                        margin: 8px 8px auto 8px;
+                        font-size: 14px;
+                        &.disabled {
+                            background-color: $gray;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.adminBtn {
+    display: flex;
+    justify-content: center;
+}
+
+.students-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .my-activities {
+        .future-activity {
+            margin: 10px 0 15px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            @each $color in $colors {
+                &.#{map-get($color, color)}{
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        top: 10px;
+                        left: -20px;
+                        width: 15px;
+                        height: 15px;
+                        border-radius: 2000px;
+                        background-color: map-get($color, normal);
+                    }
+                }
+            }
+        }
+        .no-events-msg {
+            margin: 15px 0;
+        }
+    }
+}
+
+// Printable document for the activities
+.printable-container {
+    margin: 20px 0;
+    min-height: 1500px;
+    .printDoc {
+        max-width: 794px;
+        margin: auto;
+        height: 1123px;
+        .header-workshops {
+            height: 200px;
+            overflow: hidden;     
+            position: relative;
+            z-index: -1;      
+            .logo-ala-activities {
+                position: absolute;
+                top: 50px;
+                left: 10%;
+                z-index: 10;
+                width: 70%;
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+            .banner-img {
+                margin-top: -200px;
+                filter: brightness(0.8);
+            } 
+        }
+        .header-calendar {
+            background-color: white;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            margin-bottom: 20px;
+            .learning-experience {
+                width: 150px;
+                position: absolute;
+                top: -185px;
+                right: 10px;
+                z-index: 50;
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+            h1 {
+                margin: -70px 0 0 0;
+                padding: 10px 20px;
+                background-color: white;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                width: auto;
+                font-size: 50px;
+            }
+            h2 {
+                color: $green;
+                margin-bottom: 8px;
+                width: 100%;
+                background-color: white;
+                font-size: 40px;
+            }
+        }
+        .printCalendar {
+            .weekdays-header-print {
+                display: flex;
+                width: 95%;
+                margin: auto;
+                li {
+                    width: 20%;
+                    display: flex;
+                    justify-content: center;
+                }
+            }
+            .actual-print-calendar {
+                .days-print {
+                    display: flex;
+                    flex-wrap: wrap;
+                    flex-shrink: 0;
+                    padding-left: 20px;
+                    .blank-box {
+                        width: 19.5%;
+                        height: 10px;
+                    }
+                    .print-day {
+                        width: 17%;
+                        flex-shrink: 0;
+                        flex-grow: 0;
+                        margin: 10px;
+                        padding: 10px;
+                        box-sizing: border-box;
+                        border-radius: 10px;
+                        min-height: 120px;
+                        @each $color in $colors {
+                            &.#{map-get($color, color)}{
+                                @include box-shadow(0px, 5px, 5px, rgba(map-get($color, normal), 0.30));
+                                .day-number {
+                                    background-color:  map-get($color, normal);
+                                }
+                                .event-day-print {
+                                    .event-name-print {
+                                        &::before {
+                                            background-color:  map-get($color, normal);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .day-number {
+                            margin-bottom: 5px;
+                            padding: 4px;
+                            border-radius: 2000px;
+                            background-color: $blue-gray;
+                            color: white;                            
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            // @each $color in $colors {
+                            //     &.#{map-get($color, color)}{
+                            //         background-color:  map-get($color, normal);
+                            //     }
+                            // }
+                        }
+                        .event-day-print {
+                            color: $ala-blue;
+                            position: relative;
+                            &:not(:last-of-type) {
+                                margin-bottom: 1px solid $very-light-gray;
+                            }
+                            .details-block {
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-around;
+                                margin-bottom: 8px;
+                                flex-direction: column;
+                                .time {
+                                    display: flex;
+                                    margin-bottom: 3px;
+                                    .exact-time {
+                                        font-size: 14px;
+                                        color: black;
+                                    }
+                                    .dash {
+                                        margin: 0 3px;
+                                    }
+                                }
+                            }
+                            .event-name-print {
+                                margin-bottom: 5px;
+                                padding-left: 10px;
+                                position: relative;
+                                font-size: 20px;
+                                &:before {
+                                    content: '';
+                                    width: 7px; height: 7px;
+                                    border-radius: 3000px;
+                                    position: absolute;
+                                    left: 0; top: 5px;
+                                }
+                                @each $color in $colors {
+                                    &.#{map-get($color, color)}{
+                                        &:before {
+                                            background-color:  map-get($color, normal);
+                                        }
+                                    }
+                                }
+                            }
+                            .levels {
+                                display: flex;
+                                justify-content: space-around;
+                                flex-wrap: wrap;
+                                // width: 50%;
+                                .level {
+                                    font-size: 14px;
+                                    margin-left: 4px;
+                                    font-weight: bold;
+                                    color: $gray;
+                                    &.colored {
+                                        &.a1a2 {
+                                            color: $amber;
+                                            // background-color: $amber;
+                                        }
+                                        &.a2b1 {
+                                            color: $orange;
+                                            // background-color: $orange;
+                                        }
+                                        &.b1b2 {
+                                            color: $deep-orange;
+                                            // background-color: $deep-orange;
+                                        }
+                                        &.b2c1 {
+                                            color: $red;
+                                            // background-color: $red;
+                                        }
+                                        &.a1 {
+                                            color: $amber;
+                                            // background-color: $amber;
+                                        }
+                                        &.a2 {
+                                            color: $orange;
+                                            // background-color: $orange;
+                                        }
+                                        &.b1 {
+                                            color: $deep-orange;
+                                            // background-color: $deep-orange;
+                                        }
+                                        &.b2 {
+                                            color: $red;
+                                            // background-color: $red;
+                                        }
+                                        &.c1 {
+                                            color: $pink;
+                                            // background-color: $pink;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        &.weekend {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+                .link-to-web {
+                    margin-top: 30px;
+                    .links {
+                        display: flex;
+                        justify-content: space-around;
+                        align-items: center;
+                        a {
+                            font-size: 20px;
+                        }
+                    }
+                }
+    }
+}
+.header-workshops {
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media print {
+    .header-workshops {
+        height: 200px;
+        overflow: hidden;     
+        position: relative;
+        z-index: -1;      
+        .logo-ala-activities {
+            position: absolute;
+            top: 50px;
+            left: 10%;
+            z-index: 10;
+            width: 70%;
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+        .banner-img {
+            margin-top: -200px;
+            filter: brightness(0.8);
+        } 
+    }
+    .header-calendar {
+        background-color: white;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        margin-bottom: 20px;
+        .learning-experience {
+            width: 150px;
+            position: absolute;
+            top: -155px;
+            right: 40px;
+            z-index: 50;
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+        h1 {
+            margin: -70px 0 0 0;
+            padding: 10px 20px;
+            background-color: white;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            width: auto;
+            font-size: 50px;
+        }
+        h2 {
+            color: $green;
+            margin-bottom: 8px;
+            width: 100%;
+            background-color: white;
+            font-size: 40px;
+        }
+    }
+    .printCalendar {
+        .weekdays-header-print {
+            display: flex;
+            width: 95%;
+            margin: auto;
+            li {
+                width: 20%;
+                display: flex;
+                justify-content: center;
+            }
+        }
+        .actual-print-calendar {
+            .days-print {
+                display: flex;
+                flex-wrap: wrap;
+                flex-shrink: 0;
+                padding-left: 20px;
+                .blank-box {
+                    width: 19%;
+                    height: 10px;
+                }
+                .print-day {
+                    width: 17%;
+                    flex-shrink: 0;
+                    flex-grow: 0;
+                    margin: 10px;
+                    padding: 10px;
+                    box-sizing: border-box;
+                    border-radius: 10px;
+                    min-height: 140px;
+                    @each $color in $colors {
+                        &.#{map-get($color, color)}{
+                            @include box-shadow(0px, 5px, 5px, rgba(map-get($color, normal), 0.30));
+                            .day-number {
+                                background-color:  map-get($color, normal);
+                            }
+                            .event-day-print {
+                                .event-name-print {
+                                    &::before {
+                                        background-color:  map-get($color, normal);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .day-number {
+                        margin-bottom: 5px;
+                        padding: 4px;
+                        border-radius: 2000px;
+                        background-color: $blue-gray;
+                        color: white;                            
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        // @each $color in $colors {
+                        //     &.#{map-get($color, color)}{
+                        //         background-color:  map-get($color, normal);
+                        //     }
+                        // }
+                    }
+                    .event-day-print {
+                        color: $ala-blue;
+                        position: relative;
+                        &:not(:last-of-type) {
+                            margin-bottom: 1px solid $very-light-gray;
+                        }
+                        .details-block {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-around;
+                            margin-bottom: 8px;
+                            flex-direction: column;
+                            .time {
+                                display: flex;
+                                margin-bottom: 3px;
+                                .exact-time {
+                                    font-size: 14px;
+                                    color: black;
+                                }
+                                .dash {
+                                    margin: 0 3px;
+                                }
+                            }
+                        }
+                        .event-name-print {
+                            margin-bottom: 5px;
+                            padding-left: 10px;
+                            position: relative;
+                            font-size: 20px;
+                            &:before {
+                                content: '';
+                                width: 7px; height: 7px;
+                                border-radius: 3000px;
+                                position: absolute;
+                                left: 0; top: 5px;
+                            }
+                            @each $color in $colors {
+                                &.#{map-get($color, color)}{
+                                    &:before {
+                                        background-color:  map-get($color, normal);
+                                    }
+                                }
+                            }
+                        }
+                        .levels {
+                            display: flex;
+                            justify-content: space-around;
+                            flex-wrap: wrap;
+                            // width: 50%;
+                            .level {
+                                font-size: 14px;
+                                margin-left: 4px;
+                                font-weight: bold;
+                                color: $gray;
+                                    &.colored {
+                                        &.a1a2 {
+                                            color: $amber;
+                                            // background-color: $amber;
+                                        }
+                                        &.a2b1 {
+                                            color: $orange;
+                                            // background-color: $orange;
+                                        }
+                                        &.b1b2 {
+                                            color: $deep-orange;
+                                            // background-color: $deep-orange;
+                                        }
+                                        &.b2c1 {
+                                            color: $red;
+                                            // background-color: $red;
+                                        }
+                                        &.a1 {
+                                            color: $amber;
+                                            // background-color: $amber;
+                                        }
+                                        &.a2 {
+                                            color: $orange;
+                                            // background-color: $orange;
+                                        }
+                                        &.b1 {
+                                            color: $deep-orange;
+                                            // background-color: $deep-orange;
+                                        }
+                                        &.b2 {
+                                            color: $red;
+                                            // background-color: $red;
+                                        }
+                                        &.c1 {
+                                            color: $pink;
+                                            // background-color: $pink;
+                                        }
+                                }
+                            }
+                        }
+                    }
+                    &.weekend {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+            .link-to-web {
+                margin-top: 30px;
+                .links {
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    a {
+                        font-size: 20px;
+                    }
+                }
+            }
+}
+        
+.info-actividades {
+    padding: 16px;
+    margin: 20px 0;
+    @media screen and (min-width: $break-mobile + 1) {
+        max-width: 80%;
+        text-align: center;
+        margin: auto;
+        padding-top: 50px;
+    }
+}
+
+.event-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;    	
+    .modal-content {
+        width: 80%;
+    }
+}
+
+.overlay-modal {
+    width: 100%; height: 100vh;
+    position: fixed;
+    top: 0; left: 0;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+form {
+    .event-description {
+        margin-bottom: 20px;
+    }
+    .inputs {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 95%;
+        margin: auto;
+        input {
+            width: 90%;
+            &:active,
+            &:focus {
+                outline: none;
+            }
+        }
+        a {
+            padding: 10px 0;
+        }
+    }
+    .buttonsSubmit {
+        display: flex;
+        justify-content: space-around;
+        input,
+        button {
+            &:active,
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+    .filters{
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &.disabled {
+                pointer-events: none;
+            }
+        }
+    }
+    .plazas_disponibles {
+        text-align: center;
+        padding: 10px 0;
+        color: $deep-orange;
+        &.free {
+            color: $green;
+        }
+    }
+    .students-in {
+        padding: 10px 20%;
+        ul {
+            li {
+                margin: 8px 0;
+            }
+        }
+    }
+}
+
+.games-activities {
+    margin: 120px auto;
+    @media screen and (max-width: $break-tablet) {
+        max-width: 100%;
+        box-sizing: border-box;
+        // padding: 0 20px;
+    }
+    .games-skew {
+        padding-top: 50px;
+        .games-title {
+            color: $deep-purple;
+        }
+        .gameLetter {
+            width: 60%;
+            margin: 50px auto 0;
+            @media screen and (max-width: $break-tablet) {
+                width: 80%;
+            }
+        }
+    }
+}
+
+.modal-login {
+    width: 80%;
+    @media screen and (min-width: $break-mobile + 1){
+        width: 45%;
+    }
+    @media screen and (min-width: $break-tablet + 1){
+        width: 20%;
+    }
+    .modal-content {
+        form {
+            .inputs {
+                display: flex;
+                input {
+                    &:active,
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+            .login-buttons {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                button {
+                    margin-left: 8px;
+                }
+            }
+        }
+    }
+}
+
+.events-general-modal {
+    @media screen and (min-width: $break-tablet + 1){
+        width: 40%;
+    }
+}
+
+.logout {
+    position: fixed;
+    width: auto;
+    bottom: 20px; left: 20px;
+    z-index: 50;
+}
+
+.final-article-activities {
+    @media screen and (max-width: $break-tablet){
+        box-sizing: border-box;
+        padding: 20px;
+    }
+    h2 {
+        margin: $h2-spacing;
+    }
+    h3 {
+        margin: $h3-spacing;
+    }
+    h4, p {
+        margin: $space-text;
+    }
+}
+
+.modal-game-letter {
+    @media screen and (min-width: $break-mobile + 1) {
+        width: 350px;
+    }
+}

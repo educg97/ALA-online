@@ -1,0 +1,86 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors';
+
+.loader {
+    position: relative;
+    width: 130px; height: 130px;
+    margin: auto;
+    animation: spin 2s infinite ease-in-out;
+    .logo-loader {
+        margin: auto;
+        width: 50px;
+        animation: back-spin 2s infinite ease-in-out;
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+    .track {
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        margin: auto;
+        width: 50px; height: 50px;
+        border-radius: 40px;
+        opacity: .5;
+        &:not(.black){
+            animation: round 2s ease-in-out infinite;
+        }
+        transform-origin: center center;
+        &.black {
+            border: 40px solid $ala-blue;
+            border-radius: 50%;
+            z-index: 1000;
+            background-color: $ala-blue;
+            opacity: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        &.cyan {
+            border: 40px solid $cyan;
+            z-index: 800;
+            transform: rotate(22.5deg);
+        }
+        &.yellow {
+            border: 40px solid $yellow;
+            z-index: 600;
+            transform: rotate(45deg);
+        }
+        &.pink {
+            border: 40px solid $pink;
+            z-index: 400;
+            transform: rotate(67.5deg);
+        }
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes back-spin {
+    0% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(0);
+    }
+}
+
+@keyframes round {
+    0% {
+        border-radius: 50%;
+    }
+    50% {
+        border-radius: 40px;
+    }
+    100% {
+        border-radius: 50%;
+    }
+}

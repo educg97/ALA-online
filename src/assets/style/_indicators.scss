@@ -1,0 +1,98 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors';
+
+.slider-controls {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+    ul {
+        display: flex;
+        li {
+            width: 20px;
+            height: 20px;
+            // background-color: white;
+            margin: 10px;
+            border-radius: 2000px;
+            transition: all .3s ease-in-out;
+            box-sizing: border-box;
+            background-color: unset;
+            cursor: pointer;
+            @each $color in $colors {
+                &.#{map-get($color, color)}{
+                    border: 2px solid map-get($color, normal);
+                }
+            }
+            &.active {
+                box-sizing: border-box;
+                @each $color in $colors {
+                    &.#{map-get($color, color)}{
+                        background-color: map-get($color, normal);
+                    }
+                }
+            }
+        }
+    }
+} 
+
+.arrow {
+    position: absolute;
+    top: 43%;
+    font-size: $font-large;
+    cursor: pointer;
+    &.teachers {
+        top: 150px;
+    }
+    @media screen and (min-width: $break-tablet) {
+        width: 50px;
+        height: 50px;
+        border-radius: 3000px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        @each $color in $colors {
+            &.#{map-get($color, color)}{
+                background-color: map-get($color, normal);
+                @include box-shadow(0px, 5px, 10px, rgba(map-get($color, normal), 0.15));
+                &:focus,
+                &:hover{
+                    @include box-shadow(0px, 10px, 15px, rgba(map-get($color, normal), 0.20));
+                }
+            }
+        }
+    }
+    &.left {
+        left: 15px;
+    }
+    &.right {
+        right: 15px;
+    }
+}
+
+.scrollable{
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    &::-webkit-scrollbar {
+        width: 0px;  /* remove scrollbar space */
+    }
+    & > div,
+    & > button {
+        scroll-snap-align: center;
+    }
+    .spacer{
+        @media screen and (max-width: $break-tablet - 1) {
+            content: " ";
+            width: 30vw;
+            flex-shrink: 0;
+        }
+        @media screen and (min-width: $break-tablet) {
+            content: unset;
+        }
+        scroll-snap-align: unset;
+    }
+}

@@ -1,0 +1,136 @@
+<h1>La mejor app para aprender inglés</h1>
+<div class="banner">
+	<div class="background card borderless" [ngClass]="{borderless:!windowSize.isMobile, card:!windowSize.isMobile}">
+		<div class="gradient blue">
+			<p class="bold">
+				APRENDE INGLÉS EN UN FLASH
+				<button style = "font-weight: bold;" class = "btn red"><span class = "bolt"><i class="fas fa-bolt"></i></span> Empezar</button>
+			</p>
+		</div>
+		<img src="https://www.syfy.com/sites/syfy/files/styles/1200x680/public/2019/08/the-flash-via-the-cw-2019.jpg" alt="La mejor aplicación para aprender inglés online"
+			class="background-img offset-0">
+	</div>
+</div>
+
+<div class="column-block page-width">
+	<div class = "flash-logo">
+		<img src="/assets/images/flash-logos/app-flash-logo-1.png" alt="profesores nativos American Language Online" width="100%">
+	</div>
+
+	<div class="flash-content">
+		<h3 class="block-subtitle">Clases de inglés instantáneas.</h3>
+
+		<p class="space-text">
+			Flash Class es la mejor aplicación para aprender inglés con nativos cuando quieras y 
+			donde quieras. Con clases de inglés instantáneas cualquier día del año y cuando tú quieras.
+		</p>
+	</div>
+</div>
+
+<div class="column-block page-width">
+	<div class = "flash-logo">
+		<img src="/assets/images/flash-logos/app-flash-logo-2.png" alt="profesores nativos American Language Online" width="100%">
+	</div>
+	<div class="flash-content">
+		<h3 class="space-title3">Actividades interactivas y lecciones en vídeo</h3>
+
+		<p class="space-text">
+			Consigue la mejor aplicación para aprender inglés gratis con la app Flash Class. 
+			Actividades interactivas gratuitas para complementar tus clases.
+		</p>
+	</div>
+</div>
+
+<h2 class="color-block-title text-red">Los mejores profesores de inglés</h2>
+<h3 style = "text-align: center;">Disponibles al instante cuando los necesites</h3>
+<app-slider-teachers></app-slider-teachers>
+
+<h1>¿Cómo funciona?</h1>
+
+<div class="skew-block blue academy-image-container">
+	<div class="skew-block-container academy-image" [ngClass]="{scrollable: !windowSize.isDesktop}"
+		id="slider-headquarters">
+		<div class="pic-slide-academy">
+			<div class="card">
+				<div class = "card-header">
+					<img src="https://image.freepik.com/vector-gratis/telefono-movil-ilustracion-plana-sobre-tecnologia-internet-telefono-inteligente-manos_68292-250.jpg"
+					alt="Aplicación para aprender inglés online desde cualquier parte del mundo" width="100%">
+				</div>
+				<hr>
+				<div class = "card-content">
+					<h3>Solicita tu clase</h3>
+					<hr>
+					<p>Empieza al instante o cuando tú elijas</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="pic-slide-academy">
+			<div class="card">
+				<div class = "card-header">
+					<img src="https://previews.123rf.com/images/microone/microone1708/microone170800447/84745023-videollamada-con-la-mujer-feliz-joven-que-usa-smartphone-conferencia-m%C3%B3vil-en-l%C3%ADnea-ilustraci%C3%B3n-de-llamada-d.jpg"
+					alt="Clases Flash individuales o grupales" width="100%">
+				</div>
+				<hr>
+				<div class = "card-content">
+					<h3>Clases Flash</h3>
+					<hr>
+					<p>Desde la app, tu clase individual o en grupo con profesores nativos</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="pic-slide-academy">
+			<div class="card lighter-image">
+				<div class = "card-header">
+					<img src="https://image.freepik.com/vector-gratis/videollamada-o-chat-novia-persona-dibujos-animados-plana-ilustracion-telefono-movil_101884-619.jpg"
+					alt="Mejora tu inglés de forma online con nuestra app" width="100%">
+				</div>
+				<hr>
+				<div class = "card-content">
+					<h3>Actividades</h3>
+					<hr>
+					<p>Para mejorar tu inglés gratis de forma fácil y divertida.</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="spacer" *ngIf="windowSize.isMobile"></div>
+	</div>
+
+	<div *ngIf="windowSize.isMobile" class="slider-controls skew-block-container">
+		<ul>
+			<li class="white" [ngClass]="{active: headquarterPosition === i}"
+				(click)="scrollComponent('slider-headquarters', i)" *ngFor="let dot of dotsHeadquarters; let i = index">
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="column-block page-width">
+	<div class="content" style="text-align: center;">
+		<h3 class="space-title3">Las mejores aplicaciones para aprender inglés online y para hablar con nativos</h3>
+		<a href=""><img class = "app-link-img" src="https://lh4.googleusercontent.com/SnYN4ZMXupQP9-d-JI2kfsKz7U0Z5gyZmT_lP4GxuCCBnRM-QT6zZCDgpMaEp78gX3vPeyQVmUZlqTyJPFwf5Lo1EfWtxTuF_HSTzk_uLggpVBS80Wyz28jOWnODok4gVGA5Cbfw" alt=""></a>
+	</div>
+
+	<div class="image card borderless">
+		<img src="https://www.dexway.com/wp-content/uploads/2016/04/online-courses-dexway-1024x576.jpg" alt="profesores nativos American Language Online" width="100%">
+	</div>
+</div>
+
+<!-- <div class = "contests" *ngIf="showStar">
+	<app-star-promotion></app-star-promotion>
+</div> -->
+
+<div class = "top-app-NYT">
+	<h3>Top apps para aprender inglés en 2021</h3>
+	<h1>"El Uber de las clases de idiomas"</h1>
+	<h2>The New York Times</h2>
+</div>
+
+<div style = "text-align: center;">
+	<h2>Más de 100.000 estudiantes</h2>
+	<p>Las aplicaciones mejor valoradas para clases de inglés y para hablar con nativos</p>
+</div>
+
+<app-slider-opinions></app-slider-opinions>

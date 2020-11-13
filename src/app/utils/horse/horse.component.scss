@@ -1,0 +1,104 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors';
+
+.horse {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    i {
+        font-size: 80px;
+        cursor: pointer;
+        animation: horseGlitter 3s infinite ease-in-out;
+    }
+}
+
+.modal-horse {
+    @media screen and (min-width: $break-mobile + 1) {
+        width: 350px;
+    }
+    .modal-content {
+        .introduction {
+            .prize-container {
+                width: 70%;
+                margin: auto;
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
+        form {
+            .inputs {
+                display: flex;
+                flex-direction: column;
+                input {
+                    max-width: 300px;
+                    &.error {
+                        border: 1px solid $red;
+                        color: $red;
+                        &::placeholder {
+                            color: $red;
+                        }
+                    }
+                }
+            }
+        }
+        .question-container {
+            .question {
+                .title {
+                    color: $ala-blue;
+                }
+                .answers-container {
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    flex-wrap: wrap;
+                    margin-top: 10px;
+                    .answer {
+                        flex-basis: 50%;
+                        text-align: center;
+                        margin: 5px 0;
+                        padding: 10px;
+                        box-sizing: border-box;
+                        cursor: pointer;
+                        &.answer-0 {
+                            color: $purple;
+                        }
+                        &.answer-1 {
+                            color: $deep-purple;
+                        }
+                        &.answer-2 {
+                            color: $indigo;
+                        }
+                        &.answer-3 {
+                            color: $blue;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@keyframes horseGlitter {
+    0% {
+        color: $purple;
+    }
+    20% {
+        color: $deep-purple;
+    }
+    40% {
+        color: $indigo;
+    }
+    60% {
+        color: $blue;
+    }
+    80% {
+        color: $light-blue;
+    }
+    100% {
+        color: $cyan;
+    }
+}

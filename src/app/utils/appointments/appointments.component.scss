@@ -1,0 +1,203 @@
+@import 'src/assets/style/css3-mixins';
+@import 'src/assets/style/variables';
+@import 'src/assets/style/colors';
+
+.currentDayContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @each $color in $colors {
+        &.#{map-get($color, color)}{
+            color: map-get($color, normal);
+        }
+    }
+}
+
+.modal-appointments.modal {
+    max-height: 90%;
+    top: 3%;
+    @media screen and (min-width: $break-mobile + 1) {
+        max-width: 35%!important;
+    }
+    .modal-content {
+        max-height: 90%;
+        overflow: hidden;
+        .full-container-phases {
+            width: 300vw;
+            display: flex;
+            overflow: auto;
+            flex-direction: row;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            transition: all .3s ease-in-out;
+            @media screen and (min-width: $break-mobile + 1) {
+                width: 105vw;
+            }
+            &.phaseOne {
+                transform: translateX(0);
+                .phase {
+                    opacity: 1;
+                    .calendarMessage {
+                        text-align: center;
+                        color: $red;
+                        padding: 8px 0;
+                    }
+                }
+            }
+            &.phaseTwo {
+                transform: translateX(-80vw);
+                @media screen and (min-width: $break-mobile + 1) {
+                    transform: translateX(-35vw);
+                }
+                .phase {
+                    opacity: 1;
+                }
+            }
+            &.phaseThree {
+                transform: translateX(-160vw);
+                @media screen and (min-width: $break-mobile + 1) {
+                    transform: translateX(-70vw);
+                }
+                .phase {
+                    opacity: 1;
+                    &.phase-form {
+                        background-color: white;
+                        form {
+                            .field {
+                                display: flex;
+                                flex-direction: column;
+                                margin-bottom: 15px;
+                                .errorMsg {
+                                    text-align: center;
+                                    color: $red;
+                                }
+                                input {
+                                    color: $ala-blue;
+                                    &:focus,
+                                    &:active {
+                                        outline: none;
+                                    }
+                                    &.error {
+                                        border: 2px solid $red;
+                                    }
+                                }
+                                textarea {
+                                    color: $ala-blue;
+                                    &:focus,
+                                    &:active {
+                                        outline: none;
+                                    }
+                                }
+                            }
+                            .dateAndTime {
+                                display: flex;
+                                justify-content: space-between;
+                                .field {
+                                    width: 50%;
+                                }
+                            }
+                            .nameAndLastname {
+                                display: flex;
+                                justify-content: space-between;
+                                .field {
+                                    width: 50%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &::-webkit-scrollbar {
+                width: 0px;  /* remove scrollbar space */
+            }
+            & > div,
+            & > button {
+                scroll-snap-align: center;
+            }
+            .phase {
+                width: 80vw;
+                opacity: 0;
+                @media screen and (min-width: $break-mobile + 1) {
+                    width: 35vw;
+                }
+            }
+        }
+        .navButtons {
+            display: flex;
+            justify-content: space-between;
+            button {
+                &.next {
+                    justify-self: flex-end;
+                }
+                &:focus,
+                &:active {
+                    outline: none;
+                }
+            }
+        }
+    }
+}
+
+.appointments-container {
+    margin-bottom: 10px;
+    .morning-evening {
+        display: flex;
+        justify-content: space-around;
+        margin: 10px 0;
+    }
+    .define-appointment-time {
+        display: flex;
+        flex-direction: row;
+        font-size: $font-normal;
+        color: $ala-blue;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        .rows-container {
+            display: flex;
+            flex-wrap: wrap;
+            .appointment-time-row {
+                display: flex;
+                flex-direction: row;
+                width: 24%;
+                min-width: 80px;
+                justify-content: center;
+                padding: 5px 0;
+                border-bottom: 1px solid $gray;
+                cursor: pointer;
+                &.disabled {
+                    pointer-events: none;
+                    color: $gray;
+                }
+                .appointment-minutes {
+                    flex-basis: 25%;
+                    text-align: center;
+                    position: relative;
+                    cursor: pointer;
+                    &:not(:last-of-type){
+                        &:after {
+                            content: '';
+                            width: 1px; height: 200%;
+                            background-color: $gray;
+                            top: -10px; right: 0;
+                            position: absolute;
+                        }
+                    }
+                    &.disabled {
+                        pointer-events: none;
+                        color: $gray;
+                    }
+                }
+            }
+        }
+    }
+    .selectedHour {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $ala_blue;
+        font-size: $font-large;
+        padding: 15px 0;
+    }
+}

@@ -1,0 +1,39 @@
+<div class="window-companies">
+  <div class="companies-opinions">
+      <div *ngIf="!windowSize.isDesktop && companiesPosition !== 0" (click)="moveSlider('prev')" class="arrow left" [@arrowLeft]>
+          <i class="fas fa-angle-left"></i>
+      </div>
+      <div *ngIf="!windowSize.isDesktop && companiesPosition !== 2" (click)="moveSlider('next')" class="arrow right" [@arrowRight]>
+          <i class="fas fa-angle-right"></i>
+      </div>
+
+      <div class="slider-companies-opinions slider-universities scrollable" id="slider-companies-single">
+        <div class="column" *ngFor="let column of universities; let i = index">
+          <div *ngFor="let uni of column; let k = index">
+            <div class="company-pill card" *ngFor="let thing of uni">
+              <div class="company-header">
+                <div class="logo-full {{thing['slug']}}">
+                  <img src="{{thing['imageUrl']}}" alt="{{thing['Texto SEO']}}">
+                </div>
+              </div>
+              <div class="company-testimonial" [innerHTML]="thing['testimonial']"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="range-line companies input" *ngIf="isOpinions">
+      <div  *ngIf="windowSize.isMobile || windowSize.isTablet" class="range-legend blue">{{companiesPosition + 1}} de 3</div>
+    </div>
+
+    
+
+    <div class="navigation-slider" *ngIf="isCourse && !windowSize.isDesktop">
+      <ul>
+        <li (click)="selectUni(0)" [ngClass]="{actived: companiesPosition === 0}"><i class="fas fa-circle"></i></li>
+        <li (click)="selectUni(1)" [ngClass]="{actived: companiesPosition === 1}"><i class="fas fa-circle"></i></li>
+        <li (click)="selectUni(2)" [ngClass]="{actived: companiesPosition === 2}"><i class="fas fa-circle"></i></li>
+      </ul>
+    </div>
+  </div>
+</div>
